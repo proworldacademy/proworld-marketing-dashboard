@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROWORLD™ — Marketing Command Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #f2f2f2;
+  --white:     #ffffff;
+  --black:     #000000;
+  --card:      #ffffff;
+  --border:    #e0e0e0;
+  --border-mid:#cccccc;
+  --text:      #111111;
+  --text-mid:  #444444;
+  --text-dim:  #888888;
+  --text-pale: #aaaaaa;
+  --lime:      #E2FE78;
+  --lime-dark: #c8e860;
+  --lime-pale: #f5fdc0;
+  --mint:      #94FCB1;
+  --pink:      #E286E4;
+  --cyan:      #A9F3F7;
+  --green:     #22c55e;
+  --red:       #ef4444;
+  --orange:    #f97316;
+  --blue:      #3b82f6;
+  --sidebar:   8px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  border-left: var(--sidebar) solid var(--lime);
+}
+
+/* ── HEADER ── */
+header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.logo { display:flex; align-items:center; gap:14px; }
+
+.logo-wordmark {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 26px;
+  color: var(--black);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.logo-wordmark .tm {
+  font-size: 10px;
+  font-style: normal;
+  vertical-align: super;
+  color: var(--text-dim);
+}
+
+.logo-highlight {
+  background: var(--lime);
+  padding: 2px 8px 2px 6px;
+  border-radius: 2px;
+  margin-left: 2px;
+}
+
+.logo-sub {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-pale);
+  padding-left: 14px;
+  border-left: 1px solid var(--border);
+}
+
+.header-right { display:flex; align-items:center; gap:20px; }
+
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--black);
+  color: var(--lime);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 5px 12px;
+  border-radius: 2px;
+}
+.live-badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--lime);
+  border-radius: 50%;
+  animation: blink 2s infinite;
+}
+@keyframes blink {
+  0%,100%{opacity:1} 50%{opacity:0.3}
+}
+
+.header-date { font-size:12px; color:var(--text-dim); text-align:right; }
+.header-date strong { display:block; color:var(--text); font-size:13px; font-weight:600; }
+
+/* ── NAV ── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  padding: 0 32px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+nav::-webkit-scrollbar { display:none; }
+
+.nav-tab {
+  padding: 0 18px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.18s;
+  white-space: nowrap;
+  user-select: none;
+}
+.nav-tab:hover { color: var(--text); }
+.nav-tab.active { color: var(--black); border-bottom-color: var(--lime); }
+
+/* ── MAIN ── */
+main {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 28px 32px 64px;
+}
+
+.section { display:none; }
+.section.active { display:block; animation: fadeUp 0.25s ease; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(10px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ── PAGE TITLE ── */
+.page-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--black);
+  margin-bottom: 4px;
+  letter-spacing: -1px;
+}
+.page-title .hl {
+  background: var(--lime);
+  padding: 0 6px;
+  margin-left: 4px;
+}
+.page-sub {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 24px;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+}
+.card-top-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--lime);
+  border-radius: 6px 6px 0 0;
+}
+
+.card-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card-label::after {
+  content:'';
+  flex:1;
+  height:1px;
+  background: var(--border);
+}
+
+/* ── GRIDS ── */
+.g2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.g4 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.g5 { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+.mb14 { margin-bottom:14px; }
+.mb20 { margin-bottom:20px; }
+.mb24 { margin-bottom:24px; }
+
+/* ── STAT CARDS ── */
+.stat {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.stat-bar {
+  position: absolute;
+  top:0; left:0; right:0;
+  height: 5px;
+  border-radius: 6px 6px 0 0;
+}
+.stat-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+.stat-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--black);
+  margin-bottom: 6px;
+}
+.stat-change {
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+.stat-change.up   { background: rgba(34,197,94,0.1); color:#16a34a; }
+.stat-change.down { background: rgba(239,68,68,0.1);  color:#dc2626; }
+.stat-change.flat { background: var(--bg); color: var(--text-dim); }
+
+/* ── KPI PANEL ── */
+.kpi-block {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 22px;
+  margin-bottom: 14px;
+}
+.kpi-block .card-top-bar { border-radius: 6px 6px 0 0; }
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.kpi-field label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 10px;
+}
+
+.kpi-week {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-pale);
+  margin-bottom: 4px;
+}
+
+input[type="number"] {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 9px 11px;
+  margin-bottom: 8px;
+  transition: border-color 0.15s;
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button { -webkit-appearance:none; }
+input[type="number"]:focus { outline:none; border-color: var(--black); background: var(--white); }
+
+.calc-btn {
+  background: var(--black);
+  color: var(--lime);
+  border: none;
+  border-radius: 4px;
+  padding: 13px 32px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.calc-btn:hover { background: #222; }
+
+.kpi-results-grid {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.kpi-result {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 16px;
+  text-align: center;
+}
+.kpi-result-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+.kpi-result-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--black);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.kpi-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+.kpi-pill.up   { background: rgba(34,197,94,0.12); color:#16a34a; }
+.kpi-pill.down { background: rgba(239,68,68,0.1);  color:#dc2626; }
+.kpi-pill.flat { background: var(--border);        color:var(--text-dim); }
+
+/* ── CALENDAR ── */
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+  gap: 4px;
+}
+.cal-head {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-pale);
+  padding: 8px 0;
+}
+.cal-day {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 8px 6px;
+  min-height: 74px;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.cal-day:hover { border-color: var(--black); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.cal-day.today { border-color: var(--black); border-width: 2px; }
+.cal-day.empty { background:transparent; border-color:transparent; cursor:default; }
+.cal-num {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-dim);
+  margin-bottom: 5px;
+}
+.cal-day.today .cal-num {
+  background: var(--black);
+  color: var(--lime);
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+.cpill {
+  display: block;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 2px;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.p-ig { background:#f3e8ff; color:#7c3aed; }
+.p-tt { background:#f0f0f0; color:#333; border:1px solid #ddd; }
+.p-fb { background:#dbeafe; color:#1d4ed8; }
+.p-yt { background:#fee2e2; color:#dc2626; }
+.p-em { background:var(--lime-pale); color:#5a6e00; }
+
+/* ── CADENCE ── */
+.cad-table { width:100%; border-collapse:collapse; }
+.cad-table th {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.cad-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  vertical-align: middle;
+}
+.cad-table tr:last-child td { border-bottom:none; }
+.cad-table tr:hover td { background: var(--bg); }
+
+.plat-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 13px;
+}
+.plat-dot {
+  width: 9px; height: 9px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.chk {
+  width: 22px; height: 22px;
+  border: 1.5px solid var(--border-mid);
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: transparent;
+  transition: all 0.15s;
+  user-select: none;
+}
+.chk:hover { border-color: var(--black); }
+.chk.on {
+  background: var(--black);
+  border-color: var(--black);
+  color: var(--lime);
+}
+
+.prog-row { display:flex; align-items:center; gap:12px; margin-top:18px; }
+.prog-track {
+  flex:1; height:5px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.prog-fill {
+  height:100%;
+  background: var(--black);
+  border-radius: 99px;
+  transition: width 0.4s;
+}
+.prog-txt { font-size:12px; color:var(--text-dim); white-space:nowrap; font-weight:600; }
+
+/* ── IDEAS ── */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.pillar-btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 14px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-dim);
+  line-height: 1.4;
+  user-select: none;
+}
+.pillar-btn .pi { font-size:22px; display:block; margin-bottom:7px; }
+.pillar-btn:hover { border-color:var(--black); color:var(--text); }
+.pillar-btn.on {
+  background: var(--black);
+  border-color: var(--black);
+  color: var(--lime);
+}
+
+.plat-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
+.plat-pick {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--text-mid);
+  transition: all 0.15s;
+  user-select: none;
+}
+.plat-pick:hover { border-color:var(--black); color:var(--black); }
+.plat-pick.on { background:var(--black); border-color:var(--black); color:var(--lime); }
+
+.gen-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: var(--black);
+  color: var(--lime);
+  border: none;
+  border-radius: 4px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 17px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-bottom: 20px;
+}
+.gen-btn:hover { background:#1a1a1a; }
+
+.idea-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--lime);
+  border-radius: 4px;
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  animation: fadeUp 0.25s ease;
+  transition: border-color 0.15s;
+}
+.idea-card:hover { border-color: var(--black); border-left-color: var(--black); }
+.idea-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+.idea-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 19px;
+  color: var(--black);
+  margin-bottom: 6px;
+}
+.idea-body { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+.idea-hook { margin-top: 8px; font-size: 12px; color: #5a6e00; font-style: italic; background: var(--lime-pale); padding: 5px 10px; border-radius: 3px; display:inline-block; }
+
+/* ── META ADS ── */
+.token-row { display:flex; gap:10px; margin-bottom:14px; }
+.token-in {
+  flex:1;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 11px 14px;
+  color: var(--text);
+  font-size: 13px;
+  font-family: monospace;
+  transition: border-color 0.15s;
+}
+.token-in:focus { outline:none; border-color:var(--black); background: var(--white); }
+
+.btn-black {
+  padding: 11px 22px;
+  background: var(--black);
+  color: var(--lime);
+  border: none;
+  border-radius: 4px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.btn-black:hover { background:#222; }
+
+.btn-outline {
+  padding: 11px 22px;
+  background: transparent;
+  color: var(--text-mid);
+  border: 1px solid var(--border-mid);
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.btn-outline:hover { border-color:var(--black); color:var(--black); }
+
+.status-bar {
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  display: none;
+}
+.status-bar.loading { background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; display:block; }
+.status-bar.ok      { background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; display:block; }
+.status-bar.err     { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; display:block; }
+
+.ads-table { width:100%; border-collapse:collapse; }
+.ads-table th {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.ads-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text);
+}
+.ads-table tr:hover td { background: var(--bg); }
+.ads-table tr:last-child td { border-bottom:none; }
+
+.badge {
+  display:inline-block;
+  padding: 3px 9px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.badge-active { background:#dcfce7; color:#15803d; }
+.badge-paused { background:#fff7ed; color:#c2410c; }
+.badge-other  { background:var(--bg); color:var(--text-dim); }
+
+.notice {
+  background: var(--lime-pale);
+  border: 1px solid #d4e87a;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 12px;
+  color: #4a5e00;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* ── OVERVIEW EXTRAS ── */
+.priority-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+}
+.priority-row:last-child { border-bottom:none; }
+.pri-icon { font-size:20px; }
+.pri-title { font-weight:600; font-size:14px; color:var(--text); margin-bottom:2px; }
+.pri-sub { font-size:12px; color:var(--text-dim); }
+
+.pillar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text);
+}
+.pillar-row:last-child { border-bottom:none; }
+.pillar-pct {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--black);
+  background: var(--lime);
+  padding: 1px 8px;
+  border-radius: 2px;
+}
+
+/* ── PLAT SUMMARY BARS ── */
+.plat-sum-row { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.plat-sum-name { width:130px; font-size:12px; color:var(--text-dim); }
+.plat-sum-track { flex:1; height:5px; background:var(--border); border-radius:99px; overflow:hidden; }
+.plat-sum-fill { height:100%; border-radius:99px; }
+.plat-sum-count { font-size:12px; font-weight:700; width:28px; text-align:right; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){
+  .g4,.kpi-grid,.kpi-results-grid{ grid-template-columns:repeat(2,1fr); }
+  .pillar-grid{ grid-template-columns:repeat(3,1fr); }
+}
+@media(max-width:680px){
+  body { border-left:none; border-top: var(--sidebar) solid var(--lime); }
+  main { padding:20px 16px; }
+  header,nav { padding: 0 16px; }
+  .g2,.g3{ grid-template-columns:1fr; }
+  .g4{ grid-template-columns:repeat(2,1fr); }
+  .pillar-grid{ grid-template-columns:repeat(2,1fr); }
+  .token-row{ flex-direction:column; }
+  .kpi-grid,.kpi-results-grid{ grid-template-columns:repeat(2,1fr); }
+  .page-title{ font-size:32px; }
+  .logo-sub{ display:none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-wordmark">PRO<span class="logo-highlight">WORLD</span><span class="tm">™</span></div>
+    <div class="logo-sub">Marketing Command Center</div>
+  </div>
+  <div class="header-right">
+    <div class="live-badge">LIVE</div>
+    <div class="header-date">
+      <strong id="today-date"></strong>
+      <span>Bloom Meeting Ready</span>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-tab active" data-tab="overview">◈ Overview</div>
+  <div class="nav-tab" data-tab="kpi">↑ KPI Tracker</div>
+  <div class="nav-tab" data-tab="calendar">⊞ Content Calendar</div>
+  <div class="nav-tab" data-tab="cadence">✓ Cadence</div>
+  <div class="nav-tab" data-tab="ideas">⚡ Content Ideas</div>
+  <div class="nav-tab" data-tab="ads">◎ Meta Ads</div>
+</nav>
+
+<main>
+
+<!-- ══ OVERVIEW ══ -->
+<div class="section active" id="overview">
+  <div class="page-title">WEEKLY <span class="hl">COMMAND</span></div>
+  <div class="page-sub">Your marketing snapshot for this week's Bloom meeting</div>
+
+  <div class="g4 mb24">
+    <div class="stat">
+      <div class="stat-bar" style="background:var(--lime)"></div>
+      <div class="stat-label">IG Posts This Week</div>
+      <div class="stat-value" id="ov-posts">—</div>
+      <span class="stat-change flat">Target: 21</span>
+    </div>
+    <div class="stat">
+      <div class="stat-bar" style="background:var(--mint)"></div>
+      <div class="stat-label">Stories This Week</div>
+      <div class="stat-value" id="ov-stories">—</div>
+      <span class="stat-change flat">Target: 28</span>
+    </div>
+    <div class="stat">
+      <div class="stat-bar" style="background:var(--cyan)"></div>
+      <div class="stat-label">Cadence Completion</div>
+      <div class="stat-value" id="ov-pct">0%</div>
+      <span class="stat-change flat">All platforms</span>
+    </div>
+    <div class="stat">
+      <div class="stat-bar" style="background:var(--pink)"></div>
+      <div class="stat-label">Season Focus</div>
+      <div class="stat-value" style="font-size:22px;margin-top:6px;">Summer Camp</div>
+      <span class="stat-change flat">Jun 1 – Aug 7</span>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-top-bar"></div>
+      <div class="card-label">This Week's Priorities</div>
+      <div class="priority-row"><div class="pri-icon">🏕️</div><div><div class="pri-title">Summer Camp Push</div><div class="pri-sub">Every 3rd post references camp registration</div></div></div>
+      <div class="priority-row"><div class="pri-icon">📸</div><div><div class="pri-title">On-Court Content Day</div><div class="pri-sub">Batch shoot coaching tips + player testimonials</div></div></div>
+      <div class="priority-row"><div class="pri-icon">📣</div><div><div class="pri-title">Meta Ads Running</div><div class="pri-sub">Monitor leads + CPL in the Meta Ads tab</div></div></div>
+      <div class="priority-row"><div class="pri-icon">📧</div><div><div class="pri-title">Email Nurture — Week 2</div><div class="pri-sub">Send Week 2 email to summer camp leads</div></div></div>
+    </div>
+    <div class="card">
+      <div class="card-top-bar"></div>
+      <div class="card-label">Content Pillar Mix</div>
+      <div class="pillar-row"><span>🎾 Coaching & Development</span><span class="pillar-pct">30%</span></div>
+      <div class="pillar-row"><span>🏆 Player Spotlight</span><span class="pillar-pct">25%</span></div>
+      <div class="pillar-row"><span>🧠 Mindset & Performance</span><span class="pillar-pct">20%</span></div>
+      <div class="pillar-row"><span>🌟 Brand & Culture</span><span class="pillar-pct">15%</span></div>
+      <div class="pillar-row"><span>📣 Programs & Promos</span><span class="pillar-pct">10%</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ KPI TRACKER ══ -->
+<div class="section" id="kpi">
+  <div class="page-title">KPI <span class="hl">TRACKER</span></div>
+  <div class="page-sub">Enter this week's and last week's numbers — growth calculated automatically for Bloom meetings</div>
+
+  <div class="kpi-block mb14">
+    <div class="card-top-bar"></div>
+    <div class="card-label">Instagram Organic KPIs</div>
+    <div class="kpi-grid">
+      <div class="kpi-field"><label>👁 Views</label><div class="kpi-week">This Week</div><input type="number" id="ig-views-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="ig-views-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>💬 Interactions</label><div class="kpi-week">This Week</div><input type="number" id="ig-inter-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="ig-inter-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>👤 New Followers</label><div class="kpi-week">This Week</div><input type="number" id="ig-follow-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="ig-follow-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>💌 Message Contacts</label><div class="kpi-week">This Week</div><input type="number" id="ig-msg-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="ig-msg-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>📤 Content Shared</label><div class="kpi-week">This Week</div><input type="number" id="ig-shares-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="ig-shares-prev" placeholder="0"></div>
+    </div>
+  </div>
+
+  <div class="kpi-block mb14">
+    <div class="card-top-bar"></div>
+    <div class="card-label">Meta Ads Lead KPIs</div>
+    <div class="kpi-grid">
+      <div class="kpi-field"><label>🎯 Total Leads</label><div class="kpi-week">This Week</div><input type="number" id="meta-leads-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="meta-leads-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>🖱 Link Clicks</label><div class="kpi-week">This Week</div><input type="number" id="meta-clicks-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="meta-clicks-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>👥 Reach</label><div class="kpi-week">This Week</div><input type="number" id="meta-reach-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="meta-reach-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>♂ Male Audience %</label><div class="kpi-week">This Week</div><input type="number" id="meta-male-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="meta-male-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>♀ Female Audience %</label><div class="kpi-week">This Week</div><input type="number" id="meta-female-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="meta-female-prev" placeholder="0"></div>
+    </div>
+  </div>
+
+  <button class="calc-btn" onclick="calcKPIs()">⚡ Calculate Week-over-Week Growth</button>
+
+  <div id="kpi-results" style="display:none;">
+    <div style="margin-top:24px;">
+      <div class="card-label">Instagram Growth — Week over Week</div>
+      <div class="kpi-results-grid mb20" id="ig-res"></div>
+      <div class="card-label">Meta Ads Growth — Week over Week</div>
+      <div class="kpi-results-grid" id="meta-res"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CALENDAR ══ -->
+<div class="section" id="calendar">
+  <div class="page-title">CONTENT <span class="hl">CALENDAR</span></div>
+  <div class="page-sub">Click any day to see the full posting plan</div>
+
+  <div class="card mb14">
+    <div class="card-top-bar"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+      <div id="cal-title" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;color:var(--black);letter-spacing:-0.5px;"></div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="cpill p-ig" style="display:inline;">IG</span>
+        <span class="cpill p-tt" style="display:inline;">TT</span>
+        <span class="cpill p-fb" style="display:inline;">FB</span>
+        <span class="cpill p-yt" style="display:inline;">YT</span>
+        <span class="cpill p-em" style="display:inline;">Email</span>
+        <button onclick="changeMonth(-1)" class="btn-outline" style="padding:6px 12px;">◀</button>
+        <button onclick="changeMonth(1)"  class="btn-outline" style="padding:6px 12px;">▶</button>
+      </div>
+    </div>
+    <div class="cal-grid" id="cal-grid">
+      <div class="cal-head">Sun</div><div class="cal-head">Mon</div><div class="cal-head">Tue</div>
+      <div class="cal-head">Wed</div><div class="cal-head">Thu</div><div class="cal-head">Fri</div><div class="cal-head">Sat</div>
+    </div>
+  </div>
+
+  <div class="card" id="day-detail" style="display:none;">
+    <div class="card-top-bar"></div>
+    <div class="card-label" id="day-detail-lbl">Day Plan</div>
+    <div id="day-detail-body"></div>
+  </div>
+</div>
+
+<!-- ══ CADENCE ══ -->
+<div class="section" id="cadence">
+  <div class="page-title">CADENCE <span class="hl">TRACKER</span></div>
+  <div class="page-sub">Check off each piece of content as it goes live — Target: 3 posts/day + 3–4 stories/day</div>
+
+  <div class="card mb14">
+    <div class="card-top-bar"></div>
+    <table class="cad-table">
+      <thead><tr><th>Platform</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th><th>Done</th></tr></thead>
+      <tbody id="cad-body"></tbody>
+    </table>
+    <div class="prog-row">
+      <div class="prog-txt">Week Progress</div>
+      <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+      <div class="prog-txt" id="prog-txt">0 / 49</div>
+    </div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-top-bar"></div>
+      <div class="card-label">Platform Breakdown</div>
+      <div id="plat-summary"></div>
+    </div>
+    <div class="card">
+      <div class="card-top-bar"></div>
+      <div class="card-label">Posting Tips</div>
+      <div style="display:flex;flex-direction:column;gap:12px;font-size:13px;color:var(--text-mid);line-height:1.6;">
+        <div>🕐 <strong style="color:var(--text);">Best windows:</strong> 7–9 AM and 6–8 PM EST</div>
+        <div>📈 <strong style="color:var(--text);">Reels get 3× more reach</strong> than static posts right now</div>
+        <div>🎥 <strong style="color:var(--text);">Batch shoot:</strong> Film 5–7 coaching tips in one court session</div>
+        <div>📅 <strong style="color:var(--text);">Stories daily:</strong> Even a poll keeps your reach warm</div>
+        <div>🏕️ <strong style="color:var(--text);">Camp rule:</strong> Every 3rd post references summer camp registration</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ IDEAS ══ -->
+<div class="section" id="ideas">
+  <div class="page-title">CONTENT <span class="hl">IDEAS</span></div>
+  <div class="page-sub">Select a pillar and platform — 5 ideas built for ProWorld's voice, randomized every time</div>
+
+  <div class="card">
+    <div class="card-top-bar"></div>
+    <div class="card-label">Content Pillar</div>
+    <div class="pillar-grid">
+      <div class="pillar-btn on" onclick="selPillar(this,'coaching')"><span class="pi">🎾</span>Coaching &amp; Dev</div>
+      <div class="pillar-btn" onclick="selPillar(this,'player')"><span class="pi">🏆</span>Player Spotlight</div>
+      <div class="pillar-btn" onclick="selPillar(this,'mindset')"><span class="pi">🧠</span>Mindset &amp; Perf</div>
+      <div class="pillar-btn" onclick="selPillar(this,'brand')"><span class="pi">🌟</span>Brand &amp; Culture</div>
+      <div class="pillar-btn" onclick="selPillar(this,'promo')"><span class="pi">📣</span>Programs &amp; Promos</div>
+    </div>
+    <div class="card-label">Platform</div>
+    <div class="plat-row">
+      <button class="plat-pick on" onclick="selPlat(this,'Instagram')">📸 Instagram</button>
+      <button class="plat-pick" onclick="selPlat(this,'TikTok')">🎵 TikTok</button>
+      <button class="plat-pick" onclick="selPlat(this,'Facebook')">👥 Facebook</button>
+      <button class="plat-pick" onclick="selPlat(this,'YouTube')">🎬 YouTube</button>
+      <button class="plat-pick" onclick="selPlat(this,'Email')">📧 Email</button>
+    </div>
+    <button class="gen-btn" onclick="genIdeas()">⚡ Generate 5 Ideas</button>
+    <div id="ideas-out"></div>
+  </div>
+</div>
+
+<!-- ══ META ADS ══ -->
+<div class="section" id="ads">
+  <div class="page-title">META <span class="hl">ADS</span></div>
+  <div class="page-sub">Live campaign performance — paste your access token or load demo data</div>
+
+  <div class="card mb14">
+    <div class="card-top-bar"></div>
+    <div class="card-label">Connection</div>
+    <div class="notice">Paste your Meta access token from developers.facebook.com/tools/explorer — or click Load Demo to preview with sample data. Token expires every 60 days.</div>
+    <div class="token-row">
+      <input type="password" class="token-in" id="token-in" placeholder="Paste Meta access token...">
+      <button class="btn-black" onclick="connectMeta()">Connect</button>
+      <button class="btn-outline" onclick="loadDemo()">Load Demo</button>
+    </div>
+    <div class="status-bar" id="status-bar"></div>
+  </div>
+
+  <div id="ads-data" style="display:none;">
+    <div class="g4 mb14">
+      <div class="stat"><div class="stat-bar" style="background:var(--lime)"></div><div class="stat-label">Total Impressions</div><div class="stat-value" id="a-imp">—</div><span class="stat-change flat">This period</span></div>
+      <div class="stat"><div class="stat-bar" style="background:var(--mint)"></div><div class="stat-label">Total Spend</div><div class="stat-value" id="a-spend">—</div><span class="stat-change flat">USD</span></div>
+      <div class="stat"><div class="stat-bar" style="background:var(--cyan)"></div><div class="stat-label">Total Leads</div><div class="stat-value" id="a-leads">—</div><span class="stat-change flat">Form completions</span></div>
+      <div class="stat"><div class="stat-bar" style="background:var(--pink)"></div><div class="stat-label">Cost Per Lead</div><div class="stat-value" id="a-cpl">—</div><span class="stat-change flat">Average</span></div>
+    </div>
+    <div class="card">
+      <div class="card-top-bar"></div>
+      <div class="card-label">Campaigns</div>
+      <table class="ads-table">
+        <thead><tr><th>Campaign</th><th>Status</th><th>Daily Budget</th><th>Impressions</th><th>Leads</th><th>Spend</th></tr></thead>
+        <tbody id="camps-body"></tbody>
+      </table>
+      <div style="margin-top:14px;display:flex;gap:10px;">
+        <button class="btn-outline" onclick="resetMeta()">Disconnect</button>
+        <button class="btn-outline" style="border-color:var(--black);color:var(--black);" onclick="connectMeta()">Refresh</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+// DATE
+const NOW = new Date();
+document.getElementById('today-date').textContent = NOW.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+
+// NAV
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+
+// KPI CALCULATOR
+function calcGrowth(now,prev){
+  const n=parseFloat(now)||0, p=parseFloat(prev)||0;
+  if(p===0) return {value:n,pct:null};
+  return {value:n, pct:parseFloat(((n-p)/p*100).toFixed(1))};
+}
+function fmt(n){
+  if(n>=1000000) return (n/1000000).toFixed(1)+'M';
+  if(n>=1000) return (n/1000).toFixed(1)+'K';
+  return n.toLocaleString();
+}
+function pillHTML(g,sfx=''){
+  if(g.pct===null) return `<span class="kpi-pill flat">No prior data</span>`;
+  const cls=g.pct>0?'up':g.pct<0?'down':'flat';
+  const arrow=g.pct>0?'↑':g.pct<0?'↓':'→';
+  return `<span class="kpi-pill ${cls}">${arrow} ${Math.abs(g.pct)}%${sfx}</span>`;
+}
+function calcKPIs(){
+  const igF=[
+    {label:'👁 Views',id:'ig-views'},
+    {label:'💬 Interactions',id:'ig-inter'},
+    {label:'👤 New Followers',id:'ig-follow'},
+    {label:'💌 Messages',id:'ig-msg'},
+    {label:'📤 Shares',id:'ig-shares'},
+  ];
+  const metaF=[
+    {label:'🎯 Leads',id:'meta-leads'},
+    {label:'🖱 Clicks',id:'meta-clicks'},
+    {label:'👥 Reach',id:'meta-reach'},
+    {label:'♂ Male %',id:'meta-male',sfx:'%'},
+    {label:'♀ Female %',id:'meta-female',sfx:'%'},
+  ];
+  function render(fields,containerId){
+    document.getElementById(containerId).innerHTML = fields.map(f=>{
+      const g=calcGrowth(document.getElementById(f.id+'-now').value, document.getElementById(f.id+'-prev').value);
+      return `<div class="kpi-result">
+        <div class="kpi-result-label">${f.label}</div>
+        <div class="kpi-result-value">${fmt(g.value)}${f.sfx||''}</div>
+        ${pillHTML(g,f.sfx||'')}
+      </div>`;
+    }).join('');
+  }
+  render(igF,'ig-res');
+  render(metaF,'meta-res');
+  document.getElementById('kpi-results').style.display='block';
+  document.getElementById('kpi-results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// CADENCE
+const PLATS=[
+  {name:'Instagram Posts', color:'#9333ea'},
+  {name:'Instagram Stories',color:'#e11d48'},
+  {name:'TikTok',           color:'#0ea5e9'},
+  {name:'Facebook',         color:'#2563eb'},
+  {name:'YouTube / Reels',  color:'#dc2626'},
+  {name:'Facebook Stories', color:'#7c3aed'},
+  {name:'Email',            color:'#16a34a'},
+];
+const cadState={};
+PLATS.forEach((_,i)=>{ cadState[i]=[false,false,false,false,false,false,false]; });
+
+function renderCad(){
+  let html='';
+  PLATS.forEach((p,pi)=>{
+    const done=cadState[pi].filter(Boolean).length;
+    html+=`<tr><td><div class="plat-badge"><div class="plat-dot" style="background:${p.color}"></div>${p.name}</div></td>`;
+    [0,1,2,3,4,5,6].forEach(di=>{
+      const on=cadState[pi][di];
+      html+=`<td><div class="chk ${on?'on':''}" onclick="toggleCad(${pi},${di})">${on?'✓':''}</div></td>`;
+    });
+    html+=`<td style="font-weight:700;color:${done===7?'var(--green)':'var(--text)'};">${done}/7</td></tr>`;
+  });
+  document.getElementById('cad-body').innerHTML=html;
+  const total=PLATS.length*7;
+  const done=Object.values(cadState).flat().filter(Boolean).length;
+  const pct=Math.round(done/total*100);
+  document.getElementById('prog-fill').style.width=pct+'%';
+  document.getElementById('prog-txt').textContent=done+' / '+total;
+  // plat summary
+  document.getElementById('plat-summary').innerHTML=PLATS.map((p,pi)=>{
+    const d=cadState[pi].filter(Boolean).length;
+    return `<div class="plat-sum-row">
+      <div class="plat-sum-name">${p.name}</div>
+      <div class="plat-sum-track"><div class="plat-sum-fill" style="width:${Math.round(d/7*100)}%;background:${p.color}"></div></div>
+      <div class="plat-sum-count">${d}/7</div>
+    </div>`;
+  }).join('');
+  // overview
+  const igP=cadState[0].filter(Boolean).length;
+  const igS=cadState[1].filter(Boolean).length+cadState[5].filter(Boolean).length;
+  document.getElementById('ov-posts').textContent=igP;
+  document.getElementById('ov-stories').textContent=igS;
+  document.getElementById('ov-pct').textContent=pct+'%';
+}
+function toggleCad(pi,di){ cadState[pi][di]=!cadState[pi][di]; renderCad(); }
+renderCad();
+
+// CALENDAR
+let calY=NOW.getFullYear(), calM=NOW.getMonth();
+const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const SHORT_M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+const dayPlans={
+  1:{theme:'Coaching Monday',posts:['IG Post: Technique tip or drill breakdown','TikTok: 60-sec coaching tutorial','Facebook: Parent-focused version of same tip'],stories:['AM: Poll — "What skill should we cover next?"','PM: Behind the scenes on court','Eve: Summer camp countdown']},
+  2:{theme:'Player Tuesday',posts:['IG Post: Player spotlight or transformation','TikTok: Player match or training highlight','Facebook: Program enrollment CTA'],stories:['AM: Day in the life of a ProWorld player','PM: Q&A sticker — ask us anything','Eve: Highlight save prompt']},
+  3:{theme:'Technique Wednesday',posts:['IG Reel: Slow-motion technique breakdown','TikTok: "3 things coaches look for"','YouTube: Long-form coaching explainer'],stories:['AM: Quick tip swipe-up','PM: Court action B-roll','Eve: Camp registration reminder']},
+  4:{theme:'Mindset Thursday',posts:['IG Post: Mindset / mental performance','Facebook: SPORTmind program feature','TikTok: Mental tips for junior athletes'],stories:['AM: Affirmation or mindset challenge','PM: Tono Fernandez feature','Eve: Link in bio camp reminder']},
+  5:{theme:'Results Friday',posts:['IG Post: Weekly win — player achievement','TikTok: "This week at ProWorld" recap','Facebook: Social proof + testimonial'],stories:['AM: Camp offer drop','PM: Week recap','Eve: Weekend event teaser']},
+  6:{theme:'Culture Saturday',posts:['IG Post: Community / lifestyle content','Email: Weekly newsletter send'],stories:['AM: Saturday court energy','PM: Parent perspective','Eve: Sunday preview + motivation']},
+  0:{theme:'Sunday Planning',posts:['IG Stories: Week preview','YouTube: Weekend training highlight'],stories:['AM: Motivational quote for the week','PM: Academy B-roll','Eve: "This week at ProWorld" teaser']},
+};
+
+const contentByDow={
+  1:['<span class="cpill p-ig">IG</span>','<span class="cpill p-tt">TT</span>'],
+  2:['<span class="cpill p-ig">IG</span>','<span class="cpill p-fb">FB</span>'],
+  3:['<span class="cpill p-yt">Reel</span>','<span class="cpill p-tt">TT</span>'],
+  4:['<span class="cpill p-ig">IG</span>','<span class="cpill p-fb">FB</span>'],
+  5:['<span class="cpill p-ig">IG</span>','<span class="cpill p-tt">TT</span>'],
+  6:['<span class="cpill p-em">Email</span>','<span class="cpill p-ig">IG</span>'],
+  0:['<span class="cpill p-yt">YT</span>','<span class="cpill p-ig">IG</span>'],
+};
+
+function buildCal(){
+  document.getElementById('cal-title').textContent=MONTHS[calM]+' '+calY;
+  const firstDow=new Date(calY,calM,1).getDay();
+  const days=new Date(calY,calM+1,0).getDate();
+  const isCur=calM===NOW.getMonth()&&calY===NOW.getFullYear();
+  const grid=document.getElementById('cal-grid');
+  while(grid.children.length>7) grid.removeChild(grid.lastChild);
+  for(let i=0;i<firstDow;i++){const e=document.createElement('div');e.className='cal-day empty';grid.appendChild(e);}
+  for(let d=1;d<=days;d++){
+    const dow=new Date(calY,calM,d).getDay();
+    const isToday=isCur&&d===NOW.getDate();
+    const cell=document.createElement('div');
+    cell.className='cal-day'+(isToday?' today':'');
+    const numHTML=isToday
+      ? `<div class="cal-num">${d}</div>`
+      : `<div class="cal-num">${d}</div>`;
+    cell.innerHTML=numHTML+(contentByDow[dow]||[]).join('');
+    cell.onclick=()=>showDay(d,dow);
+    grid.appendChild(cell);
+  }
+}
+
+function changeMonth(dir){
+  calM+=dir;
+  if(calM<0){calM=11;calY--;}
+  if(calM>11){calM=0;calY++;}
+  buildCal();
+  document.getElementById('day-detail').style.display='none';
+}
+
+function showDay(d,dow){
+  const plan=dayPlans[dow];
+  document.getElementById('day-detail-lbl').textContent=SHORT_M[calM]+' '+d+' — '+plan.theme;
+  document.getElementById('day-detail-body').innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px;">Posts</div>
+        ${plan.posts.map(p=>`<div style="padding:10px 12px;background:var(--bg);border-radius:4px;font-size:13px;margin-bottom:6px;color:var(--text-mid);border-left:3px solid var(--lime);">${p}</div>`).join('')}
+      </div>
+      <div>
+        <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px;">Stories</div>
+        ${plan.stories.map(s=>`<div style="padding:10px 12px;background:var(--bg);border-radius:4px;font-size:13px;margin-bottom:6px;color:var(--text-mid);border-left:3px solid var(--border-mid);">${s}</div>`).join('')}
+      </div>
+    </div>`;
+  const el=document.getElementById('day-detail');
+  el.style.display='block';
+  el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+buildCal();
+
+// IDEAS
+let activePillar='coaching', activePlat='Instagram';
+function selPillar(el,p){ document.querySelectorAll('.pillar-btn').forEach(b=>b.classList.remove('on')); el.classList.add('on'); activePillar=p; }
+function selPlat(el,p){ document.querySelectorAll('.plat-pick').forEach(b=>b.classList.remove('on')); el.classList.add('on'); activePlat=p; }
+
+const IDEAS={
+  coaching:{
+    Instagram:[
+      {t:'The 3-Second Rule',b:'Most juniors rush the ball. Here\'s the one mental cue that fixes racket preparation — film it in slow motion so parents can see exactly what changes.',h:'Hook: "Stop doing this one thing. Your opponents will thank you."'},
+      {t:'Footwork Before Technique',b:'You can\'t hit a great ball from a bad position. Walk through the split-step drill ProWorld coaches use in every single warm-up session.',h:'Hook: "No footwork. No tennis. That simple."'},
+      {t:'Coach Explains Topspin in 60 Seconds',b:'Break down the mechanics of heavy topspin — grip, swing path, contact point. Side-by-side slow motion.',h:'Hook: "This is why Nadal\'s ball bounces so high."'},
+      {t:'Common Mistake Monday',b:'Pick the #1 error you\'re seeing this week and fix it on camera. Real player, real correction.',h:'Hook: "Every junior player does this. Most never fix it."'},
+      {t:'Drill of the Week',b:'Share a drill that can be done at home or at the academy. Film it with good court light.',h:'Hook: "5 minutes a day. Real results in 30 days."'},
+    ],
+    TikTok:[
+      {t:'60-Second Serve Fix',b:'Film the before/after of one player\'s serve in a single session. Real coaching, real result.',h:'Hook: "Watch what happens after 45 minutes of this drill."'},
+      {t:'3 Signs You\'re Playing Too Tight',b:'Fast punchy breakdown of mental pressure signs in match play. List format always performs on TikTok.',h:'Hook: "If you do #2, your opponent already knows."'},
+      {t:'What 9AM Looks Like at ProWorld',b:'Quick montage — drills, conditioning, coaching moments. Fast cuts, great music.',h:'Hook: "This is what 9 AM looks like at ProWorld."'},
+      {t:'Volley Cue That Changes Everything',b:'The one volley adjustment that makes everything click. Simple, visual, high save rate.',h:'Hook: "I wish someone told me this at 12."'},
+      {t:'Parents: What to Say After a Bad Loss',b:'Short, direct, emotionally intelligent. Speaks to parents. Massive shareable potential.',h:'Hook: "Most parents say the wrong thing. Here\'s what actually helps."'},
+    ],
+    Facebook:[
+      {t:'Why We Focus on Development Over Results',b:'Longer post explaining the ProWorld philosophy. Speaks to parents who over-index on rankings.',h:'Open: "A 10-year-old ranked #1 in Florida is not the goal."'},
+      {t:'Meet Your Coach This Week',b:'Short coach bio + photo. What they played, what they teach, what they love about juniors.',h:'Start: "Before ProWorld, [coach name] was..."'},
+      {t:'Parent FAQ: What Happens in a Trial Session?',b:'Breakdown of the trial class process. Remove anxiety, set expectations, drive sign-ups.',h:'Open: "The most common question we get from new families..."'},
+    ],
+    YouTube:[
+      {t:'Inside a ProWorld Training Day',b:'Full documentary-style video following 2–3 players through a complete training day.',h:'Open cold: 6 AM on court. No intro. Just action.'},
+      {t:'10 Drills for Junior Tennis Players Under 12',b:'Practical, searchable. Great for YouTube SEO. Timestamp every drill.',h:'Structure: intro → 10 drills → trial class CTA.'},
+    ],
+    Email:[
+      {t:'Subject: The one habit separating good players from great ones',b:'Newsletter: Practical coaching insight. Ends with a soft CTA.',h:'First line: "It\'s not talent. It\'s not hours. It\'s this."'},
+      {t:'Subject: A quick note from Coach [Name]',b:'Personal, first-person email from one of the coaches. Story-driven. Feels real.',h:'Tone: personal. Feels written, not designed.'},
+    ],
+  },
+  player:{
+    Instagram:[
+      {t:'Player of the Week',b:'Feature a current student — their story, progress, what they\'re working on. Get parent permission first.',h:'Hook: "Meet [Name]. Three months ago, this was her first time holding a racket."'},
+      {t:'Before and After — 6 Months at ProWorld',b:'Split video or carousel showing visible skill progression. Your most powerful conversion content.',h:'Hook: "Same player. 6 months apart. Here\'s what changed."'},
+      {t:'Alumni Feature',b:'Former ProWorld player now competing in college or professionally. Your best credibility content.',h:'Hook: "We coached [Name] at 11. Here\'s where she is today."'},
+      {t:'First Tournament Ever',b:'Document a student\'s first competitive experience. The nerves, the learning, the growth.',h:'Caption: "They were nervous. They played anyway. That\'s the whole game."'},
+    ],
+    TikTok:[
+      {t:'Young Player Wows the Coach',b:'Clip of a junior player hitting a shot that surprises everyone. Authentic, unscripted.',h:'Caption: "We didn\'t plan this. It just happened."'},
+      {t:'Parent Reaction Compilation',b:'Film parents watching their kids hit a milestone shot for the first time. Pure emotion.',h:'No hook needed. The content is the hook.'},
+      {t:'Player\'s Funniest Moment This Week',b:'Every team has blooper reel material. Use it. Lighthearted and human.',h:'Caption: "This is why we love this job."'},
+    ],
+    Facebook:[
+      {t:'Student Spotlight — Full Story',b:'Long-form player feature. Parents share these. Include age, time at ProWorld, biggest improvement, future goals.',h:'Format: Story first. Stats second. Emotion always.'},
+      {t:'Alumni Update',b:'Where a former ProWorld player is now. Great for credibility. Tag the athlete if they have a public profile.',h:'Open: "[Name] first came to ProWorld at age [X]. Today..."'},
+    ],
+    YouTube:[
+      {t:'Player Documentary: From Beginner to Competitor',b:'Follow one player\'s full journey over a season. Real coaching, real progress, real emotion.',h:'This is the piece that makes serious families choose ProWorld.'},
+    ],
+    Email:[
+      {t:'Subject: Meet [Player Name] — This month\'s ProWorld spotlight',b:'Monthly player spotlight email. Photo, short story, quote from their coach.',h:'Tone: warm, proud, personal. Like a letter from the director.'},
+    ],
+  },
+  mindset:{
+    Instagram:[
+      {t:'The Pressure Paradox',b:'Why pressure improves some players and breaks others — and how ProWorld addresses it.',h:'Hook: "The difference is not talent. It\'s this."'},
+      {t:'Pre-Match Mental Routine',b:'Show the exact mental routine ProWorld players use before a match. Film it in real time on court.',h:'Hook: "Champions don\'t just warm up their body."'},
+      {t:'What to Do After a Bad Loss',b:'Coach-to-camera. Honest, practical, emotional. Speaks to parent and player simultaneously.',h:'Hook: "This is the conversation every coach should have after a tough match."'},
+      {t:'SPORTmind: What It Is and Why It Matters',b:'Introduce the mental performance program. Who delivers it, what it covers, how it changes players.',h:'Simple: "Every ProWorld player learns this. Here\'s why."'},
+    ],
+    TikTok:[
+      {t:'3 Signs a Player Is Mentally Strong',b:'Quick punchy list format. High save rate. Coaches on camera, specific and confident.',h:'Hook: "Watch closely. Most players don\'t even know they\'re doing this."'},
+      {t:'Why Losing at 10 is Actually Good',b:'Counter-intuitive, educational, emotionally smart. Huge resonance with parents.',h:'Hook: "Let your kid lose. Here\'s why."'},
+      {t:'What Parents Say vs What Players Hear',b:'Funny but real. Two perspectives on the same sideline comment. Max shareability.',h:'Comedy + insight = your most shared video.'},
+    ],
+    Email:[
+      {t:'Subject: Why we teach mindset before technique',b:'Newsletter explaining the SPORTmind philosophy and why it\'s built into every program.',h:'Open: "Most tennis coaches never talk about this."'},
+      {t:'Subject: A message from Tono Fernandez',b:'First-person email from Tono. His story, his method. Genuine and personal.',h:'Tone: genuine. Not polished. Real.'},
+    ],
+  },
+  brand:{
+    Instagram:[
+      {t:'Academy Morning — Court Opening',b:'Film the first 10 minutes of court opening. Pure atmosphere. Deeply underrated content.',h:'Caption: "Good morning." and the location tag. That\'s it.'},
+      {t:'ProWorld by the Numbers',b:'Branded stat card: years, players trained, programs, alumni. Design like the brand book.',h:'Design it like a poster. This is what people screenshot.'},
+      {t:'Why We Built This',b:'Founder on camera — raw, honest, personal. Origin story builds deeper trust than anything else.',h:'Open: "Most people don\'t know why ProWorld exists."'},
+      {t:'The ProWorld Environment',b:'Cinematic B-roll. Courts, coaching, energy. No talking. Music matters — match the brand feeling.',h:'Atmosphere is the product. Sell the feeling, not the features.'},
+    ],
+    TikTok:[
+      {t:'ProWorld Academy Tour',b:'Quick energetic walk-through. 30 seconds max. Fast cuts, great music.',h:'The best recruitment video you\'ll ever make.'},
+      {t:'How We\'re Different',b:'Fast-paced breakdown of what makes ProWorld different from other South Florida academies.',h:'Hook: "There are a lot of tennis academies here. Here\'s why families choose us."'},
+    ],
+    Email:[
+      {t:'Subject: The story behind ProWorld',b:'Brand origin email. Why it was founded, what it stands for. Goes in every welcome sequence.',h:'First line: "ProWorld almost didn\'t exist."'},
+    ],
+  },
+  promo:{
+    Instagram:[
+      {t:'Summer Camp Registration Now Open',b:'Clean, direct. Dates, programs, link in bio. Use a real photo — not a graphic.',h:'Hook: "Summer 2026 is filling fast. Here\'s what\'s waiting for your kid."'},
+      {t:'Early Bird — Limited Spots',b:'Urgency-based. Specific deadline, specific savings. One post, one offer, one CTA.',h:'Hook: "Ends [date]. We won\'t extend it."'},
+      {t:'Free Trial Class — This Week Only',b:'Drive trial sign-ups. Limited-time offer. Photo of players in action. Clean CTA.',h:'Caption: "Come see what ProWorld is about. First class on us."'},
+      {t:'Summer Multi-Sport Camp Reveal',b:'Introduce the tennis + soccer multi-sport program. Who it\'s for, what they\'ll do.',h:'Hook: "Tennis. Soccer. One summer. One academy."'},
+    ],
+    TikTok:[
+      {t:'Summer Camp Hype Video',b:'Fast montage from a previous camp. Ends with dates and registration CTA.',h:'Hook: "This is what summer looks like at ProWorld."'},
+      {t:'Last Spots Alert',b:'15-second clip. Coach on camera. Direct. No fluff. Just the deadline.',h:'No production needed. One coach, one message, one take.'},
+    ],
+    Facebook:[
+      {t:'Summer Camp 2026 — Full Details',b:'All program info. Dates, pricing, registration link. Parents share these.',h:'Open: "Everything you need to know about Summer 2026 at ProWorld."'},
+      {t:'Refer a Friend — Summer Camp',b:'Referral offer for existing families. Speak to them directly.',h:'Start: "You already know how good ProWorld is. Tell someone."'},
+    ],
+    Email:[
+      {t:'Subject: Summer camp is open — [X] spots left',b:'Main launch email. Full details, urgency, clear CTA. Subject creates FOMO immediately.',h:'Subject line is everything. Write 10 versions. Pick the sharpest.'},
+      {t:'Subject: Last chance — early bird pricing ends Friday',b:'Follow-up 3 days before deadline. Under 100 words. One CTA.',h:'Shorter than you think it needs to be. That\'s the point.'},
+    ],
+  },
+};
+
+function genIdeas(){
+  const bank=IDEAS[activePillar]?.[activePlat]||[];
+  const out=document.getElementById('ideas-out');
+  if(!bank.length){out.innerHTML=`<div class="idea-card" style="text-align:center;color:var(--text-dim);">Ideas for this combination coming soon. Try another platform.</div>`;return;}
+  const shuffled=[...bank].sort(()=>Math.random()-0.5).slice(0,Math.min(5,bank.length));
+  const pillarLabel=document.querySelector('.pillar-btn.on').textContent.trim().replace(/[^\w\s&]/g,'').trim();
+  out.innerHTML=shuffled.map((idea,i)=>`
+    <div class="idea-card" style="animation-delay:${i*0.07}s">
+      <div class="idea-tag">${activePlat} — ${pillarLabel}</div>
+      <div class="idea-title">${idea.t}</div>
+      <div class="idea-body">${idea.b}</div>
+      ${idea.h?`<div class="idea-hook">${idea.h}</div>`:''}
+    </div>`).join('');
+}
+
+// META ADS
+let accessToken='';
+function showStatus(msg,type){const el=document.getElementById('status-bar');el.textContent=msg;el.className='status-bar '+type;}
+async function connectMeta(){
+  const token=document.getElementById('token-in').value.trim();
+  if(!token){showStatus('Paste your access token first.','err');return;}
+  accessToken=token;
+  showStatus('Connecting to Meta API...','loading');
+  try{
+    const res=await fetch(`https://graph.facebook.com/v18.0/me/adaccounts?fields=name,account_id&access_token=${token}`);
+    const data=await res.json();
+    if(data.error){showStatus('Error: '+data.error.message,'err');return;}
+    if(!data.data?.length){showStatus('No ad accounts found for this token.','err');return;}
+    showStatus('Connected — loading campaigns...','loading');
+    await fetchCampaigns(data.data[0].id,token);
+  }catch(e){showStatus('Connection failed. Check your token and try again.','err');}
+}
+async function fetchCampaigns(accountId,token){
+  try{
+    const res=await fetch(`https://graph.facebook.com/v18.0/${accountId}/campaigns?fields=name,status,daily_budget,insights{impressions,spend,actions}&access_token=${token}`);
+    const data=await res.json();
+    if(data.error){showStatus('Error: '+data.error.message,'err');return;}
+    renderCampaigns(data.data||[]);
+    showStatus('Live data loaded successfully.','ok');
+  }catch(e){showStatus('Failed to load campaigns.','err');}
+}
+function getLeads(actions){
+  if(!actions)return 0;
+  const l=actions.find(a=>a.action_type==='lead'||a.action_type==='onsite_conversion.lead_grouped');
+  return l?parseInt(l.value):0;
+}
+function renderCampaigns(campaigns){
+  let totI=0,totS=0,totL=0;
+  const rows=campaigns.map(c=>{
+    const ins=c.insights?.data?.[0]||{};
+    const imp=parseInt(ins.impressions||0),spend=parseFloat(ins.spend||0),leads=getLeads(ins.actions);
+    totI+=imp;totS+=spend;totL+=leads;
+    const budget=c.daily_budget?'$'+(parseInt(c.daily_budget)/100).toFixed(0)+'/day':'—';
+    const scls=c.status==='ACTIVE'?'badge-active':c.status==='PAUSED'?'badge-paused':'badge-other';
+    return `<tr><td style="font-weight:500;">${c.name}</td><td><span class="badge ${scls}">${c.status.toLowerCase()}</span></td><td>${budget}</td><td>${imp.toLocaleString()}</td><td>${leads}</td><td>$${spend.toFixed(2)}</td></tr>`;
+  }).join('');
+  document.getElementById('camps-body').innerHTML=rows||'<tr><td colspan="6" style="text-align:center;color:var(--text-dim);padding:20px;">No campaigns found.</td></tr>';
+  document.getElementById('a-imp').textContent=totI.toLocaleString();
+  document.getElementById('a-spend').textContent='$'+totS.toFixed(2);
+  document.getElementById('a-leads').textContent=totL;
+  document.getElementById('a-cpl').textContent=totL>0?'$'+(totS/totL).toFixed(2):'—';
+  document.getElementById('ads-data').style.display='block';
+}
+function loadDemo(){
+  renderCampaigns([
+    {name:'ProWorld Summer Camp 2026',status:'ACTIVE',daily_budget:'5000',insights:{data:[{impressions:'14823',spend:'167.40',actions:[{action_type:'lead',value:'22'}]}]}},
+    {name:'U12 Tennis Program — Spring',status:'ACTIVE',daily_budget:'2500',insights:{data:[{impressions:'7102',spend:'74.20',actions:[{action_type:'lead',value:'11'}]}]}},
+    {name:'Multi-Sport Trial — Retargeting',status:'PAUSED',daily_budget:'1500',insights:{data:[{impressions:'3340',spend:'31.60',actions:[]}]}},
+  ]);
+  document.getElementById('token-in').value='DEMO_MODE';
+  showStatus('Demo data loaded. Connect a real token to see live campaign data.','ok');
+}
+function resetMeta(){
+  accessToken='';
+  document.getElementById('token-in').value='';
+  document.getElementById('ads-data').style.display='none';
+  document.getElementById('status-bar').className='status-bar';
+}
+</script>
+</body>
+</html>
