@@ -707,7 +707,7 @@ async function connectMeta(){
   const token=document.getElementById("token-in").value.trim();
   if(!token){showStatus("Paste your access token first.","err");return;}
   accessToken=token;showStatus("Connecting to Meta API...","loading");
-  try{const res=await fetch(`https://graph.facebook.com/v18.0/me/adaccounts?fields=name,account_id&access_token=${token}`);const data=await res.json();if(data.error){showStatus("Error: "+data.error.message,"err");return;}if(!data.data?.length){showStatus("No ad accounts found.","err");return;}showStatus("Connected — loading campaigns...","loading");await fetchCampaigns(data.data[0].id,token);}
+  try{showStatus("Connected — loading ProWorld campaigns...","loading");await fetchCampaigns("act_294537641553384",token);}
   catch(e){showStatus("Connection failed. Check your token.","err");}
 }
 async function fetchCampaigns(aid,token){
