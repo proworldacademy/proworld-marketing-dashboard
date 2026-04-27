@@ -1,2 +1,728 @@
-# proworld-marketing-dashboard
-ProWorld Academy marketing command center
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROWORLD™ — Marketing Command Center</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<style>
+/* ── PASSWORD GATE ── */
+#gate {
+  position: fixed; inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.gate-logo {
+  width: 80px; height: 80px;
+  margin-bottom: 28px;
+  border-radius: 12px;
+}
+.gate-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 32px;
+  color: #E2FE78;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+.gate-sub {
+  font-size: 12px;
+  color: #666;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.gate-input {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  padding: 13px 18px;
+  width: 280px;
+  text-align: center;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  font-family: monospace;
+  transition: border-color 0.2s;
+}
+.gate-input:focus { outline: none; border-color: #E2FE78; }
+.gate-btn {
+  width: 280px;
+  padding: 13px;
+  background: #E2FE78;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.gate-btn:hover { background: #c8e860; }
+.gate-err {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #ef4444;
+  letter-spacing: 1px;
+  display: none;
+}
+
+:root {
+  --bg:#f2f2f2; --white:#ffffff; --black:#000000;
+  --card:#ffffff; --border:#e0e0e0; --border-mid:#cccccc;
+  --text:#111111; --text-mid:#444444; --text-dim:#888888; --text-pale:#aaaaaa;
+  --lime:#E2FE78; --lime-dark:#c8e860; --lime-pale:#f5fdc0;
+  --mint:#94FCB1; --pink:#E286E4; --cyan:#A9F3F7;
+  --green:#22c55e; --red:#ef4444; --orange:#f97316; --blue:#3b82f6;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Barlow",sans-serif; background:var(--bg); color:var(--text); min-height:100vh; border-left:6px solid var(--lime); }
+
+/* HEADER */
+header {
+  background:var(--white); border-bottom:1px solid var(--border);
+  padding:0 28px; display:flex; align-items:center;
+  justify-content:space-between; height:60px;
+  position:sticky; top:0; z-index:100;
+  box-shadow:0 1px 4px rgba(0,0,0,0.06);
+}
+.logo { display:flex; align-items:center; gap:12px; }
+.logo img { height:38px; width:38px; object-fit:contain; border-radius:6px; }
+.logo-text { display:flex; flex-direction:column; }
+.logo-wordmark {
+  font-family:"Barlow Condensed",sans-serif; font-weight:900;
+  font-style:italic; font-size:22px; color:var(--black);
+  letter-spacing:-0.5px; line-height:1;
+}
+.logo-wordmark .hl { background:var(--lime); padding:0 5px; margin-left:2px; }
+.logo-sub {
+  font-size:9px; font-weight:600; letter-spacing:2.5px;
+  text-transform:uppercase; color:var(--text-pale); margin-top:2px;
+}
+.header-right { display:flex; align-items:center; gap:16px; }
+.live-badge {
+  display:flex; align-items:center; gap:6px;
+  background:var(--black); color:var(--lime);
+  font-size:10px; font-weight:700; letter-spacing:2px;
+  padding:5px 11px; border-radius:2px;
+}
+.live-badge::before {
+  content:""; width:6px; height:6px;
+  background:var(--lime); border-radius:50%;
+  animation:blink 2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+.header-date { font-size:12px; color:var(--text-dim); text-align:right; }
+.header-date strong { display:block; color:var(--text); font-size:13px; font-weight:600; }
+
+/* NAV */
+nav {
+  background:var(--white); border-bottom:1px solid var(--border);
+  display:flex; padding:0 28px; overflow-x:auto; scrollbar-width:none;
+}
+nav::-webkit-scrollbar { display:none; }
+.nav-tab {
+  padding:0 16px; height:44px; display:flex; align-items:center; gap:7px;
+  font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+  color:var(--text-dim); cursor:pointer; border-bottom:3px solid transparent;
+  transition:all 0.18s; white-space:nowrap; user-select:none;
+}
+.nav-tab:hover { color:var(--text); }
+.nav-tab.active { color:var(--black); border-bottom-color:var(--lime); }
+
+/* MAIN */
+main { max-width:1360px; margin:0 auto; padding:26px 28px 64px; }
+.section { display:none; }
+.section.active { display:block; animation:fadeUp 0.25s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+/* PAGE TITLE */
+.page-title {
+  font-family:"Barlow Condensed",sans-serif; font-weight:900; font-style:italic;
+  font-size:42px; line-height:1; color:var(--black); margin-bottom:4px; letter-spacing:-1px;
+}
+.page-title .hl { background:var(--lime); padding:0 6px; margin-left:4px; }
+.page-sub { font-size:13px; color:var(--text-dim); margin-bottom:22px; }
+
+/* CARDS */
+.card {
+  background:var(--card); border:1px solid var(--border);
+  border-radius:6px; padding:20px; position:relative; overflow:hidden;
+}
+.card-top { position:absolute; top:0; left:0; right:0; height:4px; background:var(--lime); border-radius:6px 6px 0 0; }
+.card-label {
+  font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
+  color:var(--text-dim); margin-bottom:14px; display:flex; align-items:center; gap:8px;
+}
+.card-label::after { content:""; flex:1; height:1px; background:var(--border); }
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.mb14{margin-bottom:14px;} .mb20{margin-bottom:20px;} .mb24{margin-bottom:24px;}
+
+/* STAT CARDS */
+.stat {
+  background:var(--white); border:1px solid var(--border);
+  border-radius:6px; padding:18px; position:relative; overflow:hidden;
+}
+.stat-bar { position:absolute; top:0; left:0; right:0; height:4px; border-radius:6px 6px 0 0; }
+.stat-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:8px; }
+.stat-value { font-family:"Barlow Condensed",sans-serif; font-weight:900; font-size:38px; line-height:1; color:var(--black); margin-bottom:6px; }
+.stat-change { font-size:11px; font-weight:600; display:inline-flex; align-items:center; gap:4px; padding:2px 8px; border-radius:99px; }
+.stat-change.up{background:rgba(34,197,94,0.1);color:#16a34a;}
+.stat-change.down{background:rgba(239,68,68,0.1);color:#dc2626;}
+.stat-change.flat{background:var(--bg);color:var(--text-dim);}
+
+/* KPI */
+.kpi-block { background:var(--white); border:1px solid var(--border); border-radius:6px; padding:20px; margin-bottom:14px; position:relative; overflow:hidden; }
+.kpi-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:14px; }
+.kpi-field label { display:block; font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:8px; }
+.kpi-week { font-size:9px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--text-pale); margin-bottom:4px; }
+input[type="number"] {
+  width:100%; background:var(--bg); border:1px solid var(--border); border-radius:4px;
+  color:var(--text); font-family:"Barlow",sans-serif; font-size:14px; font-weight:600;
+  padding:9px 10px; margin-bottom:8px; transition:border-color 0.15s; -moz-appearance:textfield;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;}
+input[type="number"]:focus{outline:none;border-color:var(--black);background:var(--white);}
+.calc-btn {
+  background:var(--black); color:var(--lime); border:none; border-radius:4px;
+  padding:12px 28px; font-family:"Barlow Condensed",sans-serif; font-weight:900;
+  font-style:italic; font-size:15px; letter-spacing:2px; text-transform:uppercase;
+  cursor:pointer; transition:background 0.15s;
+}
+.calc-btn:hover{background:#222;}
+.kpi-results-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
+.kpi-result { background:var(--bg); border:1px solid var(--border); border-radius:5px; padding:14px; text-align:center; }
+.kpi-result-label { font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:6px; }
+.kpi-result-value { font-family:"Barlow Condensed",sans-serif; font-weight:900; font-size:28px; color:var(--black); line-height:1; margin-bottom:6px; }
+.kpi-pill { display:inline-block; font-size:11px; font-weight:700; padding:3px 10px; border-radius:99px; }
+.kpi-pill.up{background:rgba(34,197,94,0.12);color:#16a34a;}
+.kpi-pill.down{background:rgba(239,68,68,0.1);color:#dc2626;}
+.kpi-pill.flat{background:var(--border);color:var(--text-dim);}
+
+/* CALENDAR */
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
+.cal-head { text-align:center; font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-pale); padding:8px 0; }
+.cal-day { background:var(--white); border:1px solid var(--border); border-radius:4px; padding:7px 5px; min-height:72px; cursor:pointer; transition:border-color 0.15s,box-shadow 0.15s; }
+.cal-day:hover{border-color:var(--black);box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+.cal-day.today{border-color:var(--black);border-width:2px;}
+.cal-day.empty{background:transparent;border-color:transparent;cursor:default;}
+.cal-num{font-size:12px;font-weight:700;color:var(--text-dim);margin-bottom:4px;}
+.cal-day.today .cal-num{background:var(--black);color:var(--lime);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;margin-bottom:4px;}
+.cpill{display:block;font-size:8px;font-weight:700;padding:2px 4px;border-radius:2px;margin-bottom:2px;text-transform:uppercase;}
+.p-ig{background:#f3e8ff;color:#7c3aed;} .p-tt{background:#f0f0f0;color:#333;border:1px solid #ddd;}
+.p-fb{background:#dbeafe;color:#1d4ed8;} .p-yt{background:#fee2e2;color:#dc2626;}
+.p-em{background:var(--lime-pale);color:#5a6e00;}
+
+/* CADENCE */
+.cad-table{width:100%;border-collapse:collapse;}
+.cad-table th{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);padding:9px 11px;text-align:left;border-bottom:1px solid var(--border);}
+.cad-table td{padding:9px 11px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:middle;}
+.cad-table tr:last-child td{border-bottom:none;}
+.cad-table tr:hover td{background:var(--bg);}
+.plat-badge{display:flex;align-items:center;gap:8px;font-weight:600;font-size:13px;}
+.plat-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+.chk{width:22px;height:22px;border:1.5px solid var(--border-mid);border-radius:3px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;color:transparent;transition:all 0.15s;user-select:none;}
+.chk:hover{border-color:var(--black);}
+.chk.on{background:var(--black);border-color:var(--black);color:var(--lime);}
+.prog-row{display:flex;align-items:center;gap:12px;margin-top:16px;}
+.prog-track{flex:1;height:4px;background:var(--border);border-radius:99px;overflow:hidden;}
+.prog-fill{height:100%;background:var(--black);border-radius:99px;transition:width 0.4s;}
+.prog-txt{font-size:12px;color:var(--text-dim);white-space:nowrap;font-weight:600;}
+
+/* IDEAS */
+.pillar-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px;}
+.pillar-btn{background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:13px 7px;text-align:center;cursor:pointer;transition:all 0.15s;font-size:10px;font-weight:700;color:var(--text-dim);line-height:1.4;user-select:none;}
+.pillar-btn .pi{font-size:20px;display:block;margin-bottom:6px;}
+.pillar-btn:hover{border-color:var(--black);color:var(--text);}
+.pillar-btn.on{background:var(--black);border-color:var(--black);color:var(--lime);}
+.plat-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+.plat-pick{padding:7px 14px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border:1.5px solid var(--border);background:var(--white);color:var(--text-mid);transition:all 0.15s;user-select:none;}
+.plat-pick:hover{border-color:var(--black);color:var(--black);}
+.plat-pick.on{background:var(--black);border-color:var(--black);color:var(--lime);}
+.gen-btn{display:block;width:100%;padding:13px;background:var(--black);color:var(--lime);border:none;border-radius:4px;font-family:"Barlow Condensed",sans-serif;font-weight:900;font-style:italic;font-size:16px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.15s;margin-bottom:18px;}
+.gen-btn:hover{background:#1a1a1a;}
+.idea-card{background:var(--bg);border:1px solid var(--border);border-left:4px solid var(--lime);border-radius:4px;padding:15px 17px;margin-bottom:10px;animation:fadeUp 0.25s ease;transition:border-color 0.15s;}
+.idea-card:hover{border-color:var(--black);border-left-color:var(--black);}
+.idea-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:5px;}
+.idea-title{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:18px;color:var(--black);margin-bottom:5px;}
+.idea-body{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.idea-hook{margin-top:8px;font-size:12px;color:#4a5e00;font-style:italic;background:var(--lime-pale);padding:4px 10px;border-radius:3px;display:inline-block;}
+
+/* META ADS */
+.token-row{display:flex;gap:10px;margin-bottom:12px;}
+.token-in{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:10px 13px;color:var(--text);font-size:13px;font-family:monospace;transition:border-color 0.15s;}
+.token-in:focus{outline:none;border-color:var(--black);background:var(--white);}
+.btn-black{padding:10px 20px;background:var(--black);color:var(--lime);border:none;border-radius:4px;font-family:"Barlow Condensed",sans-serif;font-weight:900;font-style:italic;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.15s;}
+.btn-black:hover{background:#222;}
+.btn-outline{padding:10px 20px;background:transparent;color:var(--text-mid);border:1px solid var(--border-mid);border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.15s;}
+.btn-outline:hover{border-color:var(--black);color:var(--black);}
+.status-bar{padding:10px 13px;border-radius:4px;font-size:13px;font-weight:500;margin-bottom:12px;display:none;}
+.status-bar.loading{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;display:block;}
+.status-bar.ok{background:#f0fdf4;color:#15803d;border:1px solid #bbf7d0;display:block;}
+.status-bar.err{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;display:block;}
+.ads-table{width:100%;border-collapse:collapse;}
+.ads-table th{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);padding:9px 13px;text-align:left;border-bottom:1px solid var(--border);}
+.ads-table td{padding:11px 13px;border-bottom:1px solid var(--border);font-size:13px;color:var(--text);}
+.ads-table tr:hover td{background:var(--bg);}
+.ads-table tr:last-child td{border-bottom:none;}
+.badge{display:inline-block;padding:3px 8px;border-radius:3px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;}
+.badge-active{background:#dcfce7;color:#15803d;}
+.badge-paused{background:#fff7ed;color:#c2410c;}
+.badge-other{background:var(--bg);color:var(--text-dim);}
+.notice{background:var(--lime-pale);border:1px solid #d4e87a;border-radius:4px;padding:11px 14px;font-size:12px;color:#4a5e00;margin-bottom:14px;line-height:1.5;}
+
+/* OVERVIEW */
+.priority-row{display:flex;align-items:center;gap:13px;padding:12px 0;border-bottom:1px solid var(--border);}
+.priority-row:last-child{border-bottom:none;}
+.pri-icon{font-size:20px;}
+.pri-title{font-weight:600;font-size:14px;color:var(--text);margin-bottom:2px;}
+.pri-sub{font-size:12px;color:var(--text-dim);}
+.pillar-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text);}
+.pillar-row:last-child{border-bottom:none;}
+.pillar-pct{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:17px;color:var(--black);background:var(--lime);padding:1px 7px;border-radius:2px;}
+.plat-sum-row{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.plat-sum-name{width:130px;font-size:12px;color:var(--text-dim);}
+.plat-sum-track{flex:1;height:4px;background:var(--border);border-radius:99px;overflow:hidden;}
+.plat-sum-fill{height:100%;border-radius:99px;}
+.plat-sum-count{font-size:12px;font-weight:700;width:28px;text-align:right;}
+
+@media(max-width:1000px){.g4,.kpi-grid,.kpi-results-grid{grid-template-columns:repeat(2,1fr);}.pillar-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:680px){body{border-left:none;border-top:6px solid var(--lime);}main{padding:18px 14px;}header,nav{padding:0 14px;}.g2,.g3{grid-template-columns:1fr;}.g4{grid-template-columns:repeat(2,1fr);}.pillar-grid{grid-template-columns:repeat(2,1fr);}.token-row{flex-direction:column;}.kpi-grid,.kpi-results-grid{grid-template-columns:repeat(2,1fr);}.page-title{font-size:30px;}.logo-sub{display:none;}}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="gate">
+  <img class="gate-logo" src="data:image/png;base64,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" alt="ProWorld">
+  <div class="gate-title">PROWORLD™</div>
+  <div class="gate-sub">Marketing Command Center</div>
+  <input class="gate-input" type="password" id="gate-pass" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkPass()">
+  <button class="gate-btn" onclick="checkPass()">Enter</button>
+  <div class="gate-err" id="gate-err">Incorrect password. Try again.</div>
+</div>
+
+<header>
+  <div class="logo">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAIAAAABc2X6AAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAAAWbElEQVR4nKVca6ylV1l+nnd9e58zZ+ZMp50yvdBCO6W2hWmZAoKUMaFUpEohKogpEUNCoonKD0wM/jD+USImRPSfl3hLowYwoEFrIVgKBbmVS2kJdHoZ2o4UeqHtdM6cc/be33r98b7vWuvbe59pq18m5+z9fetb670+72WtM/zE1icAVWSAgAJKBQBVpagCUKVmAKB9U6C3wcxqN4FsDwAAClWbSuMDVYEcr2f1iW1dUOt9u4ykGJaBnDNUs6rGxO2nJVduP+f6TZxIEBh8JGl8Y8lFZ4yDm1w6FgSw/ElZ5Tk9VbtzuheGq5aRZH1PFocOiHuO08fIBZ51Z2ZPt2y7cKH1udOy9LJ5ljD8/7wWyNJlN591lsK/GRpJYKhd/h9mJcUpeq56sEuDlOf11g5ELCELwaJ9poJQ6KLjLZ2wXDZoKKZ5DZM7ueLzuKoRGr2AzpNH1AeLVBHaEqakghQtkEKKtv5DtmwO757Gh7kj8Cy/dA5B6jdtrAAE5PnaAvOS5QyKnqdOCnrRKakP5qScgSWqOe3UOw1uVTH8yfkFwpLLT5cdFSRImoEX6c5rdUfaYO93cNafI2NKKlU86BoFFmipyqpYsgnMO3m7zqM6SVUlVctnDZZJKJQZao+y8dmsUgVkkZz1ZQWUUFgcXsZrIV0JpaNbeeTm0YYL2u0mmhif4uIveiheSBN5EBpvUpuPoV43iVDyQgAnW/bKxENpAuSzhSUuU/2Cmccy0BjeSH1x0UpL4a1yFaw108b9QMC5pVvent23u6WEmfhVTcZLLiWbR8NUJYyZdFAlNQxvOLLGwyIyQunwpLkaNqkWl4YL2ZyxXCPHAUeDcCagzmnsOWEAh/4noZLBpXP2w8gyCToKNfjkEdfNpNXtQkyrrrAsGrn4cvzzzzYkNEzdIW2uVwp414gP/sAiiFjdMadtFvH7B6OIBs86l8GETWjYUNhFM7FYEqIAsirUn1CBDM0cpietGFRJ7aiBGcxDzAuSoUZIzLRzgmWqUXWB67KRJMykqGo61uwO4ncYP0NSAFWlhGZPunywCUSZDV9FXf5sFK2NmcjQGBxwCaVSHJ7CV2jymxfccnE2gFk4NQeNFS0M+wKWS7SBN77WqCmN5RYzrggftAkpjan71wgbBbQAwEVuqyyzcJZsB+qBEdkRZSCzFmE0YrUWlRc8A5XgnF3ZU4er5q66L2kZAEA1e+KltLwg5zzn9lLD8RBWCu4v5lcCJlBK3luy5WAgJK4EBZRGk40sFmLB/FdtIQwRF9vkvLEFE75CtMWuJn9G/RdTDTTcXi4vw6h5x16S6LYvAkWTjW4brlSN+b6mVgPN+3rJvkZkAqDaMwAgMJ8IvzA1JiIriX4+z1KopZaVQKPJijGbi1m5nEEqgFwTBVWqCVyBrGVaKpXQjIJUznmJrBygOJWoAF3jcDwGEEjkQMGIMZZstRIcEEyqategf+ET1RNDaXTBs7Hn0HwgT0YWXx5NSTOI8+GZhKOARlri6beURxEyTLOWG7u5GDbPu3HBbVNVhKzivqqS0EWSHUYRVLpRF7kyY4guFdZ0MXGlp40eerXUxRFs6orFXGGcFBtGSUBURY3+hlWEYavfMSHVEsDDt4k7kxa0hz5c5ouKbHkMjxSYVqyV8sZSw2BgYLPNJS7+kng2toDisSFzOOshh2ILKMWSeOXi9qzm1N6IZTinX0OGa6U5iIeNQAhmmE826lSQ5U4tEkv8UETuYsSH4SNaDmoYUKEuqwKUrIiB1RZKfpLpnSCPbZE2FDQLPoCkan7fVZqDShS1MNLGeb7tDS0NMUQ2hlbRZiZRO1dYIAhF9u8WhhRe6AKKHAZdVWkpU4VreHNIovbNqLVao8EC71AhckbHyme9BMULwm4KcaGQJnuo+teSC7fIy0hNK6+s8YsAMjUUU6VTUqywZISNWk+/ZNgWHkK0Wp1gQJ2Jbsc43IopbBLzGuecoEDPZQMFSmrbghjJXHHYtVhmU7p6JXu4tr5H7QZlDfikKBSiFklzC8kIwyjCUqoSHSjuMc96lQwt7B1AGz/iBue+BxiZmFUcf7I7eenIqsKjNsHMDCU1ZwAUUfUdHPN/OhyFFDSXuF1FB1TvUgePjuhjXHCjGOrO0yWL7SbcOfwOLeWSKqOq2djzecXNMHDYXCNrDDPms4fykk+V8APSvF8juLXlf7EWJTV7iI9mhS0yb9KRuGrjt3NOrgRyn3MT9MLjsxuTZgCSAm36bFGIYd8U13nfZ6dQVW0fTzUlZz7nPtwyK1SEEjtuJHPfU0z8KuIxNH6a5qxV4sBn93f04QKGC7EJkrg+XgdQU7yBUNSUsDHbnE371KXdq2vm/IIMoEfe3Dxl+e7e9T22Rin9CZza2My5B3T33l2SxAp7BSdbk+n2ZG3PCoDtremeM1ZPndxaHY8I3Tw5cT25OZRcwcy1BAoOGObQUBvOA31Vuy6deOyZD73vr6aTCYUlSylTULG6Z+Xyn7z49e941Zlnr//gwcf+5P1/1896k3Husf+Fe3/9g29NI26dnP75b/7jxolTlLBEKBTv+cD15x3cR3Y3feCz933zeOoIIM/0tTdc8Zo3veQvfvfTs0l/3Y1Xfeaf7nzn+49867ZjT/zw5Lt+/8jJp7eid8lGE4hc379HHB40twvxjRmbwnNelfGddz30mX/+/E6mYdd//v3nP/Znn/7Qze/jKm/9yJfbR+e8aP9vfPCtu8arX/vC927+hy8svnvj+69dXRk98uCTN33gU9PJrNy/7sYrX3j+mRdd8YLj9z9++avO+6N3feTSw+d+/dYHUofUEaoUmrEwPFwj7zERkNZFIMDa3aDxr7qYdmTNHbr7vvn9lGS8Okqd2D9JIklG4y51kpKkTkbj7vi9j/zpe29aW1vZvXdX6qTr0miUUpIzD6xLJwLe9tFvSJLxSpeSpCRpJCnJeGU0XkmrWPnap45OJ7PRuOtGKSW5+ND5r7n+sqn0e89aW9u7mnN+xRsu+eqn7huvjl5wwRl5khORqAlIXhgzURIpUAEEFJChYZI5+A2gdvgaVC0CKvToHcf6PoPoZwFCFFXNfdVGZqbwrtvvfeTY4ytr440Tm9ZuyX2WJLtWVn70oye/cst3cp+nOSqKDFWkLo3HKUM/9/G7QGRbqM+v/8VD63tXN05tHjx0YP/56yR/7tcOb2/OVtdGmrWf9ZKcXHjMz4HxYbcEFR2XFQmGojXWejtX00g2phsPfPshANl7b3r2+Wf98X/8zrgbffGT3/ybP/hY7oODrJPtyfbmdLwyQIpu1O3W1Vs+fc/TT5yUxFxqZxBQSbL7jNXjDz125+fvhyJnVeho3L3+7Ycm02k/yQcPHaBwuj199RsPQpj7DOj2qe2UxAKn+gGNkgKjbvsou8jdgz8NAYWqYPUNANVxGv3Pgz/64bFH7StFtNeDV1141eHLtrB98NAFN//tbcfv+yHF2l26tmfX/nP31iYBAGC8kkjc+tE7EHlBKw4RrO9bu+WmO7Y3t1MnqtBeX37k4CUvO3djY3OU0mziqtvamHkqBRUmz969AaT1rAqp2SO00sISNWq0unjU1gQ0E6JQzWOMHvzOw5PtiQhzVmu/X3LViyaT6Vbe3jq59fQTJ92kCFWcc9H+AxeeVaRnH/bs2/XIk49/49bvAej7vHt9F8iNE6fsldHKCIrPfuzOlpqffefV4ySbSggk9JU6A57sWQ21oLIE4JvqvC2MHmrFqbcqI9GNfpy9mcDkaZkmpKN3HANAkULQq9905b7x3rNXz/zkX37umSdPShJVtU7pxS994frKGqUpOoG9+3d/+Zbvbp2ajMYJwCuuvWz/uXtNxgB2n7H68Pceveu/jwFQ1dznM/bvuebNl21uT8TgCCqkWNOXGr1YiDVowcTgQiRaeTFS2HkTcCGZpg78moSIZPRHv34MwWvuM8Ev/fu3jn7l+3d/9d7b//VrpDmVDdFXX38ogd144MMictu/fAOAee+Rt155750Pl6fr+1a/dMt3J1uTlAREn/XIW1523rn7nnp6QzoBek9KS5shm4+WBkkDSF6UlApZPQ6zZvg+QuZLqwxF6tKJrZPH7n4YqNWGQj/64ZvLwDC21M/68y4+8PpfeMWmbq3uGvvTrACO3/P4/Xc/DKCf5XNfdNaV11z0zI9PlRmm2/n2f/uOTWWLvOmdV/eaKYyiLSPqVmpLa8n/CetyeQpvTcGegCo7su4DessGvrHT7mlr1pU0eviBHzx2/PFCOgBJkrpk/bfcW6jXftanLv3eX797fX3XRKfj1ZHNbsq/84tHp5Np6qTv8+tuuPLMs9c3NyYArDA6ft9jJdpp1osuP+fwkYs2t7dTZwIt5ZAFF69FxZBYo2AWQ58oxL0xxEEuHQWTJx6Dm2TWPMbo2Lcf6vssSYrd5j6Xz+W65NCF7/3wjT913aETW8/sWd09Whm1T6eTqYtM8YZ3XL11ajvnHqGdyfbUlxYi6xt/5fAZu3b9+OQzqaMqhApIaM6cMXZdPYMyJQmjLPQqyszdNtMqzxiGJBejpx0J6Z47HkBUfya9t/329Rdecs5kZnk1xqvdiy8/7+VHLl1bWTk52UiSBBiPF2oyYc564IKzrr7mJUfvDgdu/YjIfR6Nu+ve8fJtnaaUhKqIsxbex1LfhvSqOApDn01De759Z+7daHiQfQwKICqEnGBy9OsPwKstqurq2up7/vCXLth3YIJtRl3bo9/MmxuTUymJ9jlBxitpjmER9lmP3HDl2aO9d57YxkLbIIn0OR8+cslPXHH+xvZmJ05iNGrjwI15ddPP0VCSQr32jgrZ9NlhYdu64Takpui67qlnTjz43eOA7W9CFRdceu7a7tVHt5+wkG3BUIQgJYlAewUBM+m2d234fO3bD/fIs+3e5a0DCqD4+V995YiJWdmJ5U9mtE5gW8d5ZlTuUVjag4iu6VDDAz6HuaaqjtHdf9+jTz9xMnUJQErS9/2lh1+8Ptr11GSaulTatLaHUl4XYGXNywwfINRez3/Jgatee3CC6Ww2S51YJhMzULPu27/np2+4YitvSRIv15q0qHT8rENiTAtA5Nh7iW4lApNIQLtAPRdasfyBxnMeY3zX7ff0s97u2IdLr34xIRXkIn9pU6uElGfaz3LBXruOvOXKfWtrinzyqa1+lnvMX0fe/NLzX3Dmk5vPWD3ctOUYnfZw5rJ/RwUo7q3eIzOrMH0orHholimbID6pAoCQvc7W1ne94e3XSCe5zxRo1lddd2iiE5HkGqC3dst5BpJTnb7y2stm2zPpXIckNOtb3v3aqU4JHrjgzJ952yulqxkLhZr1l3/rdZM8LdHXG8YgzV5jg4rFjAvZzq1nvlZORDAj/yt/3MXjZ8RzaLhauDWOVmS8ggI/GcAWtvs8IxTIBoMBBxoRThV5VUYjpMZflNAtbPf9FMAoySrG8YoGJuk2tiezmZRNIruvvuFCJ8zQy7Ssdk4dQOwoRXakxYA8Drs9lzi8eAm5lbc2s0rwDyBJLYSIyO38hvoRPXBrtr3pdJg0FdAUCft0NpvkiQKwzUfXERKRbAc++nPM/rIUrI79s8oe6Zu78ZbtSNpmDICubWs0FA8uAwYhJZmZ9LY5wTilPyejttFJBaX4jWdIZKZm9WQhobPEzoSXI7VQb1SjhAACSD6NqvusojkDHfaPhlvLsnyD2jVMkBBFXziscds0vETxWmRRdkSKApdIzQWarRqNM98+jxQI1mI0SpbtsVCybblRARUQkgMx/aiFlcTlTFRUfjlWUCseSm+kdGcHJrrAK1sPkcHd6O7a7h88L6hqL0l/sydWF2bp2A6c0OkJI5CYSiHi0OPbIl6JEiYRDWBDNG67VnUlnY7ERMtijVJ38HIMBtXNB7Y+Vk8Wcge8KDsIzUpK24L2LUVrRXp9IN59cpOICbNvSsU2D+PcwJJGfNv0mX+E0z6yF33NciQrR+orxdO8adrM1ryUObhJn0pK8FERho0Etsfmqu/OS8jAVK+MbIHLNsR3uCJJ04Wbbv+e3fiBBaE752DKkg7Tjdy4bo0iNvhB8X46QD80wFgrBDzYmvfgJSiz+YZ7hfqBhnOLrkXGEfFK3hfZiCeRBnhBKRF461A05Nbu55i2zlmDIv2OdeVaz4BV+0Wx6n8LUVml+l5xPTtlwvE/Q/N6eKnq/HUOuQ2WIy2uEolXdghs/nuQxpXjSZRwbKfE2sRatQSoQjzseHuYACHWzi4jUUJSIEVTg6mc5mBa6WmxBHdXRK7tbqDswmPAuVY/LDwWJn2AqyaaajFAyfj7vHZSz1x9EyWbVxc3Uj8BUa66r1BQ0MgeNADKVfpENUoVx4twWeUyoGwAQiXE0Q9+hN96X8lF0Lamw9cGKB1eGdEsDK/MH7mX3c7hPVp1HoQt2R8WrZbXUu9m3xwtLJG0kVqVdCnomnkWpVu5JYDIniwISbk/pMeZb16soFAyLYUEuFmWRqWqdn7g2l9UxuGh8lcdtb/lQqPYuZF56i2iBCxbhhhwOt/01UZGLIhtPCqhoH1ozz4XPqsGohKEn9/zuaQ55R/JX4B9Nyd1ZdlbMY8Kw/NY6u0wEtUg0RaVHitKPoyFpq+x4XFZSY2/fPGKRwFdgHf7qXbYpRFcVWJRNQocLCiE4EJ7p00ViyQHaaA28q5StA8lsSjvynAMCxx4YlKq1sjuhqZgtuB7CYN5mFDduXIbAo0mh+89CGwvZMGHK1zNc7uE9JjXnHhgGqhBxtupNW3204eIPekShx3WCIHm8ESNbnmujxguwMp07B1GIGA5K6pFjAtHHio4lw+tebCod85aikTmhiFUSoX/MXjs2pWUsLgofeUceb7vpzTiICtJ2qzl9IhnZP3AgavVKFqUJihtfGgFsQOHC8PaYKSDFwe+5pztVH43s2ljsfPm3tBmodtZo4N8Q4aa3KHNWcsl6N+Cwdwa8VsL1VJqA1ROqntWJQze9w9anYIQoA+znFN+wdHiabpQqGuka0FJbLrYj8IwI4tp8WkJt3NX6JRDtA8HrN+Lr+fWDOau0jIq+NS2jQhtklwCOsRXRRmgJNuz5ijklaQYO+XAQVleEk7jpwxu6nCq+NOQAZ81kSrA0XC7KHT1Qt81xXbRwW6RAxhD8y0AAabhYhVDiGqv5Z7GIfYu4xa1BhwY+JBWp6g5zNkYPmNH36Vv/aGi9qapZvTEAcC2ZvYJaR2PRuo7QggwSLk0lmy4ZUkbGhwoYNOKxowzPDMiW0ODRkaNUplF1TGEm8iJilhLhevUxjwSS0hD8Zxol3O9uOrycW3mW6cdCLt90spi4S1goJW4FdniEi+r8dUtvIz5P/y3Fs+KYmy+LBncOmjUscun2nkleu41HFGgsdr+kFs0DD+Leoky/QD06oDmxhBsy7RsRy6qJaYtsMShmbD8GrRZ42mRNFGFMbD/Ib6eznvLvMtkXlbMg69ztqYRNnwQQwFzYDvA86G8bDDbLstAalpmLm/pomKe7U/iF5Bph4GLjrccAll/6xzCY/iHGgu0tmi8sOIyqxkwHwn13P/jMUecLn0yP6wWt+QykTRP501xDjILpLfccvDU3mh6QAAq9spSJG+Uv6w8XLxOD1Olx9GYK06XJC91jDkGly2+E61SK/byTonvId94+L8Q7LQ++zGuEgAAAABJRU5ErkJggg==" alt="ProWorld Logo">
+    <div class="logo-text">
+      <div class="logo-wordmark">PRO<span class="hl">WORLD</span><span style="font-size:10px;font-style:normal;vertical-align:super;color:var(--text-dim);">™</span></div>
+      <div class="logo-sub">Marketing Command Center</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="live-badge">LIVE</div>
+    <div class="header-date"><strong id="today-date"></strong><span>Weekly Dashboard</span></div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-tab active" data-tab="overview">◈ Overview</div>
+  <div class="nav-tab" data-tab="kpi">↑ KPI Tracker</div>
+  <div class="nav-tab" data-tab="calendar">⊞ Calendar</div>
+  <div class="nav-tab" data-tab="cadence">✓ Cadence</div>
+  <div class="nav-tab" data-tab="ideas">⚡ Content Ideas</div>
+  <div class="nav-tab" data-tab="ads">◎ Meta Ads</div>
+</nav>
+
+<main>
+
+<!-- OVERVIEW -->
+<div class="section active" id="overview">
+  <div class="page-title">WEEKLY <span class="hl">COMMAND</span></div>
+  <div class="page-sub">Your marketing snapshot for the Bloom meeting</div>
+  <div class="g4 mb24">
+    <div class="stat"><div class="stat-bar" style="background:var(--lime)"></div><div class="stat-label">IG Posts This Week</div><div class="stat-value" id="ov-posts">—</div><span class="stat-change flat">Target: 21</span></div>
+    <div class="stat"><div class="stat-bar" style="background:var(--mint)"></div><div class="stat-label">Stories This Week</div><div class="stat-value" id="ov-stories">—</div><span class="stat-change flat">Target: 28</span></div>
+    <div class="stat"><div class="stat-bar" style="background:var(--cyan)"></div><div class="stat-label">Cadence Completion</div><div class="stat-value" id="ov-pct">0%</div><span class="stat-change flat">All platforms</span></div>
+    <div class="stat"><div class="stat-bar" style="background:var(--pink)"></div><div class="stat-label">Season Focus</div><div class="stat-value" style="font-size:20px;margin-top:6px;">Summer Camp</div><span class="stat-change flat">Jun 1 – Aug 7</span></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="card-top"></div><div class="card-label">This Week's Priorities</div>
+      <div class="priority-row"><div class="pri-icon">🏕️</div><div><div class="pri-title">Summer Camp Push</div><div class="pri-sub">Every 3rd post references camp registration</div></div></div>
+      <div class="priority-row"><div class="pri-icon">📸</div><div><div class="pri-title">On-Court Content Day</div><div class="pri-sub">Batch shoot coaching tips + player testimonials</div></div></div>
+      <div class="priority-row"><div class="pri-icon">📣</div><div><div class="pri-title">Meta Ads Running</div><div class="pri-sub">Monitor leads + CPL in the Meta Ads tab</div></div></div>
+      <div class="priority-row"><div class="pri-icon">📧</div><div><div class="pri-title">Email Nurture — Week 2</div><div class="pri-sub">Send Week 2 email to summer camp leads</div></div></div>
+    </div>
+    <div class="card"><div class="card-top"></div><div class="card-label">Content Pillar Mix</div>
+      <div class="pillar-row"><span>🏋️ High Performance Training</span><span class="pillar-pct">15%</span></div>
+      <div class="pillar-row"><span>🎾 Foundation Development U12</span><span class="pillar-pct">12%</span></div>
+      <div class="pillar-row"><span>🧠 Mental Toughness by Tonio</span><span class="pillar-pct">12%</span></div>
+      <div class="pillar-row"><span>⚽ Soccer</span><span class="pillar-pct">12%</span></div>
+      <div class="pillar-row"><span>💪 Fitness & Recovery</span><span class="pillar-pct">10%</span></div>
+      <div class="pillar-row"><span>📚 Homeschool Life</span><span class="pillar-pct">8%</span></div>
+      <div class="pillar-row"><span>👨‍👩‍👧 Parents Corner</span><span class="pillar-pct">10%</span></div>
+      <div class="pillar-row"><span>🌟 Culture & Community</span><span class="pillar-pct">11%</span></div>
+      <div class="pillar-row"><span>🏓 Pickleball</span><span class="pillar-pct">5%</span></div>
+      <div class="pillar-row"><span>📣 Programs & Promotions</span><span class="pillar-pct">5%</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- KPI TRACKER -->
+<div class="section" id="kpi">
+  <div class="page-title">KPI <span class="hl">TRACKER</span></div>
+  <div class="page-sub">Enter this week's and last week's numbers — growth calculated automatically</div>
+  <div class="kpi-block mb14"><div class="card-top"></div>
+    <div class="card-label">Instagram Organic KPIs</div>
+    <div class="kpi-grid">
+      <div class="kpi-field"><label>👁 Views</label><div class="kpi-week">This Week</div><input type="number" id="ig-views-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="ig-views-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>💬 Interactions</label><div class="kpi-week">This Week</div><input type="number" id="ig-inter-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="ig-inter-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>👤 New Followers</label><div class="kpi-week">This Week</div><input type="number" id="ig-follow-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="ig-follow-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>💌 Message Contacts</label><div class="kpi-week">This Week</div><input type="number" id="ig-msg-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="ig-msg-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>📤 Content Shared</label><div class="kpi-week">This Week</div><input type="number" id="ig-shares-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="ig-shares-prev" placeholder="0"></div>
+    </div>
+  </div>
+  <div class="kpi-block mb14"><div class="card-top"></div>
+    <div class="card-label">Meta Ads Lead KPIs</div>
+    <div class="kpi-grid">
+      <div class="kpi-field"><label>🎯 Total Leads</label><div class="kpi-week">This Week</div><input type="number" id="meta-leads-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="meta-leads-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>🖱 Link Clicks</label><div class="kpi-week">This Week</div><input type="number" id="meta-clicks-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="meta-clicks-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>👥 Reach</label><div class="kpi-week">This Week</div><input type="number" id="meta-reach-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="meta-reach-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>♂ Male Audience %</label><div class="kpi-week">This Week</div><input type="number" id="meta-male-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="meta-male-prev" placeholder="0"></div>
+      <div class="kpi-field"><label>♀ Female Audience %</label><div class="kpi-week">This Week</div><input type="number" id="meta-female-now" placeholder="0"><div class="kpi-week">Last Week</div><input type="number" id="meta-female-prev" placeholder="0"></div>
+    </div>
+  </div>
+  <button class="calc-btn" onclick="calcKPIs()">⚡ Calculate Week-over-Week Growth</button>
+  <div id="kpi-results" style="display:none;">
+    <div style="margin-top:22px;"><div class="card-label">Instagram Growth — Week over Week</div>
+    <div class="kpi-results-grid mb20" id="ig-res"></div>
+    <div class="card-label">Meta Ads Growth — Week over Week</div>
+    <div class="kpi-results-grid" id="meta-res"></div></div>
+  </div>
+</div>
+
+<!-- CALENDAR -->
+<div class="section" id="calendar">
+  <div class="page-title">CONTENT <span class="hl">CALENDAR</span></div>
+  <div class="page-sub">Click any day to see the full posting plan</div>
+  <div class="card mb14"><div class="card-top"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+      <div id="cal-title" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:var(--black);"></div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+        <span class="cpill p-ig" style="display:inline;">IG</span><span class="cpill p-tt" style="display:inline;">TT</span>
+        <span class="cpill p-fb" style="display:inline;">FB</span><span class="cpill p-yt" style="display:inline;">YT</span>
+        <span class="cpill p-em" style="display:inline;">Email</span>
+        <button onclick="changeMonth(-1)" class="btn-outline" style="padding:5px 11px;">◀</button>
+        <button onclick="changeMonth(1)" class="btn-outline" style="padding:5px 11px;">▶</button>
+      </div>
+    </div>
+    <div class="cal-grid" id="cal-grid">
+      <div class="cal-head">Sun</div><div class="cal-head">Mon</div><div class="cal-head">Tue</div>
+      <div class="cal-head">Wed</div><div class="cal-head">Thu</div><div class="cal-head">Fri</div><div class="cal-head">Sat</div>
+    </div>
+  </div>
+  <div class="card" id="day-detail" style="display:none;"><div class="card-top"></div>
+    <div class="card-label" id="day-lbl">Day Plan</div><div id="day-body"></div>
+  </div>
+</div>
+
+<!-- CADENCE -->
+<div class="section" id="cadence">
+  <div class="page-title">CADENCE <span class="hl">TRACKER</span></div>
+  <div class="page-sub">Check off each piece of content as it goes live</div>
+  <div class="card mb14"><div class="card-top"></div>
+    <table class="cad-table">
+      <thead><tr><th>Platform</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th><th>Done</th></tr></thead>
+      <tbody id="cad-body"></tbody>
+    </table>
+    <div class="prog-row"><div class="prog-txt">Week Progress</div><div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div><div class="prog-txt" id="prog-txt">0 / 49</div></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="card-top"></div><div class="card-label">Platform Breakdown</div><div id="plat-summary"></div></div>
+    <div class="card"><div class="card-top"></div><div class="card-label">Posting Tips</div>
+      <div style="display:flex;flex-direction:column;gap:11px;font-size:13px;color:var(--text-mid);line-height:1.6;">
+        <div>🕐 <strong style="color:var(--text);">Best windows:</strong> 7–9 AM and 6–8 PM EST</div>
+        <div>📈 <strong style="color:var(--text);">Reels get 3× more reach</strong> than static posts right now</div>
+        <div>🎥 <strong style="color:var(--text);">Batch shoot:</strong> Film 5–7 coaching tips in one court session</div>
+        <div>📅 <strong style="color:var(--text);">Stories daily:</strong> Even a poll keeps your reach warm</div>
+        <div>🏕️ <strong style="color:var(--text);">Camp rule:</strong> Every 3rd post references summer camp registration</div>
+        <div>🧠 <strong style="color:var(--text);">Tonio content:</strong> Mental performance clips consistently outperform</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IDEAS -->
+<div class="section" id="ideas">
+  <div class="page-title">CONTENT <span class="hl">IDEAS</span></div>
+  <div class="page-sub">Select a pillar and platform — ideas built for ProWorld's voice and system</div>
+  <div class="card"><div class="card-top"></div>
+    <div class="card-label">Content Pillar</div>
+    <div class="pillar-grid">
+      <div class="pillar-btn on" onclick="selPillar(this,'hpt')"><span class="pi">🏋️</span>High Performance</div>
+      <div class="pillar-btn" onclick="selPillar(this,'u12')"><span class="pi">🎾</span>Foundation U12</div>
+      <div class="pillar-btn" onclick="selPillar(this,'mental')"><span class="pi">🧠</span>Mental Toughness</div>
+      <div class="pillar-btn" onclick="selPillar(this,'soccer')"><span class="pi">⚽</span>Soccer</div>
+      <div class="pillar-btn" onclick="selPillar(this,'fitness')"><span class="pi">💪</span>Fitness & Recovery</div>
+      <div class="pillar-btn" onclick="selPillar(this,'homeschool')"><span class="pi">📚</span>Homeschool Life</div>
+      <div class="pillar-btn" onclick="selPillar(this,'parents')"><span class="pi">👨‍👩‍👧</span>Parents Corner</div>
+      <div class="pillar-btn" onclick="selPillar(this,'culture')"><span class="pi">🌟</span>Culture & Community</div>
+      <div class="pillar-btn" onclick="selPillar(this,'pickle')"><span class="pi">🏓</span>Pickleball</div>
+      <div class="pillar-btn" onclick="selPillar(this,'promo')"><span class="pi">📣</span>Programs & Promos</div>
+    </div>
+    <div class="card-label">Platform</div>
+    <div class="plat-row">
+      <button class="plat-pick on" onclick="selPlat(this,'Instagram')">📸 Instagram</button>
+      <button class="plat-pick" onclick="selPlat(this,'TikTok')">🎵 TikTok</button>
+      <button class="plat-pick" onclick="selPlat(this,'Facebook')">👥 Facebook</button>
+      <button class="plat-pick" onclick="selPlat(this,'YouTube')">🎬 YouTube</button>
+      <button class="plat-pick" onclick="selPlat(this,'Email')">📧 Email</button>
+    </div>
+    <button class="gen-btn" onclick="genIdeas()">⚡ Generate 5 Ideas</button>
+    <div id="ideas-out"></div>
+  </div>
+</div>
+
+<!-- META ADS -->
+<div class="section" id="ads">
+  <div class="page-title">META <span class="hl">ADS</span></div>
+  <div class="page-sub">Live campaign performance — paste your access token or load demo data</div>
+  <div class="card mb14"><div class="card-top"></div>
+    <div class="card-label">Connection</div>
+    <div class="notice">Paste your Meta access token from developers.facebook.com/tools/explorer — or click Load Demo to preview with sample data.</div>
+    <div class="token-row">
+      <input type="password" class="token-in" id="token-in" placeholder="Paste Meta access token...">
+      <button class="btn-black" onclick="connectMeta()">Connect</button>
+      <button class="btn-outline" onclick="loadDemo()">Load Demo</button>
+    </div>
+    <div class="status-bar" id="status-bar"></div>
+  </div>
+  <div id="ads-data" style="display:none;">
+    <div class="g4 mb14">
+      <div class="stat"><div class="stat-bar" style="background:var(--lime)"></div><div class="stat-label">Total Impressions</div><div class="stat-value" id="a-imp">—</div><span class="stat-change flat">This period</span></div>
+      <div class="stat"><div class="stat-bar" style="background:var(--mint)"></div><div class="stat-label">Total Spend</div><div class="stat-value" id="a-spend">—</div><span class="stat-change flat">USD</span></div>
+      <div class="stat"><div class="stat-bar" style="background:var(--cyan)"></div><div class="stat-label">Total Leads</div><div class="stat-value" id="a-leads">—</div><span class="stat-change flat">Form completions</span></div>
+      <div class="stat"><div class="stat-bar" style="background:var(--pink)"></div><div class="stat-label">Cost Per Lead</div><div class="stat-value" id="a-cpl">—</div><span class="stat-change flat">Average</span></div>
+    </div>
+    <div class="card"><div class="card-top"></div><div class="card-label">Campaigns</div>
+      <table class="ads-table">
+        <thead><tr><th>Campaign</th><th>Status</th><th>Daily Budget</th><th>Impressions</th><th>Leads</th><th>Spend</th></tr></thead>
+        <tbody id="camps-body"></tbody>
+      </table>
+      <div style="margin-top:14px;display:flex;gap:10px;">
+        <button class="btn-outline" onclick="resetMeta()">Disconnect</button>
+        <button class="btn-outline" style="border-color:var(--black);color:var(--black);" onclick="connectMeta()">Refresh</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+// PASSWORD
+const PASS = "proworld2026";
+function checkPass(){
+  const v = document.getElementById("gate-pass").value;
+  if(v === PASS){
+    document.getElementById("gate").style.display="none";
+    sessionStorage.setItem("pw_auth","1");
+  } else {
+    document.getElementById("gate-err").style.display="block";
+    document.getElementById("gate-pass").value="";
+    document.getElementById("gate-pass").focus();
+  }
+}
+if(sessionStorage.getItem("pw_auth")==="1"){
+  document.getElementById("gate").style.display="none";
+}
+
+// DATE
+const NOW=new Date();
+document.getElementById("today-date").textContent=NOW.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"});
+
+// NAV
+document.querySelectorAll(".nav-tab").forEach(tab=>{
+  tab.addEventListener("click",()=>{
+    document.querySelectorAll(".nav-tab").forEach(t=>t.classList.remove("active"));
+    document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(tab.dataset.tab).classList.add("active");
+  });
+});
+
+// KPI
+function calcGrowth(now,prev){const n=parseFloat(now)||0,p=parseFloat(prev)||0;if(p===0)return{value:n,pct:null};return{value:n,pct:parseFloat(((n-p)/p*100).toFixed(1))};}
+function fmt(n){if(n>=1000000)return(n/1000000).toFixed(1)+"M";if(n>=1000)return(n/1000).toFixed(1)+"K";return n.toLocaleString();}
+function pillHTML(g,sfx=""){if(g.pct===null)return`<span class="kpi-pill flat">No prior data</span>`;const cls=g.pct>0?"up":g.pct<0?"down":"flat";const arrow=g.pct>0?"↑":g.pct<0?"↓":"→";return`<span class="kpi-pill ${cls}">${arrow} ${Math.abs(g.pct)}%${sfx}</span>`;}
+function calcKPIs(){
+  const igF=[{label:"👁 Views",id:"ig-views"},{label:"💬 Interactions",id:"ig-inter"},{label:"👤 New Followers",id:"ig-follow"},{label:"💌 Messages",id:"ig-msg"},{label:"📤 Shares",id:"ig-shares"}];
+  const metaF=[{label:"🎯 Leads",id:"meta-leads"},{label:"🖱 Clicks",id:"meta-clicks"},{label:"👥 Reach",id:"meta-reach"},{label:"♂ Male %",id:"meta-male",sfx:"%"},{label:"♀ Female %",id:"meta-female",sfx:"%"}];
+  function render(fields,cid){document.getElementById(cid).innerHTML=fields.map(f=>{const g=calcGrowth(document.getElementById(f.id+"-now").value,document.getElementById(f.id+"-prev").value);return`<div class="kpi-result"><div class="kpi-result-label">${f.label}</div><div class="kpi-result-value">${fmt(g.value)}${f.sfx||""}</div>${pillHTML(g,f.sfx||"")}</div>`;}).join("");}
+  render(igF,"ig-res");render(metaF,"meta-res");
+  document.getElementById("kpi-results").style.display="block";
+  document.getElementById("kpi-results").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+// CADENCE
+const PLATS=[{name:"Instagram Posts",color:"#9333ea"},{name:"Instagram Stories",color:"#e11d48"},{name:"TikTok",color:"#0ea5e9"},{name:"Facebook",color:"#2563eb"},{name:"YouTube / Reels",color:"#dc2626"},{name:"Facebook Stories",color:"#7c3aed"},{name:"Email",color:"#16a34a"}];
+const cadState={};
+PLATS.forEach((_,i)=>{cadState[i]=[false,false,false,false,false,false,false];});
+function renderCad(){
+  let html="";
+  PLATS.forEach((p,pi)=>{
+    const done=cadState[pi].filter(Boolean).length;
+    html+=`<tr><td><div class="plat-badge"><div class="plat-dot" style="background:${p.color}"></div>${p.name}</div></td>`;
+    [0,1,2,3,4,5,6].forEach(di=>{const on=cadState[pi][di];html+=`<td><div class="chk ${on?"on":""}" onclick="toggleCad(${pi},${di})">${on?"✓":""}</div></td>`;});
+    html+=`<td style="font-weight:700;color:${done===7?"var(--green)":"var(--text)"};">${done}/7</td></tr>`;
+  });
+  document.getElementById("cad-body").innerHTML=html;
+  const total=PLATS.length*7,done=Object.values(cadState).flat().filter(Boolean).length,pct=Math.round(done/total*100);
+  document.getElementById("prog-fill").style.width=pct+"%";
+  document.getElementById("prog-txt").textContent=done+" / "+total;
+  document.getElementById("plat-summary").innerHTML=PLATS.map((p,pi)=>{const d=cadState[pi].filter(Boolean).length;return`<div class="plat-sum-row"><div class="plat-sum-name">${p.name}</div><div class="plat-sum-track"><div class="plat-sum-fill" style="width:${Math.round(d/7*100)}%;background:${p.color}"></div></div><div class="plat-sum-count">${d}/7</div></div>`;}).join("");
+  const igP=cadState[0].filter(Boolean).length,igS=cadState[1].filter(Boolean).length+cadState[5].filter(Boolean).length;
+  document.getElementById("ov-posts").textContent=igP;document.getElementById("ov-stories").textContent=igS;document.getElementById("ov-pct").textContent=pct+"%";
+}
+function toggleCad(pi,di){cadState[pi][di]=!cadState[pi][di];renderCad();}
+renderCad();
+
+// CALENDAR
+let calY=NOW.getFullYear(),calM=NOW.getMonth();
+const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const SM=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const dayPlans={
+  1:{theme:"Coaching Monday",posts:["IG Post: Technique tip — 1% Better series","TikTok: 60-sec Pro Habits clip","Facebook: Parent-focused coaching insight"],stories:["AM: Poll — what skill next?","PM: Behind the scenes on court","Eve: Camp countdown"]},
+  2:{theme:"Player Tuesday",posts:["IG Post: Player spotlight or transformation","TikTok: Match or training highlight","Facebook: Program enrollment CTA"],stories:["AM: Day in the life of a ProWorld player","PM: Q&A sticker","Eve: Highlight save prompt"]},
+  3:{theme:"Mental Wednesday",posts:["IG Reel: Mental Wins with Tonio","TikTok: Pressure to Presence clip","YouTube: Evolve Your Game podcast clip"],stories:["AM: Mental cue of the day","PM: Tonio tip","Eve: Camp registration reminder"]},
+  4:{theme:"Soccer Thursday",posts:["IG Post: Soccer movement mastery","TikTok: Touch & control drill","Facebook: Soccer program feature"],stories:["AM: Soccer drill of the day","PM: Coach's corner clip","Eve: Link in bio reminder"]},
+  5:{theme:"Results Friday",posts:["IG Post: Weekly win — player achievement","TikTok: This week at ProWorld recap","Facebook: Social proof + testimonial"],stories:["AM: Camp offer drop","PM: Week recap","Eve: Weekend event teaser"]},
+  6:{theme:"Culture Saturday",posts:["IG Post: Community / lifestyle content","Email: Weekly newsletter send"],stories:["AM: Saturday court energy","PM: Family journey story","Eve: Sunday preview"]},
+  0:{theme:"Sunday Planning",posts:["IG Stories: Week preview","YouTube: Weekend training highlight"],stories:["AM: Motivational quote","PM: Academy B-roll","Eve: This week at ProWorld teaser"]},
+};
+const cDow={1:["<span class='cpill p-ig'>IG</span>","<span class='cpill p-tt'>TT</span>"],2:["<span class='cpill p-ig'>IG</span>","<span class='cpill p-fb'>FB</span>"],3:["<span class='cpill p-yt'>Reel</span>","<span class='cpill p-tt'>TT</span>"],4:["<span class='cpill p-ig'>IG</span>","<span class='cpill p-fb'>FB</span>"],5:["<span class='cpill p-ig'>IG</span>","<span class='cpill p-tt'>TT</span>"],6:["<span class='cpill p-em'>Email</span>","<span class='cpill p-ig'>IG</span>"],0:["<span class='cpill p-yt'>YT</span>","<span class='cpill p-ig'>IG</span>"]};
+function buildCal(){
+  document.getElementById("cal-title").textContent=MONTHS[calM]+" "+calY;
+  const fd=new Date(calY,calM,1).getDay(),days=new Date(calY,calM+1,0).getDate(),isCur=calM===NOW.getMonth()&&calY===NOW.getFullYear();
+  const grid=document.getElementById("cal-grid");
+  while(grid.children.length>7)grid.removeChild(grid.lastChild);
+  for(let i=0;i<fd;i++){const e=document.createElement("div");e.className="cal-day empty";grid.appendChild(e);}
+  for(let d=1;d<=days;d++){const dow=new Date(calY,calM,d).getDay(),isT=isCur&&d===NOW.getDate();const cell=document.createElement("div");cell.className="cal-day"+(isT?" today":"");cell.innerHTML=`<div class="cal-num">${d}</div>`+(cDow[dow]||[]).join("");cell.onclick=()=>showDay(d,dow);grid.appendChild(cell);}
+}
+function changeMonth(dir){calM+=dir;if(calM<0){calM=11;calY--;}if(calM>11){calM=0;calY++;}buildCal();document.getElementById("day-detail").style.display="none";}
+function showDay(d,dow){
+  const plan=dayPlans[dow];
+  document.getElementById("day-lbl").textContent=SM[calM]+" "+d+" — "+plan.theme;
+  document.getElementById("day-body").innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:9px;">Posts</div>${plan.posts.map(p=>`<div style="padding:9px 11px;background:var(--bg);border-radius:4px;font-size:13px;margin-bottom:5px;color:var(--text-mid);border-left:3px solid var(--lime);">${p}</div>`).join("")}</div><div><div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:9px;">Stories</div>${plan.stories.map(s=>`<div style="padding:9px 11px;background:var(--bg);border-radius:4px;font-size:13px;margin-bottom:5px;color:var(--text-mid);border-left:3px solid var(--border-mid);">${s}</div>`).join("")}</div></div>`;
+  const el=document.getElementById("day-detail");el.style.display="block";el.scrollIntoView({behavior:"smooth",block:"start"});
+}
+buildCal();
+
+// IDEAS
+let activePillar="hpt",activePlat="Instagram";
+function selPillar(el,p){document.querySelectorAll(".pillar-btn").forEach(b=>b.classList.remove("on"));el.classList.add("on");activePillar=p;}
+function selPlat(el,p){document.querySelectorAll(".plat-pick").forEach(b=>b.classList.remove("on"));el.classList.add("on");activePlat=p;}
+const IDEAS={
+  hpt:{Instagram:[{t:"Explosive First Step",b:"Film the split-step and first explosive step reaction drill. Slow motion + coaching cue overlay. This is the 1% Better series at its best.",h:"Hook: \"The difference between getting to the ball and watching it go by is this one move.\""},
+    {t:"Tournament Warm-Up Routine",b:"Show the exact warm-up sequence ProWorld players use before a competitive match. Film it on court before a real tournament.",h:"Hook: \"What our players do in the 20 minutes before they compete.\""},
+    {t:"Serve Toss Breakdown",b:"One of the most common errors in junior tennis. Film a real coaching moment — before and after. Let the improvement speak.",h:"Hook: \"Fix your toss. Fix your serve. Here's how.\""},
+    {t:"Pro Habits: Morning Routine",b:"What a ProWorld student-athlete does from wake-up to first ball. Authentic and aspirational. Film it like a mini documentary.",h:"Hook: \"This is what discipline looks like at 7 AM.\""},
+    {t:"Strength Circuit of the Week",b:"Film the weekly strength circuit used in training. 3–4 exercises, coach explains each one. Practical and immediately useful for followers.",h:"Hook: \"Add this to your training week. Results in 30 days.\""}],
+    TikTok:[{t:"Footwork Drill in 60 Seconds",b:"One drill, one coach, one camera angle. Fast cuts. No fluff. Just the drill and the coaching cue.",h:"Hook: \"60 seconds. Better footwork forever.\""},
+    {t:"Adjustment Steps — the Secret Weapon",b:"Most players don't know about adjustment steps. Film it, name it, explain it in under 45 seconds.",h:"Hook: \"The footwork move that top juniors use and beginners don't know exists.\""},
+    {t:"Recovery Stretch Sequence",b:"Post-match recovery is underrated. Film the 5-minute stretch routine ProWorld players use after every session.",h:"Hook: \"Do this after every practice. Your body will thank you.\""},
+    {t:"Breathing Between Points",b:"Simple, powerful, visual. Film a player doing the reset breath routine between points. Overlay the coaching cue.",h:"Hook: \"The best players in the world do this between every single point.\""},
+    {t:"Consistency Habits of Top Juniors",b:"Quick list format. What separates the juniors who improve fast from those who plateau. Coaches on camera, direct and specific.",h:"Hook: \"3 habits. Every top junior does them. Most beginners don't.\""}]},
+  u12:{Instagram:[{t:"How 4–8 Year Olds Learn Tennis",b:"Educational carousel for parents. Explain the developmental stages, why it looks like play, and why that's exactly right. ProWorld expertise on display.",h:"Hook: \"Your 6-year-old isn't playing. They're building an athlete.\""},
+    {t:"Red Ball Progressions Explained",b:"Show the ITF red-orange-green ball system visually. Parents love understanding the system their child is in.",h:"Hook: \"The ball color matters more than you think.\""},
+    {t:"Hand-Eye Drill for Kids",b:"A fun, visual drill that parents can do at home with their kids. Easy to share, easy to try, builds goodwill.",h:"Hook: \"5 minutes at home. Better tennis at the academy.\""},
+    {t:"Building Confidence in Young Players",b:"Talk directly to parents. What confidence looks like at this age, how ProWorld builds it, and what to look for at home.",h:"Hook: \"The goal at this age isn't technique. It's this.\""},
+    {t:"Why Multi-Sport Play Builds Better Athletes",b:"Science-backed, parent-facing content. ProWorld's multi-sport philosophy explained simply.",h:"Hook: \"Let your kid play more than one sport. Here's why.\""}]},
+  mental:{Instagram:[{t:"Resetting After a Double Fault",b:"Tonio on camera. One specific situation. One specific mental tool. Film it like a coaching session, not a lecture.",h:"Hook: \"What to tell yourself after a double fault. From a mental performance coach.\""},
+    {t:"Visualization Ritual Before Matches",b:"Tonio walks through the exact pre-match visualization protocol. Short, specific, actionable.",h:"Hook: \"Champions see it before they do it. Here's the exact process.\""},
+    {t:"Staying Calm in a Tiebreak",b:"The most pressure moment in tennis. Tonio's framework for staying present when it matters most.",h:"Hook: \"Tiebreak. Serving at 5-6. Here's what to think.\""},
+    {t:"Confidence Under Fire",b:"What to do after a bad call, a momentum swing, or a string of unforced errors. Tonio's reset system.",h:"Hook: \"Your confidence doesn't have to go with your mistakes.\""},
+    {t:"Fearless Competing",b:"The difference between playing to win and playing not to lose. Tonio explains the mindset shift that changes everything.",h:"Hook: \"Most juniors play scared. Here's how ProWorld fixes that.\""}],
+    TikTok:[{t:"What Pros Tell Themselves After a Mistake",b:"Tonio breaks it down in 30 seconds. Punchy, specific, immediately useful. High save rate content.",h:"Hook: \"The self-talk of champions after an error. It's not what you think.\""},
+    {t:"Between-Points Routine",b:"Film a player doing the full between-points routine — the walk, the breath, the ritual. Overlay Tonio's coaching cue.",h:"Hook: \"This 8-second routine changes everything.\""},
+    {t:"Turning Fear Into Focus",b:"One mental shift. Tonio on camera, direct to lens. 30 seconds.",h:"Hook: \"Fear means you care. Here's how to use it.\""}]},
+  soccer:{Instagram:[{t:"10-Touch Ball Mastery Warmup",b:"Film the warmup sequence used in ProWorld soccer training. Each touch, each surface, each cue. Coaches explaining while players demonstrate.",h:"Hook: \"10 touches. Every session. This is why ProWorld players have elite first touch.\""},
+    {t:"First Touch: Cushion vs Directional",b:"Two types of first touch, when to use each, how to train both. Visual coaching content that every soccer parent will save.",h:"Hook: \"Most youth players only know one type of first touch.\""},
+    {t:"Reading the Defender's Hips",b:"Decision-making content. How to know when to dribble vs pass by reading the defender. Film it in a real training session.",h:"Hook: \"You don't need to be faster. You need to read this.\""},
+    {t:"Dribbling in 3 Speeds",b:"Slow setup burst. Show the concept, drill it, film the result. Immediately applicable and visually satisfying.",h:"Hook: \"Dribbling has 3 speeds. Most players only use one.\""},
+    {t:"Acceleration Mechanics",b:"Sprint technique breakdown for soccer players. First 3 steps, body angle, arm drive. Coaches explaining, players demonstrating.",h:"Hook: \"Speed isn't born. It's taught. Here's how we teach it.\""}],
+    TikTok:[{t:"Footwork Pattern for Strikers",b:"Fast, visual, impressive. Film the striker footwork pattern sequence in training. Great music, fast cuts.",h:"Hook: \"Striker footwork. You can train this today.\""},
+    {t:"When to Dribble vs Pass",b:"Tonio-style but for soccer decisions. Quick framework, coach on camera, specific and direct.",h:"Hook: \"Most youth players get this wrong every single game.\""},
+    {t:"Agility + Change of Direction Drill",b:"Film the full drill from multiple angles. Coach explains the soccer application. High energy.",h:"Hook: \"60 seconds of agility work. Every soccer player needs this.\""}]},
+  fitness:{Instagram:[{t:"Core Routine for Tennis & Soccer Athletes",b:"Film the core circuit ProWorld uses. 4 exercises, 2 rounds, coach explains the sport-specific benefit of each.",h:"Hook: \"The core routine we use for every ProWorld athlete. Steal it.\""},
+    {t:"Plyometric Drills for Speed",b:"Box jumps, lateral bounds, depth drops. Film them in the gym with coaching cues. Parents love seeing the athletic development side.",h:"Hook: \"Speed is built here. Before it shows up on the court or field.\""},
+    {t:"Post-Match Cooldown",b:"Show the full cooldown routine. What ProWorld athletes do in the 10 minutes after competing. Recovery education.",h:"Hook: \"Most players go home after a match. The best players do this first.\""},
+    {t:"Shoulder Prehab for Overhead Athletes",b:"Tennis-specific injury prevention. Simple routine. Coaches demonstrating. Parents will share this widely.",h:"Hook: \"Shoulder problems start before you feel them. Here's how we prevent them.\""},
+    {t:"Transformation Story",b:"Feature an athlete's physical development over a season. Real data, real footage, real coaching.",h:"Hook: \"This is what 6 months of the ProWorld performance program looks like.\""}]},
+  homeschool:{Instagram:[{t:"Day in the Life of a Student-Athlete",b:"Full day documentary. Wake up, classes, lunch, training, recovery, homework. Show the real schedule. Parents want to see this works.",h:"Hook: \"School + sport + rest. Here's how ProWorld student-athletes do it all.\""},
+    {t:"How Homeschool Allows More Training",b:"Educational post for parents considering the model. Facts, schedule, benefits. ProWorld expertise.",h:"Hook: \"What if school happened around your child's peak athletic years?\""},
+    {t:"Classroom + Court Schedule",b:"Show the actual daily workflow. Visual schedule graphic or video walkthrough of a real student-athlete's day.",h:"Hook: \"This is what a ProWorld Tuesday looks like from 8 AM to 6 PM.\""},
+    {t:"Parent Testimonial — Homeschool",b:"Real parent, real experience. Film it raw and authentic. This content converts hesitant parents faster than anything else.",h:"Hook: \"We were nervous. Here's what happened after 3 months.\""}]},
+  parents:{Instagram:[{t:"What to Pack for a Match",b:"Practical checklist content. Photo carousel or short video. Parents save this and share it with other tennis parents.",h:"Hook: \"Never forget something at a tournament again. The ProWorld match bag checklist.\""},
+    {t:"How to Talk to Your Child After a Loss",b:"Emotional, specific, immediately useful. This is the most shared content category for sports parents.",h:"Hook: \"The 3 things to say. And the 3 things to never say. After a tough loss.\""},
+    {t:"Why Sideline Coaching Doesn't Help",b:"Honest, direct, evidence-backed. Coaches explaining what happens in a player's head when parents coach from the sideline.",h:"Hook: \"You're trying to help. Here's why it's making it harder.\""},
+    {t:"Supporting vs Pressuring",b:"The difference, how to tell which one you're doing, and how to shift. Tonio + coaching team collaboration content.",h:"Hook: \"Every sports parent wants to support. Not all of them know the difference.\""},
+    {t:"Building Confidence in Young Athletes",b:"What it looks like, what ProWorld does, what parents can do at home. Practical and warm.",h:"Hook: \"Confidence is built daily. Here's where it starts.\""}]},
+  culture:{Instagram:[{t:"Mic'd Up Practice",b:"Mic a coach for a full practice session. Real coaching, real moments, real ProWorld energy. This is the most authentic content you can make.",h:"Hook: \"We mic'd up the coach. Here's what ProWorld training actually sounds like.\""},
+    {t:"Drone Shots of the Academy",b:"Cinematic overhead footage of the courts, the facility, the athletes training. No narration needed. The visual does the work.",h:"Caption: \"ProWorld Academy. Boca Raton.\" That's it."},
+    {t:"Family Training Story",b:"Feature a family with multiple children training at ProWorld. Their journey, their dynamic, their results.",h:"Hook: \"Two siblings. One academy. Two completely different journeys.\""},
+    {t:"Player's View of a Rally",b:"GoPro or phone on the player's side. First-person perspective of a rally from inside the academy. Immersive and shareable.",h:"Hook: \"This is what it looks like from inside a ProWorld rally.\""},
+    {t:"A Week in the Life of an Academy Athlete",b:"7-day documentary series or one condensed reel. Real training, real school, real recovery, real results.",h:"Hook: \"Monday through Sunday. Inside ProWorld.\""}]},
+  pickle:{Instagram:[{t:"Basic Rules Explained",b:"Simple, friendly, accessible. Parents and families new to pickleball love this. Lower production needed — just clear and fun.",h:"Hook: \"New to pickleball? Here are the only 5 rules you need to know.\""},
+    {t:"Parent-Kid Pickleball Clip",b:"Film a fun parent-child session on the pickleball court. Laughing, learning, playing together. Pure community content.",h:"No hook needed. Just warmth and fun."},
+    {t:"How Pickleball Helps Footwork & Coordination",b:"Connect pickleball to athletic development. Short educational clip for parents who see it as just recreational.",h:"Hook: \"Your kid is having fun. And building this.\""},
+    {t:"Pickleball Open Play Day",b:"Invite the community. Film the energy. Show the accessibility. Great for brand warmth and new audience reach.",h:"Hook: \"Every Friday. All levels. Come play.\""}]},
+  promo:{Instagram:[{t:"Summer Camp Registration Now Open",b:"Clean, direct. Real photo from court — not a graphic. Dates, program overview, link in bio. This is your most important conversion post.",h:"Hook: \"Summer 2026 is filling fast. Here's everything inside ProWorld summer camp.\""},
+    {t:"Trial Week Sign-Up",b:"Drive new families to try ProWorld. One week, real training, real coaching. Specific dates and a clear CTA.",h:"Hook: \"One week to see if ProWorld is the right fit. First session on us.\""},
+    {t:"High-Performance Tryout Announcement",b:"Selective, aspirational, specific. Who it's for, what's included, how to apply.",h:"Hook: \"ProWorld is opening 8 spots in the High-Performance program. Here's how to try out.\""},
+    {t:"Soccer Program Start Date",b:"Clean launch post. Dates, age groups, what's included, link in bio. Photo from a real session.",h:"Hook: \"ProWorld Soccer is starting [date]. Here's what's inside.\""},
+    {t:"Seasonal Camp Launch",b:"Whether it's Thanksgiving, Winter, or Summer — launch it with energy. Real footage, real energy, real dates.",h:"Hook: \"[Season] camp is here. Limited spots. Everything you need to know.\""}]}
+};
+function genIdeas(){
+  const bank=IDEAS[activePillar]?.[activePlat]||[];
+  const out=document.getElementById("ideas-out");
+  if(!bank.length){out.innerHTML=`<div class="idea-card" style="text-align:center;color:var(--text-dim);">Ideas for this combination coming soon — try another platform.</div>`;return;}
+  const shuffled=[...bank].sort(()=>Math.random()-0.5).slice(0,Math.min(5,bank.length));
+  const pillarLabel=document.querySelector(".pillar-btn.on").textContent.trim();
+  out.innerHTML=shuffled.map((idea,i)=>`<div class="idea-card" style="animation-delay:${i*0.07}s"><div class="idea-tag">${activePlat} — ${pillarLabel}</div><div class="idea-title">${idea.t}</div><div class="idea-body">${idea.b}</div>${idea.h?`<div class="idea-hook">${idea.h}</div>`:""}</div>`).join("");
+}
+
+// META ADS
+let accessToken="";
+function showStatus(msg,type){const el=document.getElementById("status-bar");el.textContent=msg;el.className="status-bar "+type;}
+async function connectMeta(){
+  const token=document.getElementById("token-in").value.trim();
+  if(!token){showStatus("Paste your access token first.","err");return;}
+  accessToken=token;showStatus("Connecting to Meta API...","loading");
+  try{const res=await fetch(`https://graph.facebook.com/v18.0/me/adaccounts?fields=name,account_id&access_token=${token}`);const data=await res.json();if(data.error){showStatus("Error: "+data.error.message,"err");return;}if(!data.data?.length){showStatus("No ad accounts found.","err");return;}showStatus("Connected — loading campaigns...","loading");await fetchCampaigns(data.data[0].id,token);}
+  catch(e){showStatus("Connection failed. Check your token.","err");}
+}
+async function fetchCampaigns(aid,token){
+  try{const res=await fetch(`https://graph.facebook.com/v18.0/${aid}/campaigns?fields=name,status,daily_budget,insights{impressions,spend,actions}&access_token=${token}`);const data=await res.json();if(data.error){showStatus("Error: "+data.error.message,"err");return;}renderCampaigns(data.data||[]);showStatus("Live data loaded.","ok");}
+  catch(e){showStatus("Failed to load campaigns.","err");}
+}
+function getLeads(a){if(!a)return 0;const l=a.find(x=>x.action_type==="lead"||x.action_type==="onsite_conversion.lead_grouped");return l?parseInt(l.value):0;}
+function renderCampaigns(camps){
+  let ti=0,ts=0,tl=0;
+  const rows=camps.map(c=>{const ins=c.insights?.data?.[0]||{},imp=parseInt(ins.impressions||0),sp=parseFloat(ins.spend||0),leads=getLeads(ins.actions);ti+=imp;ts+=sp;tl+=leads;const b=c.daily_budget?"$"+(parseInt(c.daily_budget)/100).toFixed(0)+"/day":"—";const sc=c.status==="ACTIVE"?"badge-active":c.status==="PAUSED"?"badge-paused":"badge-other";return`<tr><td style="font-weight:500;">${c.name}</td><td><span class="badge ${sc}">${c.status.toLowerCase()}</span></td><td>${b}</td><td>${imp.toLocaleString()}</td><td>${leads}</td><td>$${sp.toFixed(2)}</td></tr>`;}).join("");
+  document.getElementById("camps-body").innerHTML=rows||"<tr><td colspan='6' style='text-align:center;color:var(--text-dim);padding:20px;'>No campaigns found.</td></tr>";
+  document.getElementById("a-imp").textContent=ti.toLocaleString();document.getElementById("a-spend").textContent="$"+ts.toFixed(2);document.getElementById("a-leads").textContent=tl;document.getElementById("a-cpl").textContent=tl>0?"$"+(ts/tl).toFixed(2):"—";document.getElementById("ads-data").style.display="block";
+}
+function loadDemo(){renderCampaigns([{name:"ProWorld Summer Camp 2026",status:"ACTIVE",daily_budget:"5000",insights:{data:[{impressions:"14823",spend:"167.40",actions:[{action_type:"lead",value:"22"}]}]}},{name:"U12 Tennis Program — Spring",status:"ACTIVE",daily_budget:"2500",insights:{data:[{impressions:"7102",spend:"74.20",actions:[{action_type:"lead",value:"11"}]}]}},{name:"Multi-Sport Trial — Retargeting",status:"PAUSED",daily_budget:"1500",insights:{data:[{impressions:"3340",spend:"31.60",actions:[]}]}}]);document.getElementById("token-in").value="DEMO_MODE";showStatus("Demo data loaded. Connect a real token for live data.","ok");}
+function resetMeta(){accessToken="";document.getElementById("token-in").value="";document.getElementById("ads-data").style.display="none";document.getElementById("status-bar").className="status-bar";}
+</script>
+</body>
+</html>
