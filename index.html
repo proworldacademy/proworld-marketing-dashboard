@@ -5,229 +5,275 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PROWORLD™ — Marketing Command Center</title>
 <meta name="robots" content="noindex, nofollow">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="data:image/png;base64,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">
-<style>
-/* ── PASSWORD GATE ── */
-#gate {
-  position: fixed; inset: 0;
-  background: #000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-.gate-logo {
-  width: 80px; height: 80px;
-  margin-bottom: 28px;
-  border-radius: 12px;
-}
-.gate-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 900;
-  font-style: italic;
-  font-size: 32px;
-  color: #E2FE78;
-  letter-spacing: -0.5px;
-  margin-bottom: 6px;
-}
-.gate-sub {
-  font-size: 12px;
-  color: #666;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 32px;
-}
-.gate-input {
-  background: #111;
-  border: 1px solid #333;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 16px;
-  padding: 13px 18px;
-  width: 280px;
-  text-align: center;
-  letter-spacing: 3px;
-  margin-bottom: 12px;
-  font-family: monospace;
-  transition: border-color 0.2s;
-}
-.gate-input:focus { outline: none; border-color: #E2FE78; }
-.gate-btn {
-  width: 280px;
-  padding: 13px;
-  background: #E2FE78;
-  color: #000;
-  border: none;
-  border-radius: 4px;
-  font-family: "Barlow Condensed", sans-serif;
-  font-weight: 900;
-  font-style: italic;
-  font-size: 16px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-.gate-btn:hover { background: #c8e860; }
-.gate-err {
-  margin-top: 12px;
-  font-size: 12px;
-  color: #ef4444;
-  letter-spacing: 1px;
-  display: none;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+var APPROVED_KEY = "proworld_approved_weeks_v1";
+var approvedWeeks = (function(){ try { var s=localStorage.getItem(APPROVED_KEY); return s?JSON.parse(s):[]; } catch(e){ return []; } })();
+var currentWeekData = null;
+
+function saveApproved(){ try{ localStorage.setItem(APPROVED_KEY, JSON.stringify(approvedWeeks)); }catch(e){} }
+
+function renderWeeksHistory(){
+  var el = document.getElementById("weeks-history-list");
+  if(!el) return;
+  if(!approvedWeeks.length){ el.innerHTML = "<div style='color:var(--text-dim);font-size:13px;padding:10px 0;'>No approved weeks yet.</div>"; return; }
+  var html = "";
+  approvedWeeks.slice().reverse().forEach(function(wk){
+    html += "<div class='week-hist'>";
+    html += "<div><div style='font-weight:700;font-size:15px;'>" + wk.weekDates + "</div>";
+    if(wk.theme) html += "<div style='font-size:12px;color:var(--text-dim);margin-top:2px;'>Theme: " + wk.theme + "</div>";
+    html += "<div style='font-size:11px;color:var(--text-dim);margin-top:4px;'>Approved: " + wk.approvedOn + " &middot; " + wk.coachCount + " coaches</div></div>";
+    html += "<div style='display:flex;gap:8px;align-items:center;'>";
+    html += "<span class='approved-badge'>&#10003; Approved</span>";
+    html += "<button onclick=\"redownloadPDF(" + JSON.stringify(wk.id) + ")\" style=\"background:none;border:1px solid #e0e0e0;border-radius:4px;padding:6px 12px;font-size:12px;cursor:pointer;\">&#128196; Re-download</button>";
+    html += "</div></div>";
+  });
+  el.innerHTML = html;
 }
 
-:root {
-  --bg:#f2f2f2; --white:#ffffff; --black:#000000;
-  --card:#ffffff; --border:#e0e0e0; --border-mid:#cccccc;
-  --text:#111111; --text-mid:#444444; --text-dim:#888888; --text-pale:#aaaaaa;
-  --lime:#E2FE78; --lime-dark:#c8e860; --lime-pale:#f5fdc0;
-  --mint:#94FCB1; --pink:#E286E4; --cyan:#A9F3F7;
-  --green:#22c55e; --red:#ef4444; --orange:#f97316; --blue:#3b82f6;
+function approveWeek(){
+  if(!currentWeekData) return;
+  var wk = { id:"week_"+Date.now(), weekDates:currentWeekData.weekDates, theme:currentWeekData.theme, approvedOn:new Date().toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}), coachCount:COACHES.length };
+  approvedWeeks.push(wk);
+  saveApproved();
+  var btn = document.getElementById("approve-btn");
+  btn.disabled = true;
+  btn.textContent = "Approved";
+  document.getElementById("approved-status").style.display = "inline-flex";
+  renderWeeksHistory();
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:"Barlow",sans-serif; background:var(--bg); color:var(--text); min-height:100vh; border-left:6px solid var(--lime); }
+
+function redownloadPDF(wkId){
+  var wk = approvedWeeks.find(function(w){ return w.id===wkId; });
+  if(wk){ currentWeekData = wk; generatePDF(); }
+}
+
+function downloadPDF(){ if(currentWeekData) generatePDF(); }
+
+function generatePDF(){
+  var jsPDF = window.jspdf.jsPDF;
+  var doc = new jsPDF({orientation:"portrait",unit:"mm",format:"a4"});
+  var pw = 210; var ph = 297; var mg = 14; var y = 0;
+
+  // Header
+  doc.setFillColor(0,0,0); doc.rect(0,0,pw,30,"F");
+  doc.setFillColor(226,254,120); doc.rect(0,30,pw,3,"F");
+  doc.setFillColor(226,254,120); doc.roundedRect(mg,6,16,16,2,2,"F");
+  doc.setTextColor(0,0,0); doc.setFont("helvetica","bold"); doc.setFontSize(9);
+  doc.text("PW",mg+8,16,{align:"center"});
+  doc.setTextColor(255,255,255); doc.setFontSize(16); doc.text("PROWORLD",mg+20,14);
+  doc.setFontSize(7); doc.setFont("helvetica","normal"); doc.setTextColor(180,180,180);
+  doc.text("MARKETING COMMAND CENTER",mg+20,20);
+  doc.setFillColor(226,254,120); doc.roundedRect(pw-mg-28,8,28,8,1,1,"F");
+  doc.setTextColor(0,0,0); doc.setFont("helvetica","bold"); doc.setFontSize(6.5);
+  doc.text("WEEKLY BRIEF",pw-mg-14,13.5,{align:"center"});
+  y = 40;
+
+  // Week block
+  doc.setFillColor(245,245,245); doc.rect(mg,y,pw-mg*2,20,"F");
+  doc.setTextColor(0,0,0); doc.setFont("helvetica","bold"); doc.setFontSize(13);
+  doc.text("COACH CONTENT ASSIGNMENTS",mg+3,y+8);
+  doc.setFontSize(8); doc.setFont("helvetica","normal"); doc.setTextColor(100,100,100);
+  doc.text("Week of " + (currentWeekData.weekDates||""),mg+3,y+14);
+  if(currentWeekData.theme){
+    doc.setFont("helvetica","bold"); doc.setTextColor(0,0,0);
+    doc.text("Theme: "+currentWeekData.theme,pw-mg-3,y+14,{align:"right"});
+  }
+  y += 26;
+
+  // Recurring box
+  doc.setFillColor(226,254,120); doc.rect(mg,y,pw-mg*2,3,"F");
+  doc.setFillColor(245,253,192); doc.rect(mg,y+3,pw-mg*2,22,"F");
+  doc.setTextColor(80,100,0); doc.setFont("helvetica","bold"); doc.setFontSize(6.5);
+  doc.text("RECURRING EVERY WEEK",mg+3,y+9);
+  doc.setFont("helvetica","normal"); doc.setTextColor(60,80,0); doc.setFontSize(6.5);
+  doc.text("MON + WED + FRI: Tournament Promo  |  WEEKLY: Players in Action Recap  |  DAILY: Academy Vibes Story",mg+3,y+15);
+  doc.text("Daily Academy Vibes = 2 to 3 iPhone clips from court, no script, posted every single day as a Story.",mg+3,y+21);
+  y += 28;
+
+  var coachColors = {
+    "Paolo":[29,78,216],"Tonio":[124,58,237],"Nico":[14,165,233],
+    "Eric":[5,150,105],"Sebastien":[220,38,38],"Flow":[217,119,6],
+    "Kam":[190,24,93],"Robby":[101,163,13],"Aimon":[8,145,178],"Coach ET":[100,60,180],
+    "Quinnton":[190,18,60],"Tara":[13,148,136],"Lukas":[21,128,61],
+    "Antonio":[30,30,30],"Lorenzo":[30,30,30]
+  };
+
+  COACHES.forEach(function(coach){
+    var color = coachColors[coach.name] || [50,50,50];
+    var blockH = 8 + (coach.assignments.length * 13) + 5;
+    if(y + blockH > ph - 16){ doc.addPage(); y = 16; }
+
+    // Coach bar
+    doc.setFillColor(color[0],color[1],color[2]);
+    doc.rect(mg,y,pw-mg*2,7.5,"F");
+    doc.setTextColor(255,255,255); doc.setFont("helvetica","bold"); doc.setFontSize(8);
+    doc.text(coach.name.toUpperCase(),mg+3,y+5.2);
+    y += 7.5;
+
+    coach.assignments.forEach(function(a,i){
+      if(y + 13 > ph - 16){ doc.addPage(); y = 16; }
+      doc.setFillColor(i%2===0?250:255,i%2===0?250:255,i%2===0?250:255);
+      doc.rect(mg,y,pw-mg*2,12,"F");
+      // Number
+      doc.setFillColor(color[0],color[1],color[2]);
+      doc.circle(mg+5,y+6,3,"F");
+      doc.setTextColor(255,255,255); doc.setFont("helvetica","bold"); doc.setFontSize(7);
+      doc.text(String(i+1),mg+5,y+7.2,{align:"center"});
+      // Title
+      doc.setTextColor(0,0,0); doc.setFont("helvetica","bold"); doc.setFontSize(7.5);
+      doc.text(a.title,mg+10,y+4.5);
+      // Desc
+      doc.setFont("helvetica","normal"); doc.setFontSize(6.5); doc.setTextColor(80,80,80);
+      var lines = doc.splitTextToSize(a.desc, pw-mg*2-12);
+      doc.text(lines[0]||"",mg+10,y+8.5);
+      // Format
+      if(a.format){
+        doc.setTextColor(color[0],color[1],color[2]);
+        doc.setFont("helvetica","bold"); doc.setFontSize(6);
+        doc.text("Format: "+a.format,mg+10,y+11.5);
+      }
+      y += 13;
+    });
+    y += 4;
+  });
+
+  // Footer
+  doc.setFillColor(0,0,0); doc.rect(0,ph-10,pw,10,"F");
+  doc.setTextColor(226,254,120); doc.setFont("helvetica","bold"); doc.setFontSize(6.5);
+  doc.text("PROWORLD ACADEMY  |  MARKETING COMMAND CENTER  |  INTERNAL USE ONLY",pw/2,ph-4,{align:"center"});
+
+  var fname = "ProWorld_CoachBrief_"+(currentWeekData.weekDates||"Week").replace(/[^a-zA-Z0-9]/g,"_")+".pdf";
+  doc.save(fname);
+}
+
+// Hook into genAssignments to show action buttons
+var _gA_orig = genAssignments;
+genAssignments = function(){
+  _gA_orig();
+  var weekDates = document.getElementById("week-dates").value || "This Week";
+  var theme = document.getElementById("week-theme").value || "";
+  currentWeekData = {weekDates:weekDates, theme:theme};
+  document.getElementById("assignment-actions").style.display = "block";
+  var btn = document.getElementById("approve-btn");
+  if(btn){ btn.disabled=false; btn.textContent="Approve & Lock This Week"; }
+  var st = document.getElementById("approved-status");
+  if(st) st.style.display="none";
+  renderWeeksHistory();
+};
+
+setTimeout(function(){ renderWeeksHistory(); }, 300);
+
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* PASSWORD GATE */
+#gate{position:fixed;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;}
+.gate-logo{width:72px;height:72px;margin-bottom:24px;border-radius:10px;}
+.gate-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:30px;color:#E2FE78;margin-bottom:4px;}
+.gate-sub{font-size:11px;color:#555;letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;}
+.gate-input{background:#111;border:1px solid #333;border-radius:4px;color:#fff;font-size:16px;padding:12px 16px;width:270px;text-align:center;letter-spacing:3px;margin-bottom:10px;font-family:monospace;transition:border-color 0.2s;}
+.gate-input:focus{outline:none;border-color:#E2FE78;}
+.gate-btn{width:270px;padding:12px;background:#E2FE78;color:#000;border:none;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:15px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;}
+.gate-btn:hover{background:#c8e860;}
+.gate-err{margin-top:10px;font-size:12px;color:#ef4444;display:none;}
+
+:root{
+  --bg:#f2f2f2;--white:#ffffff;--black:#000000;--card:#ffffff;
+  --border:#e0e0e0;--border-mid:#cccccc;--text:#111111;--text-mid:#444444;
+  --text-dim:#888888;--text-pale:#aaaaaa;--lime:#E2FE78;--lime-dark:#c8e860;
+  --lime-pale:#f5fdc0;--mint:#94FCB1;--pink:#E286E4;--cyan:#A9F3F7;
+  --green:#22c55e;--red:#ef4444;--orange:#f97316;--blue:#3b82f6;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;border-left:6px solid var(--lime);}
 
 /* HEADER */
-header {
-  background:var(--white); border-bottom:1px solid var(--border);
-  padding:0 28px; display:flex; align-items:center;
-  justify-content:space-between; height:60px;
-  position:sticky; top:0; z-index:100;
-  box-shadow:0 1px 4px rgba(0,0,0,0.06);
-}
-.logo { display:flex; align-items:center; gap:12px; }
-.logo img { height:38px; width:38px; object-fit:contain; border-radius:6px; }
-.logo-text { display:flex; flex-direction:column; }
-.logo-wordmark {
-  font-family:"Barlow Condensed",sans-serif; font-weight:900;
-  font-style:italic; font-size:22px; color:var(--black);
-  letter-spacing:-0.5px; line-height:1;
-}
-.logo-wordmark .hl { background:var(--lime); padding:0 5px; margin-left:2px; }
-.logo-sub {
-  font-size:9px; font-weight:600; letter-spacing:2.5px;
-  text-transform:uppercase; color:var(--text-pale); margin-top:2px;
-}
-.header-right { display:flex; align-items:center; gap:16px; }
-.live-badge {
-  display:flex; align-items:center; gap:6px;
-  background:var(--black); color:var(--lime);
-  font-size:10px; font-weight:700; letter-spacing:2px;
-  padding:5px 11px; border-radius:2px;
-}
-.live-badge::before {
-  content:""; width:6px; height:6px;
-  background:var(--lime); border-radius:50%;
-  animation:blink 2s infinite;
-}
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
-.header-date { font-size:12px; color:var(--text-dim); text-align:right; }
-.header-date strong { display:block; color:var(--text); font-size:13px; font-weight:600; }
+header{background:var(--white);border-bottom:1px solid var(--border);padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;box-shadow:0 1px 4px rgba(0,0,0,0.06);}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo img{height:36px;width:36px;object-fit:contain;border-radius:5px;}
+.logo-text{display:flex;flex-direction:column;}
+.logo-wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:22px;color:var(--black);letter-spacing:-0.5px;line-height:1;}
+.logo-wordmark .hl{background:var(--lime);padding:0 5px;margin-left:2px;}
+.logo-sub{font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-pale);margin-top:2px;}
+.header-right{display:flex;align-items:center;gap:14px;}
+.live-badge{display:flex;align-items:center;gap:6px;background:var(--black);color:var(--lime);font-size:10px;font-weight:700;letter-spacing:2px;padding:5px 11px;border-radius:2px;}
+.live-badge::before{content:'';width:6px;height:6px;background:var(--lime);border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.header-date{font-size:12px;color:var(--text-dim);text-align:right;}
+.header-date strong{display:block;color:var(--text);font-size:13px;font-weight:600;}
 
 /* NAV */
-nav {
-  background:var(--white); border-bottom:1px solid var(--border);
-  display:flex; padding:0 28px; overflow-x:auto; scrollbar-width:none;
-}
-nav::-webkit-scrollbar { display:none; }
-.nav-tab {
-  padding:0 16px; height:44px; display:flex; align-items:center; gap:7px;
-  font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
-  color:var(--text-dim); cursor:pointer; border-bottom:3px solid transparent;
-  transition:all 0.18s; white-space:nowrap; user-select:none;
-}
-.nav-tab:hover { color:var(--text); }
-.nav-tab.active { color:var(--black); border-bottom-color:var(--lime); }
+nav{background:var(--white);border-bottom:1px solid var(--border);display:flex;padding:0 28px;overflow-x:auto;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+.nav-tab{padding:0 14px;height:44px;display:flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);cursor:pointer;border-bottom:3px solid transparent;transition:all 0.18s;white-space:nowrap;user-select:none;}
+.nav-tab:hover{color:var(--text);}
+.nav-tab.active{color:var(--black);border-bottom-color:var(--lime);}
 
 /* MAIN */
-main { max-width:1360px; margin:0 auto; padding:26px 28px 64px; }
-.section { display:none; }
-.section.active { display:block; animation:fadeUp 0.25s ease; }
-@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+main{max-width:1360px;margin:0 auto;padding:26px 28px 64px;}
+.section{display:none;}
+.section.active{display:block;animation:fadeUp 0.25s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
 /* PAGE TITLE */
-.page-title {
-  font-family:"Barlow Condensed",sans-serif; font-weight:900; font-style:italic;
-  font-size:42px; line-height:1; color:var(--black); margin-bottom:4px; letter-spacing:-1px;
-}
-.page-title .hl { background:var(--lime); padding:0 6px; margin-left:4px; }
-.page-sub { font-size:13px; color:var(--text-dim); margin-bottom:22px; }
+.page-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:40px;line-height:1;color:var(--black);margin-bottom:4px;letter-spacing:-1px;}
+.page-title .hl{background:var(--lime);padding:0 6px;margin-left:4px;}
+.page-sub{font-size:13px;color:var(--text-dim);margin-bottom:22px;}
 
 /* CARDS */
-.card {
-  background:var(--card); border:1px solid var(--border);
-  border-radius:6px; padding:20px; position:relative; overflow:hidden;
-}
-.card-top { position:absolute; top:0; left:0; right:0; height:4px; background:var(--lime); border-radius:6px 6px 0 0; }
-.card-label {
-  font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
-  color:var(--text-dim); margin-bottom:14px; display:flex; align-items:center; gap:8px;
-}
-.card-label::after { content:""; flex:1; height:1px; background:var(--border); }
+.card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:20px;position:relative;overflow:hidden;}
+.card-top{position:absolute;top:0;left:0;right:0;height:4px;background:var(--lime);border-radius:6px 6px 0 0;}
+.card-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-dim);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.card-label::after{content:'';flex:1;height:1px;background:var(--border);}
 
 /* GRIDS */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
-.mb14{margin-bottom:14px;} .mb20{margin-bottom:20px;} .mb24{margin-bottom:24px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+.mb14{margin-bottom:14px;}.mb20{margin-bottom:20px;}.mb24{margin-bottom:24px;}
 
-/* STAT CARDS */
-.stat {
-  background:var(--white); border:1px solid var(--border);
-  border-radius:6px; padding:18px; position:relative; overflow:hidden;
-}
-.stat-bar { position:absolute; top:0; left:0; right:0; height:4px; border-radius:6px 6px 0 0; }
-.stat-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:8px; }
-.stat-value { font-family:"Barlow Condensed",sans-serif; font-weight:900; font-size:38px; line-height:1; color:var(--black); margin-bottom:6px; }
-.stat-change { font-size:11px; font-weight:600; display:inline-flex; align-items:center; gap:4px; padding:2px 8px; border-radius:99px; }
+/* STATS */
+.stat{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:18px;position:relative;overflow:hidden;}
+.stat-bar{position:absolute;top:0;left:0;right:0;height:4px;border-radius:6px 6px 0 0;}
+.stat-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;}
+.stat-value{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:36px;line-height:1;color:var(--black);margin-bottom:6px;}
+.stat-change{font-size:11px;font-weight:600;display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:99px;}
 .stat-change.up{background:rgba(34,197,94,0.1);color:#16a34a;}
 .stat-change.down{background:rgba(239,68,68,0.1);color:#dc2626;}
 .stat-change.flat{background:var(--bg);color:var(--text-dim);}
 
 /* KPI */
-.kpi-block { background:var(--white); border:1px solid var(--border); border-radius:6px; padding:20px; margin-bottom:14px; position:relative; overflow:hidden; }
-.kpi-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:14px; }
-.kpi-field label { display:block; font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-dim); margin-bottom:8px; }
-.kpi-week { font-size:9px; font-weight:600; letter-spacing:1px; text-transform:uppercase; color:var(--text-pale); margin-bottom:4px; }
-input[type="number"] {
-  width:100%; background:var(--bg); border:1px solid var(--border); border-radius:4px;
-  color:var(--text); font-family:"Barlow",sans-serif; font-size:14px; font-weight:600;
-  padding:9px 10px; margin-bottom:8px; transition:border-color 0.15s; -moz-appearance:textfield;
-}
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;}
+.kpi-block{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:20px;margin-bottom:14px;position:relative;overflow:hidden;}
+.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:14px;}
+.kpi-field label{display:block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;}
+.kpi-week{font-size:9px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-pale);margin-bottom:4px;}
+input[type="number"]{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:4px;color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;font-weight:600;padding:9px 10px;margin-bottom:8px;transition:border-color 0.15s;-moz-appearance:textfield;}
+input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;}
 input[type="number"]:focus{outline:none;border-color:var(--black);background:var(--white);}
-.calc-btn {
-  background:var(--black); color:var(--lime); border:none; border-radius:4px;
-  padding:12px 28px; font-family:"Barlow Condensed",sans-serif; font-weight:900;
-  font-style:italic; font-size:15px; letter-spacing:2px; text-transform:uppercase;
-  cursor:pointer; transition:background 0.15s;
-}
+.calc-btn{background:var(--black);color:var(--lime);border:none;border-radius:4px;padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:15px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.15s;}
 .calc-btn:hover{background:#222;}
-.kpi-results-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:18px; }
-.kpi-result { background:var(--bg); border:1px solid var(--border); border-radius:5px; padding:14px; text-align:center; }
-.kpi-result-label { font-size:9px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--text-dim); margin-bottom:6px; }
-.kpi-result-value { font-family:"Barlow Condensed",sans-serif; font-weight:900; font-size:28px; color:var(--black); line-height:1; margin-bottom:6px; }
-.kpi-pill { display:inline-block; font-size:11px; font-weight:700; padding:3px 10px; border-radius:99px; }
+.kpi-results-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:18px;}
+.kpi-result{background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:14px;text-align:center;}
+.kpi-result-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px;}
+.kpi-result-value{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;color:var(--black);line-height:1;margin-bottom:6px;}
+.kpi-pill{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;}
 .kpi-pill.up{background:rgba(34,197,94,0.12);color:#16a34a;}
 .kpi-pill.down{background:rgba(239,68,68,0.1);color:#dc2626;}
 .kpi-pill.flat{background:var(--border);color:var(--text-dim);}
 
 /* CALENDAR */
-.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
-.cal-head { text-align:center; font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-pale); padding:8px 0; }
-.cal-day { background:var(--white); border:1px solid var(--border); border-radius:4px; padding:7px 5px; min-height:72px; cursor:pointer; transition:border-color 0.15s,box-shadow 0.15s; }
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+.cal-head{text-align:center;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-pale);padding:8px 0;}
+.cal-day{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:7px 5px;min-height:72px;cursor:pointer;transition:border-color 0.15s,box-shadow 0.15s;}
 .cal-day:hover{border-color:var(--black);box-shadow:0 2px 8px rgba(0,0,0,0.08);}
 .cal-day.today{border-color:var(--black);border-width:2px;}
 .cal-day.empty{background:transparent;border-color:transparent;cursor:default;}
 .cal-num{font-size:12px;font-weight:700;color:var(--text-dim);margin-bottom:4px;}
 .cal-day.today .cal-num{background:var(--black);color:var(--lime);width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;margin-bottom:4px;}
 .cpill{display:block;font-size:8px;font-weight:700;padding:2px 4px;border-radius:2px;margin-bottom:2px;text-transform:uppercase;}
-.p-ig{background:#f3e8ff;color:#7c3aed;} .p-tt{background:#f0f0f0;color:#333;border:1px solid #ddd;}
-.p-fb{background:#dbeafe;color:#1d4ed8;} .p-yt{background:#fee2e2;color:#dc2626;}
+.p-ig{background:#f3e8ff;color:#7c3aed;}.p-tt{background:#f0f0f0;color:#333;border:1px solid #ddd;}
+.p-fb{background:#dbeafe;color:#1d4ed8;}.p-yt{background:#fee2e2;color:#dc2626;}
 .p-em{background:var(--lime-pale);color:#5a6e00;}
 
 /* CADENCE */
@@ -246,30 +292,54 @@ input[type="number"]:focus{outline:none;border-color:var(--black);background:var
 .prog-fill{height:100%;background:var(--black);border-radius:99px;transition:width 0.4s;}
 .prog-txt{font-size:12px;color:var(--text-dim);white-space:nowrap;font-weight:600;}
 
-/* IDEAS */
+/* CONTENT IDEAS */
 .pillar-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px;}
-.pillar-btn{background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:13px 7px;text-align:center;cursor:pointer;transition:all 0.15s;font-size:10px;font-weight:700;color:var(--text-dim);line-height:1.4;user-select:none;}
-.pillar-btn .pi{font-size:20px;display:block;margin-bottom:6px;}
+.pillar-btn{background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:12px 7px;text-align:center;cursor:pointer;transition:all 0.15s;font-size:10px;font-weight:700;color:var(--text-dim);line-height:1.4;user-select:none;}
+.pillar-btn .pi{font-size:18px;display:block;margin-bottom:5px;}
 .pillar-btn:hover{border-color:var(--black);color:var(--text);}
 .pillar-btn.on{background:var(--black);border-color:var(--black);color:var(--lime);}
 .plat-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
 .plat-pick{padding:7px 14px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border:1.5px solid var(--border);background:var(--white);color:var(--text-mid);transition:all 0.15s;user-select:none;}
 .plat-pick:hover{border-color:var(--black);color:var(--black);}
 .plat-pick.on{background:var(--black);border-color:var(--black);color:var(--lime);}
-.gen-btn{display:block;width:100%;padding:13px;background:var(--black);color:var(--lime);border:none;border-radius:4px;font-family:"Barlow Condensed",sans-serif;font-weight:900;font-style:italic;font-size:16px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.15s;margin-bottom:18px;}
+.gen-btn{display:block;width:100%;padding:13px;background:var(--black);color:var(--lime);border:none;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:16px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.15s;margin-bottom:18px;}
 .gen-btn:hover{background:#1a1a1a;}
 .idea-card{background:var(--bg);border:1px solid var(--border);border-left:4px solid var(--lime);border-radius:4px;padding:15px 17px;margin-bottom:10px;animation:fadeUp 0.25s ease;transition:border-color 0.15s;}
 .idea-card:hover{border-color:var(--black);border-left-color:var(--black);}
 .idea-tag{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:5px;}
-.idea-title{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:18px;color:var(--black);margin-bottom:5px;}
+.idea-coach{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:5px;}
+.idea-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18px;color:var(--black);margin-bottom:5px;}
 .idea-body{font-size:13px;color:var(--text-mid);line-height:1.6;}
 .idea-hook{margin-top:8px;font-size:12px;color:#4a5e00;font-style:italic;background:var(--lime-pale);padding:4px 10px;border-radius:3px;display:inline-block;}
+.idea-format{margin-top:6px;font-size:11px;font-weight:600;color:var(--text-dim);}
+
+/* COACH ASSIGNMENTS */
+.week-selector{display:flex;gap:10px;align-items:center;margin-bottom:20px;flex-wrap:wrap;}
+.week-input{background:var(--white);border:1px solid var(--border);border-radius:4px;padding:9px 14px;font-family:'Barlow',sans-serif;font-size:13px;color:var(--text);transition:border-color 0.15s;}
+.week-input:focus{outline:none;border-color:var(--black);}
+.gen-assignments-btn{padding:10px 24px;background:var(--black);color:var(--lime);border:none;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:15px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.15s;}
+.gen-assignments-btn:hover{background:#222;}
+.coach-card{background:var(--white);border:1px solid var(--border);border-radius:6px;padding:18px;margin-bottom:12px;position:relative;overflow:hidden;}
+.coach-card-top{position:absolute;top:0;left:0;right:0;height:4px;}
+.coach-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22px;color:var(--black);margin-bottom:2px;}
+.coach-role{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;}
+.assignment-item{display:flex;gap:12px;padding:10px 12px;background:var(--bg);border-radius:4px;margin-bottom:8px;align-items:flex-start;}
+.assignment-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;color:var(--lime);background:var(--black);width:28px;height:28px;border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.assignment-body{flex:1;}
+.assignment-title{font-weight:700;font-size:13px;color:var(--black);margin-bottom:3px;}
+.assignment-desc{font-size:12px;color:var(--text-mid);line-height:1.5;}
+.assignment-format{font-size:11px;font-weight:600;color:var(--text-dim);margin-top:4px;}
+.slack-box{background:var(--black);border-radius:6px;padding:20px;margin-top:20px;}
+.slack-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--lime);margin-bottom:12px;}
+.slack-msg{font-family:monospace;font-size:12px;color:#e0e0e0;line-height:1.7;white-space:pre-wrap;word-break:break-word;}
+.copy-btn{margin-top:12px;padding:8px 18px;background:var(--lime);color:var(--black);border:none;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;letter-spacing:1px;cursor:pointer;transition:background 0.15s;}
+.copy-btn:hover{background:var(--lime-dark);}
 
 /* META ADS */
 .token-row{display:flex;gap:10px;margin-bottom:12px;}
 .token-in{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:10px 13px;color:var(--text);font-size:13px;font-family:monospace;transition:border-color 0.15s;}
 .token-in:focus{outline:none;border-color:var(--black);background:var(--white);}
-.btn-black{padding:10px 20px;background:var(--black);color:var(--lime);border:none;border-radius:4px;font-family:"Barlow Condensed",sans-serif;font-weight:900;font-style:italic;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.15s;}
+.btn-black{padding:10px 20px;background:var(--black);color:var(--lime);border:none;border-radius:4px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-style:italic;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background 0.15s;}
 .btn-black:hover{background:#222;}
 .btn-outline{padding:10px 20px;background:transparent;color:var(--text-mid);border:1px solid var(--border-mid);border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.15s;}
 .btn-outline:hover{border-color:var(--black);color:var(--black);}
@@ -294,9 +364,9 @@ input[type="number"]:focus{outline:none;border-color:var(--black);background:var
 .pri-icon{font-size:20px;}
 .pri-title{font-weight:600;font-size:14px;color:var(--text);margin-bottom:2px;}
 .pri-sub{font-size:12px;color:var(--text-dim);}
-.pillar-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text);}
+.pillar-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;color:var(--text);}
 .pillar-row:last-child{border-bottom:none;}
-.pillar-pct{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:17px;color:var(--black);background:var(--lime);padding:1px 7px;border-radius:2px;}
+.pillar-pct{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;color:var(--black);background:var(--lime);padding:1px 7px;border-radius:2px;}
 .plat-sum-row{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
 .plat-sum-name{width:130px;font-size:12px;color:var(--text-dim);}
 .plat-sum-track{flex:1;height:4px;background:var(--border);border-radius:99px;overflow:hidden;}
@@ -305,23 +375,21 @@ input[type="number"]:focus{outline:none;border-color:var(--black);background:var
 
 @media(max-width:1000px){.g4,.kpi-grid,.kpi-results-grid{grid-template-columns:repeat(2,1fr);}.pillar-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:680px){body{border-left:none;border-top:6px solid var(--lime);}main{padding:18px 14px;}header,nav{padding:0 14px;}.g2,.g3{grid-template-columns:1fr;}.g4{grid-template-columns:repeat(2,1fr);}.pillar-grid{grid-template-columns:repeat(2,1fr);}.token-row{flex-direction:column;}.kpi-grid,.kpi-results-grid{grid-template-columns:repeat(2,1fr);}.page-title{font-size:30px;}.logo-sub{display:none;}}
+
+.approve-btn{display:inline-block;padding:11px 24px;background:#22c55e;color:#fff;border:none;border-radius:4px;font-family:"Barlow Condensed",sans-serif;font-weight:900;font-style:italic;font-size:15px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.15s;margin-right:10px;}
+.approve-btn:hover{background:#16a34a;}
+.approve-btn:disabled{background:#ccc;cursor:not-allowed;}
+.pdf-btn{display:inline-block;padding:11px 24px;background:#1d4ed8;color:#fff;border:none;border-radius:4px;font-family:"Barlow Condensed",sans-serif;font-weight:900;font-style:italic;font-size:15px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.15s;}
+.pdf-btn:hover{background:#1e40af;}
+.approved-badge{display:inline-flex;align-items:center;gap:6px;background:#dcfce7;color:#15803d;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:99px;}
+.week-hist{background:var(--white);border:1px solid var(--border);border-left:4px solid #22c55e;border-radius:6px;padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
 </style>
 </head>
 <body>
 
-<!-- PASSWORD GATE -->
-<div id="gate">
-  <img class="gate-logo" src="data:image/png;base64,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" alt="ProWorld">
-  <div class="gate-title">PROWORLD™</div>
-  <div class="gate-sub">Marketing Command Center</div>
-  <input class="gate-input" type="password" id="gate-pass" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkPass()">
-  <button class="gate-btn" onclick="checkPass()">Enter</button>
-  <div class="gate-err" id="gate-err">Incorrect password. Try again.</div>
-</div>
-
 <header>
   <div class="logo">
-    <img src="data:image/png;base64,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" alt="ProWorld Logo">
+    <img src="data:image/png;base64,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" alt="PW" id="header-logo">
     <div class="logo-text">
       <div class="logo-wordmark">PRO<span class="hl">WORLD</span><span style="font-size:10px;font-style:normal;vertical-align:super;color:var(--text-dim);">™</span></div>
       <div class="logo-sub">Marketing Command Center</div>
@@ -339,6 +407,8 @@ input[type="number"]:focus{outline:none;border-color:var(--black);background:var
   <div class="nav-tab" data-tab="calendar">⊞ Calendar</div>
   <div class="nav-tab" data-tab="cadence">✓ Cadence</div>
   <div class="nav-tab" data-tab="ideas">⚡ Content Ideas</div>
+  <div class="nav-tab" data-tab="assignments">📋 Coach Assignments</div>
+  <div class="nav-tab" data-tab="archive">📚 Content Archive</div>
   <div class="nav-tab" data-tab="ads">◎ Meta Ads</div>
 </nav>
 
@@ -357,21 +427,21 @@ input[type="number"]:focus{outline:none;border-color:var(--black);background:var
   <div class="g2">
     <div class="card"><div class="card-top"></div><div class="card-label">This Week's Priorities</div>
       <div class="priority-row"><div class="pri-icon">🏕️</div><div><div class="pri-title">Summer Camp Push</div><div class="pri-sub">Every 3rd post references camp registration</div></div></div>
-      <div class="priority-row"><div class="pri-icon">📸</div><div><div class="pri-title">On-Court Content Day</div><div class="pri-sub">Batch shoot coaching tips + player testimonials</div></div></div>
-      <div class="priority-row"><div class="pri-icon">📣</div><div><div class="pri-title">Meta Ads Running</div><div class="pri-sub">Monitor leads + CPL in the Meta Ads tab</div></div></div>
-      <div class="priority-row"><div class="pri-icon">📧</div><div><div class="pri-title">Email Nurture — Week 2</div><div class="pri-sub">Send Week 2 email to summer camp leads</div></div></div>
+      <div class="priority-row"><div class="pri-icon">🎾</div><div><div class="pri-title">Tennis Creative Fix</div><div class="pri-sub">Film new Tennis ad with urgency hook this week</div></div></div>
+      <div class="priority-row"><div class="pri-icon">📸</div><div><div class="pri-title">Daily Academy Vibes</div><div class="pri-sub">2–3 iPhone clips from court every single day as story</div></div></div>
+      <div class="priority-row"><div class="pri-icon">📋</div><div><div class="pri-title">Deploy Coach Assignments</div><div class="pri-sub">Send weekly Slack message to all coaches</div></div></div>
     </div>
     <div class="card"><div class="card-top"></div><div class="card-label">Content Pillar Mix</div>
-      <div class="pillar-row"><span>🏋️ High Performance Training</span><span class="pillar-pct">15%</span></div>
-      <div class="pillar-row"><span>🎾 Foundation Development U12</span><span class="pillar-pct">12%</span></div>
-      <div class="pillar-row"><span>🧠 Mental Toughness by Tonio</span><span class="pillar-pct">12%</span></div>
-      <div class="pillar-row"><span>⚽ Soccer</span><span class="pillar-pct">12%</span></div>
-      <div class="pillar-row"><span>💪 Fitness & Recovery</span><span class="pillar-pct">10%</span></div>
-      <div class="pillar-row"><span>📚 Homeschool Life</span><span class="pillar-pct">8%</span></div>
-      <div class="pillar-row"><span>👨‍👩‍👧 Parents Corner</span><span class="pillar-pct">10%</span></div>
-      <div class="pillar-row"><span>🌟 Culture & Community</span><span class="pillar-pct">11%</span></div>
-      <div class="pillar-row"><span>🏓 Pickleball</span><span class="pillar-pct">5%</span></div>
-      <div class="pillar-row"><span>📣 Programs & Promotions</span><span class="pillar-pct">5%</span></div>
+      <div class="pillar-row"><span>🎾 Tennis — HP & Competitive</span><span class="pillar-pct">25%</span></div>
+      <div class="pillar-row"><span>🎾 Tennis — Developmental U12/U10/U8</span><span class="pillar-pct">20%</span></div>
+      <div class="pillar-row"><span>🎾 Tennis — Tips, Drills & Lifestyle</span><span class="pillar-pct">12%</span></div>
+      <div class="pillar-row"><span>🎾 Tennis — College Placement</span><span class="pillar-pct">5%</span></div>
+      <div class="pillar-row"><span>⚽ Soccer</span><span class="pillar-pct">10%</span></div>
+      <div class="pillar-row"><span>💪 Fitness & Recovery</span><span class="pillar-pct">5%</span></div>
+      <div class="pillar-row"><span>👨‍👩‍👧 Parents Corner</span><span class="pillar-pct">8%</span></div>
+      <div class="pillar-row"><span>🌟 Culture & Community</span><span class="pillar-pct">8%</span></div>
+      <div class="pillar-row"><span>📣 Programs & Promos</span><span class="pillar-pct">5%</span></div>
+      <div class="pillar-row"><span>🏓 Pickleball</span><span class="pillar-pct">2%</span></div>
     </div>
   </div>
 </div>
@@ -402,9 +472,9 @@ input[type="number"]:focus{outline:none;border-color:var(--black);background:var
   </div>
   <button class="calc-btn" onclick="calcKPIs()">⚡ Calculate Week-over-Week Growth</button>
   <div id="kpi-results" style="display:none;">
-    <div style="margin-top:22px;"><div class="card-label">Instagram Growth — Week over Week</div>
+    <div style="margin-top:22px;"><div class="card-label">Instagram Growth</div>
     <div class="kpi-results-grid mb20" id="ig-res"></div>
-    <div class="card-label">Meta Ads Growth — Week over Week</div>
+    <div class="card-label">Meta Ads Growth</div>
     <div class="kpi-results-grid" id="meta-res"></div></div>
   </div>
 </div>
@@ -450,33 +520,37 @@ input[type="number"]:focus{outline:none;border-color:var(--black);background:var
     <div class="card"><div class="card-top"></div><div class="card-label">Posting Tips</div>
       <div style="display:flex;flex-direction:column;gap:11px;font-size:13px;color:var(--text-mid);line-height:1.6;">
         <div>🕐 <strong style="color:var(--text);">Best windows:</strong> 7–9 AM and 6–8 PM EST</div>
+        <div>📸 <strong style="color:var(--text);">Daily Academy Vibes:</strong> 2–3 iPhone clips as a Story every single day</div>
         <div>📈 <strong style="color:var(--text);">Reels get 3× more reach</strong> than static posts right now</div>
-        <div>🎥 <strong style="color:var(--text);">Batch shoot:</strong> Film 5–7 coaching tips in one court session</div>
-        <div>📅 <strong style="color:var(--text);">Stories daily:</strong> Even a poll keeps your reach warm</div>
+        <div>🎾 <strong style="color:var(--text);">Tennis = 70%</strong> of all content — HP, developmental, tips, college</div>
+        <div>⚽ <strong style="color:var(--text);">Soccer = 30%</strong> — Lukas leads all soccer content</div>
         <div>🏕️ <strong style="color:var(--text);">Camp rule:</strong> Every 3rd post references summer camp registration</div>
-        <div>🧠 <strong style="color:var(--text);">Tonio content:</strong> Mental performance clips consistently outperform</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- IDEAS -->
+<!-- CONTENT IDEAS -->
 <div class="section" id="ideas">
   <div class="page-title">CONTENT <span class="hl">IDEAS</span></div>
-  <div class="page-sub">Select a pillar and platform — ideas built for ProWorld's voice and system</div>
+  <div class="page-sub">Select a pillar and platform — ideas built for ProWorld's voice, coach-assigned and ready to brief</div>
   <div class="card"><div class="card-top"></div>
-    <div class="card-label">Content Pillar</div>
-    <div class="pillar-grid">
-      <div class="pillar-btn on" onclick="selPillar(this,'hpt')"><span class="pi">🏋️</span>High Performance</div>
-      <div class="pillar-btn" onclick="selPillar(this,'u12')"><span class="pi">🎾</span>Foundation U12</div>
-      <div class="pillar-btn" onclick="selPillar(this,'mental')"><span class="pi">🧠</span>Mental Toughness</div>
+    <div class="card-label">Content Pillar — Tennis 70% | Soccer 30%</div>
+    <div class="pillar-grid" id="pillar-grid">
+      <div class="pillar-btn on" onclick="selPillar(this,'tennis_hp')"><span class="pi">🏆</span>Tennis HP</div>
+      <div class="pillar-btn" onclick="selPillar(this,'tennis_dev')"><span class="pi">🎾</span>Tennis Dev U12/U10/U8</div>
+      <div class="pillar-btn" onclick="selPillar(this,'tennis_mental')"><span class="pi">🧠</span>Mental Performance</div>
+      <div class="pillar-btn" onclick="selPillar(this,'tennis_college')"><span class="pi">🎓</span>College Placement</div>
+      <div class="pillar-btn" onclick="selPillar(this,'tennis_tips')"><span class="pi">💡</span>Tips & Drills</div>
+      <div class="pillar-btn" onclick="selPillar(this,'tennis_tournament')"><span class="pi">🏅</span>Tournament Prep</div>
+      <div class="pillar-btn" onclick="selPillar(this,'tennis_florian')"><span class="pi">✈️</span>On Tour with Florian</div>
       <div class="pillar-btn" onclick="selPillar(this,'soccer')"><span class="pi">⚽</span>Soccer</div>
       <div class="pillar-btn" onclick="selPillar(this,'fitness')"><span class="pi">💪</span>Fitness & Recovery</div>
-      <div class="pillar-btn" onclick="selPillar(this,'homeschool')"><span class="pi">📚</span>Homeschool Life</div>
       <div class="pillar-btn" onclick="selPillar(this,'parents')"><span class="pi">👨‍👩‍👧</span>Parents Corner</div>
-      <div class="pillar-btn" onclick="selPillar(this,'culture')"><span class="pi">🌟</span>Culture & Community</div>
-      <div class="pillar-btn" onclick="selPillar(this,'pickle')"><span class="pi">🏓</span>Pickleball</div>
+      <div class="pillar-btn" onclick="selPillar(this,'culture')"><span class="pi">🌟</span>Culture & Vibes</div>
       <div class="pillar-btn" onclick="selPillar(this,'promo')"><span class="pi">📣</span>Programs & Promos</div>
+      <div class="pillar-btn" onclick="selPillar(this,'pickleball')"><span class="pi">🏓</span>Pickleball</div>
+      <div class="pillar-btn" onclick="selPillar(this,'vision')"><span class="pi">👁</span>Founders Vision</div>
     </div>
     <div class="card-label">Platform</div>
     <div class="plat-row">
@@ -488,6 +562,103 @@ input[type="number"]:focus{outline:none;border-color:var(--black);background:var
     </div>
     <button class="gen-btn" onclick="genIdeas()">⚡ Generate 5 Ideas</button>
     <div id="ideas-out"></div>
+  </div>
+</div>
+
+<!-- COACH ASSIGNMENTS -->
+<div class="section" id="assignments">
+  <div class="page-title">COACH <span class="hl">ASSIGNMENTS</span></div>
+  <div class="page-sub">Generate this week's content assignments per coach — then copy the Slack message and send</div>
+
+  <div class="card mb14"><div class="card-top"></div>
+    <div class="card-label">Week Settings</div>
+    <div style="margin-bottom:12px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;">Quick Week Select</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;">
+        <button class="btn-outline" onclick="setWeekFromPicker(-1)" style="padding:6px 12px;font-size:12px;">← Last Week</button>
+        <button class="btn-black" onclick="setWeekFromPicker(0)" style="padding:6px 14px;font-size:12px;">This Week</button>
+        <button class="btn-outline" onclick="setWeekFromPicker(1)" style="padding:6px 12px;font-size:12px;">Next Week →</button>
+      </div>
+    </div>
+    <div class="week-selector">
+      <input type="text" class="week-input" id="week-dates" placeholder="e.g. May 12–18, 2026" value="">
+      <input type="text" class="week-input" id="week-theme" placeholder="Optional: weekly theme e.g. Summer Camp Push">
+      <button class="gen-assignments-btn" onclick="genAssignments()">⚡ Generate Sunday Assignments</button>
+    </div>
+  </div>
+
+  <div id="assignments-out"></div>
+
+  <div id="assignment-actions" style="display:none;margin-top:16px;">
+    <div class="card"><div class="card-top"></div>
+      <div class="card-label">Actions</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+        <button class="pdf-btn" onclick="downloadPDF()">📄 Download PDF</button>
+        <button class="approve-btn" id="approve-btn" onclick="approveWeek()">✅ Approve &amp; Lock This Week</button>
+        <span id="approved-status" style="display:none;" class="approved-badge">✅ Approved &amp; Saved</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
+    <div class="card-top"></div>
+    <div class="card-label">Approved Weeks History</div>
+    <div id="weeks-history-list"><div style="color:var(--text-dim);font-size:13px;padding:10px 0;">No approved weeks yet. Generate and approve this week to get started.</div></div>
+  </div>
+</div>
+
+<!-- CONTENT ARCHIVE -->
+<div class="section" id="archive">
+  <div class="page-title">CONTENT <span class="hl">ARCHIVE</span></div>
+  <div class="page-sub">Every post ProWorld has published — searchable by topic, coach, or pillar. Never repeat a post.</div>
+  <div class="g3 mb14">
+    <div class="stat"><div class="stat-bar" style="background:var(--lime)"></div><div class="stat-label">Posts Logged</div><div class="stat-value" id="archive-count" style="font-size:28px;">—</div></div>
+    <div class="stat"><div class="stat-bar" style="background:var(--mint)"></div><div class="stat-label">Weeks Active</div><div class="stat-value" id="archive-weeks" style="font-size:28px;">—</div></div>
+    <div class="stat"><div class="stat-bar" style="background:var(--cyan)"></div><div class="stat-label">Pillars Covered</div><div class="stat-value" style="font-size:28px;">10</div></div>
+  </div>
+  <div class="card mb14"><div class="card-top"></div>
+    <div class="card-label">📌 Recurring Weekly Posts — Always in the Calendar</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+      <div style="background:var(--bg);border:1px solid var(--border);border-left:4px solid var(--black);border-radius:4px;padding:12px;"><div style="font-weight:700;font-size:13px;margin-bottom:3px;">🏆 Monday — Tournament Promo</div><div style="font-size:12px;color:var(--text-dim);">Drive sign-ups for upcoming ProWorld tournament</div></div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-left:4px solid var(--black);border-radius:4px;padding:12px;"><div style="font-weight:700;font-size:13px;margin-bottom:3px;">🏆 Wednesday — Tournament Promo</div><div style="font-size:12px;color:var(--text-dim);">Mid-week reminder. Different angle from Monday.</div></div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-left:4px solid var(--black);border-radius:4px;padding:12px;"><div style="font-weight:700;font-size:13px;margin-bottom:3px;">🏆 Friday Night — Last Call</div><div style="font-size:12px;color:var(--text-dim);">Final urgency push before sign-up closes.</div></div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-left:4px solid var(--lime);border-radius:4px;padding:12px;"><div style="font-weight:700;font-size:13px;margin-bottom:3px;">🌟 Weekly — Players in Action Recap</div><div style="font-size:12px;color:var(--text-dim);">ProWorld players with tournament wins or strong results.</div></div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-left:4px solid var(--lime);border-radius:4px;padding:12px;"><div style="font-weight:700;font-size:13px;margin-bottom:3px;">📸 Daily — Academy Vibes Story</div><div style="font-size:12px;color:var(--text-dim);">2–3 iPhone clips from court every day. No script.</div></div>
+    </div>
+  </div>
+  <div class="card mb14"><div class="card-top"></div>
+    <div class="card-label">Search & Filter</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;">
+      <input type="text" id="archive-search" class="week-input" placeholder="Search posts, coaches, topics..." style="flex:2;min-width:200px;" oninput="renderArchive()">
+      <select id="archive-pillar" class="week-input" onchange="renderArchive()">
+        <option value="all">All Pillars</option>
+        <option>Tennis HP</option><option>Tennis Dev</option><option>Mental Performance</option>
+        <option>College Placement</option><option>Tournament Prep</option><option>Tips &amp; Drills</option>
+        <option>Soccer</option><option>Fitness</option><option>Parents Corner</option>
+        <option>Culture &amp; Community</option><option>Programs &amp; Promos</option><option>Pickleball</option>
+      </select>
+      <select id="archive-platform" class="week-input" onchange="renderArchive()">
+        <option value="all">All Platforms</option>
+        <option>Instagram</option><option>TikTok</option><option>Facebook</option><option>YouTube</option><option>Email</option>
+      </select>
+    </div>
+  </div>
+  <div class="card mb14"><div class="card-top"></div>
+    <div class="card-label">+ Log a New Post</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+      <input type="text" id="new-post-title" class="week-input" placeholder="Post title *" style="width:100%;">
+      <input type="text" id="new-post-desc" class="week-input" placeholder="Brief description" style="width:100%;">
+      <input type="text" id="new-post-pillar" class="week-input" placeholder="Pillar e.g. Mental Performance" style="width:100%;">
+      <input type="text" id="new-post-coach" class="week-input" placeholder="Coach e.g. Tonio" style="width:100%;">
+      <select id="new-post-platform" class="week-input" style="width:100%;"><option>Instagram</option><option>TikTok</option><option>Facebook</option><option>YouTube</option><option>Email</option></select>
+      <select id="new-post-format" class="week-input" style="width:100%;"><option>Reel</option><option>Carousel</option><option>Static Post</option><option>Story</option><option>Talking Head</option><option>Email</option></select>
+      <input type="date" id="new-post-date" class="week-input" style="width:100%;">
+    </div>
+    <button class="gen-assignments-btn" onclick="addPost()" style="font-size:13px;padding:10px 22px;">+ Log This Post</button>
+  </div>
+  <div class="card"><div class="card-top"></div>
+    <div class="card-label">Post History</div>
+    <div id="archive-list"><div style="text-align:center;color:#888;padding:40px;">Loading...</div></div>
   </div>
 </div>
 
@@ -528,28 +699,13 @@ input[type="number"]:focus{outline:none;border-color:var(--black);background:var
 </main>
 
 <script>
-// PASSWORD
-const PASS = "proworld2026";
-function checkPass(){
-  const v = document.getElementById("gate-pass").value;
-  if(v === PASS){
-    document.getElementById("gate").style.display="none";
-    sessionStorage.setItem("pw_auth","1");
-  } else {
-    document.getElementById("gate-err").style.display="block";
-    document.getElementById("gate-pass").value="";
-    document.getElementById("gate-pass").focus();
-  }
-}
-if(sessionStorage.getItem("pw_auth")==="1"){
-  document.getElementById("gate").style.display="none";
-}
+// No password gate
 
-// DATE
+// Date
 const NOW=new Date();
 document.getElementById("today-date").textContent=NOW.toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"});
 
-// NAV
+// Nav
 document.querySelectorAll(".nav-tab").forEach(tab=>{
   tab.addEventListener("click",()=>{
     document.querySelectorAll(".nav-tab").forEach(t=>t.classList.remove("active"));
@@ -572,7 +728,7 @@ function calcKPIs(){
   document.getElementById("kpi-results").scrollIntoView({behavior:"smooth",block:"start"});
 }
 
-// CADENCE
+// Cadence
 const PLATS=[{name:"Instagram Posts",color:"#9333ea"},{name:"Instagram Stories",color:"#e11d48"},{name:"TikTok",color:"#0ea5e9"},{name:"Facebook",color:"#2563eb"},{name:"YouTube / Reels",color:"#dc2626"},{name:"Facebook Stories",color:"#7c3aed"},{name:"Email",color:"#16a34a"}];
 const cadState={};
 PLATS.forEach((_,i)=>{cadState[i]=[false,false,false,false,false,false,false];});
@@ -595,18 +751,18 @@ function renderCad(){
 function toggleCad(pi,di){cadState[pi][di]=!cadState[pi][di];renderCad();}
 renderCad();
 
-// CALENDAR
+// Calendar
 let calY=NOW.getFullYear(),calM=NOW.getMonth();
 const MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
 const SM=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const dayPlans={
-  1:{theme:"Coaching Monday",posts:["IG Post: Technique tip — 1% Better series","TikTok: 60-sec Pro Habits clip","Facebook: Parent-focused coaching insight"],stories:["AM: Poll — what skill next?","PM: Behind the scenes on court","Eve: Camp countdown"]},
-  2:{theme:"Player Tuesday",posts:["IG Post: Player spotlight or transformation","TikTok: Match or training highlight","Facebook: Program enrollment CTA"],stories:["AM: Day in the life of a ProWorld player","PM: Q&A sticker","Eve: Highlight save prompt"]},
-  3:{theme:"Mental Wednesday",posts:["IG Reel: Mental Wins with Tonio","TikTok: Pressure to Presence clip","YouTube: Evolve Your Game podcast clip"],stories:["AM: Mental cue of the day","PM: Tonio tip","Eve: Camp registration reminder"]},
-  4:{theme:"Soccer Thursday",posts:["IG Post: Soccer movement mastery","TikTok: Touch & control drill","Facebook: Soccer program feature"],stories:["AM: Soccer drill of the day","PM: Coach's corner clip","Eve: Link in bio reminder"]},
-  5:{theme:"Results Friday",posts:["IG Post: Weekly win — player achievement","TikTok: This week at ProWorld recap","Facebook: Social proof + testimonial"],stories:["AM: Camp offer drop","PM: Week recap","Eve: Weekend event teaser"]},
-  6:{theme:"Culture Saturday",posts:["IG Post: Community / lifestyle content","Email: Weekly newsletter send"],stories:["AM: Saturday court energy","PM: Family journey story","Eve: Sunday preview"]},
-  0:{theme:"Sunday Planning",posts:["IG Stories: Week preview","YouTube: Weekend training highlight"],stories:["AM: Motivational quote","PM: Academy B-roll","Eve: This week at ProWorld teaser"]},
+  1:{theme:"HP & Competitive Monday",posts:["IG Reel: HP coaching moment — Paolo or Eric on court","TikTok: Quick HP tip from Nico or Sebastien","Facebook: College placement story from Paolo"],stories:["AM: Daily Academy Vibes — 3 clips from morning court","PM: HP player in action","Eve: Summer camp CTA"]},
+  2:{theme:"Developmental Tuesday",posts:["IG Post: U8/U10 coaching moment — Kam or Robby","TikTok: Fun drill for young players — Coach ET","Facebook: Parent education post"],stories:["AM: Daily Academy Vibes — U8/U10 warmup","PM: Little player highlight","Eve: Registration reminder"]},
+  3:{theme:"Mental Performance Wednesday",posts:["IG Reel: Tonio mental tip — pressure/competition","TikTok: Pre-match routine breakdown — Tonio","YouTube: Longer mental performance feature"],stories:["AM: Daily Academy Vibes — coaching session clips","PM: Mental cue of the day","Eve: Camp countdown"]},
+  4:{theme:"Soccer Thursday",posts:["IG Post: Lukas soccer drill or tip","TikTok: Soccer technique — Lukas on field","Facebook: Soccer program feature"],stories:["AM: Daily Academy Vibes — soccer training","PM: Soccer player highlight","Eve: Multi-sport camp mention"]},
+  5:{theme:"Results & College Friday",posts:["IG Post: Player win or tournament result","TikTok: College placement tip — Paolo","Facebook: Weekly achievement + social proof"],stories:["AM: Daily Academy Vibes — Friday energy","PM: Week recap","Eve: Weekend event teaser"]},
+  6:{theme:"Culture Saturday",posts:["IG Post: Community/lifestyle — court atmosphere","Email: Weekly newsletter"],stories:["AM: Daily Academy Vibes — Saturday vibes","PM: Family on court","Eve: Sunday preview"]},
+  0:{theme:"Florian Sunday",posts:["IG Stories: On-tour perspective from Florian","YouTube: Weekend training highlight or Florian clip"],stories:["AM: Daily Academy Vibes — Sunday training","PM: Inspirational quote","Eve: Week preview"]},
 };
 const cDow={1:["<span class='cpill p-ig'>IG</span>","<span class='cpill p-tt'>TT</span>"],2:["<span class='cpill p-ig'>IG</span>","<span class='cpill p-fb'>FB</span>"],3:["<span class='cpill p-yt'>Reel</span>","<span class='cpill p-tt'>TT</span>"],4:["<span class='cpill p-ig'>IG</span>","<span class='cpill p-fb'>FB</span>"],5:["<span class='cpill p-ig'>IG</span>","<span class='cpill p-tt'>TT</span>"],6:["<span class='cpill p-em'>Email</span>","<span class='cpill p-ig'>IG</span>"],0:["<span class='cpill p-yt'>YT</span>","<span class='cpill p-ig'>IG</span>"]};
 function buildCal(){
@@ -626,88 +782,296 @@ function showDay(d,dow){
 }
 buildCal();
 
-// IDEAS
-let activePillar="hpt",activePlat="Instagram";
+// ── CONTENT IDEAS ──
+let activePillar="tennis_hp",activePlat="Instagram";
 function selPillar(el,p){document.querySelectorAll(".pillar-btn").forEach(b=>b.classList.remove("on"));el.classList.add("on");activePillar=p;}
 function selPlat(el,p){document.querySelectorAll(".plat-pick").forEach(b=>b.classList.remove("on"));el.classList.add("on");activePlat=p;}
+
 const IDEAS={
-  hpt:{Instagram:[{t:"Explosive First Step",b:"Film the split-step and first explosive step reaction drill. Slow motion + coaching cue overlay. This is the 1% Better series at its best.",h:"Hook: \"The difference between getting to the ball and watching it go by is this one move.\""},
-    {t:"Tournament Warm-Up Routine",b:"Show the exact warm-up sequence ProWorld players use before a competitive match. Film it on court before a real tournament.",h:"Hook: \"What our players do in the 20 minutes before they compete.\""},
-    {t:"Serve Toss Breakdown",b:"One of the most common errors in junior tennis. Film a real coaching moment — before and after. Let the improvement speak.",h:"Hook: \"Fix your toss. Fix your serve. Here's how.\""},
-    {t:"Pro Habits: Morning Routine",b:"What a ProWorld student-athlete does from wake-up to first ball. Authentic and aspirational. Film it like a mini documentary.",h:"Hook: \"This is what discipline looks like at 7 AM.\""},
-    {t:"Strength Circuit of the Week",b:"Film the weekly strength circuit used in training. 3–4 exercises, coach explains each one. Practical and immediately useful for followers.",h:"Hook: \"Add this to your training week. Results in 30 days.\""}],
-    TikTok:[{t:"Footwork Drill in 60 Seconds",b:"One drill, one coach, one camera angle. Fast cuts. No fluff. Just the drill and the coaching cue.",h:"Hook: \"60 seconds. Better footwork forever.\""},
-    {t:"Adjustment Steps — the Secret Weapon",b:"Most players don't know about adjustment steps. Film it, name it, explain it in under 45 seconds.",h:"Hook: \"The footwork move that top juniors use and beginners don't know exists.\""},
-    {t:"Recovery Stretch Sequence",b:"Post-match recovery is underrated. Film the 5-minute stretch routine ProWorld players use after every session.",h:"Hook: \"Do this after every practice. Your body will thank you.\""},
-    {t:"Breathing Between Points",b:"Simple, powerful, visual. Film a player doing the reset breath routine between points. Overlay the coaching cue.",h:"Hook: \"The best players in the world do this between every single point.\""},
-    {t:"Consistency Habits of Top Juniors",b:"Quick list format. What separates the juniors who improve fast from those who plateau. Coaches on camera, direct and specific.",h:"Hook: \"3 habits. Every top junior does them. Most beginners don't.\""}]},
-  u12:{Instagram:[{t:"How 4–8 Year Olds Learn Tennis",b:"Educational carousel for parents. Explain the developmental stages, why it looks like play, and why that's exactly right. ProWorld expertise on display.",h:"Hook: \"Your 6-year-old isn't playing. They're building an athlete.\""},
-    {t:"Red Ball Progressions Explained",b:"Show the ITF red-orange-green ball system visually. Parents love understanding the system their child is in.",h:"Hook: \"The ball color matters more than you think.\""},
-    {t:"Hand-Eye Drill for Kids",b:"A fun, visual drill that parents can do at home with their kids. Easy to share, easy to try, builds goodwill.",h:"Hook: \"5 minutes at home. Better tennis at the academy.\""},
-    {t:"Building Confidence in Young Players",b:"Talk directly to parents. What confidence looks like at this age, how ProWorld builds it, and what to look for at home.",h:"Hook: \"The goal at this age isn't technique. It's this.\""},
-    {t:"Why Multi-Sport Play Builds Better Athletes",b:"Science-backed, parent-facing content. ProWorld's multi-sport philosophy explained simply.",h:"Hook: \"Let your kid play more than one sport. Here's why.\""}]},
-  mental:{Instagram:[{t:"Resetting After a Double Fault",b:"Tonio on camera. One specific situation. One specific mental tool. Film it like a coaching session, not a lecture.",h:"Hook: \"What to tell yourself after a double fault. From a mental performance coach.\""},
-    {t:"Visualization Ritual Before Matches",b:"Tonio walks through the exact pre-match visualization protocol. Short, specific, actionable.",h:"Hook: \"Champions see it before they do it. Here's the exact process.\""},
-    {t:"Staying Calm in a Tiebreak",b:"The most pressure moment in tennis. Tonio's framework for staying present when it matters most.",h:"Hook: \"Tiebreak. Serving at 5-6. Here's what to think.\""},
-    {t:"Confidence Under Fire",b:"What to do after a bad call, a momentum swing, or a string of unforced errors. Tonio's reset system.",h:"Hook: \"Your confidence doesn't have to go with your mistakes.\""},
-    {t:"Fearless Competing",b:"The difference between playing to win and playing not to lose. Tonio explains the mindset shift that changes everything.",h:"Hook: \"Most juniors play scared. Here's how ProWorld fixes that.\""}],
-    TikTok:[{t:"What Pros Tell Themselves After a Mistake",b:"Tonio breaks it down in 30 seconds. Punchy, specific, immediately useful. High save rate content.",h:"Hook: \"The self-talk of champions after an error. It's not what you think.\""},
-    {t:"Between-Points Routine",b:"Film a player doing the full between-points routine — the walk, the breath, the ritual. Overlay Tonio's coaching cue.",h:"Hook: \"This 8-second routine changes everything.\""},
-    {t:"Turning Fear Into Focus",b:"One mental shift. Tonio on camera, direct to lens. 30 seconds.",h:"Hook: \"Fear means you care. Here's how to use it.\""}]},
-  soccer:{Instagram:[{t:"10-Touch Ball Mastery Warmup",b:"Film the warmup sequence used in ProWorld soccer training. Each touch, each surface, each cue. Coaches explaining while players demonstrate.",h:"Hook: \"10 touches. Every session. This is why ProWorld players have elite first touch.\""},
-    {t:"First Touch: Cushion vs Directional",b:"Two types of first touch, when to use each, how to train both. Visual coaching content that every soccer parent will save.",h:"Hook: \"Most youth players only know one type of first touch.\""},
-    {t:"Reading the Defender's Hips",b:"Decision-making content. How to know when to dribble vs pass by reading the defender. Film it in a real training session.",h:"Hook: \"You don't need to be faster. You need to read this.\""},
-    {t:"Dribbling in 3 Speeds",b:"Slow setup burst. Show the concept, drill it, film the result. Immediately applicable and visually satisfying.",h:"Hook: \"Dribbling has 3 speeds. Most players only use one.\""},
-    {t:"Acceleration Mechanics",b:"Sprint technique breakdown for soccer players. First 3 steps, body angle, arm drive. Coaches explaining, players demonstrating.",h:"Hook: \"Speed isn't born. It's taught. Here's how we teach it.\""}],
-    TikTok:[{t:"Footwork Pattern for Strikers",b:"Fast, visual, impressive. Film the striker footwork pattern sequence in training. Great music, fast cuts.",h:"Hook: \"Striker footwork. You can train this today.\""},
-    {t:"When to Dribble vs Pass",b:"Tonio-style but for soccer decisions. Quick framework, coach on camera, specific and direct.",h:"Hook: \"Most youth players get this wrong every single game.\""},
-    {t:"Agility + Change of Direction Drill",b:"Film the full drill from multiple angles. Coach explains the soccer application. High energy.",h:"Hook: \"60 seconds of agility work. Every soccer player needs this.\""}]},
-  fitness:{Instagram:[{t:"Core Routine for Tennis & Soccer Athletes",b:"Film the core circuit ProWorld uses. 4 exercises, 2 rounds, coach explains the sport-specific benefit of each.",h:"Hook: \"The core routine we use for every ProWorld athlete. Steal it.\""},
-    {t:"Plyometric Drills for Speed",b:"Box jumps, lateral bounds, depth drops. Film them in the gym with coaching cues. Parents love seeing the athletic development side.",h:"Hook: \"Speed is built here. Before it shows up on the court or field.\""},
-    {t:"Post-Match Cooldown",b:"Show the full cooldown routine. What ProWorld athletes do in the 10 minutes after competing. Recovery education.",h:"Hook: \"Most players go home after a match. The best players do this first.\""},
-    {t:"Shoulder Prehab for Overhead Athletes",b:"Tennis-specific injury prevention. Simple routine. Coaches demonstrating. Parents will share this widely.",h:"Hook: \"Shoulder problems start before you feel them. Here's how we prevent them.\""},
-    {t:"Transformation Story",b:"Feature an athlete's physical development over a season. Real data, real footage, real coaching.",h:"Hook: \"This is what 6 months of the ProWorld performance program looks like.\""}]},
-  homeschool:{Instagram:[{t:"Day in the Life of a Student-Athlete",b:"Full day documentary. Wake up, classes, lunch, training, recovery, homework. Show the real schedule. Parents want to see this works.",h:"Hook: \"School + sport + rest. Here's how ProWorld student-athletes do it all.\""},
-    {t:"How Homeschool Allows More Training",b:"Educational post for parents considering the model. Facts, schedule, benefits. ProWorld expertise.",h:"Hook: \"What if school happened around your child's peak athletic years?\""},
-    {t:"Classroom + Court Schedule",b:"Show the actual daily workflow. Visual schedule graphic or video walkthrough of a real student-athlete's day.",h:"Hook: \"This is what a ProWorld Tuesday looks like from 8 AM to 6 PM.\""},
-    {t:"Parent Testimonial — Homeschool",b:"Real parent, real experience. Film it raw and authentic. This content converts hesitant parents faster than anything else.",h:"Hook: \"We were nervous. Here's what happened after 3 months.\""}]},
-  parents:{Instagram:[{t:"What to Pack for a Match",b:"Practical checklist content. Photo carousel or short video. Parents save this and share it with other tennis parents.",h:"Hook: \"Never forget something at a tournament again. The ProWorld match bag checklist.\""},
-    {t:"How to Talk to Your Child After a Loss",b:"Emotional, specific, immediately useful. This is the most shared content category for sports parents.",h:"Hook: \"The 3 things to say. And the 3 things to never say. After a tough loss.\""},
-    {t:"Why Sideline Coaching Doesn't Help",b:"Honest, direct, evidence-backed. Coaches explaining what happens in a player's head when parents coach from the sideline.",h:"Hook: \"You're trying to help. Here's why it's making it harder.\""},
-    {t:"Supporting vs Pressuring",b:"The difference, how to tell which one you're doing, and how to shift. Tonio + coaching team collaboration content.",h:"Hook: \"Every sports parent wants to support. Not all of them know the difference.\""},
-    {t:"Building Confidence in Young Athletes",b:"What it looks like, what ProWorld does, what parents can do at home. Practical and warm.",h:"Hook: \"Confidence is built daily. Here's where it starts.\""}]},
-  culture:{Instagram:[{t:"Mic'd Up Practice",b:"Mic a coach for a full practice session. Real coaching, real moments, real ProWorld energy. This is the most authentic content you can make.",h:"Hook: \"We mic'd up the coach. Here's what ProWorld training actually sounds like.\""},
-    {t:"Drone Shots of the Academy",b:"Cinematic overhead footage of the courts, the facility, the athletes training. No narration needed. The visual does the work.",h:"Caption: \"ProWorld Academy. Boca Raton.\" That's it."},
-    {t:"Family Training Story",b:"Feature a family with multiple children training at ProWorld. Their journey, their dynamic, their results.",h:"Hook: \"Two siblings. One academy. Two completely different journeys.\""},
-    {t:"Player's View of a Rally",b:"GoPro or phone on the player's side. First-person perspective of a rally from inside the academy. Immersive and shareable.",h:"Hook: \"This is what it looks like from inside a ProWorld rally.\""},
-    {t:"A Week in the Life of an Academy Athlete",b:"7-day documentary series or one condensed reel. Real training, real school, real recovery, real results.",h:"Hook: \"Monday through Sunday. Inside ProWorld.\""}]},
-  pickle:{Instagram:[{t:"Basic Rules Explained",b:"Simple, friendly, accessible. Parents and families new to pickleball love this. Lower production needed — just clear and fun.",h:"Hook: \"New to pickleball? Here are the only 5 rules you need to know.\""},
-    {t:"Parent-Kid Pickleball Clip",b:"Film a fun parent-child session on the pickleball court. Laughing, learning, playing together. Pure community content.",h:"No hook needed. Just warmth and fun."},
-    {t:"How Pickleball Helps Footwork & Coordination",b:"Connect pickleball to athletic development. Short educational clip for parents who see it as just recreational.",h:"Hook: \"Your kid is having fun. And building this.\""},
-    {t:"Pickleball Open Play Day",b:"Invite the community. Film the energy. Show the accessibility. Great for brand warmth and new audience reach.",h:"Hook: \"Every Friday. All levels. Come play.\""}]},
-  promo:{Instagram:[{t:"Summer Camp Registration Now Open",b:"Clean, direct. Real photo from court — not a graphic. Dates, program overview, link in bio. This is your most important conversion post.",h:"Hook: \"Summer 2026 is filling fast. Here's everything inside ProWorld summer camp.\""},
-    {t:"Trial Week Sign-Up",b:"Drive new families to try ProWorld. One week, real training, real coaching. Specific dates and a clear CTA.",h:"Hook: \"One week to see if ProWorld is the right fit. First session on us.\""},
-    {t:"High-Performance Tryout Announcement",b:"Selective, aspirational, specific. Who it's for, what's included, how to apply.",h:"Hook: \"ProWorld is opening 8 spots in the High-Performance program. Here's how to try out.\""},
-    {t:"Soccer Program Start Date",b:"Clean launch post. Dates, age groups, what's included, link in bio. Photo from a real session.",h:"Hook: \"ProWorld Soccer is starting [date]. Here's what's inside.\""},
-    {t:"Seasonal Camp Launch",b:"Whether it's Thanksgiving, Winter, or Summer — launch it with energy. Real footage, real energy, real dates.",h:"Hook: \"[Season] camp is here. Limited spots. Everything you need to know.\""}]}
+  tennis_hp:{
+    Instagram:[
+      {t:"What HP Training Actually Looks Like",b:"Film a real HP session — the intensity, the coaching, the focus. No narration needed. Let the footage speak. Paolo or Eric on court.",coach:"Coach: Paolo or Eric",format:"Reel 30–45 sec",h:'Hook: "This is what high performance looks like at 9 AM."'},
+      {t:"The Individual Assessment Process",b:"Paolo or Sebastien walks through exactly how ProWorld assesses a player — technique, fitness, mental, and game performance. This is your biggest differentiator.",coach:"Coach: Paolo",format:"Carousel or talking head video",h:'Hook: "Most academies guess at your child\'s progress. We measure it."'},
+      {t:"Nico's HP Footwork Drill",b:"Nico demonstrates the footwork pattern used in HP training. Film from the side. Slow motion on the key movement. Text overlay with the coaching cue.",coach:"Coach: Nico",format:"Reel 20–30 sec",h:'Hook: "HP footwork starts here."'},
+      {t:"Eric's HP Match Preparation",b:"Eric explains exactly what a ProWorld HP player does in the 48 hours before a match — physical, mental, tactical preparation.",coach:"Coach: Eric",format:"Talking head or carousel",h:'Hook: "The match is won before you step on court."'},
+      {t:"Sebastien's All-Around Development Philosophy",b:"Sebastien on camera talking about what it takes to develop a complete player — not just strokes, but athleticism, mentality, and consistency.",coach:"Coach: Sebastien",format:"Talking head 60 sec",h:'Hook: "Technique is only 30% of the game."'},
+    ],
+    TikTok:[
+      {t:"HP Training Day in 60 Seconds",b:"Fast montage of a full HP training day — warmup, drills, fitness, mental session. Great music. No talking.",coach:"Coach: Any HP coach on court",format:"Fast cut montage 45–60 sec",h:'Hook: "6 AM. This is what HP looks like."'},
+      {t:"Nico vs Paolo — Rally Challenge",b:"Fun challenge between two coaches. Shows skill level, creates entertainment, builds personalities.",coach:"Coach: Nico + Paolo",format:"Challenge format 30–45 sec",h:'Hook: "We challenged our coaches. Here\'s what happened."'},
+      {t:"3 Things Every HP Player Does Differently",b:"Eric or Sebastien on camera. Fast, direct, specific. Three habits that separate HP players from everyone else.",coach:"Coach: Eric or Sebastien",format:"Talking head fast cut",h:'Hook: "3 things. Every single HP player does them."'},
+    ],
+    Facebook:[
+      {t:"What Is High Performance at ProWorld?",b:"Paolo explains the HP program for parents — what it includes, who it's for, what results look like. Parent-facing, trust-building.",coach:"Coach: Paolo",format:"Long-form post + photo",h:'Open: "High performance doesn\'t start at 16. It starts now."'},
+      {t:"HP Player Transformation Story",b:"Before/after or journey story of an HP player. Real progress, real coaching, real results. Parent shareable.",coach:"Coach: Paolo or Eric",format:"Photo story + caption",h:'Open: "When [player] joined HP, they couldn\'t..."'},
+    ],
+  },
+  tennis_dev:{
+    Instagram:[
+      {t:"Kam's U8 Ball Control Drill",b:"Kam demonstrates the fundamental ball control drill used with 4–8 year olds. Fun, visual, parent-shareable. Shows the red ball pathway.",coach:"Coach: Kam",format:"Reel 20–30 sec",h:'Hook: "At 6 years old, this is where it starts."'},
+      {t:"Robby's U10 Footwork Game",b:"Robby shows the agility game used in U10 training. Kids are laughing and moving. Perfect content — athletic development disguised as fun.",coach:"Coach: Robby",format:"Reel with kids in action",h:'Hook: "They think it\'s a game. It\'s actually elite footwork training."'},
+      {t:"Coach ET's U12 Tactical Tip",b:"Coach ET breaks down a simple tactical concept for U12 players — where to stand, where to hit, why. Clear, specific, immediately useful.",coach:"Coach: Coach ET",format:"Talking head + court demo",h:'Hook: "Every U12 player should know this by now."'},
+      {t:"Aimon's Coordination Drill for U8",b:"Aimon runs a fun coordination drill with young players. High energy, smiling kids, athletic development visible.",coach:"Coach: Aimon",format:"Reel 20 sec",h:'Hook: "Building athletes starts before the strokes."'},
+      {t:"The Red-Orange-Green Pathway Explained",b:"Kam or Coach ET explains the ball progression system — why red ball, why it matters, what parents should expect at each stage.",coach:"Coach: Kam or Coach ET",format:"Educational carousel or video",h:'Hook: "The color of the ball matters more than you think."'},
+    ],
+    TikTok:[
+      {t:"Kids React to Winning a Drill",b:"Film the genuine reaction of U8/U10 kids when they win a drill competition. Pure emotion. Zero production needed.",coach:"Coach: Kam, Robby, or Aimon",format:"Authentic reaction clip",h:'No hook needed. The moment is the content.'},
+      {t:"Before and After: U10 Lesson",b:"Show a specific skill at the start of a session vs the end of the same session. Real improvement in real time.",coach:"Coach: Coach ET or Robby",format:"Split screen 30 sec",h:'Hook: "Watch what happens in 45 minutes."'},
+    ],
+  },
+  tennis_mental:{
+    Instagram:[
+      {t:"Tonio: Resetting After a Double Fault",b:"Tonio on camera, specific situation, one mental tool, filmed like a coaching session not a lecture. This is your most shareable mental content.",coach:"Coach: Tonio",format:"Talking head 45–60 sec",h:'Hook: "What to tell yourself after a double fault. From a mental performance coach."'},
+      {t:"Pre-Match Routine with Tonio",b:"Tonio walks through the exact pre-match mental routine ProWorld HP players use. Breathing, visualization, intention-setting. Film it live on court.",coach:"Coach: Tonio",format:"Demonstration on court",h:'Hook: "Champions don\'t just warm up their body."'},
+      {t:"Tonio: Turning Pressure Into Performance",b:"The core of Tonio's philosophy — pressure is a signal, not a stop sign. Short, punchy, quotable.",coach:"Coach: Tonio",format:"Talking head 30–45 sec",h:'Hook: "Pressure means you care. Here\'s how to use it."'},
+      {t:"3 Mental Cues for Tiebreaks",b:"Tonio's specific framework for staying present at 5-5 in a tiebreak. The most pressure moment in tennis.",coach:"Coach: Tonio",format:"Carousel or talking head",h:'Hook: "Tiebreak. Serving at 5-6. Here\'s what to think."'},
+      {t:"What the Best Juniors Think Between Points",b:"Tonio reveals the self-talk patterns of high-performing juniors vs players who struggle under pressure.",coach:"Coach: Tonio",format:"Carousel or Reel",h:'Hook: "The difference is not talent. It\'s this conversation."'},
+    ],
+    TikTok:[
+      {t:"30-Second Mental Reset",b:"Tonio demonstrates the between-points reset routine. Film a player doing it with Tonio's coaching cue overlaid. High save rate.",coach:"Coach: Tonio",format:"Demo clip 30 sec",h:'Hook: "This 8-second routine changes everything."'},
+      {t:"What Parents Say vs What Players Hear",b:"Funny but real. Two perspectives on the same sideline comment. Tonio explains what actually lands with kids.",coach:"Coach: Tonio",format:"Comedy + insight format",h:'Hook: "You\'re trying to help. Here\'s what they actually hear."'},
+    ],
+  },
+  tennis_college:{
+    Instagram:[
+      {t:"Paolo: How College Placement Actually Works",b:"Paolo explains the ProWorld college placement process — timeline, what coaches look for, how ProWorld prepares players to be recruited.",coach:"Coach: Paolo",format:"Talking head 60–90 sec or carousel",h:'Hook: "Most families start this conversation too late."'},
+      {t:"The UTR Score and Why It Matters",b:"Paolo breaks down what a UTR score is, what number you need for different college levels, and how ProWorld helps players build theirs.",coach:"Coach: Paolo",format:"Educational carousel",h:'Hook: "This number determines your college tennis future."'},
+      {t:"Paolo: D1 vs D2 vs D3 — What's Right for Your Kid?",b:"Clear breakdown of the different college tennis levels. What life looks like at each, what the athletic and academic requirements are.",coach:"Coach: Paolo",format:"Carousel or video",h:'Hook: "D1 is not the goal for everyone. Here\'s why."'},
+      {t:"ProWorld College Placement Success Story",b:"A real player Paolo helped get placed at a college program. Their journey, their UTR, their school. Real results.",coach:"Coach: Paolo",format:"Player story post",h:'Hook: "We helped [player] get a scholarship to [school]."'},
+      {t:"What College Coaches Actually Look For",b:"Paolo shares the inside view — what recruiters watch for beyond rankings. Character, coachability, academics, social media.",coach:"Coach: Paolo",format:"Talking head + carousel",h:'Hook: "The college coach is watching more than your game."'},
+    ],
+    TikTok:[
+      {t:"Paolo: Start College Recruitment at This Age",b:"The one piece of advice every tennis parent needs. Specific, surprising, immediately actionable.",coach:"Coach: Paolo",format:"Talking head 30 sec",h:'Hook: "If your child is 14 and you haven\'t started this yet, watch this."'},
+    ],
+    Email:[
+      {t:"Subject: Is your junior on track for college tennis?",b:"Paolo's guide to college placement — timeline, UTR targets by level, how ProWorld helps. Goes to parents of U14+ players.",coach:"From: Paolo",format:"Newsletter email",h:'First line: "Most families ask me this question 2 years too late."'},
+    ],
+  },
+  tennis_tips:{
+    Instagram:[
+      {t:"Eric's Serve Toss Breakdown",b:"The most common technical error in junior tennis. Eric fixes it on camera with a real player. Before and after in one session.",coach:"Coach: Eric",format:"Reel with slow motion",h:'Hook: "Fix your toss. Fix your serve."'},
+      {t:"Sebastien's Footwork Secret",b:"The adjustment step most players never learn. Sebastien demonstrates it, names it, shows how it changes everything about court positioning.",coach:"Coach: Sebastien",format:"Court demo with annotation",h:'Hook: "The footwork move that HP players use that most beginners never see."'},
+      {t:"Nico's Topspin Formula",b:"Nico breaks down the exact mechanics of generating heavy topspin — grip, swing path, contact point. Side by side slow motion.",coach:"Coach: Nico",format:"Reel with slow motion",h:'Hook: "This is why Nico\'s ball sits up differently."'},
+      {t:"Paolo's 3 Habits of Consistent Players",b:"Paolo on camera. What separates players who improve fast from those who plateau. Specific and direct.",coach:"Coach: Paolo",format:"Talking head or carousel",h:'Hook: "3 habits. Every consistent player has all three."'},
+      {t:"Quick Tip Tuesday — Volley Edition",b:"Any HP coach demonstrates the one volley cue that makes everything click. Keep it under 30 seconds.",coach:"Coach: Any HP coach",format:"Quick tip format 20 sec",h:'Hook: "The volley adjustment that changes everything."'},
+    ],
+  },
+  tennis_tournament:{
+    Instagram:[
+      {t:"Tournament Morning Routine",b:"Film the pre-tournament routine of a ProWorld player — warmup, mental prep, physical activation. Real tournament day energy.",coach:"Coach: Tonio + any HP coach",format:"Vlog style or documentary",h:'Hook: "Tournament day at ProWorld starts like this."'},
+      {t:"Florian: What Tour Players Do Differently at Warmup",b:"Florian shares what he sees top ITF juniors do in warmup that recreational players never do. Direct from tour.",coach:"Coach: Florian Riglet",format:"Talking head — on location if possible",h:'Hook: "I\'ve watched the best juniors in the world warm up. Here\'s what they all do."'},
+      {t:"Paolo: How to Read a Draw",b:"Paolo teaches players and parents how to read a tournament draw — who to watch, how to prepare, mental approach to the bracket.",coach:"Coach: Paolo",format:"Educational carousel or video",h:'Hook: "Your child\'s next tournament result starts here."'},
+    ],
+  },
+  tennis_florian:{
+    Instagram:[
+      {t:"Florian: Life on Tour with Junior Players",b:"Florian shares what traveling with top ITF juniors actually looks like — the schedule, the pressure, the growth. Authentic and unique perspective.",coach:"Coach: Florian Riglet",format:"Vlog or talking head",h:'Hook: "I travel the world with the best junior tennis players. Here\'s what nobody shows you."'},
+      {t:"What ITF Juniors Eat on Tour",b:"Florian breaks down the nutrition and recovery habits of top touring juniors. Practical and immediately shareable.",coach:"Coach: Florian Riglet",format:"Educational post or video",h:'Hook: "This is what top junior players eat when they\'re competing abroad."'},
+      {t:"Florian's Dispatch from [City]",b:"Florian sends a quick video or post from wherever he is traveling. Real court, real tournament, real ProWorld representation.",coach:"Coach: Florian Riglet",format:"Authentic location video",h:'Caption: "Reporting from [city] — ProWorld on tour."'},
+    ],
+    TikTok:[
+      {t:"Florian: One Thing I Learned from Touring Juniors",b:"One insight per video. Florian on camera, direct, specific, from real experience watching the world's best juniors compete.",coach:"Coach: Florian Riglet",format:"Talking head 30–45 sec",h:'Hook: "I\'ve coached at ITF tournaments in 12 countries. Here\'s one thing that separates the best."'},
+    ],
+  },
+  soccer:{
+    Instagram:[
+      {t:"Lukas: First Touch Drill",b:"Lukas demonstrates the first touch drill used in ProWorld soccer. Cushion vs directional touch. Every soccer parent will save this.",coach:"Coach: Lukas",format:"Court demo Reel",h:'Hook: "The most important skill in soccer that nobody practices enough."'},
+      {t:"Lukas: 3-Speed Dribbling",b:"Slow, setup, burst. Lukas shows the concept on field, drills it with a player, films the result. Immediately applicable.",coach:"Coach: Lukas",format:"Demonstration Reel",h:'Hook: "Dribbling has 3 speeds. Most youth players only use one."'},
+      {t:"Soccer Program at ProWorld — What's Inside",b:"Lukas walks through exactly what the ProWorld soccer program offers — structured training, development pathway, who it's for.",coach:"Coach: Lukas",format:"Talking head or carousel",h:'Hook: "Soccer at ProWorld isn\'t just kicking a ball."'},
+      {t:"Lukas: Decision Making Under Pressure",b:"When to dribble vs pass. Lukas teaches the read — defender's hips, spacing, timing. Content tennis parents share with soccer friends.",coach:"Coach: Lukas",format:"Field demo with tactical overlay",h:'Hook: "You don\'t need to be faster. You need to read this."'},
+      {t:"Soccer Summer Camp Preview",b:"Lukas gives a preview of what soccer summer camp looks like — the training, the groups, the results. Direct camp conversion content.",coach:"Coach: Lukas",format:"Talking head + camp footage",h:'Hook: "Soccer Summer Camp 2026 starts June 1. Here\'s what\'s inside."'},
+    ],
+    TikTok:[
+      {t:"Lukas: Ball Mastery in 60 Seconds",b:"Fast, impressive ball mastery sequence. Great music, fast cuts, Lukas demonstrating with a player.",coach:"Coach: Lukas",format:"Fast cut demo 45 sec",h:'Hook: "10 touches. Every session. Here\'s why."'},
+    ],
+  },
+  fitness:{
+    Instagram:[
+      {t:"Tara: Core Routine for Tennis & Soccer Athletes",b:"Tara demonstrates the core circuit used for all ProWorld athletes. 4 exercises, sport-specific benefit explained for each.",coach:"Coach: Tara",format:"Demonstration Reel",h:'Hook: "The core routine every ProWorld athlete does. Steal it."'},
+      {t:"Tara: Post-Match Recovery",b:"What ProWorld athletes do in the 10 minutes after competing. Recovery education parents will share with other sports families.",coach:"Coach: Tara",format:"Educational Reel or carousel",h:'Hook: "Most players go home after a match. The best players do this first."'},
+      {t:"Tara: Nutrition for Young Athletes",b:"Tara breaks down what ProWorld athletes eat before and after training. Simple, practical, parent-facing.",coach:"Coach: Tara",format:"Carousel or talking head",h:'Hook: "What your child eats is part of the training."'},
+      {t:"Tara: Plyometric Drills for Speed",b:"Box jumps, lateral bounds, depth drops. Tara explains the sport-specific application for tennis and soccer players.",coach:"Coach: Tara",format:"Gym demo Reel",h:'Hook: "Speed is built here. Before it shows up on the court."'},
+    ],
+  },
+  parents:{
+    Instagram:[
+      {t:"What to Say After a Tough Loss",b:"This is your most shareable parent content. Specific, honest, emotionally intelligent. What helps and what hurts.",coach:"Coach: Tonio or Paolo",format:"Carousel or talking head",h:'Hook: "Most sports parents say the wrong thing after a loss. Here\'s what actually helps."'},
+      {t:"Supporting vs Pressuring — The Difference",b:"Tonio or Paolo explains the line between healthy support and pressure. Every sports parent needs this.",coach:"Coach: Tonio or Paolo",format:"Educational carousel",h:'Hook: "Every parent wants to support. Not all of them know the difference."'},
+      {t:"Antonio: Why We Built ProWorld",b:"Antonio on camera — the origin story, the vision, why ProWorld exists. This is the trust-building content that converts hesitant parents.",coach:"Antonio (owner)",format:"Talking head 60–90 sec",h:'Hook: "ProWorld almost didn\'t exist."'},
+      {t:"What Happens in a Trial Class",b:"Walk parents through exactly what to expect in a ProWorld trial session — no surprises, no anxiety, clear value.",coach:"Coach: Kam or Coach ET",format:"Walkthrough video or carousel",h:'Hook: "Everything you need to know before your child\'s first ProWorld session."'},
+    ],
+  },
+  culture:{
+    Instagram:[
+      {t:"Daily Academy Vibes",b:"3 iPhone clips from court today. No script, no production. One player hitting. One coach correcting. One kid walking to the net. Post as a Story every single day.",coach:"Anyone on court",format:"Story — 3 clips daily",h:'Caption: nothing. Just the ProWorld location tag.'},
+      {t:"Drone Shot of the Academy",b:"Cinematic overhead of the courts, the athletes training, the facility. No narration. The visual does the work.",coach:"No coach needed",format:"Cinematic 15–30 sec",h:'Caption: "ProWorld Academy. Delray Beach."'},
+      {t:"Lorenzo's Vision",b:"Lorenzo on camera — where ProWorld is going, what the vision is, what he believes about athlete development. High-level, authentic, inspiring.",coach:"Lorenzo (owner)",format:"Talking head 60 sec",h:'Hook: "When we started ProWorld, most people didn\'t understand what we were building."'},
+      {t:"Saturday at ProWorld",b:"High-energy montage of the busiest day at the academy. Courts full, coaches coaching, families watching, kids competing.",coach:"Everyone",format:"Montage Reel",h:'Caption: "Saturday. Every week. This is ProWorld."'},
+    ],
+  },
+  promo:{
+    Instagram:[
+      {t:"Summer Camp 2026 — Last Spots",b:"Urgent, specific, direct. Real camp footage, dates, what's included, link in bio. This is your highest-converting post format.",coach:"Antonio or Paolo",format:"Static post or Reel",h:'Hook: "Summer Camp 2026 is filling fast. June 1 – August 7. Here\'s everything inside."'},
+      {t:"Trial Class — First Session Free",b:"Drive new family sign-ups. One specific CTA. Real court photo. Clean and direct.",coach:"Any coach on court",format:"Static post",h:'Hook: "Come see ProWorld for yourself. First session on us."'},
+      {t:"HP Tryout — Limited Spots",b:"Selective, aspirational. Who it's for, how to apply, what's included. Makes HP feel exclusive and earned.",coach:"Paolo or Antonio",format:"Announcement post",h:'Hook: "ProWorld is opening spots in the HP program. Here\'s how to try out."'},
+    ],
+  },
+  pickleball:{
+    Instagram:[
+      {t:"Darren: Basic Rules in 60 Seconds",b:"Simple, friendly, accessible. Parents new to pickleball love this. Darren explains the only 5 rules you need to know.",coach:"Coach: Darren/Daryl",format:"Quick explainer Reel",h:'Hook: "New to pickleball? Here are the 5 rules you actually need."'},
+      {t:"Parent-Kid Pickleball Clip",b:"Fun session on the pickleball court. Laughing, learning, playing together. Pure community warmth.",coach:"Coach: Darren/Daryl",format:"Authentic fun clip",h:'No hook needed. Just warmth.'},
+    ],
+  },
+  vision:{
+    Instagram:[
+      {t:"Antonio: Why Individual Assessments Change Everything",b:"Antonio explains the ProWorld individual assessment system — why measuring every athlete in technique, fitness, mental, and game performance is the future of junior development.",coach:"Antonio (owner)",format:"Talking head 60–90 sec",h:'Hook: "Most academies have no idea if your child is actually improving."'},
+      {t:"Lorenzo: The ProWorld Pathway",b:"Lorenzo walks through the full ProWorld player pathway — from 4-year-old red ball all the way to college placement. The big picture.",coach:"Lorenzo (owner)",format:"Whiteboard or talking head",h:'Hook: "Every ProWorld player is on a pathway. Here\'s what it looks like."'},
+      {t:"Antonio + Lorenzo: Where ProWorld Is Going",b:"Both founders on camera. Authentic conversation about where the academy is headed — new programs, bigger vision, what they're building.",coach:"Antonio + Lorenzo",format:"Conversation format 90 sec",h:'Hook: "We\'re building something that doesn\'t exist yet in South Florida."'},
+    ],
+  },
 };
+
 function genIdeas(){
   const bank=IDEAS[activePillar]?.[activePlat]||[];
   const out=document.getElementById("ideas-out");
-  if(!bank.length){out.innerHTML=`<div class="idea-card" style="text-align:center;color:var(--text-dim);">Ideas for this combination coming soon — try another platform.</div>`;return;}
+  if(!bank.length){out.innerHTML=`<div class="idea-card" style="text-align:center;color:var(--text-dim);">Ideas for this combination coming soon — try another platform or pillar.</div>`;return;}
   const shuffled=[...bank].sort(()=>Math.random()-0.5).slice(0,Math.min(5,bank.length));
   const pillarLabel=document.querySelector(".pillar-btn.on").textContent.trim();
-  out.innerHTML=shuffled.map((idea,i)=>`<div class="idea-card" style="animation-delay:${i*0.07}s"><div class="idea-tag">${activePlat} — ${pillarLabel}</div><div class="idea-title">${idea.t}</div><div class="idea-body">${idea.b}</div>${idea.h?`<div class="idea-hook">${idea.h}</div>`:""}</div>`).join("");
+  out.innerHTML=shuffled.map(function(idea,i){
+    var coachDiv = idea.coach ? '<div class="idea-coach">👤 ' + idea.coach + '</div>' : '';
+    var formatDiv = idea.format ? '<div class="idea-format">📐 Format: ' + idea.format + '</div>' : '';
+    var hookDiv = idea.h ? '<div class="idea-hook">' + idea.h + '</div>' : '';
+    return '<div class="idea-card" style="animation-delay:' + (i*0.07) + 's">'
+      + '<div class="idea-tag">' + activePlat + ' — ' + pillarLabel + '</div>'
+      + coachDiv
+      + '<div class="idea-title">' + idea.t + '</div>'
+      + '<div class="idea-body">' + idea.b + '</div>'
+      + formatDiv + hookDiv
+      + '</div>';
+  }).join("");
 }
 
-// META ADS
+// ── COACH ASSIGNMENTS ──
+const COACHES=[
+  {name:"Paolo",role:"Academy Director & College Placement",color:"#1d4ed8",assignments:[
+    {title:"HP Development Tip",desc:"Share one coaching insight from this week's HP sessions. What are you seeing players struggle with? What's clicking? 60-second talking head on court.",format:"Reel or talking head • Instagram + TikTok"},
+    {title:"College Placement Insight",desc:"One piece of advice for families thinking about college tennis. Keep it specific and actionable.",format:"Talking head • Instagram"},
+  ]},
+  {name:"Tonio",role:"Mental Performance Coach",color:"#7c3aed",assignments:[
+    {title:"Mental Performance Tip of the Week",desc:"One mental tool, one situation, one solution. Film it like a coaching session — direct to camera, specific, no fluff. This is your highest-performing content.",format:"Reel 30–45 sec • Instagram + TikTok"},
+    {title:"Competition Mindset Insight",desc:"What mental pattern are you seeing in players this week? Share it and the fix.",format:"Talking head • Instagram Stories"},
+  ]},
+  {name:"Nico",role:"High Performance Coach",color:"#0ea5e9",assignments:[
+    {title:"HP Technique Tip",desc:"One technical element from this week's HP training. Demonstrate it on court. Film from the side with good light.",format:"Court demo Reel • Instagram + TikTok"},
+  ]},
+  {name:"Eric",role:"High Performance Coach",color:"#059669",assignments:[
+    {title:"HP Match Preparation Tip",desc:"What are your HP players working on this week to prepare for competition? Film a drill or share a coaching cue.",format:"Court demo or talking head • Instagram"},
+  ]},
+  {name:"Sebastien",role:"HP All-Around Coach",color:"#dc2626",assignments:[
+    {title:"All-Around Development Tip",desc:"Your perspective on complete player development — technique, fitness, mental, tactical. One insight from this week.",format:"Talking head or court demo • Instagram"},
+  ]},
+  {name:"Flow",role:"Traveling Coach — Tour & ITF",color:"#d97706",assignments:[
+    {title:"Dispatch from the Tour",desc:"Where are you this week? Film a quick 30-second video from wherever you are — the court, the hotel, the tournament venue. Show ProWorld on tour.",format:"Location video • Instagram Stories + TikTok"},
+    {title:"One Thing from Tour This Week",desc:"One observation from watching top juniors compete. What separates the best? Keep it under 45 seconds.",format:"Talking head • Instagram + TikTok"},
+  ]},
+  {name:"Kam",role:"Youth Development — 8U & 10U",color:"#be185d",assignments:[
+    {title:"U8/U10 Tip of the Week",desc:"One drill or skill from this week's young player sessions. Film the kids (with permission) doing the drill — their energy sells itself.",format:"Reel with kids • Instagram + TikTok"},
+  ]},
+  {name:"Robby",role:"Developmental Coach — U12/U10/U8",color:"#65a30d",assignments:[
+    {title:"Fun Drill for Young Players",desc:"Show one of the games or drills you ran this week with U10/U8 players. The more fun and energetic, the better.",format:"Reel with kids • Instagram"},
+  ]},
+  {name:"Aimon",role:"Developmental Coach — U12/U10/U8",color:"#0891b2",assignments:[
+    {title:"Coordination or Movement Drill",desc:"Film one coordination or athletic movement drill from this week's sessions. Show the kids doing it — authentic and energetic.",format:"Reel with kids • Instagram + TikTok"},
+  ]},
+  {name:"Coach ET",role:"Developmental Coach — U12/U10/U8",color:"#7c3aed",assignments:[
+    {title:"U12 Developmental Insight",desc:"One coaching moment from this week's U12 or developmental sessions. A correction, a breakthrough, a drill that worked.",format:"Court demo or talking head • Instagram"},
+  ]},
+  {name:"Quinnton",role:"U12 High Performance Development",color:"#be123c",assignments:[
+    {title:"U12 HP Tip",desc:"What are your U12 HP players working on this week? Film a drill or share the coaching focus. Energetic and specific.",format:"Court demo Reel • Instagram + TikTok"},
+  ]},
+  {name:"Tara",role:"Fitness, Athletic Performance & Nutrition",color:"#0d9488",assignments:[
+    {title:"Athletic Performance Tip",desc:"One fitness, conditioning, or nutrition insight relevant to tennis or soccer athletes this week. Practical and immediately applicable.",format:"Gym demo or talking head • Instagram + TikTok"},
+  ]},
+  {name:"Lukas",role:"Soccer Coach",color:"#15803d",assignments:[
+    {title:"Soccer Technique Tip",desc:"One technical or tactical drill from this week's soccer sessions. Film on the field. Show a player doing the drill.",format:"Field demo Reel • Instagram + TikTok"},
+    {title:"Soccer Program Feature",desc:"Share something happening in the soccer program this week — a drill, a player moment, a coaching focus.",format:"Authentic clip • Instagram Stories"},
+  ]},
+  {name:"Antonio",role:"Vision & Culture",color:"#000000",assignments:[
+    {title:"Vision & Perspective",desc:"Share one thing you observed or learned this week at the academy. Where ProWorld is going, what you believe about development, what excites you.",format:"Talking head 60 sec • Instagram"},
+  ]},
+  {name:"Lorenzo",role:"Vision & Culture",color:"#000000",assignments:[
+    {title:"Vision & Perspective",desc:"One thought on the ProWorld vision, culture, or where the academy is headed. Authentic and high-level.",format:"Talking head • Instagram Stories or Feed"},
+  ]},
+];
+
+function genAssignments(){
+  const weekDates=document.getElementById("week-dates").value||"this week";
+  const theme=document.getElementById("week-theme").value||"Summer Camp Push";
+  const out=document.getElementById("assignments-out");
+
+  let html="";
+  let slackMsg=`🎯 *PROWORLD CONTENT ASSIGNMENTS — ${weekDates.toUpperCase()}*\n`;
+  slackMsg+=`📌 *Weekly Theme: ${theme}*\n`;
+  slackMsg+=`━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+  COACHES.forEach(coach=>{
+    html+=`<div class="coach-card">
+      <div class="coach-card-top" style="background:${coach.color}"></div>
+      <div class="coach-name">${coach.name}</div>`;
+
+    coach.assignments.forEach((a,i)=>{
+      html+=`<div class="assignment-item">
+        <div class="assignment-num">${i+1}</div>
+        <div class="assignment-body">
+          <div class="assignment-title">${a.title}</div>
+          <div class="assignment-desc">${a.desc}</div>
+          <div class="assignment-format">📐 ${a.format}</div>
+        </div>
+      </div>`;
+    });
+    html+="</div>";
+
+    // Build Slack message
+    slackMsg+=`*@${coach.name}*\n`;
+    coach.assignments.forEach((a,i)=>{
+      slackMsg+=`  ${i+1}. *${a.title}*\n     ${a.desc}\n     📐 ${a.format}\n`;
+    });
+    slackMsg+="\n";
+  });
+
+  slackMsg+=`━━━━━━━━━━━━━━━━━━━━━━\n`;
+  slackMsg+=`📸 *DAILY ACADEMY VIBES (Everyone)*\nEvery single day — 2 to 3 iPhone clips from court as an Instagram Story. No script. Just real moments. Player hitting. Coach correcting. Kids warming up. Post it.\n\n`;
+  slackMsg+=`🏕️ *CAMP RULE*: Every 3rd post this week should reference Summer Camp 2026 registration.\n\n`;
+  slackMsg+=`Questions? Tag @Antonio or reply here. Let's have a great week! 💪`;
+
+  html+=`<div class="slack-box">
+    <div class="slack-label">📱 Slack Message — Ready to Copy & Send</div>
+    <div class="slack-msg" id="slack-msg-text">${slackMsg.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</div>
+    <button class="copy-btn" onclick="copySlack()">📋 Copy Slack Message</button>
+  </div>`;
+
+  out.innerHTML=html;
+  out.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function copySlack(){
+  const el=document.getElementById("slack-msg-text");
+  const text=el.innerText;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=event.target;
+    btn.textContent="✅ Copied!";
+    setTimeout(()=>btn.textContent="📋 Copy Slack Message",2000);
+  });
+}
+
+// ── META ADS ──
 let accessToken="";
 function showStatus(msg,type){const el=document.getElementById("status-bar");el.textContent=msg;el.className="status-bar "+type;}
 async function connectMeta(){
   const token=document.getElementById("token-in").value.trim();
   if(!token){showStatus("Paste your access token first.","err");return;}
-  accessToken=token;showStatus("Connecting to Meta API...","loading");
-  try{showStatus("Connected — loading ProWorld campaigns...","loading");await fetchCampaigns("act_294537641553384",token);}
+  accessToken=token;showStatus("Connecting to ProWorld Ad Account...","loading");
+  try{await fetchCampaigns("act_294537641553384",token);}
   catch(e){showStatus("Connection failed. Check your token.","err");}
 }
 async function fetchCampaigns(aid,token){
@@ -721,8 +1085,324 @@ function renderCampaigns(camps){
   document.getElementById("camps-body").innerHTML=rows||"<tr><td colspan='6' style='text-align:center;color:var(--text-dim);padding:20px;'>No campaigns found.</td></tr>";
   document.getElementById("a-imp").textContent=ti.toLocaleString();document.getElementById("a-spend").textContent="$"+ts.toFixed(2);document.getElementById("a-leads").textContent=tl;document.getElementById("a-cpl").textContent=tl>0?"$"+(ts/tl).toFixed(2):"—";document.getElementById("ads-data").style.display="block";
 }
-function loadDemo(){renderCampaigns([{name:"ProWorld Summer Camp 2026",status:"ACTIVE",daily_budget:"5000",insights:{data:[{impressions:"14823",spend:"167.40",actions:[{action_type:"lead",value:"22"}]}]}},{name:"U12 Tennis Program — Spring",status:"ACTIVE",daily_budget:"2500",insights:{data:[{impressions:"7102",spend:"74.20",actions:[{action_type:"lead",value:"11"}]}]}},{name:"Multi-Sport Trial — Retargeting",status:"PAUSED",daily_budget:"1500",insights:{data:[{impressions:"3340",spend:"31.60",actions:[]}]}}]);document.getElementById("token-in").value="DEMO_MODE";showStatus("Demo data loaded. Connect a real token for live data.","ok");}
+function loadDemo(){
+  renderCampaigns([
+    {name:"Summer Camp 2026 — Soccer Flyer",status:"ACTIVE",daily_budget:"10000",insights:{data:[{impressions:"14823",spend:"167.40",actions:[{action_type:"lead",value:"22"}]}]}},
+    {name:"Summer Camp 2026 — Tennis Flyer",status:"ACTIVE",daily_budget:"10000",insights:{data:[{impressions:"7102",spend:"74.20",actions:[{action_type:"lead",value:"11"}]}]}},
+    {name:"Multi-Sport Trial — Retargeting",status:"PAUSED",daily_budget:"5000",insights:{data:[{impressions:"3340",spend:"31.60",actions:[]}]}},
+  ]);
+  document.getElementById("token-in").value="DEMO_MODE";
+  showStatus("Demo data loaded. Connect a real token for live data.","ok");
+}
 function resetMeta(){accessToken="";document.getElementById("token-in").value="";document.getElementById("ads-data").style.display="none";document.getElementById("status-bar").className="status-bar";}
+
+function setWeekFromPicker(offset) {
+  const today = new Date();
+  const sun = new Date(today);
+  sun.setDate(today.getDate() - today.getDay() + (offset * 7));
+  const sat = new Date(sun);
+  sat.setDate(sun.getDate() + 6);
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const fmt = function(d) { return months[d.getMonth()] + " " + d.getDate(); };
+  document.getElementById("week-dates").value = fmt(sun) + " – " + fmt(sat) + ", 2026";
+}
+
+// ── CONTENT ARCHIVE ──
+const ARCHIVE_KEY = "proworld_content_archive_v2";
+
+const PRELOADED = [
+  {id:"pre1",date:"2026-04-01",platform:"Instagram",pillar:"Mental Performance",coach:"Tonio",format:"Carousel",title:"Goals That Move You Forward",desc:"Setting goals that connect to who you are. The missing piece in junior development."},
+  {id:"pre2",date:"2026-04-01",platform:"Instagram",pillar:"Tennis Dev",coach:"Kam",format:"Reel",title:"U10 Serving Tip",desc:"Technical serving tip for U10 players."},
+  {id:"pre3",date:"2026-04-07",platform:"Instagram",pillar:"Mental Performance",coach:"Tonio",format:"Post",title:"Don't Train to Eliminate Nerves",desc:"Train to hold nerves — mental performance philosophy for junior players."},
+  {id:"pre4",date:"2026-04-07",platform:"Instagram",pillar:"Mental Performance",coach:"Tonio",format:"Post",title:"The First Goal of a Tennis Match",desc:"The first goal is to be in a body-mind state before tactics or technique."},
+  {id:"pre5",date:"2026-04-14",platform:"Instagram",pillar:"Mental Performance",coach:"Tonio",format:"Carousel",title:"Enemy of Growth Is Comfort",desc:"Comfort zone content — why staying comfortable kills development."},
+  {id:"pre6",date:"2026-04-14",platform:"Instagram",pillar:"Mental Performance",coach:"Tonio",format:"Post",title:"Pressure Is Content",desc:"How to navigate match pressure — learning to handle it not avoid it."},
+  {id:"pre7",date:"2026-04-14",platform:"Instagram",pillar:"Fitness",coach:"Tara",format:"Post",title:"How Elite Tennis Players Fuel for Match Day",desc:"Nutrition and fueling strategies for match day performance."},
+  {id:"pre8",date:"2026-04-20",platform:"Instagram",pillar:"Soccer",coach:"Lukas",format:"Reel",title:"Soccer Drill at ProWorld",desc:"Specific soccer drill happening at the academy."},
+  {id:"pre9",date:"2026-04-20",platform:"Instagram",pillar:"Fitness",coach:"Tara",format:"Post",title:"How Elite Tennis Players Recover After a Match",desc:"Post-match recovery protocol for competitive players."},
+  {id:"pre10",date:"2026-04-20",platform:"Instagram",pillar:"Mental Performance",coach:"Tonio",format:"Post",title:"Why You Lose Matches You Should Win",desc:"Mental and tactical reasons behind unexpected losses."},
+  {id:"pre11",date:"2026-04-27",platform:"Instagram",pillar:"Tennis HP",coach:"Paolo",format:"Post",title:"Are You Going Down the Line Too Early?",desc:"Tactical tip about shot selection and when to go down the line."},
+  {id:"pre12",date:"2026-04-27",platform:"Instagram",pillar:"Fitness",coach:"Tara",format:"Post",title:"Dehydration and Tennis Performance",desc:"How dehydration affects match performance — hydration tips for athletes."},
+  {id:"pre13",date:"2026-04-27",platform:"Instagram",pillar:"Tennis HP",coach:"Sebastien",format:"Carousel",title:"Are You Actually Training Like a Complete Tennis Player?",desc:"Complete player development — technique, fitness, mental, tactical all together."},
+];
+
+function loadArchive() {
+  try {
+    var stored = localStorage.getItem(ARCHIVE_KEY);
+    if (stored) return JSON.parse(stored);
+  } catch(e) {}
+  var initial = PRELOADED.slice();
+  saveArchive(initial);
+  return initial;
+}
+
+function saveArchive(posts) {
+  try { localStorage.setItem(ARCHIVE_KEY, JSON.stringify(posts)); } catch(e) {}
+}
+
+var archive = loadArchive();
+
+function getWeekLabel(dateStr) {
+  var d = new Date(dateStr);
+  var mon = new Date(d);
+  mon.setDate(d.getDate() - d.getDay() + 1);
+  var sun = new Date(mon);
+  sun.setDate(mon.getDate() + 6);
+  var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  return "Week of " + months[mon.getMonth()] + " " + mon.getDate() + " – " + months[sun.getMonth()] + " " + sun.getDate();
+}
+
+function isDuplicate(title) {
+  var clean = function(t) { return t.toLowerCase().replace(/[^a-z0-9 ]/g,'').trim(); };
+  var words = function(t) { return clean(t).split(' ').filter(function(w){ return w.length > 3; }); };
+  var newWords = words(title);
+  for (var i = 0; i < archive.length; i++) {
+    var existWords = words(archive[i].title);
+    var overlap = newWords.filter(function(w){ return existWords.indexOf(w) !== -1; });
+    if (overlap.length >= 2) return archive[i];
+  }
+  return null;
+}
+
+function deletePost(id) {
+  archive = archive.filter(function(p){ return p.id !== id; });
+  saveArchive(archive);
+  renderArchive();
+}
+
+function addPost() {
+  var title = document.getElementById('new-post-title').value.trim();
+  var desc = document.getElementById('new-post-desc').value.trim();
+  var pillar = document.getElementById('new-post-pillar').value.trim();
+  var platform = document.getElementById('new-post-platform').value;
+  var coach = document.getElementById('new-post-coach').value.trim();
+  var format = document.getElementById('new-post-format').value;
+  var date = document.getElementById('new-post-date').value || new Date().toISOString().split('T')[0];
+  if (!title) { alert('Please enter a post title.'); return; }
+  var dup = isDuplicate(title);
+  if (dup && !confirm('Similar post already exists: "' + dup.title + '" (' + dup.date + '). Add anyway?')) return;
+  archive.unshift({id:'post_'+Date.now(), date:date, title:title, desc:desc, pillar:pillar, platform:platform, coach:coach, format:format});
+  saveArchive(archive);
+  ['new-post-title','new-post-desc','new-post-pillar','new-post-coach'].forEach(function(id){ var el=document.getElementById(id); if(el) el.value=''; });
+  renderArchive();
+}
+
+function renderArchive() {
+  var searchEl = document.getElementById('archive-search');
+  var pillarEl = document.getElementById('archive-pillar');
+  var platformEl = document.getElementById('archive-platform');
+  var search = searchEl ? searchEl.value.toLowerCase() : '';
+  var filterPillar = pillarEl ? pillarEl.value : 'all';
+  var filterPlatform = platformEl ? platformEl.value : 'all';
+
+  var posts = archive.slice().sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+  if (search) posts = posts.filter(function(p){ return p.title.toLowerCase().indexOf(search)!==-1 || (p.desc||'').toLowerCase().indexOf(search)!==-1 || (p.coach||'').toLowerCase().indexOf(search)!==-1 || (p.pillar||'').toLowerCase().indexOf(search)!==-1; });
+  if (filterPillar !== 'all') posts = posts.filter(function(p){ return p.pillar === filterPillar; });
+  if (filterPlatform !== 'all') posts = posts.filter(function(p){ return (p.platform||'').indexOf(filterPlatform) !== -1; });
+
+  var container = document.getElementById('archive-list');
+  if (!container) return;
+
+  var countEl = document.getElementById('archive-count');
+  if (countEl) countEl.textContent = archive.length + ' posts logged';
+  var weeksEl = document.getElementById('archive-weeks');
+  if (weeksEl) {
+    var wks = {};
+    archive.forEach(function(p){ wks[getWeekLabel(p.date)]=1; });
+    weeksEl.textContent = Object.keys(wks).length;
+  }
+
+  if (!posts.length) { container.innerHTML = '<div style="text-align:center;color:#888;padding:40px;">No posts found.</div>'; return; }
+
+  var grouped = {};
+  posts.forEach(function(p) {
+    var wk = getWeekLabel(p.date);
+    if (!grouped[wk]) grouped[wk] = [];
+    grouped[wk].push(p);
+  });
+
+  var html = '';
+  Object.keys(grouped).forEach(function(week) {
+    var wPosts = grouped[week];
+    html += '<div style="margin-bottom:24px;">';
+    html += '<div style="font-weight:900;font-size:17px;color:#000;margin-bottom:10px;padding-bottom:6px;border-bottom:3px solid #E2FE78;">' + week + ' <span style="font-size:12px;font-weight:400;color:#888;">(' + wPosts.length + ' posts)</span></div>';
+    wPosts.forEach(function(p) {
+      var tags = '';
+      if (p.pillar) tags += '<span style="font-size:10px;font-weight:700;padding:2px 7px;background:#f5fdc0;color:#5a6e00;border-radius:3px;margin-right:4px;">' + p.pillar + '</span>';
+      if (p.platform) tags += '<span style="font-size:10px;font-weight:700;padding:2px 7px;background:#dbeafe;color:#1d4ed8;border-radius:3px;margin-right:4px;">' + p.platform + '</span>';
+      if (p.coach) tags += '<span style="font-size:10px;font-weight:700;padding:2px 7px;background:#f3e8ff;color:#7c3aed;border-radius:3px;margin-right:4px;">Coach: ' + p.coach + '</span>';
+      if (p.format) tags += '<span style="font-size:10px;padding:2px 7px;background:#f0f0f0;color:#888;border-radius:3px;">' + p.format + '</span>';
+      html += '<div style="background:#fff;border:1px solid #e0e0e0;border-left:4px solid #E2FE78;border-radius:4px;padding:12px 14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">';
+      html += '<div style="flex:1;"><div style="font-weight:700;font-size:14px;color:#111;margin-bottom:3px;">' + p.title + '</div>';
+      html += '<div style="font-size:12px;color:#888;margin-bottom:6px;">' + (p.desc||'') + '</div>';
+      html += '<div>' + tags + '</div></div>';
+      html += '<button onclick="deletePost(' + JSON.stringify(p.id) + ')" style="background:none;border:none;color:#ccc;cursor:pointer;font-size:20px;flex-shrink:0;line-height:1;">×</button>';
+      html += '</div>';
+    });
+    html += '</div>';
+  });
+  container.innerHTML = html;
+}
+
+setTimeout(function(){ if(document.getElementById('archive-list')) renderArchive(); }, 200);
+
+var APPROVED_KEY = "proworld_approved_weeks_v1";
+var approvedWeeks = (function(){ try { var s=localStorage.getItem(APPROVED_KEY); return s?JSON.parse(s):[]; } catch(e){ return []; } })();
+var currentWeekData = null;
+
+function saveApproved(){ try{ localStorage.setItem(APPROVED_KEY, JSON.stringify(approvedWeeks)); }catch(e){} }
+
+function renderWeeksHistory(){
+  var el = document.getElementById("weeks-history-list");
+  if(!el) return;
+  if(!approvedWeeks.length){ el.innerHTML = "<div style='color:var(--text-dim);font-size:13px;padding:10px 0;'>No approved weeks yet.</div>"; return; }
+  var html = "";
+  approvedWeeks.slice().reverse().forEach(function(wk){
+    html += "<div class='week-hist'>";
+    html += "<div><div style='font-weight:700;font-size:15px;'>" + wk.weekDates + "</div>";
+    if(wk.theme) html += "<div style='font-size:12px;color:var(--text-dim);margin-top:2px;'>Theme: " + wk.theme + "</div>";
+    html += "<div style='font-size:11px;color:var(--text-dim);margin-top:4px;'>Approved: " + wk.approvedOn + " &middot; " + wk.coachCount + " coaches</div></div>";
+    html += "<div style='display:flex;gap:8px;align-items:center;'>";
+    html += "<span class='approved-badge'>&#10003; Approved</span>";
+    html += "<button onclick=\"redownloadPDF(" + JSON.stringify(wk.id) + ")\" style=\"background:none;border:1px solid #e0e0e0;border-radius:4px;padding:6px 12px;font-size:12px;cursor:pointer;\">&#128196; Re-download</button>";
+    html += "</div></div>";
+  });
+  el.innerHTML = html;
+}
+
+function approveWeek(){
+  if(!currentWeekData) return;
+  var wk = { id:"week_"+Date.now(), weekDates:currentWeekData.weekDates, theme:currentWeekData.theme, approvedOn:new Date().toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}), coachCount:COACHES.length };
+  approvedWeeks.push(wk);
+  saveApproved();
+  var btn = document.getElementById("approve-btn");
+  btn.disabled = true;
+  btn.textContent = "Approved";
+  document.getElementById("approved-status").style.display = "inline-flex";
+  renderWeeksHistory();
+}
+
+function redownloadPDF(wkId){
+  var wk = approvedWeeks.find(function(w){ return w.id===wkId; });
+  if(wk){ currentWeekData = wk; generatePDF(); }
+}
+
+function downloadPDF(){ if(currentWeekData) generatePDF(); }
+
+function generatePDF(){
+  var jsPDF = window.jspdf.jsPDF;
+  var doc = new jsPDF({orientation:"portrait",unit:"mm",format:"a4"});
+  var pw = 210; var ph = 297; var mg = 14; var y = 0;
+
+  // Header
+  doc.setFillColor(0,0,0); doc.rect(0,0,pw,30,"F");
+  doc.setFillColor(226,254,120); doc.rect(0,30,pw,3,"F");
+  doc.setFillColor(226,254,120); doc.roundedRect(mg,6,16,16,2,2,"F");
+  doc.setTextColor(0,0,0); doc.setFont("helvetica","bold"); doc.setFontSize(9);
+  doc.text("PW",mg+8,16,{align:"center"});
+  doc.setTextColor(255,255,255); doc.setFontSize(16); doc.text("PROWORLD",mg+20,14);
+  doc.setFontSize(7); doc.setFont("helvetica","normal"); doc.setTextColor(180,180,180);
+  doc.text("MARKETING COMMAND CENTER",mg+20,20);
+  doc.setFillColor(226,254,120); doc.roundedRect(pw-mg-28,8,28,8,1,1,"F");
+  doc.setTextColor(0,0,0); doc.setFont("helvetica","bold"); doc.setFontSize(6.5);
+  doc.text("WEEKLY BRIEF",pw-mg-14,13.5,{align:"center"});
+  y = 40;
+
+  // Week block
+  doc.setFillColor(245,245,245); doc.rect(mg,y,pw-mg*2,20,"F");
+  doc.setTextColor(0,0,0); doc.setFont("helvetica","bold"); doc.setFontSize(13);
+  doc.text("COACH CONTENT ASSIGNMENTS",mg+3,y+8);
+  doc.setFontSize(8); doc.setFont("helvetica","normal"); doc.setTextColor(100,100,100);
+  doc.text("Week of " + (currentWeekData.weekDates||""),mg+3,y+14);
+  if(currentWeekData.theme){
+    doc.setFont("helvetica","bold"); doc.setTextColor(0,0,0);
+    doc.text("Theme: "+currentWeekData.theme,pw-mg-3,y+14,{align:"right"});
+  }
+  y += 26;
+
+  // Recurring box
+  doc.setFillColor(226,254,120); doc.rect(mg,y,pw-mg*2,3,"F");
+  doc.setFillColor(245,253,192); doc.rect(mg,y+3,pw-mg*2,22,"F");
+  doc.setTextColor(80,100,0); doc.setFont("helvetica","bold"); doc.setFontSize(6.5);
+  doc.text("RECURRING EVERY WEEK",mg+3,y+9);
+  doc.setFont("helvetica","normal"); doc.setTextColor(60,80,0); doc.setFontSize(6.5);
+  doc.text("MON + WED + FRI: Tournament Promo  |  WEEKLY: Players in Action Recap  |  DAILY: Academy Vibes Story",mg+3,y+15);
+  doc.text("Daily Academy Vibes = 2 to 3 iPhone clips from court, no script, posted every single day as a Story.",mg+3,y+21);
+  y += 28;
+
+  var coachColors = {
+    "Paolo":[29,78,216],"Tonio":[124,58,237],"Nico":[14,165,233],
+    "Eric":[5,150,105],"Sebastien":[220,38,38],"Flow":[217,119,6],
+    "Kam":[190,24,93],"Robby":[101,163,13],"Aimon":[8,145,178],"Coach ET":[100,60,180],
+    "Quinnton":[190,18,60],"Tara":[13,148,136],"Lukas":[21,128,61],
+    "Antonio":[30,30,30],"Lorenzo":[30,30,30]
+  };
+
+  COACHES.forEach(function(coach){
+    var color = coachColors[coach.name] || [50,50,50];
+    var blockH = 8 + (coach.assignments.length * 13) + 5;
+    if(y + blockH > ph - 16){ doc.addPage(); y = 16; }
+
+    // Coach bar
+    doc.setFillColor(color[0],color[1],color[2]);
+    doc.rect(mg,y,pw-mg*2,7.5,"F");
+    doc.setTextColor(255,255,255); doc.setFont("helvetica","bold"); doc.setFontSize(8);
+    doc.text(coach.name.toUpperCase(),mg+3,y+5.2);
+    y += 7.5;
+
+    coach.assignments.forEach(function(a,i){
+      if(y + 13 > ph - 16){ doc.addPage(); y = 16; }
+      doc.setFillColor(i%2===0?250:255,i%2===0?250:255,i%2===0?250:255);
+      doc.rect(mg,y,pw-mg*2,12,"F");
+      // Number
+      doc.setFillColor(color[0],color[1],color[2]);
+      doc.circle(mg+5,y+6,3,"F");
+      doc.setTextColor(255,255,255); doc.setFont("helvetica","bold"); doc.setFontSize(7);
+      doc.text(String(i+1),mg+5,y+7.2,{align:"center"});
+      // Title
+      doc.setTextColor(0,0,0); doc.setFont("helvetica","bold"); doc.setFontSize(7.5);
+      doc.text(a.title,mg+10,y+4.5);
+      // Desc
+      doc.setFont("helvetica","normal"); doc.setFontSize(6.5); doc.setTextColor(80,80,80);
+      var lines = doc.splitTextToSize(a.desc, pw-mg*2-12);
+      doc.text(lines[0]||"",mg+10,y+8.5);
+      // Format
+      if(a.format){
+        doc.setTextColor(color[0],color[1],color[2]);
+        doc.setFont("helvetica","bold"); doc.setFontSize(6);
+        doc.text("Format: "+a.format,mg+10,y+11.5);
+      }
+      y += 13;
+    });
+    y += 4;
+  });
+
+  // Footer
+  doc.setFillColor(0,0,0); doc.rect(0,ph-10,pw,10,"F");
+  doc.setTextColor(226,254,120); doc.setFont("helvetica","bold"); doc.setFontSize(6.5);
+  doc.text("PROWORLD ACADEMY  |  MARKETING COMMAND CENTER  |  INTERNAL USE ONLY",pw/2,ph-4,{align:"center"});
+
+  var fname = "ProWorld_CoachBrief_"+(currentWeekData.weekDates||"Week").replace(/[^a-zA-Z0-9]/g,"_")+".pdf";
+  doc.save(fname);
+}
+
+// Hook into genAssignments to show action buttons
+var _gA_orig = genAssignments;
+genAssignments = function(){
+  _gA_orig();
+  var weekDates = document.getElementById("week-dates").value || "This Week";
+  var theme = document.getElementById("week-theme").value || "";
+  currentWeekData = {weekDates:weekDates, theme:theme};
+  document.getElementById("assignment-actions").style.display = "block";
+  var btn = document.getElementById("approve-btn");
+  if(btn){ btn.disabled=false; btn.textContent="Approve & Lock This Week"; }
+  var st = document.getElementById("approved-status");
+  if(st) st.style.display="none";
+  renderWeeksHistory();
+};
+
+setTimeout(function(){ renderWeeksHistory(); }, 300);
+
 </script>
 </body>
 </html>
