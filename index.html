@@ -164,8 +164,7 @@ label{display:block;font-size:11px;color:#9aa0a6;text-transform:uppercase;letter
   </div>
   <div class="header-meta">
     <div><span class="live-pill"><span class="live-dot"></span>LIVE</span><strong id="today-date"></strong></div>
-    <div style="margin-top:4px">Weekly Dashboard</div>
-    <div style="margin-top:2px;color:#9aa0a6;font-size:11px">Delray Beach, FL · Tennis · Soccer · Pickleball</div>
+    <div style="margin-top:4px;color:#9aa0a6;font-size:11px">Delray Beach, Florida</div>
   </div>
 </div>
 
@@ -185,7 +184,7 @@ label{display:block;font-size:11px;color:#9aa0a6;text-transform:uppercase;letter
 <div class="tab active" id="tab-overview">
   <div style="margin-bottom:20px">
     <h2 class="h-display" style="font-size:38px;display:inline-block;background:linear-gradient(180deg,transparent 60%,#E2FE78 60%);padding:0 4px">Weekly Command</h2>
-    <div style="color:#9aa0a6;margin-top:6px;font-size:14px">Your marketing snapshot for the Bloom meeting</div>
+    <div style="color:#9aa0a6;margin-top:6px;font-size:14px">Your marketing snapshot</div>
   </div>
 
   <div class="grid-4">
@@ -432,6 +431,37 @@ label{display:block;font-size:11px;color:#9aa0a6;text-transform:uppercase;letter
     <div class="card-label">Approved Weeks History</div>
     <div id="approved-list"></div>
   </div>
+
+  <div class="grid-2">
+    <div class="card"><div class="card-top" style="background:#94FCB1"></div>
+      <div class="card-label">Idea Bank Status</div>
+      <div style="font-size:12px;color:#9aa0a6;margin-bottom:12px">Remaining unused ideas per coach. Green = OK, yellow = low, pink = empty.</div>
+      <div id="bank-status"></div>
+    </div>
+
+    <div class="card" id="add-idea-section"><div class="card-top" style="background:#E286E4"></div>
+      <div class="card-label">Add Idea to Bank</div>
+      <div style="font-size:12px;color:#9aa0a6;margin-bottom:12px">When a coach's bank gets low, add new ideas here so future weeks have material.</div>
+      <div class="field">
+        <label>Coach</label>
+        <select id="new-idea-coach">
+          <option>Paolo</option><option>Tonio</option><option>Nico</option><option>Eric</option><option>Sebastien</option><option>Flow</option><option>Kam</option><option>Robby</option><option>Aimon</option><option>Coach ET</option><option>Quinnton</option><option>Tara</option><option>Lukas</option><option>Antonio</option><option>Lorenzo</option>
+        </select>
+      </div>
+      <div class="field"><label>Title</label><input type="text" id="new-idea-title" placeholder="e.g., How to handle a tough loss"></div>
+      <div class="grid-2">
+        <div class="field"><label>Format</label>
+          <select id="new-idea-format"><option>Reel</option><option>Carousel</option><option>Talking Head</option><option>Story</option></select>
+        </div>
+        <div class="field"><label>Post Day</label>
+          <select id="new-idea-day"><option>Mon</option><option>Tue</option><option>Wed</option><option>Thu</option><option>Fri</option></select>
+        </div>
+      </div>
+      <div class="field"><label>Description</label><textarea id="new-idea-desc" placeholder="What does the coach need to know to film this?" rows="2"></textarea></div>
+      <div class="field"><label>Hook (optional)</label><input type="text" id="new-idea-hook" placeholder="Opening line or angle"></div>
+      <button class="btn" onclick="addIdeaToBank()">+ Add to Bank</button>
+    </div>
+  </div>
 </div>
 
 <!-- CONTENT ARCHIVE -->
@@ -493,7 +523,7 @@ label{display:block;font-size:11px;color:#9aa0a6;text-transform:uppercase;letter
 
 const COACHES = [
   {name:"Paolo",role:"Director · College Placement · HP"},
-  {name:"Tonio",role:"Mental Performance · HP"},
+  {name:"Tonio",role:"Mental Performance · Rituals of Flow"},
   {name:"Nico",role:"High Performance"},
   {name:"Eric",role:"High Performance"},
   {name:"Sebastien",role:"HP All-Around"},
@@ -825,57 +855,452 @@ function setWeek(offset){
 // Auto-fill This Week on load
 setWeek(0);
 
-// Assignment templates by coach
-const ASSIGNMENT_TEMPLATES = {
-  "Paolo":["1 College Placement carousel or Reel","1 Tips & Drills post (going down the line, footwork, etc.)","Approve weekly content briefs"],
-  "Tonio":["1 Mental Performance carousel","1 Mental Performance Reel or Talking Head","Quote-card option for Stories"],
-  "Nico":["1 HP training Reel (slow-mo footwork or drill)","1 Tips post for Tennis Tips pillar"],
-  "Eric":["1 HP training Reel","1 Tournament Prep angle (scouting, routines)"],
-  "Sebastien":["1 HP all-around carousel ('complete player' theme)","1 Tactical breakdown Reel"],
-  "Flow":["1 'On Tour with Flow' diary Reel from the road","1 Tour insight post (ITF, travel, juniors abroad)"],
-  "Kam":["1 U10/U8 tip Reel (serving, footwork, fundamentals)","1 BTS clip of a youth session"],
-  "Robby":["1 U12/U10/U8 drill or moment Reel","Co-host a 'developmental day' photo dump"],
-  "Aimon":["1 U12/U10/U8 drill or moment Reel","Co-host a 'developmental day' photo dump"],
-  "Coach ET":["1 U12 developmental Reel or talking-head tip"],
-  "Quinnton":["1 U12 HP Reel (drill or training intensity)","1 player spotlight from U12 HP roster"],
-  "Tara":["1 Fitness, recovery, hydration or nutrition post","1 Mobility / warm-up Reel"],
-  "Lukas":["1 Soccer drill Reel","1 Soccer player spotlight or training clip"],
-  "Antonio":["1 Parents Corner or Culture post (vision/perspective)","Approve final weekly brief"],
-  "Lorenzo":["1 Parents Corner or Culture post (vision/perspective)","Approve final weekly brief"]
+// ═══════════════════════════════════════════════════════
+// IDEA BANK — specific video ideas per coach
+// ═══════════════════════════════════════════════════════
+
+const IDEA_BANK_SEED = {
+  "Paolo": [
+    {id:"p1",title:"5 things D1 coaches actually look for in a recruiting video",format:"Carousel",day:"Tue",desc:"Walk through the 5 specific things college coaches scan for in 30 seconds of footage. Show examples.",hook:"\"I review 200+ recruiting videos a year. Here's what gets you noticed.\""},
+    {id:"p2",title:"Going down the line — when to use it, when not to",format:"Reel",day:"Wed",desc:"Tactical breakdown of the down-the-line shot. Match footage + slow-mo. When it's a winner vs when it's a mistake.",hook:"\"The down-the-line shot wins matches — if you know when to hit it.\""},
+    {id:"p3",title:"NCAA recruiting timeline by grade",format:"Carousel",day:"Mon",desc:"Slide-by-slide breakdown: what to do in 9th, 10th, 11th, 12th grade for college recruiting.",hook:"\"If your junior is in 10th grade, this is what you should be doing right now.\""},
+    {id:"p4",title:"How to build your recruiting list",format:"Talking Head",day:"Thu",desc:"Paolo on camera explaining the smart way to research and contact college programs. Realistic, not fluff.",hook:"\"Most families email 50 schools and hear back from 2. Here's how to fix that.\""},
+    {id:"p5",title:"Footwork pattern: the open stance recovery",format:"Reel",day:"Fri",desc:"Slow-mo breakdown of recovering from open stance forehand. Common error + the fix.",hook:"\"This one footwork fix adds 10% to your defensive game.\""},
+    {id:"p6",title:"D1 vs D2 vs D3 — what's the real difference",format:"Carousel",day:"Tue",desc:"Honest breakdown of each division — level of play, scholarship %, time commitment, lifestyle. No BS.",hook:"\"Not every player belongs at D1. Here's how to find the right fit.\""},
+    {id:"p7",title:"The serve toss mistake 80% of juniors make",format:"Reel",day:"Wed",desc:"Slow-mo of a flawed toss vs a clean one. The fix in 30 seconds.",hook:"\"Fix the toss, fix the serve. It's almost always this.\""},
+    {id:"p8",title:"When to commit early vs wait",format:"Talking Head",day:"Mon",desc:"Paolo on the pros and cons of early commitment in tennis recruiting. Real cases from his roster.",hook:"\"Committing in 10th grade isn't always the win it looks like.\""},
+    {id:"p9",title:"Approaching the net — the 3 right moments",format:"Carousel",day:"Thu",desc:"Three specific scenarios where coming to net wins the point. Examples from match play.",hook:"\"Stop coming to net on bad balls. Here's when it actually works.\""},
+    {id:"p10",title:"Recruiting video — what NOT to include",format:"Reel",day:"Fri",desc:"The 5 things that kill a recruiting video. Quick examples of bad clips coaches skip past.",hook:"\"If your recruiting video has any of these, fix it this week.\""},
+    {id:"p11",title:"Reading your opponent in the first 3 games",format:"Talking Head",day:"Tue",desc:"How to scout patterns in the first 3 games of a match. What to look for, what to exploit.",hook:"\"The first 3 games are scouting. Use them.\""},
+    {id:"p12",title:"How to build a 6-month plan with your coach",format:"Carousel",day:"Mon",desc:"Step-by-step framework for setting goals with your coach for a 6-month block. Tournaments, skills, fitness.",hook:"\"If you don't have a 6-month plan, you're guessing.\""},
+    {id:"p13",title:"The cross-court rally builder drill",format:"Reel",day:"Wed",desc:"Demo of the drill we use to build consistency in cross-court patterns. Players on camera.",hook:"\"This drill is boring. It's also what wins matches.\""},
+    {id:"p14",title:"Talking to college coaches at tournaments",format:"Talking Head",day:"Thu",desc:"What to say, what NOT to say, and how to make a first impression at ITF/UTR tournaments.",hook:"\"Most juniors blow this interaction. Here's the script.\""},
+    {id:"p15",title:"Building a winning warm-up routine",format:"Reel",day:"Fri",desc:"Paolo's exact pre-match warm-up. 8 minutes from arriving at the court to first ball.",hook:"\"How you warm up tells me how you'll play.\""}
+  ],
+
+  "Tonio": [
+    {id:"t1",title:"Routine vs Ritual — the difference that changes everything",format:"Carousel",day:"Mon",desc:"5 slides. The form is the same. The content is what separates them. A routine is mechanical. A ritual is intentional. Tonio breaks down what turns one into the other. End card: More at toniofernandez.com",hook:"\"You have a routine between points. That's not enough. Here's how to turn it into a ritual.\""},
+    {id:"t2",title:"Pressure is content — not a problem",format:"Talking Head",day:"Wed",desc:"Tonio on camera. Pressure means it matters. The skill isn't making pressure disappear — it's staying in your body when it shows up. SPORTmind framework. End card: More at toniofernandez.com",hook:"\"You're not nervous because you're weak. You're nervous because it matters. That's the starting point.\""},
+    {id:"t3",title:"Train to hold the nerves — not eliminate them",format:"Carousel",day:"Tue",desc:"5 slides. Nerves aren't the enemy — they're information. Most juniors target the wrong thing. The Rituals of Flow approach: hold the nerves, stay in state. End card: More at toniofernandez.com",hook:"\"Stop trying to make the nerves go away. That's not the target.\""},
+    {id:"t4",title:"The first goal of any match — state before strategy",format:"Talking Head",day:"Thu",desc:"Tonio on his core principle. Before tactics or technique, the goal is body-mind state. State is the foundation everything else sits on. End card: More at toniofernandez.com",hook:"\"You don't win matches with strategy. You win them with state.\""},
+    {id:"t5",title:"Inside-out — the human inside the player",format:"Talking Head",day:"Mon",desc:"Tonio's coaching philosophy. The forehand is downstream of the human. Why ProWorld and SPORTmind both start with development from the inside out. End card: More at toniofernandez.com",hook:"\"You can't develop the player without developing the human inside them.\""},
+    {id:"t6",title:"Breath, body, focus — the three doors to state",format:"Reel",day:"Fri",desc:"Tonio walks through the three entry points to performance state. Breath regulates body. Body regulates focus. Focus regulates the next point. Live demo on court. End card: More at toniofernandez.com",hook:"\"Three doors. You can walk through any of them. Here's how.\""},
+    {id:"t7",title:"The reset ritual — a Rituals of Flow demo",format:"Reel",day:"Wed",desc:"Tonio demonstrating the between-points reset ritual with a player on court. Not a routine — a ritual. Breath cue, body cue, focus cue. The Rituals of Flow method in 60 seconds. End card: More at toniofernandez.com",hook:"\"The point is over. The next one hasn't started. This window is everything.\""},
+    {id:"t8",title:"What the Zone of Genius actually is",format:"Carousel",day:"Fri",desc:"5 slides demystifying flow. Not a feeling that happens to you — a state you train into. Tonio's framework: how presence, intention, and body-mind work together. End card: More at toniofernandez.com",hook:"\"Flow isn't luck. It's an inner architecture you can build.\""},
+    {id:"t9",title:"The inner architecture of performance",format:"Carousel",day:"Tue",desc:"5 slides on Tonio's core teaching: how focus, intention, and the body-mind connection work together to create your performance state. Recognize the unconscious habits running the show. End card: More at toniofernandez.com",hook:"\"You're not your habits. You're what you put in your rituals.\""},
+    {id:"t10",title:"How to talk to yourself between points",format:"Carousel",day:"Wed",desc:"5 slides. The voice in your head decides what comes next. Tonio's framework for intentional self-talk inside the ritual — not motivation, regulation. End card: More at toniofernandez.com",hook:"\"What you say to yourself between points becomes the next point.\""},
+    {id:"t11",title:"Recovering from a tough loss — the inside-out way",format:"Talking Head",day:"Thu",desc:"Tonio on processing a loss. Not bypassing the feeling. Not drowning in it. The SPORTmind framework for using losses to evolve your game. End card: More at toniofernandez.com",hook:"\"A loss isn't a verdict. It's information. Here's how to read it.\""},
+    {id:"t12",title:"Body language as a state regulator",format:"Reel",day:"Tue",desc:"Slow-mo examples of strong vs weak body language. Body doesn't just show your state — it changes it. Tonio walks through the cues that regulate from the outside in. End card: More at toniofernandez.com",hook:"\"Your opponent reads your body. So does your nervous system.\""},
+    {id:"t13",title:"Why 5-3 is the most dangerous score",format:"Talking Head",day:"Mon",desc:"Tonio on the mental shift that happens when you're about to close. Outcome focus replaces process focus. State collapses. The diagnosis and the ritual fix. End card: More at toniofernandez.com",hook:"\"At 5-3 you stop playing the point. That's when you lose it.\""},
+    {id:"t14",title:"The pre-match ritual — built from intention",format:"Reel",day:"Thu",desc:"Tonio walks through a real pre-match ritual sequence. Not a checklist — a state-building practice. Breath work, body activation, focus setting. 90 seconds. End card: More at toniofernandez.com",hook:"\"You don't warm up the body. You warm up the state.\""},
+    {id:"t15",title:"Serving the big point — staying inside the ritual",format:"Talking Head",day:"Fri",desc:"30-30, deuce, set point. Tonio on why most juniors abandon their ritual exactly when they need it most. The discipline of staying in process when the score gets loud. End card: More at toniofernandez.com",hook:"\"Big points aren't bigger. You make them bigger by leaving your ritual.\""}
+  ],
+
+  "Nico": [
+    {id:"n1",title:"HP morning warm-up — full session",format:"Reel",day:"Mon",desc:"Nico's exact HP warm-up routine. Dynamic stretching, footwork, hitting progression. 60 seconds.",hook:"\"This is how HP players start every session at ProWorld.\""},
+    {id:"n2",title:"Cross-court forehand drill — pattern of the day",format:"Reel",day:"Wed",desc:"Slow-mo of the cross-court rally builder. What good footwork looks like vs what most juniors do.",hook:"\"Steal this drill. Run it every day for 30 days.\""},
+    {id:"n3",title:"Building the inside-out forehand",format:"Carousel",day:"Tue",desc:"5 slides on the technique and tactical use of the inside-out forehand. Footwork keys.",hook:"\"The inside-out forehand is the most underused shot in juniors.\""},
+    {id:"n4",title:"Footwork: split step timing",format:"Reel",day:"Thu",desc:"The split step done right vs wrong. Slow-mo demo. The fix that takes a week.",hook:"\"If your split step is late, your shots are late.\""},
+    {id:"n5",title:"Practice intensity — what HP looks like",format:"Reel",day:"Fri",desc:"Behind-the-scenes of a real HP practice block. Intensity, focus, reps. Show what the bar looks like.",hook:"\"This is what 'training hard' actually means.\""},
+    {id:"n6",title:"The cross-court to down-the-line transition",format:"Reel",day:"Mon",desc:"Tactical pattern: when and how to transition. Match footage + slow-mo breakdown.",hook:"\"This pattern wins matches. Most juniors don't know when to pull the trigger.\""},
+    {id:"n7",title:"Backhand prep — the early shoulder turn",format:"Reel",day:"Wed",desc:"The most common backhand mistake (late prep) and the fix. Side-by-side comparison.",hook:"\"Your backhand isn't bad. Your prep is late.\""},
+    {id:"n8",title:"Drill of the day: high ball defense",format:"Reel",day:"Thu",desc:"How to handle the heavy topspin ball. Footwork, contact point, neutralizing the rally.",hook:"\"When the ball comes high and heavy, here's what to do.\""},
+    {id:"n9",title:"Building the serve: rhythm before power",format:"Carousel",day:"Tue",desc:"5 slides on serve development. Why rhythm > power and how to build it.",hook:"\"Stop trying to hit it hard. Hit it clean.\""},
+    {id:"n10",title:"Why we hit 200 balls before tactics",format:"Talking Head",day:"Fri",desc:"Nico explains the HP philosophy: technique reps before tactical work. Why it matters.",hook:"\"You can't run plays if you can't hit the ball.\""}
+  ],
+
+  "Eric": [
+    {id:"e1",title:"Tournament prep — the week before",format:"Carousel",day:"Mon",desc:"5 slides on what to do the 7 days before a major event. Training load, mental, logistics.",hook:"\"How you prepare the week before is how you'll play the week of.\""},
+    {id:"e2",title:"Scouting your opponent in the first 5 minutes",format:"Reel",day:"Wed",desc:"What to watch for in the warm-up. Forehand vs backhand, movement, serve placement.",hook:"\"The warm-up is scouting. Don't waste it.\""},
+    {id:"e3",title:"HP serve practice — the protocol",format:"Reel",day:"Thu",desc:"Eric's serve practice structure. Reps, targets, intensity. The discipline of working on one weapon.",hook:"\"Most juniors don't practice the serve. They just hit serves.\""},
+    {id:"e4",title:"How to play the big point",format:"Talking Head",day:"Tue",desc:"Eric on tactics for break points, set points, match points. The decision-making framework.",hook:"\"The big point isn't bigger. But the margin for error is smaller.\""},
+    {id:"e5",title:"Match day morning routine",format:"Reel",day:"Fri",desc:"Eric walks through his match day morning. Wake-up, food, warm-up, mental prep. Realistic timeline.",hook:"\"What you do at 8 AM decides what happens at 10 AM.\""},
+    {id:"e6",title:"Returning the big server",format:"Reel",day:"Wed",desc:"Tactical breakdown of returning a 120mph serve. Position, swing, target. Slow-mo + match clips.",hook:"\"You're not getting your racquet on it because of where you're standing.\""},
+    {id:"e7",title:"Practice match vs real match — closing the gap",format:"Carousel",day:"Mon",desc:"Why juniors play better in practice than tournaments. 5 specific fixes.",hook:"\"If you're better in practice, you're not practicing right.\""},
+    {id:"e8",title:"Playing the long match — physical strategy",format:"Talking Head",day:"Thu",desc:"How to manage your body in a 3-hour match. Hydration, pacing, recovery between games.",hook:"\"Best of 3 sets is a fitness test. Treat it like one.\""},
+    {id:"e9",title:"When to play conservative, when to attack",format:"Reel",day:"Tue",desc:"Reading the moment in a match. Match footage with Eric's commentary on the decision tree.",hook:"\"The game plan is dynamic. Here's how to adjust mid-match.\""},
+    {id:"e10",title:"After the match — the 5-minute debrief",format:"Carousel",day:"Fri",desc:"What to actually do in the 5 minutes after a match. With your coach, your parents, yourself.",hook:"\"What you do after the match is how you get better.\""}
+  ],
+
+  "Sebastien": [
+    {id:"s1",title:"The complete player — 4 pillars",format:"Carousel",day:"Mon",desc:"7-slide carousel on the 4 pillars of player development: technical, tactical, physical, mental.",hook:"\"You can't skip a pillar and call yourself a complete player.\""},
+    {id:"s2",title:"Tactical breakdown: pattern of play 1",format:"Reel",day:"Wed",desc:"Sebastien walks through a specific tactical pattern using match footage. Decisions, footwork, shot selection.",hook:"\"This pattern shows up in 60% of HP matches. Here's how to use it.\""},
+    {id:"s3",title:"How to read a serve",format:"Reel",day:"Thu",desc:"Cues for reading the server's body language and toss. What to look for in 0.5 seconds.",hook:"\"The serve is decided before the ball is hit. Here's what to watch.\""},
+    {id:"s4",title:"Net game — the smart approach",format:"Carousel",day:"Tue",desc:"5 slides on when to come to net, how to set it up, where to position.",hook:"\"Coming to net is easy. Coming to net at the right time is the skill.\""},
+    {id:"s5",title:"Why HP players hit so many balls",format:"Talking Head",day:"Fri",desc:"Sebastien on the philosophy of high-volume technique work. Why 10,000 balls a week matters.",hook:"\"Talent gets you noticed. Reps make you a player.\""},
+    {id:"s6",title:"The two-shot combination drill",format:"Reel",day:"Wed",desc:"A drill that builds tactical sequencing. Two-shot patterns players can use in their next match.",hook:"\"Stop hitting one shot at a time. Hit in sequences.\""},
+    {id:"s7",title:"Building your A-game vs B-game",format:"Carousel",day:"Mon",desc:"5 slides on what your A-game is, what your B-game is, and when to switch.",hook:"\"Your A-game wins matches. Your B-game saves them.\""},
+    {id:"s8",title:"Footwork: the recovery step",format:"Reel",day:"Thu",desc:"The recovery step explained. What good recovery looks like in slow-mo. Common errors.",hook:"\"You're not late to the ball because you're slow. You're late because you don't recover.\""},
+    {id:"s9",title:"Reading the score: 30-30 strategy",format:"Talking Head",day:"Tue",desc:"What to do at 30-30 — the most important point of any game. Tactical and mental approach.",hook:"\"30-30 is where the game gets decided. Play it differently.\""},
+    {id:"s10",title:"Modern game vs classic game",format:"Reel",day:"Fri",desc:"Sebastien on how the modern game has evolved. What it means for how juniors should train.",hook:"\"The game has changed. Your training should too.\""}
+  ],
+
+  "Flow": [
+    {id:"f1",title:"On Tour: this week's tournament diary",format:"Reel",day:"Wed",desc:"Flow from the road. Tournament site, player updates, what's happening this week on tour.",hook:"\"Reporting in from [city]. Here's what this week looks like on the ITF.\""},
+    {id:"f2",title:"Travel day vs match day — the difference",format:"Carousel",day:"Mon",desc:"5 slides on managing energy on travel days vs match days. Practical tips from the road.",hook:"\"Most juniors lose the tournament before they even play.\""},
+    {id:"f3",title:"What ITF juniors actually do off-court",format:"Reel",day:"Thu",desc:"BTS of a typical tournament day. Hotel, food, rest, prep. The unglamorous reality.",hook:"\"Tour life isn't glamorous. It's small disciplines, every day.\""},
+    {id:"f4",title:"Adjusting to different surfaces on tour",format:"Talking Head",day:"Tue",desc:"Flow on adapting your game to clay vs hard vs grass. Tactical and technical adjustments.",hook:"\"You can't play the same game on every surface. Here's how to switch.\""},
+    {id:"f5",title:"The morning of a big match",format:"Reel",day:"Fri",desc:"Flow's player walks through their morning routine before a quarterfinal. Realistic, not staged.",hook:"\"This is what a quarterfinal morning actually looks like.\""},
+    {id:"f6",title:"Tournament food — what works, what doesn't",format:"Carousel",day:"Mon",desc:"5 slides on practical nutrition on tour. What to eat before/during/after, what to avoid.",hook:"\"Bad food choices cost more matches than bad coaching.\""},
+    {id:"f7",title:"The post-match debrief — Flow's version",format:"Talking Head",day:"Wed",desc:"How Flow conducts the post-match conversation with his player. Tactical + mental.",hook:"\"The 10 minutes after a loss decide the next week of training.\""},
+    {id:"f8",title:"Why I take juniors abroad",format:"Talking Head",day:"Thu",desc:"Flow's philosophy on international experience for juniors. The growth it forces.",hook:"\"You don't become a player at home. You become one on the road.\""},
+    {id:"f9",title:"How to handle a tough loss far from home",format:"Carousel",day:"Tue",desc:"5 slides on processing a tournament loss when you're 8,000 miles from home. Practical mental tools.",hook:"\"You can't go home and hide. So you learn faster.\""},
+    {id:"f10",title:"Travel hacks for the tennis family",format:"Reel",day:"Fri",desc:"Flow's tour-tested travel tips. Packing, gear, recovery on the road.",hook:"\"After 50 tournaments, this is what I've learned.\""}
+  ],
+
+  "Kam": [
+    {id:"k1",title:"U10 serving tip — the toss",format:"Reel",day:"Wed",desc:"How U10s should think about the serve toss. Simple, age-appropriate, with a young player demoing.",hook:"\"Most U10s rush the toss. Here's the fix.\""},
+    {id:"k2",title:"U8 footwork — the split step",format:"Reel",day:"Mon",desc:"Teaching the split step to 8-year-olds. Make it fun, make it stick. Player demo.",hook:"\"The split step at age 8 is what makes the 18-year-old great.\""},
+    {id:"k3",title:"How to make practice fun for under-10s",format:"Carousel",day:"Tue",desc:"5 slides for parents and coaches on keeping young players engaged. Real ProWorld games.",hook:"\"If they're not laughing, they're not learning.\""},
+    {id:"k4",title:"U10 backhand — the two-handed grip",format:"Reel",day:"Thu",desc:"How to teach the two-handed backhand grip to U10s. Common errors. The fix.",hook:"\"Get the grip right at 10 and you save them 5 years of bad habits.\""},
+    {id:"k5",title:"Foundation drills for U8 — the 3 essentials",format:"Carousel",day:"Fri",desc:"The 3 drills every U8 should do every session. Why these, what they build.",hook:"\"Master 3 things at age 8. The rest comes.\""},
+    {id:"k6",title:"What U10 development looks like at ProWorld",format:"Reel",day:"Mon",desc:"BTS of a U10 session. Drills, energy, real teaching moments. Kam on camera coaching.",hook:"\"This is what serious U10 development looks like.\""},
+    {id:"k7",title:"How parents can support a young player",format:"Talking Head",day:"Wed",desc:"Kam directly to parents — how to support without pressure. Practical examples.",hook:"\"Parents, this part is for you.\""},
+    {id:"k8",title:"Common U8 mistakes — and how to fix them",format:"Carousel",day:"Thu",desc:"5 slides of frequent U8 errors with quick coach fixes. Real, not theoretical.",hook:"\"If your 8-year-old does any of these, here's what to do.\""},
+    {id:"k9",title:"Building rallies at U10",format:"Reel",day:"Tue",desc:"How to build rally tolerance at age 10. The progression from 5-ball to 20-ball rallies.",hook:"\"Stop teaching kids to win the point. Teach them to play the point.\""},
+    {id:"k10",title:"Why we don't keep score at U8",format:"Talking Head",day:"Fri",desc:"Kam's philosophy on competition at age 8. Why we delay scoring and what we do instead.",hook:"\"Score destroys learning at age 8. Here's what we do instead.\""}
+  ],
+
+  "Robby": [
+    {id:"rb1",title:"U12 drill of the week",format:"Reel",day:"Wed",desc:"This week's featured U12 drill. Robby demoing with players. What it builds, why it matters.",hook:"\"This drill made our top U12s. Steal it.\""},
+    {id:"rb2",title:"U10 footwork — figure 8 pattern",format:"Reel",day:"Mon",desc:"Footwork drill for U10s. Cones, ball feeding, real pattern from match play.",hook:"\"Boring drill. Game-changing footwork.\""},
+    {id:"rb3",title:"How we develop a U12 player at ProWorld",format:"Carousel",day:"Tue",desc:"5 slides on the U12 development arc. What we work on, in what order, why.",hook:"\"The U12 year is the most important year in junior tennis.\""},
+    {id:"rb4",title:"U8 fundamentals — the swing path",format:"Reel",day:"Thu",desc:"Teaching the basic swing path to U8s. Visual cues, kid-friendly language, real teaching moment.",hook:"\"Get the swing path right at 8. The rest is detail.\""},
+    {id:"rb5",title:"Developmental day — full BTS",format:"Reel",day:"Fri",desc:"Photo dump style reel of a developmental day at ProWorld. Multiple courts, all ages, real energy.",hook:"\"One day at ProWorld. This is what development looks like.\""},
+    {id:"rb6",title:"U12 strategy — playing the safe side",format:"Carousel",day:"Mon",desc:"5 slides on the basic tactical concept of playing through the middle and to weaknesses.",hook:"\"U12s don't lose because of bad shots. They lose because of bad decisions.\""},
+    {id:"rb7",title:"How to get a U10 to actually compete",format:"Talking Head",day:"Wed",desc:"Robby on getting U10s comfortable with competition. The progression. The mindset.",hook:"\"Competition is a skill. We teach it like any other.\""},
+    {id:"rb8",title:"U12 serve — building a real weapon",format:"Reel",day:"Tue",desc:"How we build the U12 serve. Toss, rhythm, leg drive. Progression over time.",hook:"\"The serve at U12 is the foundation for everything at U16.\""},
+    {id:"rb9",title:"What a great U10 practice looks like",format:"Reel",day:"Thu",desc:"BTS of a U10 practice. Pace, energy, focus, fun. The bar we set.",hook:"\"If your kid's practice doesn't look like this, ask why.\""},
+    {id:"rb10",title:"Match play at U10 — when and how",format:"Carousel",day:"Fri",desc:"5 slides on introducing match play at U10. The right amount, the right format.",hook:"\"Too much match play breaks U10s. Too little leaves them unprepared.\""}
+  ],
+
+  "Aimon": [
+    {id:"a1",title:"U12 drill — cross-court consistency",format:"Reel",day:"Wed",desc:"Aimon running a cross-court consistency drill with U12s. Standards, feedback, real coaching.",hook:"\"Cross-court consistency at U12 builds the rally tolerance of a 16-year-old.\""},
+    {id:"a2",title:"U10 lateral movement",format:"Reel",day:"Mon",desc:"Side-to-side movement drill for U10s. Cones, feeding, footwork cues.",hook:"\"You can't hit it if you can't get to it.\""},
+    {id:"a3",title:"Developmental philosophy — long term over results",format:"Carousel",day:"Tue",desc:"5 slides on why we don't chase U10 results. What we chase instead.",hook:"\"Winning at 10 means nothing. Building at 10 means everything.\""},
+    {id:"a4",title:"U12 forehand grip — the semi-western",format:"Reel",day:"Thu",desc:"Teaching the semi-western grip at U12. Why this grip, when to switch.",hook:"\"The grip you build at 12 is the grip you'll have at 22.\""},
+    {id:"a5",title:"BTS — developmental day photo dump",format:"Reel",day:"Fri",desc:"Reel of a busy developmental day. Multiple courts, players in motion, coach energy.",hook:"\"A normal day at ProWorld.\""},
+    {id:"a6",title:"U8 attention span — how to keep it",format:"Carousel",day:"Mon",desc:"5 slides on running a U8 practice that holds attention. Pacing, variety, energy.",hook:"\"U8s lose focus in 4 minutes. Here's how we handle it.\""},
+    {id:"a7",title:"U12 net play — the basics",format:"Reel",day:"Wed",desc:"Introducing net play to U12. Volley footwork, racquet position, when to come in.",hook:"\"U12s should be at net more than they are. Here's why.\""},
+    {id:"a8",title:"How we communicate with U10s",format:"Talking Head",day:"Tue",desc:"Aimon on the way we talk to U10s. Language choices, feedback timing, what works.",hook:"\"How you talk to a 10-year-old decides whether they keep playing.\""},
+    {id:"a9",title:"U12 match prep — the night before",format:"Carousel",day:"Thu",desc:"5 slides for parents and U12 players on the night before a tournament. Sleep, food, mindset.",hook:"\"The match starts the night before.\""},
+    {id:"a10",title:"Reading body language in juniors",format:"Talking Head",day:"Fri",desc:"How Aimon reads when a U10 or U12 is engaged vs checked out. Coaching adjustments.",hook:"\"Their face tells me what their forehand will be.\""}
+  ],
+
+  "Coach ET": [
+    {id:"et1",title:"U12 developmental drill of the week",format:"Reel",day:"Wed",desc:"Coach ET running a U12 developmental drill. Specific skill focus, clean execution.",hook:"\"Steal this drill. Run it twice a week.\""},
+    {id:"et2",title:"How U12 development should feel",format:"Talking Head",day:"Mon",desc:"Coach ET on what a U12 player should experience in practice. Engaged, challenged, growing.",hook:"\"If your kid isn't tired and smiling, we're doing it wrong.\""},
+    {id:"et3",title:"The U12 stroke audit",format:"Carousel",day:"Tue",desc:"5 slides on the strokes a U12 should have established by age 12. Forehand, backhand, serve, volley.",hook:"\"By 12, these strokes should be solid. If not, here's what to do.\""},
+    {id:"et4",title:"U10 to U12 — the transition",format:"Reel",day:"Thu",desc:"What changes when a player moves from U10 to U12. Drills, expectations, intensity.",hook:"\"The jump from U10 to U12 is the biggest one in junior tennis.\""},
+    {id:"et5",title:"Coach ET's favorite teaching cue",format:"Talking Head",day:"Fri",desc:"One specific coaching cue ET uses every day with U12s. Why it works.",hook:"\"I say this 50 times a day. Here's why.\""},
+    {id:"et6",title:"U12 footwork — the recovery step drill",format:"Reel",day:"Mon",desc:"A footwork drill specifically for U12s focused on recovering after wide balls.",hook:"\"Recovery footwork at U12 is the difference at U14.\""},
+    {id:"et7",title:"Building rally tolerance at U12",format:"Carousel",day:"Wed",desc:"5 slides on extending rally length at U12 — the progression from 6-ball to 20-ball.",hook:"\"U12s rush. We slow them down.\""},
+    {id:"et8",title:"Developmental warm-up — what we do",format:"Reel",day:"Thu",desc:"ET's pre-practice warm-up for developmental players. Dynamic, age-appropriate, builds habits.",hook:"\"This 8-minute warm-up sets the tone for everything after it.\""},
+    {id:"et9",title:"Mistakes at U12 we let slide vs fix",format:"Carousel",day:"Tue",desc:"5 slides on which U12 errors to correct vs which to leave alone for now. Coach judgment.",hook:"\"You can't fix every flaw at 12. Here's what we prioritize.\""},
+    {id:"et10",title:"Why we love U12 at ProWorld",format:"Talking Head",day:"Fri",desc:"Coach ET on why U12 is his favorite age to coach. The growth, the personality, the moments.",hook:"\"U12 is the magic age. Here's why.\""}
+  ],
+
+  "Quinnton": [
+    {id:"q1",title:"U12 HP — what a real practice looks like",format:"Reel",day:"Wed",desc:"Quinnton running a U12 HP practice. Intensity, focus, the bar we set for elite U12s.",hook:"\"This is HP at U12. Different from developmental.\""},
+    {id:"q2",title:"U12 HP roster spotlight",format:"Reel",day:"Mon",desc:"Highlight reel of a U12 HP player from this week's training. Real shots, real progress.",hook:"\"This is what U12 HP looks like at ProWorld.\""},
+    {id:"q3",title:"The U12 HP weekly schedule",format:"Carousel",day:"Tue",desc:"5 slides walking through a typical week for a U12 HP player. Court time, fitness, mental, school.",hook:"\"This is what HP commitment looks like at age 12.\""},
+    {id:"q4",title:"Drill: U12 HP serve practice",format:"Reel",day:"Thu",desc:"How we structure serve practice for U12 HP. Reps, targets, intensity standards.",hook:"\"At U12 HP, we don't just hit serves. We practice the serve.\""},
+    {id:"q5",title:"Why the U12 HP year matters most",format:"Talking Head",day:"Fri",desc:"Quinnton on why the U12 HP year is the foundation for everything that comes after.",hook:"\"Get U12 HP right and the next 6 years take care of themselves.\""},
+    {id:"q6",title:"U12 HP tournament prep",format:"Carousel",day:"Mon",desc:"5 slides on how U12 HP players prepare for major events. Different from developmental.",hook:"\"U12 HP doesn't prep like U12 dev. Here's the difference.\""},
+    {id:"q7",title:"What we look for when adding to U12 HP",format:"Talking Head",day:"Wed",desc:"Quinnton on the criteria for U12 HP roster. What separates HP from developmental.",hook:"\"Not every U12 belongs in HP. Here's the bar.\""},
+    {id:"q8",title:"U12 HP fitness — the standards",format:"Reel",day:"Tue",desc:"BTS of U12 HP fitness session with Tara. Standards for movement, strength, conditioning.",hook:"\"HP at 12 is more than tennis. Watch this.\""},
+    {id:"q9",title:"The U12 HP pre-match routine",format:"Reel",day:"Thu",desc:"A U12 HP player's exact pre-match warm-up. Footwork, hitting, mental cues.",hook:"\"A U12 HP warm-up. Steal it.\""},
+    {id:"q10",title:"Why we love HP at the U12 age",format:"Talking Head",day:"Fri",desc:"Quinnton's perspective on coaching elite U12s. The growth, the moments, the standard.",hook:"\"Coaching U12 HP is the best part of my week.\""}
+  ],
+
+  "Tara": [
+    {id:"tr1",title:"How elite tennis players fuel for match day",format:"Carousel",day:"Mon",desc:"5 slides on nutrition for tournament day. What to eat 2 hours before, between matches, after.",hook:"\"What you eat decides the third set.\""},
+    {id:"tr2",title:"Recovery routine after a long tournament weekend",format:"Reel",day:"Wed",desc:"Tara walks through a full recovery protocol. Foam rolling, mobility, hydration, sleep.",hook:"\"Recovery isn't optional. It's training.\""},
+    {id:"tr3",title:"Hydration for performance — the rules",format:"Carousel",day:"Tue",desc:"5 slides on hydration before, during, after match play. Real amounts, real timing.",hook:"\"By the time you're thirsty, you've already lost a step.\""},
+    {id:"tr4",title:"Pre-match snack — what actually works",format:"Reel",day:"Thu",desc:"Tara shows the 3 pre-match snacks she recommends. Real food, real timing.",hook:"\"30 minutes before match? Eat this.\""},
+    {id:"tr5",title:"The mobility routine every junior should do",format:"Reel",day:"Fri",desc:"Tara walks through 5 mobility movements for tennis players. Hip, shoulder, ankle, thoracic.",hook:"\"5 minutes a day. Pays off for years.\""},
+    {id:"tr6",title:"Sleep for athletes — what changes",format:"Carousel",day:"Mon",desc:"5 slides on sleep requirements for juniors training 15+ hours/week. The non-negotiables.",hook:"\"Skipping sleep is skipping recovery. There's no shortcut.\""},
+    {id:"tr7",title:"Foam rolling — the right way",format:"Reel",day:"Wed",desc:"Tara demos correct foam rolling technique. Common errors, what to actually feel.",hook:"\"You've been doing this wrong. Here's the fix.\""},
+    {id:"tr8",title:"Building strength without bulk",format:"Reel",day:"Thu",desc:"Why and how tennis players build strength. Different from football, different from soccer.",hook:"\"Tennis strength isn't gym strength. Here's the difference.\""},
+    {id:"tr9",title:"What junior athletes actually need to eat",format:"Carousel",day:"Tue",desc:"5 slides on the basic nutritional framework for junior athletes. Protein, carbs, fats, real food.",hook:"\"Most junior athletes are underfed. Here's what they actually need.\""},
+    {id:"tr10",title:"Warm-up vs stretching — the difference",format:"Reel",day:"Fri",desc:"Tara explains the difference and shows what to do when. Dynamic warm-up + static stretching.",hook:"\"You're stretching before. You should be warming up. Here's why.\""},
+    {id:"tr11",title:"Energy on court — the third-set fade",format:"Talking Head",day:"Mon",desc:"Tara on why juniors fade in third sets. The fitness gap and how to close it.",hook:"\"You're not losing third sets because of mental. You're losing them because of fitness.\""},
+    {id:"tr12",title:"Quick fitness test you can do at home",format:"Reel",day:"Wed",desc:"A simple 3-test fitness benchmark juniors can do at home. Tara demos all three.",hook:"\"Try these 3 tests. Tells you where your fitness is.\""},
+    {id:"tr13",title:"Recovery between matches in a tournament",format:"Carousel",day:"Thu",desc:"5 slides on what to do in the 2 hours between matches. Food, recovery, mental.",hook:"\"Two hours between matches. Here's exactly what to do.\""},
+    {id:"tr14",title:"Building a daily mobility habit",format:"Reel",day:"Tue",desc:"Tara on the 5-minute daily mobility routine she gives every player. Hip-focused.",hook:"\"5 minutes. Every day. Non-negotiable.\""},
+    {id:"tr15",title:"What we mean by 'athletic tennis player'",format:"Talking Head",day:"Fri",desc:"Tara's definition of an athletic tennis player. Why it matters at every age.",hook:"\"Tennis is a sport. We train like it.\""}
+  ],
+
+  "Lukas": [
+    {id:"l1",title:"Soccer first-touch drill",format:"Reel",day:"Wed",desc:"Lukas running a first-touch drill with ProWorld soccer players. Real footage, real coaching.",hook:"\"First touch separates good from great. Here's the drill.\""},
+    {id:"l2",title:"Soccer at ProWorld — the philosophy",format:"Talking Head",day:"Mon",desc:"Lukas on what makes ProWorld soccer different. Skill, athleticism, intelligence on the ball.",hook:"\"We don't just train soccer players. We train athletes who play soccer.\""},
+    {id:"l3",title:"The 3 things every young soccer player needs",format:"Carousel",day:"Tue",desc:"5 slides on the foundational skills for young soccer players. Touch, vision, decision-making.",hook:"\"If your kid is just learning to play, focus on these 3.\""},
+    {id:"l4",title:"Soccer drill — quick transitions",format:"Reel",day:"Thu",desc:"A quick transition drill — defense to attack in 3 seconds. Real game speed.",hook:"\"Modern soccer is decided in transition. Here's how we train it.\""},
+    {id:"l5",title:"Player spotlight — soccer roster",format:"Reel",day:"Fri",desc:"Highlight reel of a ProWorld soccer player. Skills, training, what they're working on.",hook:"\"This is who's in our soccer program.\""},
+    {id:"l6",title:"Why soccer players need tennis-level footwork",format:"Talking Head",day:"Mon",desc:"Lukas on the footwork crossover between tennis and soccer. Why ProWorld players have an edge.",hook:"\"Our soccer players move like tennis players. That's the point.\""},
+    {id:"l7",title:"Soccer ball control under pressure",format:"Reel",day:"Wed",desc:"A drill on protecting the ball under defensive pressure. Body position, touch, awareness.",hook:"\"You can't play if you can't keep the ball. Here's how we train it.\""},
+    {id:"l8",title:"The soccer warm-up at ProWorld",format:"Reel",day:"Tue",desc:"Full pre-training soccer warm-up. Dynamic, soccer-specific, gets bodies ready.",hook:"\"A warm-up that actually warms you up.\""},
+    {id:"l9",title:"What makes a complete young soccer player",format:"Carousel",day:"Thu",desc:"5 slides on the complete soccer player at the youth level. Skill, athleticism, intelligence, mentality.",hook:"\"4 things. Get them right.\""},
+    {id:"l10",title:"How tennis training makes our soccer players better",format:"Talking Head",day:"Fri",desc:"Lukas on the unique advantage of training soccer alongside tennis at ProWorld.",hook:"\"Soccer players who train tennis become better soccer players. Here's why.\""}
+  ],
+
+  "Antonio": [
+    {id:"an1",title:"What parents of junior athletes get wrong",format:"Carousel",day:"Mon",desc:"5 slides on the most common parent mistakes in junior tennis. Honest, useful, not preachy.",hook:"\"I see this every week. Don't be that parent.\""},
+    {id:"an2",title:"The long view — why we build players the way we do",format:"Talking Head",day:"Wed",desc:"Antonio on ProWorld's long-term player development philosophy. Why we don't chase early results.",hook:"\"This is a 10-year build, not a 10-week one.\""},
+    {id:"an3",title:"How to talk to your kid after a tough loss",format:"Carousel",day:"Thu",desc:"5 slides for parents on the conversation after a loss. What to say, what not to say.",hook:"\"The 20 minutes after the match decides the next month of practice.\""},
+    {id:"an4",title:"Why we built ProWorld",format:"Talking Head",day:"Fri",desc:"Antonio on the origin story. The why behind ProWorld. Personal, brand-building.",hook:"\"We didn't build a tennis academy. We built what we wished existed.\""},
+    {id:"an5",title:"What a complete academy looks like",format:"Reel",day:"Tue",desc:"Antonio walks through ProWorld facility. Four pillars on display: technical, fitness, mental, assessments.",hook:"\"Most academies do one thing. We do four. Watch.\""},
+    {id:"an6",title:"Parents — please stop coaching from the sideline",format:"Talking Head",day:"Mon",desc:"Antonio directly to parents. Why sideline coaching kills development. What to do instead.",hook:"\"I know you mean well. Don't do it.\""},
+    {id:"an7",title:"The four pillars — what they actually mean",format:"Carousel",day:"Wed",desc:"5 slides explaining the four pillars: technical, athletic fitness, mental performance, individual assessments.",hook:"\"This is what 'integrated development' actually looks like.\""},
+    {id:"an8",title:"How to choose a tennis academy",format:"Carousel",day:"Thu",desc:"5 honest slides for parents shopping for a tennis program. The questions to actually ask.",hook:"\"Most academies sell. Here's what to actually look for.\""},
+    {id:"an9",title:"Why we don't promise results",format:"Talking Head",day:"Tue",desc:"Antonio on the honest truth about junior tennis development. No guarantees. What we do guarantee.",hook:"\"Anyone who promises you results is selling something.\""},
+    {id:"an10",title:"What a ProWorld day looks like",format:"Reel",day:"Fri",desc:"Day-in-the-life style reel of ProWorld. Antonio narrating, real footage from all programs.",hook:"\"This is one day at ProWorld.\""}
+  ],
+
+  "Lorenzo": [
+    {id:"lo1",title:"What 'investing in your kid's sport' really means",format:"Carousel",day:"Mon",desc:"5 slides on the real cost — financial, time, emotional — of serious junior sport. Honest.",hook:"\"Most families don't understand what they're signing up for.\""},
+    {id:"lo2",title:"The ProWorld vision",format:"Talking Head",day:"Wed",desc:"Lorenzo on the long-term vision for ProWorld. What we're building, where we're going.",hook:"\"We're not just running an academy. We're building something different.\""},
+    {id:"lo3",title:"What we mean by 'culture' at ProWorld",format:"Reel",day:"Thu",desc:"Lorenzo walks through the academy showing what culture looks like in practice. Real moments.",hook:"\"Culture isn't a poster on the wall. It's what happens on Tuesday at 4pm.\""},
+    {id:"lo4",title:"How to know if your kid is in the right program",format:"Carousel",day:"Fri",desc:"5 slides for parents on the signs of a good vs bad fit. Honest signals.",hook:"\"If your kid does any of these 5 things, the program is working.\""},
+    {id:"lo5",title:"Why community matters in player development",format:"Talking Head",day:"Tue",desc:"Lorenzo on the role of community and peers in developing players. The pieces parents miss.",hook:"\"You can't develop a player alone. They need a tribe.\""},
+    {id:"lo6",title:"The first conversation every tennis parent should have",format:"Carousel",day:"Mon",desc:"5 slides on the conversation to have with your child about their tennis goals. What to ask.",hook:"\"Before signing up, have this conversation. It changes everything.\""},
+    {id:"lo7",title:"Why we don't chase trophies at ProWorld",format:"Talking Head",day:"Wed",desc:"Lorenzo on the trap of chasing early tournament results vs building long-term players.",hook:"\"The kid winning at 12 isn't usually the player winning at 18.\""},
+    {id:"lo8",title:"What separates a great tennis academy",format:"Carousel",day:"Thu",desc:"5 slides on what actually separates a great academy from an average one. Insider view.",hook:"\"Most academies look the same on Instagram. Here's how to tell them apart.\""},
+    {id:"lo9",title:"The ProWorld family",format:"Reel",day:"Fri",desc:"Reel showing the families, coaches, and players that make up ProWorld. Real, warm, branded.",hook:"\"This is what we built.\""},
+    {id:"lo10",title:"Choosing the right path for your young athlete",format:"Talking Head",day:"Tue",desc:"Lorenzo on helping families navigate the decisions of junior sport. School, training, balance.",hook:"\"There's no one right path. Here's how to find yours.\""}
+  ]
 };
+
+const COACH_WEEKLY_COUNT = {
+  "Paolo": 2, "Tonio": 2, "Tara": 2,
+  "Nico": 1, "Eric": 1, "Sebastien": 1, "Flow": 1,
+  "Kam": 1, "Robby": 1, "Aimon": 1, "Coach ET": 1, "Quinnton": 1,
+  "Lukas": 1, "Antonio": 1, "Lorenzo": 1
+};
+
+// Persistent state for idea bank
+let ideaBank = JSON.parse(localStorage.getItem("pw_idea_bank_v4") || "null");
+if (!ideaBank) {
+  ideaBank = JSON.parse(JSON.stringify(IDEA_BANK_SEED));
+  localStorage.setItem("pw_idea_bank_v4", JSON.stringify(ideaBank));
+}
+let usedIdeaIds = JSON.parse(localStorage.getItem("pw_used_ideas_v4") || "[]");
+
+function saveIdeaBank(){localStorage.setItem("pw_idea_bank_v4", JSON.stringify(ideaBank));}
+function saveUsedIds(){localStorage.setItem("pw_used_ideas_v4", JSON.stringify(usedIdeaIds));}
+
+function getAvailableIdeas(coach){
+  const all = ideaBank[coach] || [];
+  return all.filter(i => !usedIdeaIds.includes(i.id));
+}
 
 function genAssignments(){
   const weekDates = document.getElementById("week-dates").value || "This Week";
   const theme = document.getElementById("week-theme").value || "";
 
+  let bankWarnings = [];
+
   currentAssignments = {
     weekDates: weekDates,
     theme: theme,
-    coaches: COACHES.map(c => ({
-      name: c.name,
-      role: c.role,
-      tasks: ASSIGNMENT_TEMPLATES[c.name] || ["1 post in your area this week"]
-    }))
+    coaches: COACHES.map(c => {
+      const need = COACH_WEEKLY_COUNT[c.name] || 1;
+      const available = getAvailableIdeas(c.name);
+      const picks = available.slice(0, need);
+      if (picks.length < need){
+        bankWarnings.push(c.name + " — bank low (" + available.length + " of " + need + " needed)");
+      }
+      return {
+        name: c.name,
+        role: c.role,
+        ideas: picks.map(p => ({
+          id: p.id,
+          title: p.title,
+          format: p.format,
+          day: p.day,
+          desc: p.desc,
+          hook: p.hook,
+          delivered: false,
+          custom: false
+        }))
+      };
+    })
   };
 
-  let html = '<div class="card"><div class="card-top"></div><div class="card-label">Week of ' + weekDates + (theme ? ' · ' + theme : '') + '</div><div class="grid-3">';
-  currentAssignments.coaches.forEach(c => {
-    let tasks = c.tasks.map(t => '<div>• ' + t + '</div>').join("");
-    html += '<div class="coach-card"><div class="coach-name">' + c.name + '</div><div class="coach-role">' + c.role + '</div><div class="coach-task">' + tasks + '</div></div>';
-  });
-  html += '</div></div>';
-  document.getElementById("assignments-output").innerHTML = html;
-  document.getElementById("recurring-card").style.display = "block";
+  renderAssignments(bankWarnings);
 
-  // Reset approve button
   const approveBtn = document.getElementById("approve-btn");
   approveBtn.disabled = false;
   approveBtn.textContent = "✅ Approve & Lock";
 }
 
+function renderAssignments(warnings){
+  if (!currentAssignments) return;
+  warnings = warnings || [];
+
+  let warnHtml = "";
+  if (warnings.length){
+    warnHtml = '<div class="notice" style="border-color:#E286E4;color:#E286E4;background:#2a1a2a">⚠ Idea bank running low for: ' + warnings.join(", ") + '. <button class="btn btn-sm" style="background:#E286E4;color:#000;margin-left:8px" onclick="document.getElementById(\'add-idea-section\').scrollIntoView({behavior:\'smooth\'})">Add ideas →</button></div>';
+  }
+
+  // Progress summary
+  const totalIdeas = currentAssignments.coaches.reduce((s,c) => s + c.ideas.length, 0);
+  const delivered = currentAssignments.coaches.reduce((s,c) => s + c.ideas.filter(i => i.delivered).length, 0);
+  const pct = totalIdeas > 0 ? Math.round(delivered / totalIdeas * 100) : 0;
+
+  let html = warnHtml + '<div class="card"><div class="card-top"></div>';
+  html += '<div class="card-label">Week of ' + currentAssignments.weekDates + (currentAssignments.theme ? ' · ' + currentAssignments.theme : '') + '</div>';
+  html += '<div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">';
+  html += '<div class="pillar-bar" style="flex:1;height:10px"><div class="pillar-fill" style="width:' + pct + '%"></div></div>';
+  html += '<div class="pillar-pct">' + delivered + '/' + totalIdeas + ' delivered</div>';
+  html += '</div>';
+
+  html += '<div class="grid-3">';
+  currentAssignments.coaches.forEach((c, ci) => {
+    const coachDelivered = c.ideas.filter(i => i.delivered).length;
+    html += '<div class="coach-card">';
+    html += '<div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div class="coach-name">' + c.name + '</div><div class="coach-role">' + c.role + '</div></div><div style="font-family:Barlow Condensed;font-style:italic;font-weight:900;color:#94FCB1;font-size:18px">' + coachDelivered + '/' + c.ideas.length + '</div></div>';
+
+    c.ideas.forEach((idea, ii) => {
+      const checked = idea.delivered ? "checked" : "";
+      const checkStyle = idea.delivered ? "background:#94FCB1;border-color:#94FCB1" : "";
+      const titleStyle = idea.delivered ? "text-decoration:line-through;opacity:.6" : "";
+      html += '<div style="margin-top:12px;padding-top:12px;border-top:1px solid #353a44">';
+      html += '<div style="display:flex;align-items:flex-start;gap:10px">';
+      html += '<div class="cad-check ' + (idea.delivered ? "done" : "") + '" style="flex-shrink:0;width:24px;height:24px;font-size:14px" onclick="toggleDelivered(' + ci + ',' + ii + ')">' + (idea.delivered ? "✓" : "") + '</div>';
+      html += '<div style="flex:1;' + titleStyle + '">';
+      html += '<div style="font-weight:700;font-size:13px;color:#fff;line-height:1.3">' + idea.title + '</div>';
+      html += '<div style="font-size:10px;color:#94FCB1;margin-top:3px;font-weight:600;letter-spacing:.5px;text-transform:uppercase">' + idea.format + ' · Post ' + idea.day + '</div>';
+      html += '<div style="font-size:12px;color:#b8bcc4;margin-top:5px;line-height:1.4">' + idea.desc + '</div>';
+      if (idea.hook) html += '<div style="font-size:11px;color:#E2FE78;margin-top:5px;font-style:italic">' + idea.hook + '</div>';
+      html += '<div style="margin-top:6px"><button class="btn btn-sm btn-ghost" style="padding:4px 10px;font-size:10px" onclick="swapIdea(' + ci + ',' + ii + ')">↻ Swap</button> <button class="btn btn-sm btn-ghost" style="padding:4px 10px;font-size:10px" onclick="editIdea(' + ci + ',' + ii + ')">✎ Edit</button> <button class="btn btn-sm btn-ghost" style="padding:4px 10px;font-size:10px;border-color:#E286E4;color:#E286E4" onclick="skipIdea(' + ci + ',' + ii + ')">✕ Skip</button></div>';
+      html += '</div></div></div>';
+    });
+    html += '<div style="margin-top:12px;padding-top:12px;border-top:1px solid #353a44"><button class="btn btn-sm btn-ghost" style="font-size:10px;padding:6px 12px" onclick="addExtraIdea(' + ci + ')">+ Add another for ' + c.name + '</button></div>';
+    html += '</div>';
+  });
+  html += '</div></div>';
+
+  document.getElementById("assignments-output").innerHTML = html;
+  document.getElementById("recurring-card").style.display = "block";
+  renderBankStatus();
+}
+
+function toggleDelivered(coachIdx, ideaIdx){
+  const idea = currentAssignments.coaches[coachIdx].ideas[ideaIdx];
+  idea.delivered = !idea.delivered;
+  // If this is from a locked/approved week, also update in approvedWeeks
+  syncToApprovedIfLocked();
+  renderAssignments();
+}
+
+function syncToApprovedIfLocked(){
+  // If currentAssignments matches an approved week, sync the deliveries back
+  if (!currentAssignments || !currentAssignments.weekDates) return;
+  const match = approvedWeeks.find(w => w.weekDates === currentAssignments.weekDates);
+  if (match){
+    match.coaches = currentAssignments.coaches;
+    saveApproved();
+  }
+}
+
+function swapIdea(coachIdx, ideaIdx){
+  const coach = currentAssignments.coaches[coachIdx];
+  const currentIdea = coach.ideas[ideaIdx];
+  const available = getAvailableIdeas(coach.name).filter(i => i.id !== currentIdea.id && !coach.ideas.some(ci => ci.id === i.id));
+  if (available.length === 0){
+    alert("No more ideas in " + coach.name + "'s bank. Add new ones below.");
+    return;
+  }
+  const next = available[0];
+  coach.ideas[ideaIdx] = {
+    id: next.id,
+    title: next.title,
+    format: next.format,
+    day: next.day,
+    desc: next.desc,
+    hook: next.hook,
+    delivered: false,
+    custom: false
+  };
+  syncToApprovedIfLocked();
+  renderAssignments();
+}
+
+function editIdea(coachIdx, ideaIdx){
+  const idea = currentAssignments.coaches[coachIdx].ideas[ideaIdx];
+  const newTitle = prompt("Edit title:", idea.title);
+  if (newTitle === null) return;
+  const newDesc = prompt("Edit description:", idea.desc);
+  if (newDesc === null) return;
+  const newDay = prompt("Post day (Mon/Tue/Wed/Thu/Fri):", idea.day);
+  if (newDay === null) return;
+  const newFormat = prompt("Format (Reel/Carousel/Talking Head):", idea.format);
+  if (newFormat === null) return;
+  idea.title = newTitle;
+  idea.desc = newDesc;
+  idea.day = newDay;
+  idea.format = newFormat;
+  idea.custom = true;
+  syncToApprovedIfLocked();
+  renderAssignments();
+}
+
+function skipIdea(coachIdx, ideaIdx){
+  if (!confirm("Skip this assignment for the week? The idea goes back in the bank for future use.")) return;
+  currentAssignments.coaches[coachIdx].ideas.splice(ideaIdx, 1);
+  syncToApprovedIfLocked();
+  renderAssignments();
+}
+
+function addExtraIdea(coachIdx){
+  const coach = currentAssignments.coaches[coachIdx];
+  const available = getAvailableIdeas(coach.name).filter(i => !coach.ideas.some(ci => ci.id === i.id));
+  if (available.length === 0){
+    const customTitle = prompt("No more ideas in " + coach.name + "'s bank. Add a custom one — title:");
+    if (!customTitle) return;
+    const customDesc = prompt("Description:");
+    coach.ideas.push({
+      id: "custom_" + Date.now(),
+      title: customTitle,
+      format: "Reel",
+      day: "Wed",
+      desc: customDesc || "",
+      hook: "",
+      delivered: false,
+      custom: true
+    });
+  } else {
+    const next = available[0];
+    coach.ideas.push({
+      id: next.id,
+      title: next.title,
+      format: next.format,
+      day: next.day,
+      desc: next.desc,
+      hook: next.hook,
+      delivered: false,
+      custom: false
+    });
+  }
+  syncToApprovedIfLocked();
+  renderAssignments();
+}
+
 function approveWeek(){
   if (!currentAssignments){alert("Generate assignments first."); return;}
-  if (!confirm("Approve and lock this week's assignments?")) return;
+  if (!confirm("Approve and lock this week's assignments? You can still check off deliveries after locking.")) return;
+
+  // Mark all non-custom ideas as used so they never repeat
+  currentAssignments.coaches.forEach(c => {
+    c.ideas.forEach(i => {
+      if (!i.custom && !usedIdeaIds.includes(i.id)){
+        usedIdeaIds.push(i.id);
+      }
+    });
+  });
+  saveUsedIds();
+
   approvedWeeks.unshift({
     id: Date.now(),
     weekDates: currentAssignments.weekDates,
@@ -885,9 +1310,10 @@ function approveWeek(){
   });
   saveApproved();
   renderApproved();
+  renderBankStatus();
   const approveBtn = document.getElementById("approve-btn");
   approveBtn.disabled = true;
-  approveBtn.textContent = "✓ Approved";
+  approveBtn.textContent = "✓ Approved & Locked";
 }
 
 function renderApproved(){
@@ -899,16 +1325,42 @@ function renderApproved(){
   let html = "";
   approvedWeeks.forEach((w, idx) => {
     const d = new Date(w.approvedAt);
-    html += '<div class="approved-row"><div class="approved-meta"><strong>' + w.weekDates + '</strong>' + (w.theme ? ' · ' + w.theme : '') + '<div class="small">Approved ' + d.toLocaleDateString() + '</div></div><div><button class="btn btn-sm btn-ghost" onclick="redownloadPDF(' + idx + ')">📄 PDF</button> <button class="btn btn-sm btn-ghost" onclick="deleteApproved(' + idx + ')">×</button></div></div>';
+    const totalIdeas = w.coaches.reduce((s,c) => s + (c.ideas ? c.ideas.length : 0), 0);
+    const delivered = w.coaches.reduce((s,c) => s + (c.ideas ? c.ideas.filter(i => i.delivered).length : 0), 0);
+    html += '<div class="approved-row"><div class="approved-meta"><strong>' + w.weekDates + '</strong>' + (w.theme ? ' · ' + w.theme : '') + '<div class="small">Approved ' + d.toLocaleDateString() + ' · ' + delivered + '/' + totalIdeas + ' delivered</div></div><div><button class="btn btn-sm btn-ghost" onclick="loadApproved(' + idx + ')">↻ Load</button> <button class="btn btn-sm btn-ghost" onclick="redownloadPDF(' + idx + ')">📄 PDF</button> <button class="btn btn-sm btn-ghost" onclick="deleteApproved(' + idx + ')">×</button></div></div>';
   });
   document.getElementById("approved-list").innerHTML = html;
 }
 
+function loadApproved(idx){
+  currentAssignments = JSON.parse(JSON.stringify(approvedWeeks[idx]));
+  document.getElementById("week-dates").value = currentAssignments.weekDates;
+  document.getElementById("week-theme").value = currentAssignments.theme || "";
+  renderAssignments();
+  const approveBtn = document.getElementById("approve-btn");
+  approveBtn.disabled = true;
+  approveBtn.textContent = "✓ Already Locked";
+  document.getElementById("assignments-output").scrollIntoView({behavior:"smooth"});
+}
+
 function deleteApproved(idx){
   if (!confirm("Delete this approved week from history?")) return;
+  // Return the ideas to the bank by removing them from usedIdeaIds
+  const w = approvedWeeks[idx];
+  w.coaches.forEach(c => {
+    if (c.ideas){
+      c.ideas.forEach(i => {
+        if (!i.custom){
+          usedIdeaIds = usedIdeaIds.filter(id => id !== i.id);
+        }
+      });
+    }
+  });
+  saveUsedIds();
   approvedWeeks.splice(idx, 1);
   saveApproved();
   renderApproved();
+  renderBankStatus();
 }
 
 function redownloadPDF(idx){
@@ -916,7 +1368,55 @@ function redownloadPDF(idx){
   generatePDFFromData(w);
 }
 
+// ═══════════════════════════════════════════════════════
+// IDEA BANK STATUS — sidebar widget
+// ═══════════════════════════════════════════════════════
+
+function renderBankStatus(){
+  const el = document.getElementById("bank-status");
+  if (!el) return;
+  let html = '';
+  COACHES.forEach(c => {
+    const avail = getAvailableIdeas(c.name).length;
+    const need = COACH_WEEKLY_COUNT[c.name] || 1;
+    let color = "#94FCB1";  // green
+    let label = "OK";
+    if (avail === 0){ color = "#E286E4"; label = "EMPTY"; }
+    else if (avail < need * 2){ color = "#FFC857"; label = "LOW"; }
+    html += '<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #353a44">';
+    html += '<div style="font-size:12px;font-weight:600">' + c.name + '</div>';
+    html += '<div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;color:' + color + ';font-weight:700">' + label + '</span><span style="background:' + color + ';color:#000;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;min-width:30px;text-align:center">' + avail + '</span></div>';
+    html += '</div>';
+  });
+  el.innerHTML = html;
+}
+
+// ═══════════════════════════════════════════════════════
+// ADD CUSTOM IDEA TO BANK
+// ═══════════════════════════════════════════════════════
+
+function addIdeaToBank(){
+  const coach = document.getElementById("new-idea-coach").value;
+  const title = document.getElementById("new-idea-title").value.trim();
+  const format = document.getElementById("new-idea-format").value;
+  const day = document.getElementById("new-idea-day").value;
+  const desc = document.getElementById("new-idea-desc").value.trim();
+  const hook = document.getElementById("new-idea-hook").value.trim();
+  if (!title){alert("Title is required."); return;}
+  if (!ideaBank[coach]) ideaBank[coach] = [];
+  const newId = "u_" + Date.now();
+  ideaBank[coach].push({id:newId, title, format, day, desc, hook});
+  saveIdeaBank();
+  renderBankStatus();
+  // Clear form
+  document.getElementById("new-idea-title").value = "";
+  document.getElementById("new-idea-desc").value = "";
+  document.getElementById("new-idea-hook").value = "";
+  alert("✓ Added to " + coach + "'s idea bank.");
+}
+
 renderApproved();
+renderBankStatus();
 
 // ═══════════════════════════════════════════════════════
 // PDF GENERATOR — landscape A4, ProWorld logo, 3-column
@@ -980,7 +1480,7 @@ function generatePDFFromData(data){
   // 3-COLUMN COACH GRID
   const startY = 50;
   const colW = (pageW - 30) / 3;
-  const rowH = 25;
+  const rowH = 30;
   let col = 0;
   let row = 0;
 
@@ -1005,19 +1505,42 @@ function generatePDFFromData(data){
     doc.setFont("helvetica", "italic");
     doc.text(c.role, x + 2, y + 8);
 
-    // Tasks
-    doc.setFontSize(7.5);
-    doc.setTextColor(40, 40, 40);
-    doc.setFont("helvetica", "normal");
+    // Tasks (now: specific ideas with title, format, day)
     let ty = y + 12;
-    c.tasks.forEach(t => {
-      const lines = doc.splitTextToSize("• " + t, colW - 5);
-      lines.forEach(line => {
+    (c.ideas || []).forEach(idea => {
+      // Title in bold
+      doc.setFontSize(8);
+      doc.setTextColor(0, 0, 0);
+      doc.setFont("helvetica", "bold");
+      const titleLines = doc.splitTextToSize("• " + idea.title, colW - 5);
+      titleLines.forEach(line => {
         if (ty < y + rowH - 2){
           doc.text(line, x + 2, ty);
           ty += 3.2;
         }
       });
+      // Format + day in green
+      if (ty < y + rowH - 2){
+        doc.setFontSize(6.5);
+        doc.setTextColor(40, 130, 80);
+        doc.setFont("helvetica", "bold");
+        doc.text("  " + idea.format + " · Post " + idea.day, x + 2, ty);
+        ty += 3;
+      }
+      // Description
+      if (idea.desc && ty < y + rowH - 2){
+        doc.setFontSize(6.5);
+        doc.setTextColor(80, 80, 80);
+        doc.setFont("helvetica", "normal");
+        const descLines = doc.splitTextToSize("  " + idea.desc, colW - 5);
+        descLines.forEach(line => {
+          if (ty < y + rowH - 2){
+            doc.text(line, x + 2, ty);
+            ty += 2.8;
+          }
+        });
+      }
+      ty += 1; // spacing between ideas
     });
 
     col++;
