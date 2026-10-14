@@ -155,7 +155,11 @@
   "weeks/2026-10-18": {
    "rev": "913641ac6bc2a7ed00397fcc7c5c235c56480f60ff1fabd868d43f18089a3a5a",
    "at": "2026-10-13T14:11:03.610604Z"
+  },
+  "state/strategy": {
+   "rev": "5f50b8b3be47ec98c1100caac5ec51aefd3cea199d31f6a1ac39ed7386bbe179",
+   "at": "2026-10-14T13:23:54.836Z"
   }
  },
- "updatedAt": "2026-10-14T13:21:10.701Z"
+ "updatedAt": "2026-10-14T13:23:58.052Z"
 }
