@@ -1,2282 +1,266 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>ProWorld Academy — Marketing Command Center</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23000'/%3E%3Ctext x='50' y='68' font-family='Arial Black' font-size='52' font-weight='900' fill='%23E2FE78' text-anchor='middle'%3EPW%3C/text%3E%3C/svg%3E">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>PROWORLD Dashboard</title>
+<link rel="icon" href="data:,">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Barlow',sans-serif;background:#1a1d23;color:#e8eaed;min-height:100vh}
-.container{max-width:1400px;margin:0 auto;padding:24px}
-.h-display{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;letter-spacing:.5px;text-transform:uppercase}
-
-/* HEADER */
-.header{display:flex;align-items:center;justify-content:space-between;padding:20px 0 28px;border-bottom:2px solid #E2FE78;margin-bottom:28px}
-.logo{display:flex;align-items:center;gap:14px}
-.logo-mark{width:54px;height:54px;background:#E2FE78;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;font-size:24px;color:#000}
-.logo-text{font-size:28px;color:#fff}
-.logo-text .sub{font-size:11px;color:#E2FE78;letter-spacing:2px;font-family:'Barlow',sans-serif;font-style:normal;font-weight:600}
-.header-meta{text-align:right;font-size:12px;color:#9aa0a6;line-height:1.6}
-.header-meta strong{color:#E2FE78;font-weight:600}
-.live-pill{display:inline-flex;align-items:center;gap:6px;background:#000;color:#94FCB1;padding:4px 10px;border-radius:12px;font-size:10px;font-weight:700;letter-spacing:1px;margin-right:10px;border:1px solid #2a2e36}
-.live-dot{width:6px;height:6px;background:#94FCB1;border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-
-/* NAV */
-.nav{display:flex;gap:4px;flex-wrap:wrap;background:#22262d;padding:6px;border-radius:10px;margin-bottom:24px;border:1px solid #2a2e36}
-.nav-tab{padding:10px 18px;font-size:13px;font-weight:600;color:#9aa0a6;cursor:pointer;border-radius:6px;transition:all .15s;font-family:'Barlow',sans-serif;letter-spacing:.3px}
-.nav-tab:hover{color:#E2FE78;background:#2a2e36}
-.nav-tab.active{background:#E2FE78;color:#000}
-
-/* TABS */
-.tab{display:none}
-.tab.active{display:block}
-
-/* CARDS */
-.card{background:#22262d;border:1px solid #2a2e36;border-radius:12px;padding:22px;margin-bottom:18px;position:relative;overflow:hidden}
-.card-top{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#E2FE78 0%,#94FCB1 100%)}
-.card-label{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;font-size:14px;color:#E2FE78;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
-.card h2{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;font-size:26px;text-transform:uppercase;margin-bottom:8px;letter-spacing:.5px}
-
-/* GRIDS */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
-.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-@media(max-width:768px){.grid-2,.grid-3,.grid-4{grid-template-columns:1fr}}
-
-/* STAT BLOCK */
-.stat{background:#2a2e36;border:1px solid #353a44;border-radius:10px;padding:18px}
-.stat-num{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;font-size:42px;color:#E2FE78;line-height:1}
-.stat-label{font-size:11px;color:#9aa0a6;text-transform:uppercase;letter-spacing:1.5px;margin-top:6px;font-weight:600}
-.stat-delta{font-size:12px;color:#94FCB1;margin-top:6px;font-weight:600}
-.stat-delta.down{color:#E286E4}
-.stat-sub{font-size:11px;color:#9aa0a6;margin-top:4px}
-
-/* INPUTS */
-input,select,textarea{background:#2a2e36;border:1px solid #353a44;color:#e8eaed;padding:11px 14px;border-radius:8px;font-family:'Barlow',sans-serif;font-size:14px;width:100%}
-input:focus,select:focus,textarea:focus{outline:none;border-color:#E2FE78}
-label{display:block;font-size:11px;color:#9aa0a6;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;font-weight:600}
-.field{margin-bottom:14px}
-
-/* BUTTONS */
-.btn{background:#E2FE78;color:#000;border:none;padding:12px 22px;font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;font-size:14px;letter-spacing:1px;text-transform:uppercase;border-radius:8px;cursor:pointer;transition:transform .1s}
-.btn:hover{transform:translateY(-1px)}
-.btn:active{transform:translateY(0)}
-.btn-ghost{background:transparent;border:1px solid #E2FE78;color:#E2FE78}
-.btn-sm{padding:8px 14px;font-size:12px}
-.btn-danger{background:#E286E4}
+:root{
+  --ink:#000; --panel:#0e0e0e; --panel-2:#161616; --panel-3:#1f1f1f; --line:#272727; --line-2:#333;
+  --text:#fff; --text-2:#c9cbc2; --muted:#8f9288; --faint:#5b5d56;
+  --lime:#E2FE78; --mint:#94FCB1; --orchid:#E286E4; --cyan:#A9F3F7; --warn:#FFC857;
+  --display:"Review Condensed","Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --body:"Aeonik Pro","Helvetica Neue",Arial,sans-serif; color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink)}
+body{font-family:var(--body);background:var(--ink);color:var(--text);min-height:100vh;font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1280px;margin:0 auto;padding-block:0 72px;padding-inline:24px}
+@media(max-width:640px){.wrap{padding-inline:16px}}
+.h{font-family:var(--display);font-style:italic;font-weight:800;text-transform:uppercase;line-height:.95}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+a{color:var(--lime)}
+.hdr{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0 18px;border-bottom:1px solid var(--line-2);position:relative;flex-wrap:wrap}
+.hdr::after{content:"";position:absolute;left:0;bottom:-1px;width:180px;height:3px;background:var(--lime)}
+.brand{display:flex;align-items:center;gap:16px}
+.wordmark{width:200px;height:24px;background:var(--logo-lime) left center/contain no-repeat;flex-shrink:0}
+.brand-sub{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-2);font-weight:700}
+.viewer{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.viewer select{background:var(--panel-2);border:1px solid var(--line-2);color:var(--text);padding:8px 10px;border-radius:5px;font-family:var(--body);font-size:13px;min-width:180px}
+.live{display:inline-flex;align-items:center;gap:6px;background:var(--panel-2);color:var(--mint);padding:3px 9px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:1.5px;border:1px solid var(--line-2)}
+.live i{width:6px;height:6px;background:var(--mint);border-radius:50%}
+.live.local{color:var(--warn)}.live.local i{background:var(--warn)}
+.hero{padding:30px 0 10px}
+.hero h1{font-size:52px}
+.hero h1 em{font-style:inherit;color:var(--lime)}
+.hero p{color:var(--muted);margin-top:8px;max-width:62ch}
+@media(max-width:640px){.hero h1{font-size:38px}}
+.sec{margin-top:28px}
+.sec-label{font-family:var(--display);font-style:italic;font-weight:800;text-transform:uppercase;font-size:18px;color:var(--lime);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sec-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.sec-label.orchid{color:var(--orchid)}.sec-label.mint{color:var(--mint)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+.mod{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--lime);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:10px;min-height:170px}
+.mod.mint{border-top-color:var(--mint)}.mod.cyan{border-top-color:var(--cyan)}.mod.orchid{border-top-color:var(--orchid)}.mod.gray{border-top-color:var(--line-2)}
+.mod-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.mod h3{font-family:var(--display);font-style:italic;font-weight:800;text-transform:uppercase;font-size:24px;line-height:1}
+.mod p{color:var(--text-2);font-size:13px;flex:1}
+.badge{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 7px;border-radius:3px;background:var(--panel-3);color:var(--text-2);white-space:nowrap}
+.badge.live{background:var(--mint);color:#000}.badge.proto{background:var(--cyan);color:#000}.badge.plan{background:var(--panel-3);color:var(--text-2)}.badge.here{background:var(--lime);color:#000}
+.mod-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.who{font-size:11px;color:var(--muted)}
+.btn{background:var(--lime);color:#000;border:1px solid var(--lime);padding:9px 16px;font-family:var(--display);font-style:italic;font-weight:800;font-size:14px;letter-spacing:1px;text-transform:uppercase;border-radius:5px;cursor:pointer;text-decoration:none;display:inline-block;line-height:1}
+.btn:hover{background:#eeffa0}
+.btn.ghost{background:transparent;color:var(--lime)}
+.btn.ghost.muted{color:var(--muted);border-color:var(--line-2)}
+.btn.orchid{background:var(--orchid);border-color:var(--orchid)}
+.btn.xs{padding:5px 9px;font-size:11px;letter-spacing:.5px}
 .btn:disabled{opacity:.4;cursor:not-allowed}
-
-/* PILLAR MIX */
-.pillar-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid #2a2e36}
-.pillar-row:last-child{border:none}
-.pillar-name{flex:1;font-weight:600;font-size:14px}
-.pillar-bar{flex:2;height:8px;background:#2a2e36;border-radius:4px;overflow:hidden}
-.pillar-fill{height:100%;background:linear-gradient(90deg,#E2FE78,#94FCB1);border-radius:4px}
-.pillar-pct{width:50px;text-align:right;font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;color:#E2FE78}
-
-/* CALENDAR */
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:14px}
-.cal-head{font-size:11px;color:#9aa0a6;text-align:center;padding:8px;text-transform:uppercase;letter-spacing:1px;font-weight:600}
-.cal-day{background:#2a2e36;border:1px solid #353a44;border-radius:8px;padding:10px;min-height:90px;cursor:pointer;transition:border-color .15s}
-.cal-day:hover{border-color:#E2FE78}
-.cal-day.empty{background:transparent;border:none;cursor:default}
-.cal-day-num{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;font-size:18px;color:#E2FE78}
-.cal-day-tag{font-size:9px;color:#9aa0a6;margin-top:6px;line-height:1.3;text-transform:uppercase;letter-spacing:.5px;font-weight:600}
-
-/* CADENCE */
-.cad-row{display:grid;grid-template-columns:140px repeat(7,1fr) 90px;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid #2a2e36}
-.cad-platform{font-weight:600;font-size:14px}
-.cad-check{width:30px;height:30px;border-radius:6px;background:#2a2e36;border:1px solid #353a44;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
-.cad-check.done{background:#E2FE78;border-color:#E2FE78;color:#000;font-weight:900}
-.cad-target{font-size:12px;color:#9aa0a6;text-align:right;font-weight:600}
-@media(max-width:768px){.cad-row{grid-template-columns:1fr;gap:4px}}
-
-/* CONTENT IDEAS */
-.idea-card{background:#2a2e36;border:1px solid #353a44;border-radius:10px;padding:16px;margin-bottom:12px;border-left:3px solid #E2FE78}
-.idea-tag{display:inline-block;font-size:10px;background:#E2FE78;color:#000;padding:3px 8px;border-radius:4px;font-weight:700;letter-spacing:.5px;margin-right:6px;text-transform:uppercase}
-.idea-tag.coach{background:#94FCB1}
-.idea-tag.platform{background:#A9F3F7}
-.idea-title{font-weight:700;margin:8px 0;font-size:15px}
-.idea-desc{color:#b8bcc4;font-size:13px;line-height:1.5}
-
-/* COACH ASSIGNMENTS */
-.week-picker{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
-.week-input{background:#2a2e36;border:1px solid #353a44;color:#e8eaed;padding:10px 14px;border-radius:8px;font-family:'Barlow',sans-serif;font-size:14px;flex:1;min-width:200px}
-.coach-card{background:#2a2e36;border:1px solid #353a44;border-radius:10px;padding:14px;border-left:3px solid #E2FE78}
-.coach-name{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;font-size:18px;color:#E2FE78;margin-bottom:4px;text-transform:uppercase}
-.coach-role{font-size:11px;color:#9aa0a6;text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:8px}
-.coach-task{font-size:13px;color:#e8eaed;line-height:1.5}
-.coach-task strong{color:#94FCB1}
-
-/* APPROVED WEEKS */
-.approved-row{display:flex;align-items:center;justify-content:space-between;padding:12px;background:#2a2e36;border:1px solid #353a44;border-radius:8px;margin-bottom:8px;border-left:3px solid #94FCB1}
-.approved-meta{font-size:13px}
-.approved-meta strong{color:#94FCB1}
-.approved-meta .small{color:#9aa0a6;font-size:11px;margin-top:4px}
-
-/* ARCHIVE */
-.archive-row{background:#2a2e36;border:1px solid #353a44;border-radius:8px;padding:14px;margin-bottom:10px;display:grid;grid-template-columns:90px 1fr 90px;gap:14px;align-items:center}
-.archive-date{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;color:#E2FE78;font-size:14px;text-transform:uppercase}
-.archive-tags{font-size:10px;color:#9aa0a6;margin-top:4px;text-transform:uppercase;letter-spacing:.5px;font-weight:600}
-.archive-title{font-weight:700;font-size:14px;margin:4px 0}
-.archive-desc{color:#b8bcc4;font-size:12px;line-height:1.5}
-
-/* META ADS */
-.ad-stat{background:#2a2e36;border:1px solid #353a44;border-radius:10px;padding:18px;border-left:3px solid #E2FE78}
-.ad-stat-label{font-size:11px;color:#9aa0a6;text-transform:uppercase;letter-spacing:1.5px;font-weight:600}
-.ad-stat-num{font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;font-size:36px;color:#E2FE78;margin-top:6px;line-height:1}
-
-/* PRIORITIES */
-.priority-row{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid #2a2e36}
-.priority-row:last-child{border:none}
-.priority-icon{font-size:22px;flex-shrink:0;width:38px;height:38px;background:#2a2e36;border-radius:8px;display:flex;align-items:center;justify-content:center}
-.priority-content{flex:1}
-.priority-title{font-weight:700;font-size:15px;margin-bottom:2px}
-.priority-desc{color:#9aa0a6;font-size:13px;line-height:1.5}
-
-/* MISC */
-.divider{height:1px;background:#2a2e36;margin:18px 0}
-.tag{display:inline-block;font-size:10px;background:#2a2e36;color:#94FCB1;padding:3px 8px;border-radius:4px;margin:2px;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
-.recurring-box{background:linear-gradient(135deg,#2a2e36 0%,#353a44 100%);border:1px solid #E2FE78;border-radius:10px;padding:16px;margin-bottom:14px}
-.recurring-title{color:#E2FE78;font-family:'Barlow Condensed',sans-serif;font-style:italic;font-weight:900;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
-.recurring-item{font-size:13px;color:#e8eaed;padding:4px 0}
-.recurring-item strong{color:#94FCB1}
-.empty{text-align:center;padding:40px;color:#9aa0a6;font-size:14px}
-.notice{background:#2a2e1a;border:1px solid #E2FE78;border-radius:8px;padding:12px 16px;font-size:13px;color:#E2FE78;margin-bottom:14px}
+.empty{text-align:center;padding:40px;color:var(--muted);background:var(--panel);border:1px dashed var(--line-2);border-radius:6px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px}
+.notice{background:#0d1719;border:1px solid var(--cyan);color:var(--cyan);border-radius:5px;padding:10px 14px;font-size:12.5px;margin-bottom:14px;line-height:1.5}
+.notice.warn{background:#1a1408;border-color:var(--warn);color:var(--warn)}
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:left;padding:8px 8px;border-bottom:1px solid var(--line-2);vertical-align:bottom}
+th.pg{text-align:center;max-width:84px}
+th.pg span{display:block;font-size:9px;letter-spacing:1px;line-height:1.2}
+td{padding:8px;border-bottom:1px solid var(--line);vertical-align:middle;font-size:13px}
+td.c{text-align:center}
+tr:hover td{background:var(--panel-2)}
+.uname{font-weight:700}
+.uemail{font-size:11px;color:var(--muted)}
+.role{background:var(--panel-2);border:1px solid var(--line-2);color:var(--text);padding:5px 7px;border-radius:4px;font-family:var(--body);font-size:12px}
+.chk{width:24px;height:24px;border-radius:4px;background:var(--panel-2);border:1px solid var(--line-2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:transparent;font-weight:900;user-select:none}
+.chk:hover{border-color:var(--lime)}
+.chk.on{background:var(--lime);border-color:var(--lime);color:#000}
+.chk.lock{opacity:.5;cursor:default}
+.form{display:grid;grid-template-columns:1.2fr 1.5fr 1fr auto;gap:10px;align-items:end;margin-top:16px}
+@media(max-width:760px){.form{grid-template-columns:1fr 1fr}}
+.field label{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-weight:700}
+.field input,.field select{width:100%;background:var(--panel-2);border:1px solid var(--line-2);color:var(--text);padding:9px 11px;border-radius:5px;font-family:var(--body);font-size:14px}
+.field input:focus,.field select:focus{outline:none;border-color:var(--lime)}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--lime);color:#000;padding:11px 18px;border-radius:6px;font-weight:700;font-size:13px;opacity:0;pointer-events:none;transition:all .25s;z-index:50;max-width:90vw}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.err{background:var(--orchid)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:11px;color:var(--faint);letter-spacing:1px;text-transform:uppercase}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-</head>
-<body>
-<div class="container">
+</head><body>
+<div class="wrap">
+<header class="hdr">
+  <div class="brand"><div class="wordmark" role="img" aria-label="PROWORLD"></div><div class="brand-sub">Dashboard · Motherboard</div></div>
+  <div class="viewer"><span class="live local" id="live"><i></i><span id="live-txt">CONNECTING</span></span><button class="btn ghost xs" id="pw-auth-btn" onclick="PWGit.authDialog()">Sign in to edit</button><label for="me">Viewing as</label><select id="me"></select></div>
+</header>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="logo">
-    <div class="logo-mark">PW</div>
-    <div class="logo-text h-display">
-      ProWorld Academy
-      <div class="sub">Marketing Command Center</div>
+<section class="hero">
+  <h1 class="h">One link. <em>Every page.</em></h1>
+  <p>Marketing, front desk, courts, attendance, billing, coaches and players — each person sees only the pages they've been given. Owners control access below. Everything on this site is protected by the team passcode.</p>
+</section>
+
+<section class="sec">
+  <div class="sec-label">Your pages</div>
+  <div class="grid" id="modules"></div>
+</section>
+
+<section class="sec" id="access-sec" hidden>
+  <div class="sec-label orchid">Access control</div>
+  <div class="card">
+    <div class="notice">This controls what each person sees on this dashboard and which page links they get. It is an access model, not a login: the whole site opens with the one team passcode, and saving needs a GitHub sign-in. Real per-person sign-in arrives with the backend build.</div>
+    <div class="tbl-wrap"><table id="acl"></table></div>
+    <div class="form">
+      <div class="field"><label for="nu-name">Name</label><input id="nu-name" placeholder="e.g., Sofia"></div>
+      <div class="field"><label for="nu-email">Email (optional)</label><input id="nu-email" placeholder="name@proworldacademy.com"></div>
+      <div class="field"><label for="nu-role">Role</label><select id="nu-role"></select></div>
+      <div class="field"><label>&nbsp;</label><button class="btn orchid" onclick="addUser()">+ Add person</button></div>
     </div>
   </div>
-  <div class="header-meta">
-    <div><span class="live-pill"><span class="live-dot"></span>LIVE</span><strong id="today-date"></strong></div>
-    <div style="margin-top:4px;color:#9aa0a6;font-size:11px">Delray Beach, Florida</div>
+</section>
+
+<section class="sec" id="roles-sec" hidden>
+  <div class="sec-label mint">Role defaults</div>
+  <div class="card tbl-wrap"><table id="roles"></table><div class="who" style="margin-top:10px">When you add a person, they start with their role's pages. You can then tick or untick any page for that person above.</div></div>
+</section>
+
+<section class="sec" id="site-sec" hidden>
+  <div class="sec-label mint">This site</div>
+  <div class="card">
+    <div class="notice warn" id="site-note"></div>
+    <div class="row">
+      <button class="btn ghost xs" onclick="changePasscode()">Change the team passcode</button>
+      <button class="btn ghost xs muted" onclick="PWGit.lock()">Forget passcode on this device</button>
+      <a class="btn ghost xs muted" id="repo-link" target="_blank" rel="noopener">Open the repository</a>
+    </div>
   </div>
+</section>
+
+<footer><span>PROWORLD Academy · High Performance Academy</span><span>proworldacademy.com</span></footer>
 </div>
-
-<!-- NAV -->
-<div class="nav">
-  <div class="nav-tab active" data-tab="overview">Overview</div>
-  <div class="nav-tab" data-tab="kpi">KPI Tracker</div>
-  <div class="nav-tab" data-tab="calendar">Calendar</div>
-  <div class="nav-tab" data-tab="cadence">Cadence</div>
-  <div class="nav-tab" data-tab="ideas">Content Ideas</div>
-  <div class="nav-tab" data-tab="assignments">Coach Assignments</div>
-  <div class="nav-tab" data-tab="archive">Content Archive</div>
-  <div class="nav-tab" data-tab="ads">Meta Ads</div>
-</div>
-
-<!-- OVERVIEW -->
-<div class="tab active" id="tab-overview">
-  <div style="margin-bottom:20px">
-    <h2 class="h-display" style="font-size:38px;display:inline-block;background:linear-gradient(180deg,transparent 60%,#E2FE78 60%);padding:0 4px">Weekly Command</h2>
-    <div style="color:#9aa0a6;margin-top:6px;font-size:14px">Your marketing snapshot</div>
-  </div>
-
-  <div class="grid-4">
-    <div class="stat"><div class="card-top"></div>
-      <div class="stat-label">IG Posts This Week</div>
-      <div class="stat-num" id="ov-ig-posts">0</div>
-      <div class="stat-sub">Target: 21 (3/day)</div>
-    </div>
-    <div class="stat"><div class="card-top" style="background:#94FCB1"></div>
-      <div class="stat-label">Stories This Week</div>
-      <div class="stat-num" id="ov-stories">0</div>
-      <div class="stat-sub">Target: 28 (4/day)</div>
-    </div>
-    <div class="stat"><div class="card-top" style="background:#A9F3F7"></div>
-      <div class="stat-label">Cadence Completion</div>
-      <div class="stat-num" id="ov-cadence">0%</div>
-      <div class="stat-sub">All platforms</div>
-    </div>
-    <div class="stat"><div class="card-top" style="background:#E286E4"></div>
-      <div class="stat-label">Season Focus</div>
-      <div class="stat-num" style="font-size:28px">Summer Camp</div>
-      <div class="stat-sub">Jun 1 – Aug 7</div>
-    </div>
-  </div>
-
-  <div class="grid-2">
-    <div class="card"><div class="card-top"></div>
-      <div class="card-label">This Week's Priorities</div>
-      <div class="priority-row">
-        <div class="priority-icon">🏕️</div>
-        <div class="priority-content">
-          <div class="priority-title">Summer Camp Push</div>
-          <div class="priority-desc">Every 3rd post references camp registration</div>
-        </div>
-      </div>
-      <div class="priority-row">
-        <div class="priority-icon">🎾</div>
-        <div class="priority-content">
-          <div class="priority-title">Tennis Creative Fix</div>
-          <div class="priority-desc">Film new Tennis ad with urgency hook this week</div>
-        </div>
-      </div>
-      <div class="priority-row">
-        <div class="priority-icon">📸</div>
-        <div class="priority-content">
-          <div class="priority-title">Daily Academy Vibes</div>
-          <div class="priority-desc">2–3 iPhone clips from court every single day as story</div>
-        </div>
-      </div>
-      <div class="priority-row">
-        <div class="priority-icon">📋</div>
-        <div class="priority-content">
-          <div class="priority-title">Deploy Coach Assignments</div>
-          <div class="priority-desc">Send weekly Slack message to all coaches Sunday night</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card"><div class="card-top"></div>
-      <div class="card-label">Content Pillar Mix</div>
-      <div class="pillar-row"><div class="pillar-name">🎾 Tennis — HP & Competitive</div><div class="pillar-bar"><div class="pillar-fill" style="width:25%"></div></div><div class="pillar-pct">25%</div></div>
-      <div class="pillar-row"><div class="pillar-name">🎾 Tennis — Developmental U12/U10/U8</div><div class="pillar-bar"><div class="pillar-fill" style="width:20%"></div></div><div class="pillar-pct">20%</div></div>
-      <div class="pillar-row"><div class="pillar-name">🎾 Tennis — Tips, Drills & Tournament</div><div class="pillar-bar"><div class="pillar-fill" style="width:12%"></div></div><div class="pillar-pct">12%</div></div>
-      <div class="pillar-row"><div class="pillar-name">🎾 Tennis — On Tour / Mental / College</div><div class="pillar-bar"><div class="pillar-fill" style="width:13%"></div></div><div class="pillar-pct">13%</div></div>
-      <div class="pillar-row"><div class="pillar-name">⚽ Soccer</div><div class="pillar-bar"><div class="pillar-fill" style="width:10%"></div></div><div class="pillar-pct">10%</div></div>
-      <div class="pillar-row"><div class="pillar-name">👨‍👩‍👧 Parents Corner</div><div class="pillar-bar"><div class="pillar-fill" style="width:8%"></div></div><div class="pillar-pct">8%</div></div>
-      <div class="pillar-row"><div class="pillar-name">🌟 Culture & Community</div><div class="pillar-bar"><div class="pillar-fill" style="width:8%"></div></div><div class="pillar-pct">8%</div></div>
-      <div class="pillar-row"><div class="pillar-name">💪 Fitness & Recovery</div><div class="pillar-bar"><div class="pillar-fill" style="width:5%"></div></div><div class="pillar-pct">5%</div></div>
-      <div class="pillar-row"><div class="pillar-name">📣 Programs & Promos</div><div class="pillar-bar"><div class="pillar-fill" style="width:5%"></div></div><div class="pillar-pct">5%</div></div>
-      <div class="pillar-row"><div class="pillar-name">🏓 Pickleball</div><div class="pillar-bar"><div class="pillar-fill" style="width:2%"></div></div><div class="pillar-pct">2%</div></div>
-    </div>
-  </div>
-
-  <div class="card"><div class="card-top"></div>
-    <div class="card-label">Four Pillars of Player Development</div>
-    <div class="grid-4">
-      <div class="stat" style="text-align:center"><div style="font-size:32px">🎯</div><div class="stat-label" style="margin-top:10px">Technical Training</div></div>
-      <div class="stat" style="text-align:center"><div style="font-size:32px">💪</div><div class="stat-label" style="margin-top:10px">Athletic Fitness</div></div>
-      <div class="stat" style="text-align:center"><div style="font-size:32px">🧠</div><div class="stat-label" style="margin-top:10px">Mental Performance</div></div>
-      <div class="stat" style="text-align:center"><div style="font-size:32px">📊</div><div class="stat-label" style="margin-top:10px">Individual Player Assessments</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- KPI TRACKER -->
-<div class="tab" id="tab-kpi">
-  <div class="notice">📊 Enter this week's KPIs and last week's KPIs to auto-calculate growth %.</div>
-
-  <div class="card"><div class="card-top"></div>
-    <div class="card-label">Instagram — This Week</div>
-    <div class="grid-3">
-      <div class="field"><label>Followers</label><input type="number" id="ig-foll-now" placeholder="0"></div>
-      <div class="field"><label>Reach</label><input type="number" id="ig-reach-now" placeholder="0"></div>
-      <div class="field"><label>Profile Views</label><input type="number" id="ig-pv-now" placeholder="0"></div>
-      <div class="field"><label>Likes</label><input type="number" id="ig-likes-now" placeholder="0"></div>
-      <div class="field"><label>Comments</label><input type="number" id="ig-comments-now" placeholder="0"></div>
-      <div class="field"><label>Shares</label><input type="number" id="ig-shares-now" placeholder="0"></div>
-    </div>
-  </div>
-
-  <div class="card"><div class="card-top"></div>
-    <div class="card-label">Instagram — Last Week</div>
-    <div class="grid-3">
-      <div class="field"><label>Followers</label><input type="number" id="ig-foll-prev" placeholder="0"></div>
-      <div class="field"><label>Reach</label><input type="number" id="ig-reach-prev" placeholder="0"></div>
-      <div class="field"><label>Profile Views</label><input type="number" id="ig-pv-prev" placeholder="0"></div>
-      <div class="field"><label>Likes</label><input type="number" id="ig-likes-prev" placeholder="0"></div>
-      <div class="field"><label>Comments</label><input type="number" id="ig-comments-prev" placeholder="0"></div>
-      <div class="field"><label>Shares</label><input type="number" id="ig-shares-prev" placeholder="0"></div>
-    </div>
-  </div>
-
-  <div class="card"><div class="card-top"></div>
-    <div class="card-label">Meta Ads — This Week</div>
-    <div class="grid-3">
-      <div class="field"><label>Leads</label><input type="number" id="ad-leads-now" placeholder="0"></div>
-      <div class="field"><label>Reach</label><input type="number" id="ad-reach-now" placeholder="0"></div>
-      <div class="field"><label>Link Clicks</label><input type="number" id="ad-clicks-now" placeholder="0"></div>
-      <div class="field"><label>Spend ($)</label><input type="number" id="ad-spend-now" placeholder="0"></div>
-      <div class="field"><label>Male %</label><input type="number" id="ad-male-now" placeholder="0"></div>
-      <div class="field"><label>Female %</label><input type="number" id="ad-female-now" placeholder="0"></div>
-    </div>
-  </div>
-
-  <div class="card"><div class="card-top"></div>
-    <div class="card-label">Meta Ads — Last Week</div>
-    <div class="grid-3">
-      <div class="field"><label>Leads</label><input type="number" id="ad-leads-prev" placeholder="0"></div>
-      <div class="field"><label>Reach</label><input type="number" id="ad-reach-prev" placeholder="0"></div>
-      <div class="field"><label>Link Clicks</label><input type="number" id="ad-clicks-prev" placeholder="0"></div>
-      <div class="field"><label>Spend ($)</label><input type="number" id="ad-spend-prev" placeholder="0"></div>
-    </div>
-  </div>
-
-  <button class="btn" onclick="calcGrowth()">⚡ Calculate Growth</button>
-  <button class="btn btn-ghost" onclick="saveKPIs()" style="margin-left:8px">💾 Save Snapshot</button>
-
-  <div id="growth-results" style="margin-top:18px"></div>
-</div>
-
-<!-- CALENDAR -->
-<div class="tab" id="tab-calendar">
-  <div class="card"><div class="card-top"></div>
-    <div class="card-label">Content Calendar</div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-      <h2 id="cal-month-label">May 2026</h2>
-      <div>
-        <button class="btn btn-sm btn-ghost" onclick="calNav(-1)">‹ Prev</button>
-        <button class="btn btn-sm btn-ghost" onclick="calNav(0)">Today</button>
-        <button class="btn btn-sm btn-ghost" onclick="calNav(1)">Next ›</button>
-      </div>
-    </div>
-    <div class="cal-grid">
-      <div class="cal-head">Sun</div><div class="cal-head">Mon</div><div class="cal-head">Tue</div><div class="cal-head">Wed</div><div class="cal-head">Thu</div><div class="cal-head">Fri</div><div class="cal-head">Sat</div>
-    </div>
-    <div class="cal-grid" id="cal-days"></div>
-  </div>
-
-  <div class="card"><div class="card-top"></div>
-    <div class="card-label">Recurring Weekly Posts</div>
-    <div class="recurring-item">📣 <strong>Mon · Wed · Fri</strong> — Tournament Promo</div>
-    <div class="recurring-item">🏆 <strong>Weekly</strong> — Players in Action Recap</div>
-    <div class="recurring-item">📱 <strong>Daily</strong> — Academy Vibes Story (2–3 iPhone clips, no script)</div>
-  </div>
-</div>
-
-<!-- CADENCE -->
-<div class="tab" id="tab-cadence">
-  <div class="card"><div class="card-top"></div>
-    <div class="card-label">Weekly Posting Cadence</div>
-    <div id="cadence-rows"></div>
-    <div class="divider"></div>
-    <div style="display:flex;align-items:center;justify-content:space-between">
-      <div class="pillar-bar" style="flex:1;margin-right:14px"><div class="pillar-fill" id="cad-progress" style="width:0%"></div></div>
-      <div class="pillar-pct" id="cad-progress-label">0%</div>
-    </div>
-    <button class="btn btn-ghost btn-sm" onclick="resetCadence()" style="margin-top:14px">Reset Week</button>
-  </div>
-</div>
-
-<!-- CONTENT IDEAS -->
-<div class="tab" id="tab-ideas">
-  <div class="card"><div class="card-top"></div>
-    <div class="card-label">Generate Content Ideas</div>
-    <div class="grid-3">
-      <div class="field"><label>Pillar</label>
-        <select id="idea-pillar">
-          <option>Tennis — High Performance</option>
-          <option>Tennis — Dev U12/U10/U8</option>
-          <option>Tennis — Mental Performance</option>
-          <option>Tennis — College Placement</option>
-          <option>Tennis — Tips & Drills</option>
-          <option>Tennis — Tournament Prep</option>
-          <option>Tennis — On Tour with Flo</option>
-          <option>Soccer</option>
-          <option>Fitness & Recovery</option>
-          <option>Parents Corner</option>
-          <option>Culture & Community</option>
-          <option>Programs & Promos</option>
-          <option>Pickleball</option>
-        </select>
-      </div>
-      <div class="field"><label>Platform</label>
-        <select id="idea-platform">
-          <option>Instagram</option><option>TikTok</option><option>Facebook</option><option>YouTube</option><option>Email</option>
-        </select>
-      </div>
-      <div class="field"><label>&nbsp;</label>
-        <button class="btn" onclick="genIdeas()" style="width:100%">⚡ Generate Ideas</button>
-      </div>
-    </div>
-    <div id="ideas-output"></div>
-  </div>
-</div>
-
-<!-- COACH ASSIGNMENTS -->
-<div class="tab" id="tab-assignments">
-  <div class="card"><div class="card-top"></div>
-    <div class="card-label">Coach Assignments — Weekly Video Brief</div>
-    <div class="week-picker">
-      <button class="btn btn-sm btn-ghost" onclick="setWeek(-1)">‹ Last Week</button>
-      <button class="btn btn-sm" onclick="setWeek(0)">This Week</button>
-      <button class="btn btn-sm btn-ghost" onclick="setWeek(1)">Next Week ›</button>
-    </div>
-    <div class="week-picker">
-      <input type="text" class="week-input" id="week-dates" placeholder="Week dates (e.g., May 12–18, 2026)" value="">
-      <input type="text" class="week-input" id="week-theme" placeholder="Optional: weekly theme">
-    </div>
-    <button class="btn" onclick="genAssignments()">⚡ Generate Assignments</button>
-    <button class="btn btn-ghost" onclick="downloadPDF()" style="margin-left:8px">📄 Download PDF</button>
-    <button class="btn" onclick="approveWeek()" id="approve-btn" style="margin-left:8px;background:#94FCB1">✅ Approve & Lock</button>
-    <button class="btn btn-ghost" onclick="autoSyncFromInstagram()" style="margin-left:8px;border-color:#A9F3F7;color:#A9F3F7">🔄 Auto-Sync from Instagram</button>
-  </div>
-
-  <div class="card" id="recurring-card" style="display:none"><div class="card-top"></div>
-    <div class="card-label">Recurring This Week</div>
-    <div class="recurring-item">📣 <strong>Mon · Wed · Fri</strong> — Tournament Promo</div>
-    <div class="recurring-item">🏆 <strong>Weekly</strong> — Players in Action Recap</div>
-    <div class="recurring-item">📱 <strong>Daily</strong> — Academy Vibes Story (2–3 iPhone clips, no script)</div>
-  </div>
-
-  <div id="assignments-output"></div>
-
-  <div id="production-output"></div>
-
-  <div class="card" id="approved-card" style="display:none"><div class="card-top"></div>
-    <div class="card-label">Approved Weeks History</div>
-    <div id="approved-list"></div>
-  </div>
-
-  <div class="grid-2">
-    <div class="card"><div class="card-top" style="background:#94FCB1"></div>
-      <div class="card-label">Idea Bank Status</div>
-      <div style="font-size:12px;color:#9aa0a6;margin-bottom:12px">Green = OK · Yellow = low · Pink = empty · Gray badge ✓ = already posted (locked)</div>
-      <div id="bank-status"></div>
-    </div>
-
-    <div class="card" id="add-idea-section"><div class="card-top" style="background:#E286E4"></div>
-      <div class="card-label">Add Idea to Bank</div>
-      <div style="font-size:12px;color:#9aa0a6;margin-bottom:12px">When a coach's bank gets low, add new ideas here so future weeks have material.</div>
-      <div class="field">
-        <label>Coach</label>
-        <select id="new-idea-coach">
-          <option>Paolo</option><option>Tonio</option><option>Nico</option><option>Eric</option><option>Sebastien</option><option>Flo</option><option>Kam</option><option>Robby</option><option>Aimon</option><option>Coach ET</option><option>Quinnton</option><option>Tara</option><option>Lukas</option><option>Antonio</option><option>Lorenzo</option>
-        </select>
-      </div>
-      <div class="field"><label>Title</label><input type="text" id="new-idea-title" placeholder="e.g., How to handle a tough loss"></div>
-      <div class="grid-2">
-        <div class="field"><label>Format</label>
-          <select id="new-idea-format"><option>Reel</option><option>Carousel</option><option>Talking Head</option><option>Story</option></select>
-        </div>
-        <div class="field"><label>Post Day</label>
-          <select id="new-idea-day"><option>Mon</option><option>Tue</option><option>Wed</option><option>Thu</option><option>Fri</option></select>
-        </div>
-      </div>
-      <div class="field"><label>Description</label><textarea id="new-idea-desc" placeholder="What does the coach need to know to film this?" rows="2"></textarea></div>
-      <div class="field"><label>Hook (optional)</label><input type="text" id="new-idea-hook" placeholder="Opening line or angle"></div>
-      <button class="btn" onclick="addIdeaToBank()">+ Add to Bank</button>
-    </div>
-  </div>
-</div>
-
-<!-- CONTENT ARCHIVE -->
-<div class="tab" id="tab-archive">
-  <div class="card"><div class="card-top"></div>
-    <div class="card-label">Content Archive</div>
-    <div class="grid-3" style="margin-bottom:14px">
-      <div class="stat"><div class="stat-num" id="arch-count">0</div><div class="stat-label">Posts Logged</div></div>
-      <div class="stat"><div class="stat-num" id="arch-weeks">0</div><div class="stat-label">Weeks Covered</div></div>
-      <div class="stat"><div class="stat-num" id="arch-coaches">0</div><div class="stat-label">Active Coaches</div></div>
-    </div>
-    <input type="text" id="arch-search" placeholder="🔍 Search by title, coach, pillar, platform.." oninput="renderArchive()" style="margin-bottom:14px">
-    <div id="archive-list"></div>
-  </div>
-
-  <div class="card"><div class="card-top"></div>
-    <div class="card-label">Log New Post</div>
-    <div class="grid-2">
-      <div class="field"><label>Date</label><input type="date" id="new-date"></div>
-      <div class="field"><label>Coach</label><input type="text" id="new-coach" placeholder="e.g., Tonio"></div>
-      <div class="field"><label>Platform</label>
-        <select id="new-platform"><option>Instagram</option><option>TikTok</option><option>Facebook</option><option>YouTube</option><option>Email</option></select>
-      </div>
-      <div class="field"><label>Format</label>
-        <select id="new-format"><option>Reel</option><option>Carousel</option><option>Static Post</option><option>Story</option><option>Talking Head</option></select>
-      </div>
-      <div class="field"><label>Pillar</label><input type="text" id="new-pillar" placeholder="e.g., Mental Performance"></div>
-      <div class="field"><label>Title</label><input type="text" id="new-title" placeholder="Post title"></div>
-    </div>
-    <div class="field"><label>Description</label><textarea id="new-desc" placeholder="What was the post about?" rows="2"></textarea></div>
-    <button class="btn" onclick="addPost()">+ Log This Post</button>
-  </div>
-</div>
-
-<!-- META ADS -->
-<div class="tab" id="tab-ads">
-  <div class="card"><div class="card-top"></div>
-    <div class="card-label">Meta Ads — Summer Camp 2026</div>
-    <div class="notice">Ad Account: <strong>act_294537641553384</strong> · Budget: <strong>$100/day</strong> (increased May 6) · Top Performer: <strong>Soccer Static</strong></div>
-    <div class="grid-4">
-      <div class="ad-stat"><div class="ad-stat-label">Daily Budget</div><div class="ad-stat-num">$100</div></div>
-      <div class="ad-stat"><div class="ad-stat-label">Top Format</div><div class="ad-stat-num" style="font-size:22px">Soccer Static</div></div>
-      <div class="ad-stat"><div class="ad-stat-label">Campaign</div><div class="ad-stat-num" style="font-size:22px">Summer 2026</div></div>
-      <div class="ad-stat"><div class="ad-stat-label">Status</div><div class="ad-stat-num" style="font-size:22px;color:#94FCB1">LIVE</div></div>
-    </div>
-    <div class="divider"></div>
-    <p style="color:#999;font-size:14px;line-height:1.7">For live API connection, paste a Meta Graph API token below. Otherwise, enter weekly data in the KPI Tracker tab — that's the cleaner workflow.</p>
-    <div class="field" style="margin-top:14px"><label>Meta Access Token (optional)</label><input type="password" id="meta-token" placeholder="EAA.."></div>
-    <button class="btn" onclick="connectMeta()">⚡ Connect</button>
-    <button class="btn btn-ghost" onclick="loadDemo()" style="margin-left:8px">Load Demo Data</button>
-    <div id="ads-output" style="margin-top:18px"></div>
-  </div>
-</div>
-
+<div class="toast" id="toast"></div>
+<script src="shared/store.js"></script>
 <script>
-// ═══════════════════════════════════════════════════════
-// DATA
-// ═══════════════════════════════════════════════════════
-
-const COACHES = [
-  {name:"Paolo",role:"Director · College Placement · HP"},
-  {name:"Tonio",role:"Mental Performance · Rituals of Flow"},
-  {name:"Nico",role:"High Performance"},
-  {name:"Eric",role:"High Performance"},
-  {name:"Sebastien",role:"HP All-Around"},
-  {name:"Flo",role:"On Tour · BTS & ITF Spearhead"},
-  {name:"Kam",role:"Youth · 8U & 10U"},
-  {name:"Robby",role:"U12 · U10 · U8"},
-  {name:"Aimon",role:"U12 · U10 · U8"},
-  {name:"Coach ET",role:"U12 Developmental"},
-  {name:"Quinnton",role:"U12 High Performance"},
-  {name:"Tara",role:"Fitness & Nutrition"},
-  {name:"Lukas",role:"Soccer"},
-  {name:"Antonio",role:"Vision & Perspective"},
-  {name:"Lorenzo",role:"Vision & Perspective"}
-];
-
-const PILLARS = {
-  "Tennis — High Performance":{coaches:["Paolo","Nico","Eric","Sebastien","Quinnton"],ideas:{
-    Instagram:["HP training session breakdown — slow-mo footwork drill","Carousel: 5 habits of an HP junior","Behind-the-scenes: pre-match warm-up routine","Coach interview: what separates a good player from a great one","Player spotlight — week of progress"],
-    TikTok:["POV: HP morning at ProWorld","Drill of the day — fast cuts","Coach reaction to a clutch point","Day in the life of an HP player","Trending audio + HP montage"],
-    Facebook:["Long-form: how we structure an HP week","Parent testimonial about HP program","Photo dump from this week's HP block","Open call: HP tryouts upcoming","Article: what HP looks like at ProWorld"],
-    YouTube:["10-min HP drill breakdown","Player journey mini-doc","Coach masterclass: backhand mechanics","Match analysis with coach commentary","Inside an HP week — vlog"],
-    Email:["Newsletter: HP program update","New HP openings + tryout dates","Coach corner: a tactical insight","Player of the month — HP spotlight","Tournament results from HP roster"]
-  }},
-  "Tennis — Dev U12/U10/U8":{coaches:["Kam","Robby","Aimon","Coach ET"],ideas:{
-    Instagram:["U10 footwork pattern of the day","Carousel: how we build technique in U8","Player progress: 30-day glow-up","Group photo from the U12 training block","Coach quick tip for parents of juniors"],
-    TikTok:["U8 cuteness compilation","Drill that every U10 needs","POV: first day of U12 development","Coach demo + kid imitation","Trending sound + youth highlights"],
-    Facebook:["Developmental philosophy: long-term player development","Parent guide: what U10 looks like at ProWorld","Album from a developmental match day","Coach spotlight: meet Kam","Schedule: upcoming U8/U10/U12 tryouts"],
-    YouTube:["A typical U10 training session","Coach interview: building fundamentals at U8","Inside a developmental tournament weekend","Long-term player roadmap explained","Parent FAQ: developmental tennis"],
-    Email:["Developmental newsletter","Upcoming tryout dates for U8/U10/U12","Parent tip of the week","Player progress feature","Coach corner — Robby/Aimon insight"]
-  }},
-  "Tennis — Mental Performance":{coaches:["Tonio"],ideas:{
-    Instagram:["Carousel: train to hold nerves not eliminate them","Reel: pre-serve breath routine","Quote graphic + caption","Coach Tonio talking head on pressure","Player testimonial about mental coaching"],
-    TikTok:["60-sec mental hack for match day","POV: choking on match point — and recovering","Coach Tonio quick wisdom","Mindset reset visualization","Mental drill of the day"],
-    Facebook:["Long-form post: pressure is content","Parent guide: helping juniors manage match nerves","Mental coaching philosophy at ProWorld","Tonio's framework: body-mind-state","Workshop announcement"],
-    YouTube:["10-min mental performance masterclass","Coach Tonio interview","Visualization session — guided","Player Q&A about mental side of tennis","Pre-match mental routine breakdown"],
-    Email:["Mental performance newsletter","One mindset tip per week","Tonio's framework explained","Player mental win of the week","Workshop invitation"]
-  }},
-  "Tennis — College Placement":{coaches:["Paolo"],ideas:{
-    Instagram:["Carousel: 5 things college coaches look for","Player commit announcement","Q&A with Paolo on placement","Behind-the-scenes: recruiting video shoot","Senior class spotlight"],
-    TikTok:["POV: getting your first offer","Recruiting timeline in 60 sec","Paolo quick tip for parents of seniors","Day in the life of a college-bound junior","Trending sound + commit reveal"],
-    Facebook:["Long-form: our placement track record","Parent guide: starting the recruiting process","Player spotlight — commit story","Open house: college placement info session","Article: NCAA vs NAIA explained"],
-    YouTube:["Full recruiting roadmap with Paolo","College commit announcement video","Paolo masterclass: building your recruiting video","Player interview: their journey to D1","Parent Q&A on recruiting"],
-    Email:["Monthly placement newsletter","Senior class commits","Paolo's recruiting tip of the week","Upcoming college coach visits","Parent info session invite"]
-  }},
-  "Tennis — Tips & Drills":{coaches:["Paolo","Sebastien","Nico","Eric"],ideas:{
-    Instagram:["Tip of the week: going down the line","Drill reel: cross-court rally builder","Carousel: 3 ways to fix your serve toss","Slow-mo breakdown of a tactical pattern","Coach Q&A from comments"],
-    TikTok:["60-sec drill anyone can do","Common mistake + fix","POV: trying this drill for the first time","Coach reaction to a wild shot","Tip you can use tomorrow"],
-    Facebook:["Long-form drill breakdown with photos","Weekly tip thread","Coach photo + tip text","Reader question answered","Drill bank — bookmark this"],
-    YouTube:["Full drill session — 15 min","Tactical breakdown with whiteboard","Sebastien masterclass","Coach roundtable: favorite drills","Game-based learning explained"],
-    Email:["Tip of the week newsletter","Drill of the week","Coach corner — featured tip","Reader-submitted question answered","Bookmark: 10 drills for solo practice"]
-  }},
-  "Tennis — Tournament Prep":{coaches:["Paolo","Eric","Tonio"],ideas:{
-    Instagram:["Pre-tournament mental checklist","Bag-packing reel","Coach Q&A on day-of routine","Carousel: how to scout an opponent","Player going into a major event"],
-    TikTok:["POV: morning of your big match","60-sec scouting tip","Tournament fail compilation + lesson","Coach hype talk","Trending audio + tournament day"],
-    Facebook:["Long-form: the week before a tournament","Parent guide: tournament travel","Player spotlight heading into nationals","Tournament results recap","Coach reflection post-event"],
-    YouTube:["Full pre-tournament breakdown","Match-day routine with coach","Inside a tournament weekend — vlog","Coach interview: lessons from the road","Player post-match reflection"],
-    Email:["Tournament prep newsletter","Upcoming events on the radar","Coach tip for tournament parents","Player results recap","Pre-event mental checklist"]
-  }},
-  "Tennis — On Tour with Flo":{coaches:["Flo"],ideas:{
-    Instagram:["Flo from the airport — tour diary","Coaching from ITF site — court-side reel","Player on tour with Flo","Carousel: what tour life actually looks like","Flo's takeaway from the week"],
-    TikTok:["Day in the life on tour","Tournament prep abroad","Flo reaction to a clutch point","Travel hack of the week","POV: ITF junior week"],
-    Facebook:["Flo's weekly tour update","Player spotlight on tour","Long-form: how ITF events differ","Coach reflection post-tournament","Photo dump from the road"],
-    YouTube:["Tour vlog with Flo","ITF tournament breakdown","Flo interview: lessons from the road","Player journey on tour","Mini-doc: a week with Flo"],
-    Email:["On Tour with Flo newsletter","This week's player results","Flo's reflection of the week","Upcoming events on the calendar","Travel tip from the road"]
-  }},
-  "Soccer":{coaches:["Lukas"],ideas:{
-    Instagram:["Drill of the week with Lukas","Player skills reel","Coach Q&A","Carousel: 3 ways to improve your first touch","Team training photo dump"],
-    TikTok:["60-sec drill","POV: first day of soccer training","Coach reaction to a goal","Skill breakdown","Trending sound + soccer highlight"],
-    Facebook:["Long-form: our soccer philosophy","Parent guide to soccer at ProWorld","Player spotlight","Schedule: upcoming tryouts","Coach Lukas profile post"],
-    YouTube:["Full soccer training session","Coach Lukas masterclass","Player interview","Team highlight reel","Skill series — episode 1"],
-    Email:["Soccer newsletter","Tryout dates","Coach Lukas tip","Player of the month","Training schedule update"]
-  }},
-  "Fitness & Recovery":{coaches:["Tara"],ideas:{
-    Instagram:["Tara's hydration tip","Recovery routine reel","Carousel: 5 foods for match day","Mobility drill of the day","Tara on nutrition for juniors"],
-    TikTok:["60-sec recovery tip","Foam roller routine","Tara quick wisdom","Pre-match snack idea","Hydration myth busted"],
-    Facebook:["Long-form: how we fuel ProWorld athletes","Parent guide: nutrition for juniors","Recovery philosophy at ProWorld","Tara workshop announcement","Article: sleep + performance"],
-    YouTube:["Full mobility session with Tara","Nutrition masterclass","Recovery routine vlog","Tara interview: athlete fueling","Parent Q&A: nutrition basics"],
-    Email:["Fitness & nutrition newsletter","Tip of the week from Tara","Recipe of the week","Workshop invite","Recovery checklist"]
-  }},
-  "Parents Corner":{coaches:["Antonio","Lorenzo","Paolo"],ideas:{
-    Instagram:["Carousel: 5 mistakes tennis parents make","Parent Q&A from DMs","Reel: what to say after a tough loss","Parent testimonial","Antonio talking head on long-term development"],
-    TikTok:["60-sec parent tip","POV: courtside parenting done right","Antonio quick wisdom","What NOT to say after a match","Trending audio + parent moment"],
-    Facebook:["Long-form: how to support a junior athlete","Parent FAQ from this month","Photo album from family day","Workshop announcement","Article: the parent's role in development"],
-    YouTube:["Parent masterclass with Antonio","Q&A: tough conversations after losses","Mini-doc: a parent's journey","Roundtable: parent stories","Workshop replay"],
-    Email:["Parents Corner newsletter","Tip of the week","Workshop invitation","Article: the long view","Parent of the month"]
-  }},
-  "Culture & Community":{coaches:["Antonio","Lorenzo"],ideas:{
-    Instagram:["Group photo Friday","Coach + player BTS moment","Carousel: our story","Reel: a day at ProWorld","Player birthday or milestone"],
-    TikTok:["POV: ProWorld energy","Coach lip-sync or trend","Behind-the-scenes day","Community moment","Trending audio + academy vibe"],
-    Facebook:["Long-form: the ProWorld story","Community event recap","Player + family spotlight","Article: why we built this","Open house announcement"],
-    YouTube:["ProWorld brand mini-doc","Community event recap","Founder interview","Player + family story","Year in review"],
-    Email:["Community newsletter","Event recap","Player spotlight","Founder note","Upcoming community events"]
-  }},
-  "Programs & Promos":{coaches:["Antonio","Lorenzo"],ideas:{
-    Instagram:["Summer Camp 2026 promo reel","Carousel: what's included","Limited spots countdown","Parent testimonial about programs","Open house promo"],
-    TikTok:["Camp promo with trending audio","Countdown video","POV: first day of camp","Camper testimonial","Behind-the-scenes camp prep"],
-    Facebook:["Summer Camp 2026 long-form announcement","Program comparison post","Limited spots warning","Open house invitation","Parent FAQ on programs"],
-    YouTube:["Camp promo video","Program walkthrough","Parent testimonial montage","Tour of facilities","FAQ video"],
-    Email:["Summer Camp 2026 promo email","Limited spots reminder","Open house invite","Program details breakdown","Early bird offer"]
-  }},
-  "Pickleball":{coaches:["Antonio"],ideas:{
-    Instagram:["Pickleball court rules graphic","Open play promo reel","Member spotlight","Carousel: pickleball at ProWorld","Tournament announcement"],
-    TikTok:["60-sec pickleball tip","Open play vibes","Member highlight","Trending audio + pickleball","POV: first time at our courts"],
-    Facebook:["Pickleball at ProWorld long-form","Court rental info","Member testimonial","Tournament recap","Open play schedule"],
-    YouTube:["Pickleball court tour","Open play day vlog","Tournament recap","Member interview","How to book a court"],
-    Email:["Pickleball newsletter","Open play schedule","Tournament info","Court rental reminders","Member spotlight"]
-  }}
-};
-
-const PLATFORMS = [
-  {name:"Instagram",target:5},
-  {name:"TikTok",target:4},
-  {name:"Facebook",target:3},
-  {name:"YouTube",target:2},
-  {name:"Email",target:1},
-  {name:"LinkedIn",target:1},
-  {name:"Twitter/X",target:2}
-];
-
-const PRELOADED = [
-  {id:"pre1",date:"2026-04-01",platform:"Instagram",pillar:"Mental Performance",coach:"Tonio",format:"Carousel",title:"Goals That Move You Forward",desc:"Setting goals that connect to who you are, not disconnect you. The missing piece in junior development."},
-  {id:"pre2",date:"2026-04-03",platform:"Instagram",pillar:"Tennis Dev",coach:"Kam",format:"Reel",title:"U10 Serving Tip",desc:"Technical serving tip for U10 players — toss placement and rhythm."},
-  {id:"pre3",date:"2026-04-07",platform:"Instagram",pillar:"Mental Performance",coach:"Tonio",format:"Post",title:"Don't Train to Eliminate Nerves",desc:"Train to hold nerves — mental performance philosophy for junior players."},
-  {id:"pre4",date:"2026-04-09",platform:"Instagram",pillar:"Mental Performance",coach:"Tonio",format:"Post",title:"The First Goal of a Tennis Match",desc:"The first goal is to be in a body-mind state before tactics or technique."},
-  {id:"pre5",date:"2026-04-12",platform:"Instagram",pillar:"Mental Performance",coach:"Tonio",format:"Carousel",title:"Enemy of Growth Is Comfort",desc:"Comfort zone content — why staying comfortable kills development."},
-  {id:"pre6",date:"2026-04-14",platform:"Instagram",pillar:"Mental Performance",coach:"Tonio",format:"Post",title:"Pressure Is Content",desc:"How to navigate match pressure — learning to handle it not avoid it."},
-  {id:"pre7",date:"2026-04-15",platform:"Instagram",pillar:"Fitness",coach:"Tara",format:"Post",title:"How Elite Tennis Players Fuel for Match Day",desc:"Nutrition and fueling strategies for match day performance."},
-  {id:"pre8",date:"2026-04-17",platform:"Instagram",pillar:"Fitness",coach:"Tara",format:"Reel",title:"Recovery Routine",desc:"Tara walks through a recovery routine for juniors after tournament weekends."},
-  {id:"pre9",date:"2026-04-19",platform:"Instagram",pillar:"Fitness",coach:"Tara",format:"Post",title:"Hydration For Performance",desc:"Why and how juniors should hydrate before, during, and after match play."},
-  {id:"pre10",date:"2026-04-21",platform:"Instagram",pillar:"Soccer",coach:"Lukas",format:"Reel",title:"Soccer Drill at ProWorld",desc:"Specific soccer drill happening at the academy — first touch and quick transition."},
-  {id:"pre11",date:"2026-04-23",platform:"Instagram",pillar:"Tennis Tips",coach:"Paolo",format:"Reel",title:"Going Down the Line",desc:"Paolo walks through the down-the-line shot — when to use it and how to execute."},
-  {id:"pre12",date:"2026-04-25",platform:"Instagram",pillar:"Mental Performance",coach:"Tonio",format:"Carousel",title:"Mindset Reset Between Points",desc:"A simple 3-step routine to reset the mind between points and stay sharp."},
-  {id:"pre13",date:"2026-04-27",platform:"Instagram",pillar:"Tennis HP",coach:"Sebastien",format:"Carousel",title:"The Complete Player",desc:"What makes a complete player — technical, athletic, mental, and tactical pillars."}
-];
-
-// ═══════════════════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════════════════
-
-let archive = JSON.parse(localStorage.getItem("pw_archive_v3") || "null") || PRELOADED.slice();
-let approvedWeeks = JSON.parse(localStorage.getItem("pw_approved_v3") || "[]");
-let cadenceState = JSON.parse(localStorage.getItem("pw_cadence_v3") || "{}");
-let currentAssignments = null;
-let calRefDate = new Date(2026, 4, 1); // May 2026
-
-function saveArchive(){localStorage.setItem("pw_archive_v3", JSON.stringify(archive));}
-function saveApproved(){localStorage.setItem("pw_approved_v3", JSON.stringify(approvedWeeks));}
-function saveCadence(){localStorage.setItem("pw_cadence_v3", JSON.stringify(cadenceState));}
-
-// ═══════════════════════════════════════════════════════
-// TAB NAVIGATION
-// ═══════════════════════════════════════════════════════
-
-document.querySelectorAll(".nav-tab").forEach(t => {
-  t.addEventListener("click", () => {
-    document.querySelectorAll(".nav-tab").forEach(x => x.classList.remove("active"));
-    document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
-    t.classList.add("active");
-    document.getElementById("tab-" + t.dataset.tab).classList.add("active");
-  });
-});
-
-// ═══════════════════════════════════════════════════════
-// HEADER DATE
-// ═══════════════════════════════════════════════════════
-
 (function(){
-  const d = new Date();
-  const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-  const dn = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  document.getElementById("today-date").textContent = dn[d.getDay()] + ", " + months[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
+"use strict";
+const $=(id)=>document.getElementById(id);
+const esc=(s)=>String(s==null?"":s).replace(/[&<>"']/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let toastT; function toast(m,err){const t=$("toast");t.textContent=m;t.className="toast show"+(err?" err":"");clearTimeout(toastT);toastT=setTimeout(()=>t.className="toast",2600);} window.toast=toast;
+
+// ── Pages (modules). Status: here = part of this site · live = in daily use · proto = clickable prototype · plan = written spec
+const PAGES=[
+ {id:"mkt",name:"Marketing Command Center",color:"",status:"here",desc:"Weekly coach video briefs, production list, content banks, Instagram archive, cadence and KPIs. The shared memory of everything posted — lives on this site.",url:"marketing/",owner:"Marketing",self:true},
+ {id:"be-owner",name:"Backend · Owner view",color:"cyan",status:"proto",desc:"The full backend: front desk, enrollment, court control, attendance, players & billing, privates, books with revenue by class.",url:"https://claude.ai/artifact/KqbuRtaSV7tHhjyLkTKjQt#owner",owner:"Operations"},
+ {id:"be-desk",name:"Backend · Front desk",color:"cyan",status:"proto",desc:"Today's sessions, walk-ins, enrollment, court bookings, attendance reconciliation and billing exceptions.",url:"https://claude.ai/artifact/KqbuRtaSV7tHhjyLkTKjQt#desk",owner:"Front desk"},
+ {id:"be-coach",name:"Backend · Coach view",color:"cyan",status:"proto",desc:"Attendance by court, private lessons that charge the family automatically, and court availability.",url:"https://claude.ai/artifact/KqbuRtaSV7tHhjyLkTKjQt#coach",owner:"Coaches"},
+ {id:"be-parent",name:"Player & family portal",color:"mint",status:"proto",desc:"Pick a program and pay online, see enrollment and schedule, book a court. The family side of the backend.",url:"https://claude.ai/artifact/KqbuRtaSV7tHhjyLkTKjQt#parent",owner:"Families"},
+ {id:"coach-portal",name:"Coach Portal",color:"mint",status:"proto",desc:"The coach-facing portal: their players, notes and follow-ups.",url:"https://claude.ai/artifact/QquzXydsjaRk9ZpwetjdED",owner:"Coaches"},
+ {id:"coach-board",name:"Coach Board",color:"mint",status:"live",desc:"Rosters, unassigned players, cadence standard and quarter commits — the team's shared assignment board.",url:"https://claude.ai/artifact/SDZwaHXrDmDPVvbPqMjK9g",owner:"Operations"},
+ {id:"attendance",name:"Daily Attendance Check",color:"cyan",status:"live",desc:"Who was expected vs who came, matched against what was paid — surfaces only the exceptions.",url:"https://claude.ai/artifact/2iYnUgSMLhVjituxaCG7vR",owner:"Front desk"},
+ {id:"player-system",name:"Player System (plan)",color:"gray",status:"plan",desc:"How coaches and parents interact with each player's record — the spec the player portal is built from.",url:"https://claude.ai/artifact/1Wtg2PQjJjCEq2dpnN2ELi",owner:"Leadership"},
+ {id:"leads",name:"How Leads Reach You",color:"orchid",status:"live",desc:"The lead flow from ads and Instagram through Pipedrive and Monday to enrollment.",url:"https://claude.ai/artifact/7XNXwDw6HN35fveM8wg46U",owner:"Marketing"},
+ {id:"ops",name:"Ops Autopilot",color:"orchid",status:"proto",desc:"Automations and check-ins that keep the academy's weekly routines running.",url:"https://claude.ai/artifact/T7CtMUZvapgAEy19PNTmCM",owner:"Operations"}
+];
+const ROLES={
+ owner:{label:"Owner",pages:PAGES.map(p=>p.id)},
+ admin:{label:"Admin",pages:PAGES.map(p=>p.id)},
+ desk:{label:"Front desk",pages:["be-desk","attendance","leads","coach-board"]},
+ coach:{label:"Coach",pages:["mkt","be-coach","coach-portal","attendance"]},
+ marketing:{label:"Marketing",pages:["mkt","leads"]},
+ editor:{label:"Editor",pages:["mkt"]},
+ parent:{label:"Family",pages:["be-parent"]}
+};
+const SEED_USERS=[
+ {id:"antonio",name:"Antonio",email:"operations@proworldacademy.com",role:"owner"},
+ {id:"lorenzo",name:"Lorenzo",email:"",role:"owner"},
+ {id:"gonzalo",name:"Gonzalo",email:"",role:"desk"},
+ {id:"manu",name:"Manu",email:"",role:"marketing"},
+ {id:"khang",name:"Khang Dinh Nhu",email:"",role:"editor"},
+ ...["Tonio","Nico","Eric","Mauri","Flo","Kam","Robby","Coach ET","Quinnton","Tara","Lukas"].map(n=>({id:n.toLowerCase().replace(/\s+/g,"-"),name:n,email:"",role:"coach"}))
+];
+
+// ── State: two encrypted documents in the repository — dash/users and dash/access
+let db=null, readOnly=true; const S={users:null,access:null}; const written={};
+const lsGet=(k)=>{try{const v=localStorage.getItem("pwdash_"+k);return v?JSON.parse(v):undefined}catch(e){return undefined}};
+const lsSet=(k,v)=>{try{localStorage.setItem("pwdash_"+k,JSON.stringify(v))}catch(e){}};
+function defaults(){const access={};SEED_USERS.forEach(u=>access[u.id]=ROLES[u.role].pages.slice());return {users:SEED_USERS.map(u=>({...u})),access};}
+const dirty=new Set(); let flushTimer=null, flushing=false;
+function save(k){dirty.add(k);if(readOnly){setLive("readonly");return;}setLive("saving");clearTimeout(flushTimer);flushTimer=setTimeout(flush,600);}
+async function flush(){
+  if(flushing){clearTimeout(flushTimer);flushTimer=setTimeout(flush,600);return;}
+  flushing=true;const keys=Array.from(dirty);dirty.clear();let failed=null;
+  try{for(const k of keys){const j=JSON.stringify(S[k]);if(written[k]===j)continue;try{await db.doc("dash/"+k).set({v:S[k],at:new Date().toISOString()});written[k]=j;}catch(e){failed=(e&&e.code)||"error";dirty.add(k);if(failed==="not_writer"||failed==="not_granted"){readOnly=true;toast("Not saved — sign in with GitHub (header button) to save changes",true);break;}}}}
+  finally{flushing=false;}
+  if(readOnly){setLive("readonly");return;}
+  if(dirty.size){setLive("error");clearTimeout(flushTimer);flushTimer=setTimeout(flush,4000);return;}
+  setLive(failed?"error":"shared");
+}
+function setLive(mode){const p=$("live");p.className="live"+(mode==="shared"?"":" local");$("live-txt").textContent=mode==="shared"?"LIVE · SAVED":mode==="saving"?"SAVING…":mode==="readonly"?"VIEWING":mode==="error"?"NOT SAVED":mode==="local"?"OFFLINE":"CONNECTING";}
+async function init(){
+  const d=defaults();S.users=d.users;S.access=d.access;render();
+  let opened=null;try{opened=await PWGit.open();}catch(e){console.error(e);}
+  if(!opened){setLive("local");return;}
+  db=opened.db;readOnly=!opened.canWrite;
+  try{const snap=await db.collection("dash").get();snap.docs.forEach(x=>{const b=x.data();if(b&&b.v!==undefined&&(x.id==="users"||x.id==="access")){S[x.id]=b.v;written[x.id]=JSON.stringify(b.v);}});}
+  catch(e){console.error(e);toast("Couldn't read the shared memory — "+(e.message||e),true);}
+  if(!written.users&&!readOnly){save("users");save("access");}
+  db.collection("dash").onSnapshot((snap)=>{let ch=false;snap.docChanges().forEach(c=>{if(c.type==="removed")return;const b=c.doc.data();if(!b||b.v===undefined)return;const j=JSON.stringify(b.v);if(written[c.doc.id]===j||dirty.has(c.doc.id))return;S[c.doc.id]=b.v;written[c.doc.id]=j;ch=true;});if(ch)render();});
+  setLive(readOnly?"readonly":"shared");
+  $("site-sec").hidden=!canManage(me());
+  $("site-note").textContent="Everything on this site opens with one team passcode and is encrypted in the repository ("+PWGit.CFG.owner+"/"+PWGit.CFG.repo+"). Changing the passcode re-encrypts every document; tell the team the new one. People who need to save also need a GitHub token (header button).";
+  $("repo-link").href="https://github.com/"+PWGit.CFG.owner+"/"+PWGit.CFG.repo;
+  render();
+}
+window.changePasscode=async function(){
+  if(!PWGit.isSignedIn()){toast("Sign in with GitHub first",true);return;}
+  const np=prompt("New team passcode (at least 10 characters). Everyone will need it the next time they open the site.");if(!np)return;if(np.length<10){toast("Too short — use at least 10 characters",true);return;}
+  if(prompt("Type it again to confirm")!==np){toast("The two entries differ",true);return;}
+  toast("Re-encrypting every document…");
+  try{const n=await PWGit.rekey(np);toast("Passcode changed — "+n+" documents re-encrypted");}catch(e){toast("Couldn't change it: "+(e.message||e),true);}
+};
+
+// ── Viewer (who am I) — remembered per browser; owners can switch to preview any person's view
+function me(){const id=lsGet("me");return S.users.find(u=>u.id===id)||S.users.find(u=>u.role==="owner")||S.users[0];}
+function canManage(u){return u&&(u.role==="owner"||u.role==="admin");}
+function pagesFor(u){const ids=S.access[u.id]||ROLES[u.role].pages;return PAGES.filter(p=>ids.includes(p.id));}
+function render(){
+  const u=me();
+  const sel=$("me");sel.innerHTML=S.users.map(x=>'<option value="'+esc(x.id)+'"'+(x.id===u.id?" selected":"")+'>'+esc(x.name)+" · "+esc(ROLES[x.role]?ROLES[x.role].label:x.role)+"</option>").join("");
+  const mine=pagesFor(u);
+  $("modules").innerHTML=mine.length?mine.map(p=>'<div class="mod '+p.color+'"><div class="mod-top"><h3>'+esc(p.name)+'</h3><span class="badge '+p.status+'">'+(p.status==="here"?"On this site":p.status==="live"?"Live":p.status==="proto"?"Prototype":"Plan")+'</span></div><p>'+esc(p.desc)+'</p><div class="mod-foot"><span class="who">'+esc(p.owner)+'</span><a class="btn" href="'+esc(p.url)+'"'+(p.self?"":' target="_blank" rel="noopener"')+'>Open →</a></div></div>').join(""):'<div class="empty">No pages assigned yet. An owner can give you access below.</div>';
+  const manage=canManage(u);
+  $("access-sec").hidden=!manage;$("roles-sec").hidden=!manage;$("site-sec").hidden=!manage||!db;
+  if(manage){renderAcl();renderRoles();}
+}
+function renderAcl(){
+  let h='<thead><tr><th>Person</th><th>Role</th>'+PAGES.map(p=>'<th class="pg"><span>'+esc(p.name)+'</span></th>').join("")+'<th></th></tr></thead><tbody>';
+  S.users.forEach(u=>{
+    const ids=S.access[u.id]||[];const isOwner=u.role==="owner";
+    h+='<tr><td><div class="uname">'+esc(u.name)+'</div><div class="uemail">'+esc(u.email||"—")+'</div></td>';
+    h+='<td><select class="role" onchange="setRole(\''+esc(u.id)+'\',this.value)">'+Object.keys(ROLES).map(r=>'<option value="'+r+'"'+(r===u.role?" selected":"")+'>'+esc(ROLES[r].label)+'</option>').join("")+'</select></td>';
+    PAGES.forEach(p=>{const on=ids.includes(p.id);h+='<td class="c"><div class="chk'+(on?" on":"")+(isOwner?" lock":"")+'" role="checkbox" aria-checked="'+on+'" tabindex="0" title="'+esc(p.name)+'" onclick="'+(isOwner?"":"toggle('"+esc(u.id)+"','"+p.id+"')")+'">✓</div></td>';});
+    h+='<td class="c">'+(u.id==="antonio"?"":'<button class="btn ghost muted xs" onclick="removeUser(\''+esc(u.id)+'\')" title="Remove">✕</button>')+'</td></tr>';
+  });
+  $("acl").innerHTML=h+"</tbody>";
+  $("nu-role").innerHTML=Object.keys(ROLES).map(r=>'<option value="'+r+'">'+esc(ROLES[r].label)+'</option>').join("");
+  $("nu-role").value="marketing";
+}
+function renderRoles(){
+  $("roles").innerHTML='<thead><tr><th>Role</th><th>Pages by default</th></tr></thead><tbody>'+Object.keys(ROLES).map(r=>'<tr><td class="uname">'+esc(ROLES[r].label)+'</td><td style="color:var(--text-2)">'+ROLES[r].pages.map(id=>esc(PAGES.find(p=>p.id===id).name)).join(" · ")+'</td></tr>').join("")+"</tbody>";
+}
+window.toggle=function(uid,pid){const ids=S.access[uid]||(S.access[uid]=[]);const i=ids.indexOf(pid);if(i>=0)ids.splice(i,1);else ids.push(pid);save("access");render();};
+window.setRole=function(uid,role){const u=S.users.find(x=>x.id===uid);if(!u)return;u.role=role;S.access[uid]=ROLES[role].pages.slice();save("users");save("access");render();toast(u.name+" is now "+ROLES[role].label);};
+window.addUser=function(){
+  const name=$("nu-name").value.trim(),email=$("nu-email").value.trim(),role=$("nu-role").value;
+  if(!name){toast("Enter a name",true);return;}
+  let id=name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"u";let base=id,n=2;while(S.users.some(u=>u.id===id))id=base+"-"+(n++);
+  S.users.push({id,name,email,role});S.access[id]=ROLES[role].pages.slice();save("users");save("access");
+  $("nu-name").value="";$("nu-email").value="";render();toast(name+" added as "+ROLES[role].label+" — "+S.access[id].length+" pages");
+};
+window.removeUser=function(uid){const u=S.users.find(x=>x.id===uid);if(!u||uid==="antonio")return;S.users=S.users.filter(x=>x.id!==uid);delete S.access[uid];save("users");save("access");render();toast(u.name+" removed");};
+$("me").addEventListener("change",(e)=>{lsSet("me",e.target.value);render();});
+init();
 })();
-
-// ═══════════════════════════════════════════════════════
-// KPI GROWTH
-// ═══════════════════════════════════════════════════════
-
-function pctChange(now, prev){
-  const n = parseFloat(now)||0, p = parseFloat(prev)||0;
-  if (p === 0) return n > 0 ? "+∞" : "0%";
-  const pct = ((n - p) / p * 100);
-  return (pct >= 0 ? "+" : "") + pct.toFixed(1) + "%";
-}
-
-function calcGrowth(){
-  const rows = [
-    ["IG Followers", "ig-foll-now", "ig-foll-prev"],
-    ["IG Reach", "ig-reach-now", "ig-reach-prev"],
-    ["IG Profile Views", "ig-pv-now", "ig-pv-prev"],
-    ["IG Likes", "ig-likes-now", "ig-likes-prev"],
-    ["IG Comments", "ig-comments-now", "ig-comments-prev"],
-    ["IG Shares", "ig-shares-now", "ig-shares-prev"],
-    ["Ad Leads", "ad-leads-now", "ad-leads-prev"],
-    ["Ad Reach", "ad-reach-now", "ad-reach-prev"],
-    ["Ad Clicks", "ad-clicks-now", "ad-clicks-prev"],
-    ["Ad Spend", "ad-spend-now", "ad-spend-prev"]
-  ];
-  let html = '<div class="card"><div class="card-top"></div><div class="card-label">Growth Snapshot</div><div class="grid-2">';
-  rows.forEach(r => {
-    const now = document.getElementById(r[1]).value || "0";
-    const prev = document.getElementById(r[2]).value || "0";
-    const change = pctChange(now, prev);
-    const isDown = change.startsWith("-");
-    html += '<div class="stat"><div class="stat-num">' + now + '</div><div class="stat-label">' + r[0] + '</div><div class="stat-delta ' + (isDown ? "down" : "") + '">' + change + ' vs last week</div></div>';
-  });
-  html += '</div></div>';
-  document.getElementById("growth-results").innerHTML = html;
-}
-
-function saveKPIs(){
-  const snap = {date:new Date().toISOString(),data:{}};
-  document.querySelectorAll("#tab-kpi input").forEach(i => snap.data[i.id] = i.value);
-  const prev = JSON.parse(localStorage.getItem("pw_kpi_snapshots") || "[]");
-  prev.push(snap);
-  localStorage.setItem("pw_kpi_snapshots", JSON.stringify(prev));
-  alert("✓ KPI snapshot saved");
-}
-
-// ═══════════════════════════════════════════════════════
-// CALENDAR
-// ═══════════════════════════════════════════════════════
-
-const calTags = {
-  0: "Approve coach assignments",
-  1: "Tournament Promo · Daily Vibes",
-  2: "Daily Vibes",
-  3: "Tournament Promo · Daily Vibes",
-  4: "Daily Vibes",
-  5: "Tournament Promo · Daily Vibes",
-  6: "Players in Action Recap · Daily Vibes"
-};
-
-function renderCal(){
-  const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-  document.getElementById("cal-month-label").textContent = months[calRefDate.getMonth()] + " " + calRefDate.getFullYear();
-  const first = new Date(calRefDate.getFullYear(), calRefDate.getMonth(), 1);
-  const last = new Date(calRefDate.getFullYear(), calRefDate.getMonth() + 1, 0);
-  let html = "";
-  for (let i = 0; i < first.getDay(); i++) html += '<div class="cal-day empty"></div>';
-  for (let d = 1; d <= last.getDate(); d++){
-    const dow = new Date(calRefDate.getFullYear(), calRefDate.getMonth(), d).getDay();
-    html += '<div class="cal-day"><div class="cal-day-num">' + d + '</div><div class="cal-day-tag">' + (calTags[dow] || "") + '</div></div>';
-  }
-  document.getElementById("cal-days").innerHTML = html;
-}
-
-function calNav(dir){
-  if (dir === 0) calRefDate = new Date();
-  else calRefDate = new Date(calRefDate.getFullYear(), calRefDate.getMonth() + dir, 1);
-  renderCal();
-}
-renderCal();
-
-// ═══════════════════════════════════════════════════════
-// CADENCE
-// ═══════════════════════════════════════════════════════
-
-function renderCadence(){
-  const days = ["M","T","W","T","F","S","S"];
-  let html = "";
-  let total = 0, done = 0;
-  PLATFORMS.forEach(p => {
-    const key = p.name;
-    if (!cadenceState[key]) cadenceState[key] = [false,false,false,false,false,false,false];
-    html += '<div class="cad-row"><div class="cad-platform">' + p.name + '</div>';
-    for (let i = 0; i < 7; i++){
-      const isDone = cadenceState[key][i];
-      html += '<div class="cad-check ' + (isDone ? "done" : "") + '" onclick="toggleCad(\'' + key + '\',' + i + ')">' + (isDone ? "✓" : days[i]) + '</div>';
-      total++;
-      if (isDone) done++;
-    }
-    html += '<div class="cad-target">/' + p.target + ' wk</div></div>';
-  });
-  document.getElementById("cadence-rows").innerHTML = html;
-  const pct = total > 0 ? Math.round(done / total * 100) : 0;
-  document.getElementById("cad-progress").style.width = pct + "%";
-  document.getElementById("cad-progress-label").textContent = pct + "%";
-}
-
-function toggleCad(platform, idx){
-  cadenceState[platform][idx] = !cadenceState[platform][idx];
-  saveCadence();
-  renderCadence();
-  updateOverview();
-}
-
-function resetCadence(){
-  if (!confirm("Reset all cadence checkboxes for this week?")) return;
-  cadenceState = {};
-  saveCadence();
-  renderCadence();
-}
-renderCadence();
-
-// ═══════════════════════════════════════════════════════
-// CONTENT IDEAS
-// ═══════════════════════════════════════════════════════
-
-function genIdeas(){
-  const pillar = document.getElementById("idea-pillar").value;
-  const platform = document.getElementById("idea-platform").value;
-  const data = PILLARS[pillar];
-  if (!data){document.getElementById("ideas-output").innerHTML = '<div class="empty">No ideas for this pillar yet.</div>'; return;}
-  const ideas = data.ideas[platform] || [];
-  const coaches = data.coaches.join(" · ");
-  let html = "";
-  ideas.forEach(idea => {
-    html += '<div class="idea-card"><span class="idea-tag">' + pillar + '</span><span class="idea-tag platform">' + platform + '</span><span class="idea-tag coach">' + coaches + '</span><div class="idea-title">' + idea + '</div></div>';
-  });
-  document.getElementById("ideas-output").innerHTML = html;
-}
 </script>
-<script>
-// ═══════════════════════════════════════════════════════
-// COACH ASSIGNMENTS
-// ═══════════════════════════════════════════════════════
-
-function setWeek(offset){
-  const today = new Date();
-  const sun = new Date(today);
-  sun.setDate(today.getDate() - today.getDay() + (offset * 7));
-  const sat = new Date(sun);
-  sat.setDate(sun.getDate() + 6);
-  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  const fmt = d => months[d.getMonth()] + " " + d.getDate();
-  document.getElementById("week-dates").value = fmt(sun) + "–" + fmt(sat) + ", " + sat.getFullYear();
-}
-
-// Auto-fill This Week on load
-setWeek(0);
-
-// ═══════════════════════════════════════════════════════
-// IDEA BANK — specific video ideas per coach
-// ═══════════════════════════════════════════════════════
-
-const IDEA_BANK_SEED = {
-  "Paolo": [
-    {id:"p2",title:"Going down the line — when to use it, when not to",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · Tactical breakdown on court. Paolo demos with a player when it's a winner vs when it's a mistake.",hook:"\"The down-the-line shot wins matches — if you know when to hit it.\""},
-    {id:"p1",title:"5 things D1 coaches actually look for in a recruiting video",format:"Talking Head",day:"Tue",desc:"⏱ 30 seconds · Paolo on camera. Walks through the 5 specific things college coaches scan for in 30 seconds of footage. Direct, no slides — just Paolo talking to camera with examples cut in.",hook:"\"I review 200+ recruiting videos a year. Here's what gets you noticed.\""},
-    {id:"p5",title:"Footwork pattern — the open stance recovery",format:"Reel",day:"Fri",desc:"⏱ 30-60 seconds · Slow-mo breakdown of recovering from open stance forehand. Common error + the fix. On-court demo.",hook:"\"This one footwork fix adds 10% to your defensive game.\""},
-    {id:"p18",title:"What I look for when adding a player to ProWorld",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Paolo as Director. The criteria for joining the academy — not just talent, but work ethic, attitude, fit. Honest, builds the bar.",hook:"\"Talent is the easy part. Here's what actually gets you in.\""},
-    {id:"p7",title:"The serve toss mistake 80% of juniors make",format:"Reel",day:"Wed",desc:"⏱ 30 seconds · Slow-mo of a flawed toss vs a clean one. The fix in Player demo.",hook:"\"Fix the toss, fix the serve. It's almost always this.\""},
-    {id:"p3",title:"NCAA recruiting timeline by grade",format:"Talking Head",day:"Mon",desc:"⏱ 60-90 seconds · Paolo to camera walking through 9th, 10th, 11th, 12th grade priorities. Whiteboard or text overlays for key dates.",hook:"\"If your junior is in 10th grade, this is what you should be doing right now.\""},
-    {id:"p9",title:"Approaching the net — the 3 right moments",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · On-court demo of three specific scenarios where coming to net wins the point. Paolo demos with a player.",hook:"\"Stop coming to net on bad balls. Here's when it actually works.\""},
-    {id:"p19",title:"Why we train the way we train",format:"Talking Head",day:"Wed",desc:"⏱ 60-90 seconds · Paolo on the ProWorld training philosophy as Director. The four pillars in action. Why our method develops complete players.",hook:"\"This is why our players move differently.\""},
-    {id:"p13",title:"The cross-court rally builder drill",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · Demo of the drill we use to build consistency in cross-court patterns. Players on camera.",hook:"\"This drill is boring. It's also what wins matches.\""},
-    {id:"p6",title:"D1 vs D2 vs D3 — what's the real difference",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Paolo to camera. Honest breakdown of each division — level of play, scholarship %, time commitment, lifestyle. No BS.",hook:"\"Not every player belongs at D1. Here's how to find the right fit.\""},
-    {id:"p15",title:"Building a winning warm-up routine",format:"Reel",day:"Fri",desc:"⏱ 60 seconds · Paolo's exact pre-match warm-up shot on court. 8 minutes from arriving to first ball, edited to",hook:"\"How you warm up tells me how you'll play.\""},
-    {id:"p14",title:"Talking to college coaches at tournaments",format:"Talking Head",day:"Thu",desc:"⏱ 45-75 seconds · What to say, what NOT to say, and how to make a first impression at ITF/UTR tournaments. Paolo on camera.",hook:"\"Most juniors blow this interaction. Here's the script.\""},
-    {id:"p20",title:"The Director's view — what makes a ProWorld player",format:"Talking Head",day:"Fri",desc:"⏱ 60-90 seconds · Paolo on what separates a ProWorld player from any other junior. The standard, the mindset, the long view. Sets the tone for the brand.",hook:"\"What it actually means to train at ProWorld.\""},
-    {id:"p16",title:"How to actually practice the second serve",format:"Reel",day:"Tue",desc:"⏱ 30-60 seconds · Paolo on court demonstrating the right way to practice the second serve. Not just hitting kicks — targeted reps with intention. Common mistakes + the fix.",hook:"\"Your second serve loses you more matches than your first. Here's how to fix it.\""},
-    {id:"p17",title:"Return position — where to actually stand",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · Paolo on court demoing return positions based on opponent. Where most juniors stand wrong. Adjusting to spin vs flat servers.",hook:"\"You're not getting your racquet on it because of where you're standing.\""}
-  ],
-
-  "Tonio": [
-    {id:"t1",title:"Routine vs Ritual — the difference that changes everything",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Tonio on camera. The form is the same — the content is what separates them. A routine is mechanical. A ritual is intentional. Tonio breaks down what turns one into the other. End card: More at toniofernandez.com",hook:"\"You have a routine between points. That's not enough. Here's how to turn it into a ritual.\""},
-    {id:"t2",title:"Pressure is content — not a problem",format:"Talking Head",day:"Wed",desc:"⏱ 45-75 seconds · Tonio on camera. Pressure means it matters. The skill isn't making pressure disappear — it's staying in your body when it shows up. SPORTmind framework. End card: More at toniofernandez.com",hook:"\"You're not nervous because you're weak. You're nervous because it matters. That's the starting point.\""},
-    {id:"t3",title:"Train to hold the nerves — not eliminate them",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Tonio on camera. Nerves aren't the enemy — they're information. Most juniors target the wrong thing. The Rituals of Flow approach. End card: More at toniofernandez.com",hook:"\"Stop trying to make the nerves go away. That's not the target.\""},
-    {id:"t4",title:"The first goal of any match — state before strategy",format:"Talking Head",day:"Thu",desc:"⏱ 45-75 seconds · Tonio on his core principle. Before tactics or technique, the goal is body-mind state. State is the foundation everything else sits on. End card: More at toniofernandez.com",hook:"\"You don't win matches with strategy. You win them with state.\""},
-    {id:"t5",title:"Inside-out — the human inside the player",format:"Talking Head",day:"Mon",desc:"⏱ 60-90 seconds · Tonio's coaching philosophy. The forehand is downstream of the human. Why ProWorld and SPORTmind both start with development from the inside out. End card: More at toniofernandez.com",hook:"\"You can't develop the player without developing the human inside them.\""},
-    {id:"t6",title:"Breath, body, focus — the three doors to state",format:"Reel",day:"Fri",desc:"⏱ 30-60 seconds · Tonio on court demonstrating the three entry points to performance state. Breath regulates body. Body regulates focus. Focus regulates the next point. Live demo. End card: More at toniofernandez.com",hook:"\"Three doors. You can walk through any of them. Here's how.\""},
-    {id:"t7",title:"The reset ritual — a Rituals of Flow demo",format:"Reel",day:"Wed",desc:"⏱ 60 seconds · Tonio demonstrating the between-points reset ritual with a player on court. Not a routine — a ritual. Breath cue, body cue, focus cue. The Rituals of Flow method in End card: More at toniofernandez.com",hook:"\"The point is over. The next one hasn't started. This window is everything.\""},
-    {id:"t8",title:"What the Zone of Genius actually is",format:"Talking Head",day:"Fri",desc:"⏱ 45-75 seconds · Tonio on camera demystifying flow. Not a feeling that happens to you — a state you train into. How presence, intention, and body-mind work together. End card: More at toniofernandez.com",hook:"\"Flow isn't luck. It's an inner architecture you can build.\""},
-    {id:"t9",title:"The inner architecture of performance",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Tonio on his core teaching: how focus, intention, and the body-mind connection work together to create your performance state. Recognize the unconscious habits running the show. End card: More at toniofernandez.com",hook:"\"You're not your habits. You're what you put in your rituals.\""},
-    {id:"t10",title:"How to talk to yourself between points",format:"Talking Head",day:"Wed",desc:"⏱ 45-75 seconds · Tonio on camera. The voice in your head decides what comes next. His framework for intentional self-talk inside the ritual — not motivation, regulation. End card: More at toniofernandez.com",hook:"\"What you say to yourself between points becomes the next point.\""},
-    {id:"t11",title:"Recovering from a tough loss — the inside-out way",format:"Talking Head",day:"Thu",desc:"⏱ 45-75 seconds · Tonio on processing a loss. Not bypassing the feeling. Not drowning in it. The SPORTmind framework for using losses to evolve your game. End card: More at toniofernandez.com",hook:"\"A loss isn't a verdict. It's information. Here's how to read it.\""},
-    {id:"t12",title:"Body language as a state regulator",format:"Reel",day:"Tue",desc:"⏱ 30-60 seconds · On-court demo with slow-mo examples of strong vs weak body language. Body doesn't just show your state — it changes it. Tonio walks through the cues that regulate from the outside in. End card: More at toniofernandez.com",hook:"\"Your opponent reads your body. So does your nervous system.\""},
-    {id:"t13",title:"Why 5-3 is the most dangerous score",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Tonio on the mental shift that happens when you're about to close. Outcome focus replaces process focus. State collapses. The diagnosis and the ritual fix. End card: More at toniofernandez.com",hook:"\"At 5-3 you stop playing the point. That's when you lose it.\""},
-    {id:"t14",title:"The pre-match ritual — built from intention",format:"Reel",day:"Thu",desc:"⏱ 90 seconds · Tonio walks through a real pre-match ritual sequence on court. Not a checklist — a state-building practice. Breath work, body activation, focus setting. End card: More at toniofernandez.com",hook:"\"You don't warm up the body. You warm up the state.\""},
-    {id:"t15",title:"Serving the big point — staying inside the ritual",format:"Talking Head",day:"Fri",desc:"⏱ 45-75 seconds · 30-30, deuce, set point. Tonio on why most juniors abandon their ritual exactly when they need it most. The discipline of staying in process when the score gets loud. End card: More at toniofernandez.com",hook:"\"Big points aren't bigger. You make them bigger by leaving your ritual.\""}
-  ],
-
-  "Nico": [
-    {id:"n1",title:"HP morning warm-up — full session",format:"Reel",day:"Mon",desc:"⏱ 60 seconds · Nico's exact HP warm-up routine on court. Dynamic stretching, footwork, hitting progression.",hook:"\"This is how HP players start every session at ProWorld.\""},
-    {id:"n2",title:"Cross-court forehand drill — pattern of the day",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · Slow-mo of the cross-court rally builder. What good footwork looks like vs what most juniors do.",hook:"\"Steal this drill. Run it every day for 30 days.\""},
-    {id:"n3",title:"Building the inside-out forehand",format:"Reel",day:"Tue",desc:"⏱ 30-60 seconds · On-court demo of the technique and tactical use of the inside-out forehand. Footwork keys. Nico demos with players.",hook:"\"The inside-out forehand is the most underused shot in juniors.\""},
-    {id:"n4",title:"Footwork — split step timing",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · The split step done right vs wrong. Slow-mo demo on court. The fix that takes a week.",hook:"\"If your split step is late, your shots are late.\""},
-    {id:"n5",title:"Practice intensity — what HP looks like",format:"Reel",day:"Fri",desc:"⏱ 30-60 seconds · Behind-the-scenes of a real HP practice block. Intensity, focus, reps. Show what the bar looks like.",hook:"\"This is what 'training hard' actually means.\""},
-    {id:"n6",title:"The cross-court to down-the-line transition",format:"Reel",day:"Mon",desc:"⏱ 30-60 seconds · Tactical pattern: when and how to transition. On-court demo with a player, slow-mo breakdown.",hook:"\"This pattern wins matches. Most juniors don't know when to pull the trigger.\""},
-    {id:"n7",title:"Backhand prep — the early shoulder turn",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · The most common backhand mistake (late prep) and the fix. Side-by-side comparison on court.",hook:"\"Your backhand isn't bad. Your prep is late.\""},
-    {id:"n8",title:"Drill of the day — high ball defense",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · How to handle the heavy topspin ball. Footwork, contact point, neutralizing the rally. On-court demo.",hook:"\"When the ball comes high and heavy, here's what to do.\""},
-    {id:"n9",title:"Building the serve — rhythm before power",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Nico on camera. Why rhythm > power and how to build it. Quick on-court demo cut in.",hook:"\"Stop trying to hit it hard. Hit it clean.\""},
-    {id:"n10",title:"Why we hit 200 balls before tactics",format:"Talking Head",day:"Fri",desc:"⏱ 60-90 seconds · Nico explains the HP philosophy: technique reps before tactical work. Why it matters.",hook:"\"You can't run plays if you can't hit the ball.\""}
-  ],
-
-  "Eric": [
-    {id:"e1",title:"Tournament prep — the week before",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Eric on camera. What to do the 7 days before a major event. Training load, mental, logistics.",hook:"\"How you prepare the week before is how you'll play the week of.\""},
-    {id:"e2",title:"Scouting your opponent in the first 5 minutes",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · On-court demo of what to watch for in the warm-up. Forehand vs backhand, movement, serve placement.",hook:"\"The warm-up is scouting. Don't waste it.\""},
-    {id:"e3",title:"HP serve practice — the protocol",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · Eric's serve practice structure on court. Reps, targets, intensity. The discipline of working on one weapon.",hook:"\"Most juniors don't practice the serve. They just hit serves.\""},
-    {id:"e4",title:"How to play the big point",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Eric on tactics for break points, set points, match points. The decision-making framework.",hook:"\"The big point isn't bigger. But the margin for error is smaller.\""},
-    {id:"e5",title:"Match day morning routine",format:"Reel",day:"Fri",desc:"⏱ 60 seconds · Eric walks through his match day morning. Wake-up, food, warm-up, mental prep. Realistic timeline.",hook:"\"What you do at 8 AM decides what happens at 10 AM.\""},
-    {id:"e6",title:"Returning the big server",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · Tactical breakdown of returning a fast serve. Position, swing, target. Slow-mo + on-court demo with a player.",hook:"\"You're not getting your racquet on it because of where you're standing.\""},
-    {id:"e7",title:"Practice match vs real match — closing the gap",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Eric on why juniors play better in practice than tournaments. The fixes.",hook:"\"If you're better in practice, you're not practicing right.\""},
-    {id:"e8",title:"Playing the long match — physical strategy",format:"Talking Head",day:"Thu",desc:"⏱ 45-75 seconds · How to manage your body in a 3-hour match. Hydration, pacing, recovery between games.",hook:"\"Best of 3 sets is a fitness test. Treat it like one.\""},
-    {id:"e9",title:"When to play conservative, when to attack",format:"Reel",day:"Tue",desc:"⏱ 30-60 seconds · Reading the moment in a match. Eric on court with a player demoing the decision tree.",hook:"\"The game plan is dynamic. Here's how to adjust mid-match.\""},
-    {id:"e10",title:"After the match — the 5-minute debrief",format:"Talking Head",day:"Fri",desc:"⏱ 45-75 seconds · Eric on what to actually do in the 5 minutes after a match. With your coach, your parents, yourself.",hook:"\"What you do after the match is how you get better.\""}
-  ],
-
-  "Sebastien": [
-    {id:"s1",title:"The complete player — the 4 pillars",format:"Talking Head",day:"Mon",desc:"⏱ 60-90 seconds · Sebastien on camera walking through the 4 pillars of player development: technical, tactical, physical, mental.",hook:"\"You can't skip a pillar and call yourself a complete player.\""},
-    {id:"s2",title:"The 1-2 punch — first strike pattern",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · Sebastien on court demonstrating the first strike pattern. Serve + forehand sequence. Live demo with a player.",hook:"\"This pattern shows up in 60% of HP matches. Here's how to build it.\""},
-    {id:"s3",title:"How to read a serve",format:"Reel",day:"Thu",desc:"⏱ 5 seconds · On-court demo of the cues for reading the server's body language and toss. What to look for in 0.",hook:"\"The serve is decided before the ball is hit. Here's what to watch.\""},
-    {id:"s4",title:"Net game — the smart approach",format:"Reel",day:"Tue",desc:"⏱ 30-60 seconds · On-court demo of when to come to net, how to set it up, where to position. Sebastien demos with player.",hook:"\"Coming to net is easy. Coming to net at the right time is the skill.\""},
-    {id:"s5",title:"Why HP players hit so many balls",format:"Talking Head",day:"Fri",desc:"⏱ 60-90 seconds · Sebastien on the philosophy of high-volume technique work. Why 10,000 balls a week matters.",hook:"\"Talent gets you noticed. Reps make you a player.\""},
-    {id:"s6",title:"The two-shot combination drill",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · A drill on court that builds tactical sequencing. Two-shot patterns players can use in their next match.",hook:"\"Stop hitting one shot at a time. Hit in sequences.\""},
-    {id:"s7",title:"Building your A-game vs B-game",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Sebastien on what your A-game is, what your B-game is, and when to switch.",hook:"\"Your A-game wins matches. Your B-game saves them.\""},
-    {id:"s8",title:"Footwork — the recovery step",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · The recovery step explained. What good recovery looks like in slow-mo on court. Common errors.",hook:"\"You're not late to the ball because you're slow. You're late because you don't recover.\""},
-    {id:"s9",title:"Reading the score — 30-30 strategy",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Sebastien on what to do at 30-30 — the most important point of any game. Tactical and mental approach.",hook:"\"30-30 is where the game gets decided. Play it differently.\""},
-    {id:"s10",title:"The modern HP swing — what changed",format:"Reel",day:"Fri",desc:"⏱ 30-60 seconds · Sebastien on court demonstrating the modern HP swing technique. What it looks like compared to the older style. Live demo with a player showing the difference.",hook:"\"The game has changed. Your training should too.\""}
-  ],
-
-  "Flo": [
-    {id:"f1",title:"📍 Arrival — first shot from the tournament site",format:"Reel",day:"Mon",desc:"⏱ 10-15 seconds · Quick clip arriving at the venue. Pan across the courts. Caption the city/tournament name.",hook:"\"Reporting in from [city]. ITF week starts now.\""},
-    {id:"f2",title:"🎾 Player warming up — court level",format:"Reel",day:"Tue",desc:"⏱ 20-30 seconds · Film your player warming up from court level (low angle). of hitting. Clean camera, eye-level, steady hand.",hook:"\"Pre-match warm-up. [Player name] before [match].\""},
-    {id:"f3",title:"🏨 Hotel breakfast / morning routine",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · Quick clips of the morning before a match. Breakfast, getting dressed, walking out. Realistic, no script.",hook:"\"Match day morning. This is what it actually looks like.\""},
-    {id:"f4",title:"🎤 Player interview — 3 quick questions",format:"Reel",day:"Thu",desc:"⏱ 60 seconds · Ask one of your players these 3 questions on camera: (1) Why this tournament matters to you, (2) What's one thing you're working on this week, (3) How do you stay focused on the road. Vertical, eye-level,",hook:"\"On tour with [player name]. 3 quick questions.\""},
-    {id:"f5",title:"🚗 Travel day reality",format:"Reel",day:"Mon",desc:"⏱ 15-20 seconds · Quick clips from the travel day — airport, car, hotel check-in. Honest, not glamorous.",hook:"\"Travel day. The part of tour they don't show you.\""},
-    {id:"f6",title:"🎾 Practice court BTS",format:"Reel",day:"Tue",desc:"⏱ 30-60 seconds · Film a practice session at the tournament site. Show the court conditions, the routine, the focus. Court-level angle.",hook:"\"Practice day at [tournament]. Behind the scenes.\""},
-    {id:"f7",title:"📸 Post-match moment",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · Capture the moments right after a match — win or loss. Player walking off, coach-player exchange, the real emotion. Don't stage it.",hook:"\"[Player name] just finished [opponent]. This is the moment after.\""},
-    {id:"f8",title:"🗣️ Coach-side commentary mid-match",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · During changeover or between points, quick whisper-clip with you explaining what's happening tactically. Keep voice low, court in frame.",hook:"\"What [player name] needs to do this game.\""},
-    {id:"f9",title:"🌍 Where in the world is Flo",format:"Reel",day:"Fri",desc:"⏱ 20-30 seconds · Quick travel diary — show the city, the food, the people. ProWorld players on the road.",hook:"\"[City]. Tournament week.\""},
-    {id:"f10",title:"🎒 Pack with me — tournament edition",format:"Reel",day:"Mon",desc:"⏱ 15-30 seconds · What goes in the racquet bag for a tournament week. Quick visual showing 5-6 essentials. Practical for tennis families.",hook:"\"What goes in the bag for an ITF week.\""},
-    {id:"f11",title:"🎾 Result post — quick win clip",format:"Reel",day:"Daily",desc:"⏱ 15-30 seconds · Whenever a ProWorld player wins a match, send a quick clip — match point, handshake, or score graphic moment. Tag the player and event.",hook:"\"[Player name] wins [round] [tournament]. Onto the next.\""},
-    {id:"f12",title:"💭 Why I'm out here — Flo talking head",format:"Talking Head",day:"Tue",desc:"⏱ 60 seconds · Flo on camera. Why you take juniors abroad. The growth it forces. Casual, hotel room or court-side.",hook:"\"You don't become a player at home. You become one on the road.\""},
-    {id:"f13",title:"🎾 Surface adjustment tip",format:"Talking Head",day:"Wed",desc:"⏱ 60 seconds · Flo on camera explaining one specific adjustment for the surface you're on this week (clay/hard/grass). Practical tip,",hook:"\"On clay this week. Here's what changes.\""},
-    {id:"f14",title:"🏟️ The venue tour",format:"Reel",day:"Mon",desc:"⏱ 30-60 seconds · Walk around the tournament site showing what it looks like. Courts, stands, locker rooms (where allowed). Give people a feel for the scale.",hook:"\"Welcome to [tournament name]. This is what it looks like.\""},
-    {id:"f15",title:"⏰ Match day timeline",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · Show the timeline of a match day — wake-up time, breakfast, warm-up, match, recovery. Use time stamps as text overlays.",hook:"\"5:30 AM to 9 PM. A real ITF match day.\""},
-    {id:"f16",title:"😤 The hard moments",format:"Reel",day:"Tue",desc:"⏱ 30-60 seconds · Real footage of the tough side — player walking off after a loss, late-night recovery, jet lag. Honesty builds trust with families.",hook:"\"Tour life. The part nobody posts.\""},
-    {id:"f17",title:"🎾 Quick tactical lesson court-side",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · You at court level, racquet in hand, explaining one tactical pattern. Use the actual court as your whiteboard.",hook:"\"One pattern that wins matches at this level.\""},
-    {id:"f18",title:"🍝 Tournament food reality",format:"Reel",day:"Fri",desc:"⏱ 30-60 seconds · Show the food situation — what your player ate before/during/after a match. Real plates, real meals.",hook:"\"What [player name] ate on match day.\""},
-    {id:"f19",title:"📞 Call home moment",format:"Reel",day:"Sun",desc:"⏱ 15-30 seconds · Quick clip of a player calling home after a result. Family moment. Powerful for parent audience. (Only if player is comfortable.)",hook:"\"The call home after [tournament round].\""},
-    {id:"f20",title:"🚀 Why ITF matters — Flo talking head",format:"Talking Head",day:"Mon",desc:"⏱ 60-90 seconds · Flo on camera explaining why ITF events matter for development. Different from local tournaments. The level of competition.",hook:"\"ITF isn't optional. It's the standard. Here's why.\""}
-  ],
-
-  "Kam": [
-    {id:"k1",title:"U10 serving tip — the toss",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · How U10s should think about the serve toss. Simple, age-appropriate, with a young player demoing on court.",hook:"\"Most U10s rush the toss. Here's the fix.\""},
-    {id:"k2",title:"U8 footwork — the split step",format:"Reel",day:"Mon",desc:"⏱ 30-60 seconds · Teaching the split step to 8-year-olds. Make it fun, make it stick. Player demo on court.",hook:"\"The split step at age 8 is what makes the 18-year-old great.\""},
-    {id:"k3",title:"How to make practice fun for under-10s",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Kam on camera. Keeping young players engaged. Examples of ProWorld games she uses.",hook:"\"If they're not laughing, they're not learning.\""},
-    {id:"k4",title:"U10 backhand — the two-handed grip",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · On-court demo of how to teach the two-handed backhand grip to U10s. Common errors. The fix.",hook:"\"Get the grip right at 10 and you save them 5 years of bad habits.\""},
-    {id:"k5",title:"Foundation drills for U8 — the 3 essentials",format:"Reel",day:"Fri",desc:"⏱ 30-60 seconds · The 3 drills every U8 should do every session. On-court demo with young players.",hook:"\"Master 3 things at age 8. The rest comes.\""},
-    {id:"k6",title:"What U10 development looks like at ProWorld",format:"Reel",day:"Mon",desc:"⏱ 30-60 seconds · BTS of a U10 session. Drills, energy, real teaching moments. Kam on camera coaching.",hook:"\"This is what serious U10 development looks like.\""},
-    {id:"k7",title:"How parents can support a young player",format:"Talking Head",day:"Wed",desc:"⏱ 45-75 seconds · Kam directly to parents — how to support without pressure. Practical examples.",hook:"\"Parents, this part is for you.\""},
-    {id:"k8",title:"Common U8 mistakes — and how to fix them",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · Quick visual demos of frequent U8 errors with quick coach fixes. Real, not theoretical.",hook:"\"If your 8-year-old does any of these, here's what to do.\""},
-    {id:"k9",title:"Building rallies at U10",format:"Reel",day:"Tue",desc:"⏱ 30-60 seconds · How to build rally tolerance at age 10. The progression from 5-ball to 20-ball rallies. On-court demo.",hook:"\"Stop teaching kids to win the point. Teach them to play the point.\""},
-    {id:"k10",title:"Why we don't keep score at U8",format:"Talking Head",day:"Fri",desc:"⏱ 60-90 seconds · Kam's philosophy on competition at age 8. Why we delay scoring and what we do instead.",hook:"\"Score destroys learning at age 8. Here's what we do instead.\""}
-  ],
-
-  "Robby": [
-    {id:"rb1",title:"U12 drill of the week",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · This week's featured U12 drill. Robby demoing with players on court. What it builds, why it matters.",hook:"\"This drill made our top U12s. Steal it.\""},
-    {id:"rb2",title:"U10 footwork — figure 8 pattern",format:"Reel",day:"Mon",desc:"⏱ 30-60 seconds · Footwork drill for U10s on court. Cones, ball feeding, real pattern from match play.",hook:"\"Boring drill. Game-changing footwork.\""},
-    {id:"rb3",title:"How we develop a U12 player at ProWorld",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Robby on the U12 development arc. What we work on, in what order, why.",hook:"\"The U12 year is the most important year in junior tennis.\""},
-    {id:"rb4",title:"U8 fundamentals — the swing path",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · Teaching the basic swing path to U8s on court. Visual cues, kid-friendly language, real teaching moment.",hook:"\"Get the swing path right at 8. The rest is detail.\""},
-    {id:"rb5",title:"Developmental day — full BTS",format:"Reel",day:"Fri",desc:"⏱ 30-45 seconds · Photo dump style reel of a developmental day at ProWorld. Multiple courts, all ages, real energy.",hook:"\"One day at ProWorld. This is what development looks like.\""},
-    {id:"rb6",title:"U12 strategy — playing the safe side",format:"Reel",day:"Mon",desc:"⏱ 30-60 seconds · On-court demo of the basic tactical concept of playing through the middle and to weaknesses.",hook:"\"U12s don't lose because of bad shots. They lose because of bad decisions.\""},
-    {id:"rb7",title:"How to get a U10 to actually compete",format:"Talking Head",day:"Wed",desc:"⏱ 45-75 seconds · Robby on getting U10s comfortable with competition. The progression. The mindset.",hook:"\"Competition is a skill. We teach it like any other.\""},
-    {id:"rb8",title:"U12 serve — building a real weapon",format:"Reel",day:"Tue",desc:"⏱ 30-60 seconds · How we build the U12 serve. Toss, rhythm, leg drive. Progression over time. On-court demo.",hook:"\"The serve at U12 is the foundation for everything at U16.\""},
-    {id:"rb9",title:"What a great U10 practice looks like",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · BTS of a U10 practice. Pace, energy, focus, fun. The bar we set.",hook:"\"If your kid's practice doesn't look like this, ask why.\""},
-    {id:"rb10",title:"Match play at U10 — when and how",format:"Talking Head",day:"Fri",desc:"⏱ 45-75 seconds · Robby on introducing match play at U10. The right amount, the right format.",hook:"\"Too much match play breaks U10s. Too little leaves them unprepared.\""}
-  ],
-
-  "Aimon": [
-    {id:"a1",title:"U12 drill — cross-court consistency",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · Aimon running a cross-court consistency drill with U12s on court. Standards, feedback, real coaching.",hook:"\"Cross-court consistency at U12 builds the rally tolerance of a 16-year-old.\""},
-    {id:"a2",title:"U10 lateral movement",format:"Reel",day:"Mon",desc:"⏱ 30-60 seconds · Side-to-side movement drill for U10s. Cones, feeding, footwork cues. On-court demo.",hook:"\"You can't hit it if you can't get to it.\""},
-    {id:"a3",title:"Developmental philosophy — long term over results",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Aimon on why we don't chase U10 results. What we chase instead.",hook:"\"Winning at 10 means nothing. Building at 10 means everything.\""},
-    {id:"a4",title:"U12 forehand grip — the semi-western",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · On-court demo teaching the semi-western grip at U12. Why this grip, when to switch.",hook:"\"The grip you build at 12 is the grip you'll have at 22.\""},
-    {id:"a5",title:"BTS — developmental day photo dump",format:"Reel",day:"Fri",desc:"⏱ 30-45 seconds · Reel of a busy developmental day. Multiple courts, players in motion, coach energy.",hook:"\"A normal day at ProWorld.\""},
-    {id:"a6",title:"U8 attention span — how to keep it",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Aimon on running a U8 practice that holds attention. Pacing, variety, energy.",hook:"\"U8s lose focus in 4 minutes. Here's how we handle it.\""},
-    {id:"a7",title:"U12 net play — the basics",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · Introducing net play to U12 on court. Volley footwork, racquet position, when to come in.",hook:"\"U12s should be at net more than they are. Here's why.\""},
-    {id:"a8",title:"How we communicate with U10s",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Aimon on the way we talk to U10s. Language choices, feedback timing, what works.",hook:"\"How you talk to a 10-year-old decides whether they keep playing.\""},
-    {id:"a9",title:"U12 match prep — the night before",format:"Talking Head",day:"Thu",desc:"⏱ 45-75 seconds · Aimon for parents and U12 players on the night before a tournament. Sleep, food, mindset.",hook:"\"The match starts the night before.\""},
-    {id:"a10",title:"Reading body language in juniors",format:"Talking Head",day:"Fri",desc:"⏱ 45-75 seconds · How Aimon reads when a U10 or U12 is engaged vs checked out. Coaching adjustments.",hook:"\"Their face tells me what their forehand will be.\""}
-  ],
-
-  "Coach ET": [
-    {id:"et1",title:"U12 developmental drill of the week",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · Coach ET running a U12 developmental drill on court. Specific skill focus, clean execution.",hook:"\"Steal this drill. Run it twice a week.\""},
-    {id:"et2",title:"How U12 development should feel",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Coach ET on what a U12 player should experience in practice. Engaged, challenged, growing.",hook:"\"If your kid isn't tired and smiling, we're doing it wrong.\""},
-    {id:"et3",title:"The U12 stroke audit",format:"Reel",day:"Tue",desc:"⏱ 30-60 seconds · On-court demo of the strokes a U12 should have established by age 12. Forehand, backhand, serve, volley.",hook:"\"By 12, these strokes should be solid. If not, here's what to do.\""},
-    {id:"et4",title:"U10 to U12 — the transition",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · What changes when a player moves from U10 to U12. Drills, expectations, intensity. On-court examples.",hook:"\"The jump from U10 to U12 is the biggest one in junior tennis.\""},
-    {id:"et5",title:"Coach ET's favorite teaching cue",format:"Talking Head",day:"Fri",desc:"⏱ 45-75 seconds · One specific coaching cue ET uses every day with U12s. Why it works.",hook:"\"I say this 50 times a day. Here's why.\""},
-    {id:"et6",title:"U12 footwork — the recovery step drill",format:"Reel",day:"Mon",desc:"⏱ 30-60 seconds · A footwork drill specifically for U12s focused on recovering after wide balls. On-court demo.",hook:"\"Recovery footwork at U12 is the difference at U14.\""},
-    {id:"et7",title:"Building rally tolerance at U12",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · On-court demo of extending rally length at U12 — the progression from 6-ball to 20-ball.",hook:"\"U12s rush. We slow them down.\""},
-    {id:"et8",title:"Developmental warm-up — what we do",format:"Reel",day:"Thu",desc:"⏱ 60-90 seconds · ET's pre-practice warm-up for developmental players on court. Dynamic, age-appropriate, builds habits.",hook:"\"This 8-minute warm-up sets the tone for everything after it.\""},
-    {id:"et9",title:"Mistakes at U12 we let slide vs fix",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Coach ET on which U12 errors to correct vs which to leave alone for now. Coach judgment.",hook:"\"You can't fix every flaw at 12. Here's what we prioritize.\""},
-    {id:"et10",title:"Why we love U12 at ProWorld",format:"Talking Head",day:"Fri",desc:"⏱ 45-75 seconds · Coach ET on why U12 is his favorite age to coach. The growth, the personality, the moments.",hook:"\"U12 is the magic age. Here's why.\""}
-  ],
-
-  "Quinnton": [
-    {id:"q1",title:"U12 HP — what a real practice looks like",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · Quinnton running a U12 HP practice on court. Intensity, focus, the bar we set for elite U12s.",hook:"\"This is HP at U12. Different from developmental.\""},
-    {id:"q2",title:"U12 HP roster spotlight",format:"Reel",day:"Mon",desc:"⏱ 30-60 seconds · Highlight reel of a U12 HP player from this week's training. Real shots, real progress.",hook:"\"This is what U12 HP looks like at ProWorld.\""},
-    {id:"q3",title:"The U12 HP weekly schedule",format:"Talking Head",day:"Tue",desc:"⏱ 60-90 seconds · Quinnton walking through a typical week for a U12 HP player. Court time, fitness, mental, school.",hook:"\"This is what HP commitment looks like at age 12.\""},
-    {id:"q4",title:"Drill — U12 HP serve practice",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · How we structure serve practice for U12 HP. Reps, targets, intensity standards. On court.",hook:"\"At U12 HP, we don't just hit serves. We practice the serve.\""},
-    {id:"q5",title:"Why the U12 HP year matters most",format:"Talking Head",day:"Fri",desc:"⏱ 45-75 seconds · Quinnton on why the U12 HP year is the foundation for everything that comes after.",hook:"\"Get U12 HP right and the next 6 years take care of themselves.\""},
-    {id:"q6",title:"U12 HP tournament prep",format:"Reel",day:"Mon",desc:"⏱ 30-60 seconds · On-court demo of how U12 HP players prepare for major events. Different from developmental.",hook:"\"U12 HP doesn't prep like U12 dev. Here's the difference.\""},
-    {id:"q7",title:"What we look for when adding to U12 HP",format:"Talking Head",day:"Wed",desc:"⏱ 45-75 seconds · Quinnton on the criteria for U12 HP roster. What separates HP from developmental.",hook:"\"Not every U12 belongs in HP. Here's the bar.\""},
-    {id:"q8",title:"U12 HP fitness — the standards",format:"Reel",day:"Tue",desc:"⏱ 30-60 seconds · BTS of U12 HP fitness session with Tara. Standards for movement, strength, conditioning.",hook:"\"HP at 12 is more than tennis. Watch this.\""},
-    {id:"q9",title:"The U12 HP pre-match routine",format:"Reel",day:"Thu",desc:"⏱ 60 seconds · A U12 HP player's exact pre-match warm-up on court. Footwork, hitting, mental cues.",hook:"\"A U12 HP warm-up. Steal it.\""},
-    {id:"q10",title:"Why we love HP at the U12 age",format:"Talking Head",day:"Fri",desc:"⏱ 45-75 seconds · Quinnton's perspective on coaching elite U12s. The growth, the moments, the standard.",hook:"\"Coaching U12 HP is the best part of my week.\""}
-  ],
-
-  "Tara": [
-    {id:"tr1",title:"How elite tennis players fuel for match day",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Tara on camera. Nutrition for tournament day. What to eat 2 hours before, between matches, after.",hook:"\"What you eat decides the third set.\""},
-    {id:"tr2",title:"Recovery routine — 5 movements in 60 seconds",format:"Reel",day:"Wed",desc:"⏱ 60-90 seconds · Tara walks through a full recovery protocol — batch video. Foam rolling, mobility, hydration cues — all in one quick reel.",hook:"\"Recovery isn't optional. It's training.\""},
-    {id:"tr3",title:"Hydration for performance — the rules",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Tara on hydration before, during, after match play. Real amounts, real timing.",hook:"\"By the time you're thirsty, you've already lost a step.\""},
-    {id:"tr4",title:"Pre-match snack — what actually works",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · Tara shows the 3 pre-match snacks she recommends. Real food, real timing. Quick visual.",hook:"\"30 minutes before match? Eat this.\""},
-    {id:"tr5",title:"5 mobility movements every junior should do",format:"Reel",day:"Fri",desc:"⏱ 60-90 seconds · Batch video — Tara walks through 5 mobility movements for tennis players in one reel. Hip, shoulder, ankle, thoracic.",hook:"\"5 minutes a day. Pays off for years.\""},
-    {id:"tr6",title:"Sleep for athletes — what changes",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Tara on sleep requirements for juniors training 15+ hours/week. The non-negotiables.",hook:"\"Skipping sleep is skipping recovery. There's no shortcut.\""},
-    {id:"tr7",title:"Foam rolling — the right way",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · Tara demos correct foam rolling technique. Common errors, what to actually feel.",hook:"\"You've been doing this wrong. Here's the fix.\""},
-    {id:"tr8",title:"Building strength without bulk",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · Why and how tennis players build strength. Different from football, different from soccer. Visual examples.",hook:"\"Tennis strength isn't gym strength. Here's the difference.\""},
-    {id:"tr9",title:"What junior athletes actually need to eat",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Tara on the basic nutritional framework for junior athletes. Protein, carbs, fats, real food.",hook:"\"Most junior athletes are underfed. Here's what they actually need.\""},
-    {id:"tr10",title:"Warm-up vs stretching — the difference",format:"Reel",day:"Fri",desc:"⏱ 60-90 seconds · Tara explains the difference and shows what to do when. Dynamic warm-up + static stretching demo.",hook:"\"You're stretching before. You should be warming up. Here's why.\""},
-    {id:"tr11",title:"Energy on court — the third-set fade",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Tara on why juniors fade in third sets. The fitness gap and how to close it.",hook:"\"You're not losing third sets because of mental. You're losing them because of fitness.\""},
-    {id:"tr12",title:"3 fitness tests you can do at home",format:"Reel",day:"Wed",desc:"⏱ 60-90 seconds · Batch video — Tara demos 3 simple fitness benchmarks juniors can do at home. All in one reel.",hook:"\"Try these 3 tests. Tells you where your fitness is.\""},
-    {id:"tr13",title:"Recovery between matches in a tournament",format:"Talking Head",day:"Thu",desc:"⏱ 45-75 seconds · Tara on what to do in the 2 hours between matches. Food, recovery, mental.",hook:"\"Two hours between matches. Here's exactly what to do.\""},
-    {id:"tr14",title:"Building a daily mobility habit",format:"Reel",day:"Tue",desc:"⏱ 30-60 seconds · Tara on the 5-minute daily mobility routine she gives every player. Hip-focused. On camera demo.",hook:"\"5 minutes. Every day. Non-negotiable.\""},
-    {id:"tr15",title:"What we mean by 'athletic tennis player'",format:"Talking Head",day:"Fri",desc:"⏱ 45-75 seconds · Tara's definition of an athletic tennis player. Why it matters at every age.",hook:"\"Tennis is a sport. We train like it.\""}
-  ],
-
-  "Lukas": [
-    {id:"l1",title:"Soccer first-touch drill",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · Lukas running a first-touch drill with ProWorld soccer players on the field. Real footage, real coaching.",hook:"\"First touch separates good from great. Here's the drill.\""},
-    {id:"l2",title:"Soccer at ProWorld — the philosophy",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Lukas on what makes ProWorld soccer different. Skill, athleticism, intelligence on the ball.",hook:"\"We don't just train soccer players. We train athletes who play soccer.\""},
-    {id:"l3",title:"The 3 things every young soccer player needs",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Lukas on the foundational skills for young soccer players. Touch, vision, decision-making.",hook:"\"If your kid is just learning to play, focus on these 3.\""},
-    {id:"l4",title:"Soccer drill — quick transitions",format:"Reel",day:"Thu",desc:"⏱ 3 seconds · A quick transition drill — defense to attack in Real game speed on the field.",hook:"\"Modern soccer is decided in transition. Here's how we train it.\""},
-    {id:"l5",title:"Player spotlight — soccer roster",format:"Reel",day:"Fri",desc:"⏱ 30-60 seconds · Highlight reel of a ProWorld soccer player. Skills, training, what they're working on.",hook:"\"This is who's in our soccer program.\""},
-    {id:"l6",title:"Why soccer players need tennis-level footwork",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Lukas on the footwork crossover between tennis and soccer. Why ProWorld players have an edge.",hook:"\"Our soccer players move like tennis players. That's the point.\""},
-    {id:"l7",title:"Soccer ball control under pressure",format:"Reel",day:"Wed",desc:"⏱ 30-60 seconds · A drill on protecting the ball under defensive pressure. Body position, touch, awareness. Field demo.",hook:"\"You can't play if you can't keep the ball. Here's how we train it.\""},
-    {id:"l8",title:"The soccer warm-up at ProWorld",format:"Reel",day:"Tue",desc:"⏱ 60-90 seconds · Full pre-training soccer warm-up. Dynamic, soccer-specific, gets bodies ready.",hook:"\"A warm-up that actually warms you up.\""},
-    {id:"l9",title:"What makes a complete young soccer player",format:"Talking Head",day:"Thu",desc:"⏱ 45-75 seconds · Lukas on the complete soccer player at the youth level. Skill, athleticism, intelligence, mentality.",hook:"\"4 things. Get them right.\""},
-    {id:"l10",title:"How tennis training makes our soccer players better",format:"Talking Head",day:"Fri",desc:"⏱ 45-75 seconds · Lukas on the unique advantage of training soccer alongside tennis at ProWorld.",hook:"\"Soccer players who train tennis become better soccer players. Here's why.\""}
-  ],
-
-  "Antonio": [
-    {id:"an1",title:"What parents of junior athletes get wrong",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Antonio on camera. The most common parent mistakes in junior tennis. Honest, useful, not preachy.",hook:"\"I see this every week. Don't be that parent.\""},
-    {id:"an2",title:"The long view — why we build players the way we do",format:"Talking Head",day:"Wed",desc:"⏱ 60-90 seconds · Antonio on ProWorld's long-term player development philosophy. Why we don't chase early results.",hook:"\"This is a 10-year build, not a 10-week one.\""},
-    {id:"an3",title:"How to talk to your kid after a tough loss",format:"Talking Head",day:"Thu",desc:"⏱ 45-75 seconds · Antonio for parents on the conversation after a loss. What to say, what not to say.",hook:"\"The 20 minutes after the match decides the next month of practice.\""},
-    {id:"an4",title:"Why we built ProWorld",format:"Talking Head",day:"Fri",desc:"⏱ 60-90 seconds · Antonio on the origin story. The why behind ProWorld. Personal, brand-building.",hook:"\"We didn't build a tennis academy. We built what we wished existed.\""},
-    {id:"an5",title:"What a complete academy looks like",format:"Reel",day:"Tue",desc:"⏱ 30-60 seconds · Antonio walks through ProWorld facility. Four pillars on display: technical, fitness, mental, assessments.",hook:"\"Most academies do one thing. We do four. Watch.\""},
-    {id:"an6",title:"Parents — please stop coaching from the sideline",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Antonio directly to parents. Why sideline coaching kills development. What to do instead.",hook:"\"I know you mean well. Don't do it.\""},
-    {id:"an7",title:"The four pillars — what they actually mean",format:"Talking Head",day:"Wed",desc:"⏱ 60-90 seconds · Antonio explaining the four pillars: technical, athletic fitness, mental performance, individual player assessments.",hook:"\"This is what 'integrated development' actually looks like.\""},
-    {id:"an8",title:"How to choose a tennis academy",format:"Talking Head",day:"Thu",desc:"⏱ 45-75 seconds · Antonio for parents shopping for a tennis program. The questions to actually ask.",hook:"\"Most academies sell. Here's what to actually look for.\""},
-    {id:"an9",title:"Why we don't promise results",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Antonio on the honest truth about junior tennis development. No guarantees. What we do guarantee.",hook:"\"Anyone who promises you results is selling something.\""},
-    {id:"an10",title:"What a ProWorld day looks like",format:"Reel",day:"Fri",desc:"⏱ 30-60 seconds · Day-in-the-life style reel of ProWorld. Antonio narrating, real footage from all programs.",hook:"\"This is one day at ProWorld.\""}
-  ],
-
-  "Lorenzo": [
-    {id:"lo1",title:"What 'investing in your kid's sport' really means",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Lorenzo on camera. The real cost — financial, time, emotional — of serious junior sport. Honest.",hook:"\"Most families don't understand what they're signing up for.\""},
-    {id:"lo2",title:"The ProWorld vision",format:"Talking Head",day:"Wed",desc:"⏱ 45-75 seconds · Lorenzo on the long-term vision for ProWorld. What we're building, where we're going.",hook:"\"We're not just running an academy. We're building something different.\""},
-    {id:"lo3",title:"What we mean by 'culture' at ProWorld",format:"Reel",day:"Thu",desc:"⏱ 30-60 seconds · Lorenzo walks through the academy showing what culture looks like in practice. Real moments.",hook:"\"Culture isn't a poster on the wall. It's what happens on Tuesday at 4pm.\""},
-    {id:"lo4",title:"How to know if your kid is in the right program",format:"Talking Head",day:"Fri",desc:"⏱ 45-75 seconds · Lorenzo for parents on the signs of a good vs bad fit. Honest signals.",hook:"\"If your kid does any of these 5 things, the program is working.\""},
-    {id:"lo5",title:"Why community matters in player development",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Lorenzo on the role of community and peers in developing players. The pieces parents miss.",hook:"\"You can't develop a player alone. They need a tribe.\""},
-    {id:"lo6",title:"The first conversation every tennis parent should have",format:"Talking Head",day:"Mon",desc:"⏱ 45-75 seconds · Lorenzo on the conversation to have with your child about their tennis goals. What to ask.",hook:"\"Before signing up, have this conversation. It changes everything.\""},
-    {id:"lo7",title:"Why we don't chase trophies at ProWorld",format:"Talking Head",day:"Wed",desc:"⏱ 45-75 seconds · Lorenzo on the trap of chasing early tournament results vs building long-term players.",hook:"\"The kid winning at 12 isn't usually the player winning at 18.\""},
-    {id:"lo8",title:"What separates a great tennis academy",format:"Talking Head",day:"Thu",desc:"⏱ 45-75 seconds · Lorenzo on what actually separates a great academy from an average one. Insider view.",hook:"\"Most academies look the same on Instagram. Here's how to tell them apart.\""},
-    {id:"lo9",title:"The ProWorld family",format:"Reel",day:"Fri",desc:"⏱ 30-60 seconds · Reel showing the families, coaches, and players that make up ProWorld. Real, warm, branded.",hook:"\"This is what we built.\""},
-    {id:"lo10",title:"Choosing the right path for your young athlete",format:"Talking Head",day:"Tue",desc:"⏱ 45-75 seconds · Lorenzo on helping families navigate the decisions of junior sport. School, training, balance.",hook:"\"There's no one right path. Here's how to find yours.\""}
-  ]
-};
-
-const PRODUCTION_BANK_SEED = [
-  // ═══════════════ COLLEGE PLACEMENT (pillar: college) ═══════════════
-  {id:"pc1",title:"Carousel: 5 things D1 coaches actually look for",format:"Carousel",day:"Mon",pillar:"college",desc:"⏱ 5 slides · Carousel mirroring Paolo's recruiting video tips. Use direct quotes, simple typography, end with CTA to ProWorld.",hook:"\"What gets you noticed in a recruiting video.\""},
-  {id:"pc2",title:"Carousel: NCAA recruiting timeline by grade",format:"Carousel",day:"Tue",pillar:"college",desc:"⏱ 5 slides · Carousel — what to do in 9th, 10th, 11th, 12th grade. Clean infographic style.",hook:"\"The roadmap every tennis parent needs.\""},
-  {id:"pc3",title:"Carousel: D1 vs D2 vs D3 — what's the real difference",format:"Carousel",day:"Wed",pillar:"college",desc:"⏱ 5 slides · Comparison — level, scholarships, lifestyle, time commitment. Honest.",hook:"\"Not every player belongs at D1. Here's how to find the right fit.\""},
-  {id:"pc4",title:"Carousel: How to build your recruiting list",format:"Carousel",day:"Thu",pillar:"college",desc:"⏱ 5 slides · Carousel — researching schools, contacting coaches, smart outreach. Antonio voice.",hook:"\"Stop emailing 50 schools and hearing back from 2.\""},
-  {id:"pc5",title:"Carousel: Recruiting video — what NOT to include",format:"Carousel",day:"Fri",pillar:"college",desc:"⏱ 5 slides · Carousel — the 5 things that kill a recruiting video. Visual examples.",hook:"\"If your recruiting video has any of these, fix it this week.\""},
-  {id:"pc6",title:"Static post: College placement spotlight",format:"Static Post",day:"Tue",pillar:"college",desc:"⏱ Single graphic · Branded graphic celebrating a ProWorld commit (when you have one to feature). Real photo + caption.",hook:""},
-  {id:"pc7",title:"Carousel: Early commitment — pros and cons",format:"Carousel",day:"Mon",pillar:"college",desc:"⏱ 5 slides · On the early commit trap. When it makes sense, when it doesn't.",hook:"\"Committing in 10th grade isn't always the win it looks like.\""},
-
-  // ═══════════════ MENTAL PERFORMANCE (pillar: mental) ═══════════════
-  {id:"pm1",title:"Carousel: Routine vs Ritual — the difference",format:"Carousel",day:"Mon",pillar:"mental",desc:"⏱ 5 slides · Carousel rooted in Tonio's SPORTmind framework. The form is the same, the content is what separates them. End with toniofernandez.com",hook:"\"The reset between points isn't enough. Here's how to make it matter.\""},
-  {id:"pm2",title:"Carousel: 5 things to say to yourself between points",format:"Carousel",day:"Wed",pillar:"mental",desc:"⏱ 5 slides · Carousel — phrases that regulate state. Practical, juniors can use them this weekend.",hook:"\"What you say between points becomes the next point.\""},
-  {id:"pm3",title:"Carousel: Pressure is content — not a problem",format:"Carousel",day:"Tue",pillar:"mental",desc:"⏱ 5 slides · Reframe of pressure. Pressure = caring. Skill is staying present inside it.",hook:"\"You're not nervous because you're weak. You're nervous because it matters.\""},
-  {id:"pm4",title:"Carousel: How to handle a bad line call",format:"Carousel",day:"Thu",pillar:"mental",desc:"⏱ 5 slides · Framework for processing bad calls without losing the match.",hook:"\"One bad call has lost more matches than any bad shot.\""},
-  {id:"pm5",title:"Carousel: Why 5-3 is the most dangerous score",format:"Carousel",day:"Fri",pillar:"mental",desc:"⏱ 5 slides · Breakdown of the closing-out trap. Outcome focus replaces process focus.",hook:"\"At 5-3 you stop playing the point. That's when you lose it.\""},
-  {id:"pm6",title:"Carousel: Mindset reset between points",format:"Carousel",day:"Wed",pillar:"mental",desc:"⏱ 5 slides · Breakdown of the 3-step reset. Breath, body, focus cue.",hook:"\"The point is over. The next one hasn't started. This is the window.\""},
-  {id:"pm7",title:"Carousel: Body language as a state regulator",format:"Carousel",day:"Tue",pillar:"mental",desc:"⏱ 5 slides · On how posture affects state — for you and your opponent.",hook:"\"Your opponent reads your body. So does your nervous system.\""},
-  {id:"pm8",title:"Carousel: Recovering from a tough loss",format:"Carousel",day:"Thu",pillar:"mental",desc:"⏱ 5 slides · Framework — not bypassing, not drowning. Using loss to evolve.",hook:"\"A loss isn't a verdict. It's information. Here's how to read it.\""},
-
-  // ═══════════════ TENNIS HP & DEVELOPMENT (pillar: tennis) ═══════════════
-  {id:"pt1",title:"Carousel: 5 habits of HP juniors",format:"Carousel",day:"Mon",pillar:"tennis",desc:"⏱ 5 slides · On what separates HP players from rec players. Real ProWorld examples.",hook:"\"These 5 habits build pro-level juniors.\""},
-  {id:"pt2",title:"Carousel: U10 parent's guide to junior tennis",format:"Carousel",day:"Tue",pillar:"tennis",desc:"⏱ 5 slides · For parents of U10 players. What development looks like, what to expect, what to avoid.",hook:"\"If your kid is starting tennis at 10, save this.\""},
-  {id:"pt3",title:"Carousel: 3 ways to fix your serve toss",format:"Carousel",day:"Wed",pillar:"tennis",desc:"⏱ 5 slides · Visual tutorial — common toss errors and fixes. Borrow from Paolo/Nico video content.",hook:"\"Fix the toss, fix the serve.\""},
-  {id:"pt4",title:"Carousel: The footwork pattern every junior needs",format:"Carousel",day:"Thu",pillar:"tennis",desc:"⏱ 5 slides · On split step and recovery. Visual diagrams + on-court photos.",hook:"\"If your split step is late, your shots are late.\""},
-  {id:"pt5",title:"Carousel: Forehand grip — semi-western explained",format:"Carousel",day:"Fri",pillar:"tennis",desc:"⏱ 5 slides · Grip tutorial. Photos + diagrams. The grip that wins at the modern game.",hook:"\"The grip you build at 12 is the grip you'll have at 22.\""},
-  {id:"pt6",title:"Carousel: The U12 stroke audit",format:"Carousel",day:"Mon",pillar:"tennis",desc:"⏱ 5 slides · On what strokes every U12 should have established. Forehand, backhand, serve, volley.",hook:"\"By 12, these strokes should be solid. If not, here's what to do.\""},
-  {id:"pt7",title:"Carousel: How we develop a U12 player at ProWorld",format:"Carousel",day:"Tue",pillar:"tennis",desc:"⏱ 5 slides · On the ProWorld U12 arc. What we work on, in what order, why.",hook:"\"The U12 year is the most important year in junior tennis.\""},
-  {id:"pt8",title:"Carousel: What HP training actually looks like",format:"Carousel",day:"Wed",pillar:"tennis",desc:"⏱ 5 slides · BTS of a real HP week. Court hours, fitness, mental, school. Real numbers.",hook:"\"This is what HP commitment looks like.\""},
-
-  // ═══════════════ TOURNAMENT PREP (pillar: tournament) ═══════════════
-  {id:"ptn1",title:"Carousel: The week before a tournament",format:"Carousel",day:"Mon",pillar:"tournament",desc:"⏱ 5 slides · On tournament prep — training load, mental, logistics. Mirror Eric's video.",hook:"\"How you prepare the week before is how you'll play the week of.\""},
-  {id:"ptn2",title:"Carousel: How to scout your opponent in warm-up",format:"Carousel",day:"Wed",pillar:"tournament",desc:"⏱ 5 slides · On reading the warm-up. Forehand vs backhand, movement, serve placement.",hook:"\"The warm-up is scouting. Don't waste it.\""},
-  {id:"ptn3",title:"Carousel: Match day morning routine",format:"Carousel",day:"Fri",pillar:"tournament",desc:"⏱ 5 slides · Breakdown of a great match day morning. Wake-up, food, warm-up, mental prep.",hook:"\"What you do at 8 AM decides what happens at 10 AM.\""},
-  {id:"ptn4",title:"Carousel: Recovery between matches",format:"Carousel",day:"Thu",pillar:"tournament",desc:"⏱ 5 slides · On the 2-hour window between tournament matches. Food, recovery, mental reset.",hook:"\"Two hours between matches. Here's exactly what to do.\""},
-  {id:"ptn5",title:"Carousel: The night before a tournament",format:"Carousel",day:"Sun",pillar:"tournament",desc:"⏱ 5 slides · For parents and players. Sleep, food, mindset. Tournament starts the night before.",hook:"\"The match starts the night before.\""},
-  {id:"ptn6",title:"Carousel: After the match — the 5-minute debrief",format:"Carousel",day:"Tue",pillar:"tournament",desc:"⏱ 5 slides · On what to do in the 5 minutes after a match. Your coach, parents, yourself.",hook:"\"What you do after the match is how you get better.\""},
-
-  // ═══════════════ FITNESS & NUTRITION (pillar: fitness) ═══════════════
-  {id:"pf1",title:"Carousel: 5 foods for match day",format:"Carousel",day:"Mon",pillar:"fitness",desc:"⏱ 5 slides · Visual carousel — what to eat before, between, after matches. Real food, real timing.",hook:"\"What you eat decides the third set.\""},
-  {id:"pf2",title:"Carousel: 5 mobility movements every junior needs",format:"Carousel",day:"Tue",pillar:"fitness",desc:"⏱ 5 slides · Visual tutorial — hip, shoulder, ankle, thoracic. Sourced from Tara.",hook:"\"5 minutes a day. Pays off for years.\""},
-  {id:"pf3",title:"Carousel: Sleep for athletes — the rules",format:"Carousel",day:"Wed",pillar:"fitness",desc:"⏱ 5 slides · On sleep for juniors training 15+ hours/week. Non-negotiables.",hook:"\"Skipping sleep is skipping recovery.\""},
-  {id:"pf4",title:"Carousel: Building strength without bulk",format:"Carousel",day:"Thu",pillar:"fitness",desc:"⏱ 5 slides · On why tennis strength is different from football/soccer strength.",hook:"\"Tennis strength isn't gym strength. Here's the difference.\""},
-  {id:"pf5",title:"Carousel: The third-set fade — why it happens",format:"Carousel",day:"Fri",pillar:"fitness",desc:"⏱ 5 slides · Diagnosis of fitness gap that causes 3rd set collapse. With Tara's framework.",hook:"\"You're not losing third sets because of mental. It's fitness.\""},
-  {id:"pf6",title:"Carousel: 3 fitness tests you can do at home",format:"Carousel",day:"Mon",pillar:"fitness",desc:"⏱ 5 slides · DIY benchmark guide. Mirror Tara's batch video.",hook:"\"Try these 3 tests. Tells you where your fitness is.\""},
-
-  // ═══════════════ ON TOUR / TRAVEL (pillar: tour) ═══════════════
-  {id:"ptr1",title:"Carousel: Travel day vs match day energy",format:"Carousel",day:"Mon",pillar:"tour",desc:"⏱ 5 slides · On managing energy on the road. Mirror Flo's framework.",hook:"\"Most juniors lose the tournament before they even play.\""},
-  {id:"ptr2",title:"Carousel: Adjusting to different court surfaces",format:"Carousel",day:"Tue",pillar:"tour",desc:"⏱ 5 slides · On clay vs hard vs grass adjustments. Tactical and technical.",hook:"\"You can't play the same game on every surface.\""},
-  {id:"ptr3",title:"Carousel: Tournament food — what works, what doesn't",format:"Carousel",day:"Wed",pillar:"tour",desc:"⏱ 5 slides · On practical nutrition on tour. Real meals.",hook:"\"Bad food choices cost more matches than bad coaching.\""},
-  {id:"ptr4",title:"Carousel: Travel hacks for tennis families",format:"Carousel",day:"Fri",pillar:"tour",desc:"⏱ 5 slides · On packing, gear, recovery, logistics. From Flo's experience.",hook:"\"After 50 tournaments, this is what we've learned.\""},
-
-  // ═══════════════ PARENTS CORNER (pillar: parents) ═══════════════
-  {id:"ppr1",title:"Carousel: 5 mistakes tennis parents make",format:"Carousel",day:"Mon",pillar:"parents",desc:"⏱ 5 slides · For parents. Honest, useful, not preachy. Antonio voice.",hook:"\"I see this every week. Don't be that parent.\""},
-  {id:"ppr2",title:"Carousel: How to talk to your kid after a tough loss",format:"Carousel",day:"Tue",pillar:"parents",desc:"⏱ 5 slides · Framework for parents. What to say, what not to say.",hook:"\"The 20 minutes after the match decides the next month of practice.\""},
-  {id:"ppr3",title:"Carousel: How to choose a tennis academy",format:"Carousel",day:"Wed",pillar:"parents",desc:"⏱ 5 slides · On the questions parents should actually ask. Positions ProWorld smartly.",hook:"\"Most academies sell. Here's what to actually look for.\""},
-  {id:"ppr4",title:"Carousel: Stop coaching from the sideline",format:"Carousel",day:"Thu",pillar:"parents",desc:"⏱ 5 slides · On why sideline coaching kills development. What to do instead.",hook:"\"I know you mean well. Don't do it.\""},
-  {id:"ppr5",title:"Carousel: The long view — building a junior tennis player",format:"Carousel",day:"Fri",pillar:"parents",desc:"⏱ 5 slides · On long-term development philosophy. Why we don't chase early results.",hook:"\"This is a 10-year build, not a 10-week one.\""},
-  {id:"ppr6",title:"Carousel: 3 things every junior tennis parent should know",format:"Carousel",day:"Mon",pillar:"parents",desc:"⏱ 5 slides · Parent-facing carousel. Useful, shareable, positions ProWorld as the thoughtful choice.",hook:"\"If you're a tennis parent, save this.\""},
-  {id:"ppr7",title:"Carousel: The first conversation every tennis parent should have",format:"Carousel",day:"Wed",pillar:"parents",desc:"⏱ 5 slides · On the conversation with your child about their tennis goals.",hook:"\"Before signing up, have this conversation.\""},
-
-  // ═══════════════ SOCCER (pillar: soccer) ═══════════════
-  {id:"ps1",title:"Carousel: 3 things every young soccer player needs",format:"Carousel",day:"Tue",pillar:"soccer",desc:"⏱ 5 slides · On touch, vision, decision-making. Foundational skills carousel.",hook:"\"If your kid is just learning to play, focus on these 3.\""},
-  {id:"ps2",title:"Carousel: Why our soccer players move like tennis players",format:"Carousel",day:"Thu",pillar:"soccer",desc:"⏱ 5 slides · On the ProWorld footwork crossover advantage.",hook:"\"Our soccer players move differently. Here's why.\""},
-  {id:"ps3",title:"Carousel: What makes a complete young soccer player",format:"Carousel",day:"Wed",pillar:"soccer",desc:"⏱ 5 slides · On the 4 pillars of complete soccer development.",hook:"\"4 things. Get them right.\""},
-
-  // ═══════════════ CULTURE / ACADEMY / VIBES (pillar: culture) ═══════════════
-  {id:"pcv1",title:"Academy Vibes — daily story (2-3 iPhone clips)",format:"Story",day:"Daily",pillar:"culture",desc:"⏱ 2-3 clips/day, 5-10 sec each · 2-3 iPhone clips per day from the courts. No script, no edit. Just real ProWorld energy. Post to IG + FB Stories.",hook:""},
-  {id:"pcv2",title:"Facility walk-through",format:"Reel",day:"Wed",pillar:"culture",desc:"⏱ 30-60 seconds · 60-second Antonio-narrated walkthrough of the ProWorld facility. Courts, fitness room, mental room, common areas.",hook:"\"This is where it happens. Welcome to ProWorld.\""},
-  {id:"pcv3",title:"Carousel: A day in the life at ProWorld",format:"Carousel",day:"Thu",pillar:"culture",desc:"⏱ 5 slides · Photo carousel walking through what a day looks like — morning warm-up, court time, fitness, lunch, mental session.",hook:"\"One day at ProWorld. From 8am to 6pm.\""},
-  {id:"pcv4",title:"Carousel: Why families choose ProWorld",format:"Carousel",day:"Mon",pillar:"culture",desc:"⏱ 5 slides · For new parents researching academies. Four pillars + Antonio quotes.",hook:"\"Why families choose ProWorld over every other academy in South Florida.\""},
-  {id:"pcv5",title:"Carousel: The four pillars of player development",format:"Carousel",day:"Tue",pillar:"culture",desc:"⏱ 5 slides · Explaining technical, athletic fitness, mental performance, individual player assessments.",hook:"\"What 'integrated development' actually looks like.\""},
-  {id:"pcv6",title:"Carousel: What makes ProWorld different",format:"Carousel",day:"Mon",pillar:"culture",desc:"⏱ 5 slides · Comparing ProWorld's approach to typical academies. Direct, confident.",hook:"\"Most academies do one thing. We do four.\""},
-  {id:"pcv7",title:"Coach roster — meet the team",format:"Carousel",day:"Wed",pillar:"culture",desc:"⏱ 5-7 slides · Carousel introducing the coaching team. Photo, name, role, one quote each.",hook:"\"Meet the team behind ProWorld.\""},
-  {id:"pcv8",title:"Facility B-roll — photo dump",format:"Carousel",day:"Fri",pillar:"culture",desc:"⏱ 5-7 slides · Photo carousel of facility shots. Courts at golden hour, fitness room, signage, branded spaces.",hook:"\"The home of ProWorld.\""},
-  {id:"pcv9",title:"Player spotlight — carousel",format:"Carousel",day:"Tue",pillar:"culture",desc:"⏱ 5 slides · Featuring one ProWorld player. Story, what they're working on, recent results. Rotate weekly.",hook:"\"Meet [player name]. ProWorld's [age] from [city].\""},
-  {id:"pcv10",title:"Family photo / community moment",format:"Static Post",day:"Sat",pillar:"culture",desc:"⏱ Single graphic · One real photo from this week — a family moment, a coach-player exchange, a celebration.",hook:""},
-  {id:"pcv11",title:"BTS — coaches meeting",format:"Story",day:"Sun",pillar:"culture",desc:"⏱ 3-7 story slides · 3-4 story slides showing the weekly coaches meeting. Behind-the-scenes of how the academy runs.",hook:""},
-  {id:"pcv12",title:"POV: Inside an HP training block",format:"Reel",day:"Thu",pillar:"culture",desc:"⏱ 30-60 seconds · POV-style iPhone reel from court level. Coach feeding, player hitting, sounds of the rally. No narration.",hook:"\"POV: 10am at ProWorld.\""},
-  {id:"pcv13",title:"Testimonial graphic",format:"Static Post",day:"Tue",pillar:"culture",desc:"⏱ Single graphic · Clean branded graphic with a parent or player quote about ProWorld. Real testimonial, attributed.",hook:""},
-  {id:"pcv14",title:"Week recap story sequence",format:"Story",day:"Sun",pillar:"culture",desc:"⏱ 3-7 story slides · 5-7 story slides recapping the week. Best moments, best results, what's coming next.",hook:""},
-
-  // ═══════════════ RECAP & TOURNAMENT PROMOS (pillar: recap) ═══════════════
-  {id:"pr1",title:"Players in Action — weekly recap",format:"Reel",day:"Sun",pillar:"recap",desc:"⏱ 30-60 seconds · Weekly compilation reel of ProWorld players competing in tournaments. Wins, semis, finals. Tag each player.",hook:"\"This week's results from the ProWorld roster.\""},
-  {id:"pr2",title:"Tournament Promo — Monday",format:"Static Post",day:"Mon",pillar:"recap",desc:"⏱ Single graphic · Static post promoting upcoming tournaments. Clean graphic, dates, registration link.",hook:""},
-  {id:"pr3",title:"Tournament Promo — Wednesday",format:"Static Post",day:"Wed",pillar:"recap",desc:"⏱ Single graphic · Mid-week tournament promo. Different event or reminder for the Monday post.",hook:""},
-  {id:"pr4",title:"Tournament Promo — Friday",format:"Static Post",day:"Fri",pillar:"recap",desc:"⏱ Single graphic · Final tournament promo before the weekend. Last call, last-chance registration.",hook:""},
-  {id:"pr5",title:"Tournament results graphic",format:"Static Post",day:"Sun",pillar:"recap",desc:"⏱ Single graphic · Branded graphic showing weekend's top results from ProWorld players.",hook:""},
-
-  // ═══════════════ SEASONAL / PROMO (pillar: promo) ═══════════════
-  {id:"pp1",title:"Carousel: Summer Camp 2026 — what's included",format:"Carousel",day:"Fri",pillar:"promo",desc:"⏱ 5 slides · Detailing Summer Camp 2026. Dates, programs, age groups, daily schedule, link to register.",hook:"\"Summer Camp 2026. Limited spots. Everything inside.\""},
-  {id:"pp2",title:"Carousel: Why summer at ProWorld is different",format:"Carousel",day:"Mon",pillar:"promo",desc:"⏱ 5 slides · On the ProWorld summer experience. Photos from last summer, what makes it special.",hook:"\"Most camps babysit. We develop.\""},
-  {id:"pp3",title:"Limited spots countdown",format:"Static Post",day:"Wed",pillar:"promo",desc:"⏱ Single graphic · Branded graphic — '[X] spots left for Summer Camp.' Urgency play.",hook:""},
-  {id:"pp4",title:"Early bird offer announcement",format:"Static Post",day:"Tue",pillar:"promo",desc:"⏱ Single graphic · Branded graphic — early bird pricing ends [date]. Clean offer, clear CTA.",hook:""},
-  {id:"pp5",title:"Carousel: Trial week breakdown",format:"Carousel",day:"Thu",pillar:"promo",desc:"⏱ 5 slides · Explaining what a trial week includes. Direct conversion-focused.",hook:"\"One week to see if ProWorld is the right fit.\""},
-  {id:"pp6",title:"Open house announcement",format:"Static Post",day:"Mon",pillar:"promo",desc:"⏱ Single graphic · Branded graphic announcing the next open house. Date, time, what families will see.",hook:""}
-];
-
-// ═══════════════════════════════════════════════════════
-// CONTENT ARCHIVE LOCK — IDs already posted (won't auto-assign)
-// ═══════════════════════════════════════════════════════
-const ALREADY_POSTED_IDS = [
-  "t6",   // Goals That Move You Forward (Tonio)
-  "t3",   // Don't Train to Eliminate Nerves (Tonio)
-  "t4",   // The First Goal of a Tennis Match (Tonio)
-  "t2",   // Pressure Is Content (Tonio)
-  "t7",   // Mindset Reset Between Points (Tonio)
-  "k1",   // U10 Serving Tip (Kam)
-  "tr1",  // How Elite Tennis Players Fuel for Match Day (Tara)
-  "tr2",  // Recovery Routine (Tara)
-  "tr3",  // Hydration for Performance (Tara)
-  "l1",   // Soccer Drill at ProWorld (Lukas)
-  "p2",   // Going Down the Line (Paolo)
-  "s1"    // The Complete Player (Sebastien)
-];
-
-// ═══════════════════════════════════════════════════════
-// THEME OF THE WEEK — auto-detect from calendar
-// ═══════════════════════════════════════════════════════
-function detectWeekTheme(weekDate){
-  // weekDate is a Date object; falls back to current date
-  const d = weekDate || new Date();
-  const m = d.getMonth(); // 0-11
-  const day = d.getDate();
-
-  // May–August: Summer Camp push
-  if (m >= 4 && m <= 7) return {theme:"Summer Camp Push", pillar:"promo"};
-
-  // August (late) – September: Fall enrollment + college recruiting kickoff
-  if (m === 8) return {theme:"Fall Enrollment + College Recruiting", pillar:"college"};
-
-  // October–November: Tournament season + mental performance
-  if (m === 9 || m === 10) return {theme:"Tournament Season", pillar:"tournament"};
-
-  // December: Year-end reflection + Holiday Camp promo
-  if (m === 11) return {theme:"Holiday Camp + Year-End Reflection", pillar:"promo"};
-
-  // January: New Year goals + Mental Performance
-  if (m === 0) return {theme:"New Year Goals + Mental Performance", pillar:"mental"};
-
-  // February–March: Spring Camp + development
-  if (m === 1 || m === 2) return {theme:"Spring Camp + Development", pillar:"tennis"};
-
-  // April: College decisions + recruiting
-  if (m === 3) return {theme:"College Decision Season", pillar:"college"};
-
-  return {theme:"", pillar:""};
-}
-
-
-
-const COACH_WEEKLY_COUNT = {
-  "Paolo": 2, "Tonio": 2, "Tara": 2, "Flo": 3,
-  "Nico": 1, "Eric": 1, "Sebastien": 1,
-  "Kam": 1, "Robby": 1, "Aimon": 1, "Coach ET": 1, "Quinnton": 1,
-  "Lukas": 1, "Antonio": 1, "Lorenzo": 1
-};
-
-// Persistent state for idea bank
-let ideaBank = JSON.parse(localStorage.getItem("pw_idea_bank_v12") || "null");
-if (!ideaBank) {
-  ideaBank = JSON.parse(JSON.stringify(IDEA_BANK_SEED));
-  localStorage.setItem("pw_idea_bank_v12", JSON.stringify(ideaBank));
-}
-let usedIdeaIds = JSON.parse(localStorage.getItem("pw_used_ideas_v12") || "[]");
-
-// Persistent state for production bank
-let productionBank = JSON.parse(localStorage.getItem("pw_prod_bank_v12") || "null");
-if (!productionBank){
-  productionBank = JSON.parse(JSON.stringify(PRODUCTION_BANK_SEED));
-  localStorage.setItem("pw_prod_bank_v12", JSON.stringify(productionBank));
-}
-let usedProductionIds = JSON.parse(localStorage.getItem("pw_used_prod_v12") || "[]");
-
-function saveIdeaBank(){localStorage.setItem("pw_idea_bank_v12", JSON.stringify(ideaBank));}
-function saveUsedIds(){localStorage.setItem("pw_used_ideas_v12", JSON.stringify(usedIdeaIds));}
-function saveProductionBank(){localStorage.setItem("pw_prod_bank_v12", JSON.stringify(productionBank));}
-function saveUsedProductionIds(){localStorage.setItem("pw_used_prod_v12", JSON.stringify(usedProductionIds));}
-
-function getAvailableIdeas(coach){
-  const all = ideaBank[coach] || [];
-  return all.filter(i => !usedIdeaIds.includes(i.id) && !ALREADY_POSTED_IDS.includes(i.id));
-}
-
-function getAlreadyPostedCount(coach){
-  const all = ideaBank[coach] || [];
-  return all.filter(i => ALREADY_POSTED_IDS.includes(i.id)).length;
-}
-
-function getAvailableProductionIdeas(){
-  return productionBank.filter(i => !usedProductionIds.includes(i.id));
-}
-
-function genAssignments(){
-  const weekDates = document.getElementById("week-dates").value || "This Week";
-  let theme = document.getElementById("week-theme").value || "";
-
-  // Auto-detect theme if blank
-  let detectedTheme = null;
-  if (!theme){
-    detectedTheme = detectWeekTheme(new Date());
-    if (detectedTheme.theme){
-      theme = detectedTheme.theme;
-      document.getElementById("week-theme").value = theme;
-    }
-  } else {
-    // User-set theme: try to detect pillar from theme text
-    const lc = theme.toLowerCase();
-    if (lc.includes("camp") || lc.includes("summer") || lc.includes("trial") || lc.includes("enrollment")) detectedTheme = {pillar:"promo"};
-    else if (lc.includes("college") || lc.includes("recruit") || lc.includes("ncaa")) detectedTheme = {pillar:"college"};
-    else if (lc.includes("mental") || lc.includes("mindset") || lc.includes("ritual")) detectedTheme = {pillar:"mental"};
-    else if (lc.includes("tournament") || lc.includes("compete")) detectedTheme = {pillar:"tournament"};
-    else if (lc.includes("fitness") || lc.includes("recover") || lc.includes("nutrition")) detectedTheme = {pillar:"fitness"};
-    else if (lc.includes("parent")) detectedTheme = {pillar:"parents"};
-    else if (lc.includes("tour") || lc.includes("travel") || lc.includes("itf")) detectedTheme = {pillar:"tour"};
-    else if (lc.includes("soccer")) detectedTheme = {pillar:"soccer"};
-    else detectedTheme = {pillar:""};
-  }
-
-  let bankWarnings = [];
-
-  // Production picks: lean toward theme pillar (50/50 mix)
-  const prodAvail = getAvailableProductionIdeas();
-  let prodPicks = [];
-  if (detectedTheme && detectedTheme.pillar){
-    // 3 themed + 3 mixed = good variety
-    const themed = prodAvail.filter(i => i.pillar === detectedTheme.pillar).slice(0, 3);
-    const mixedPool = prodAvail.filter(i => i.pillar !== detectedTheme.pillar);
-    const mixed = mixedPool.slice(0, 6 - themed.length);
-    prodPicks = [...themed, ...mixed];
-  } else {
-    prodPicks = prodAvail.slice(0, 6);
-  }
-  if (prodPicks.length < 6){
-    bankWarnings.push("Production list — " + prodPicks.length + " of 6 available");
-  }
-
-  currentAssignments = {
-    weekDates: weekDates,
-    theme: theme,
-    themePillar: detectedTheme ? detectedTheme.pillar : "",
-    coaches: COACHES.map(c => {
-      const need = COACH_WEEKLY_COUNT[c.name] || 1;
-      const available = getAvailableIdeas(c.name);
-      const picks = available.slice(0, need);
-      if (picks.length < need){
-        bankWarnings.push(c.name + " — bank low (" + available.length + " of " + need + " needed)");
-      }
-      return {
-        name: c.name,
-        role: c.role,
-        ideas: picks.map(p => ({
-          id: p.id,
-          title: p.title,
-          format: p.format,
-          day: p.day,
-          desc: p.desc,
-          hook: p.hook,
-          delivered: false,
-          custom: false
-        }))
-      };
-    }),
-    production: prodPicks.map(p => ({
-      id: p.id,
-      title: p.title,
-      format: p.format,
-      day: p.day,
-      pillar: p.pillar,
-      desc: p.desc,
-      hook: p.hook,
-      delivered: false,
-      custom: false
-    }))
-  };
-
-  renderAssignments(bankWarnings);
-  renderProduction();
-
-  const approveBtn = document.getElementById("approve-btn");
-  approveBtn.disabled = false;
-  approveBtn.textContent = "✅ Approve & Lock";
-}
-
-function renderAssignments(warnings){
-  if (!currentAssignments) return;
-  warnings = warnings || [];
-
-  let warnHtml = "";
-  if (warnings.length){
-    warnHtml = '<div class="notice" style="border-color:#E286E4;color:#E286E4;background:#2a1a2a">⚠ Idea bank running low for: ' + warnings.join(", ") + '. <button class="btn btn-sm" style="background:#E286E4;color:#000;margin-left:8px" onclick="document.getElementById(\'add-idea-section\').scrollIntoView({behavior:\'smooth\'})">Add ideas →</button></div>';
-  }
-
-  // Progress summary
-  const totalIdeas = currentAssignments.coaches.reduce((s,c) => s + c.ideas.length, 0);
-  const delivered = currentAssignments.coaches.reduce((s,c) => s + c.ideas.filter(i => i.delivered).length, 0);
-  const pct = totalIdeas > 0 ? Math.round(delivered / totalIdeas * 100) : 0;
-
-  let html = warnHtml + '<div class="card"><div class="card-top"></div>';
-  html += '<div class="card-label">Week of ' + currentAssignments.weekDates + (currentAssignments.theme ? ' · ' + currentAssignments.theme : '') + '</div>';
-  html += '<div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">';
-  html += '<div class="pillar-bar" style="flex:1;height:10px"><div class="pillar-fill" style="width:' + pct + '%"></div></div>';
-  html += '<div class="pillar-pct">' + delivered + '/' + totalIdeas + ' delivered</div>';
-  html += '</div>';
-
-  html += '<div class="grid-3">';
-  currentAssignments.coaches.forEach((c, ci) => {
-    const coachDelivered = c.ideas.filter(i => i.delivered).length;
-    html += '<div class="coach-card">';
-    html += '<div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div class="coach-name">' + c.name + '</div><div class="coach-role">' + c.role + '</div></div><div style="font-family:Barlow Condensed;font-style:italic;font-weight:900;color:#94FCB1;font-size:18px">' + coachDelivered + '/' + c.ideas.length + '</div></div>';
-
-    c.ideas.forEach((idea, ii) => {
-      const checked = idea.delivered ? "checked" : "";
-      const checkStyle = idea.delivered ? "background:#94FCB1;border-color:#94FCB1" : "";
-      const titleStyle = idea.delivered ? "text-decoration:line-through;opacity:.6" : "";
-      html += '<div style="margin-top:12px;padding-top:12px;border-top:1px solid #353a44">';
-      html += '<div style="display:flex;align-items:flex-start;gap:10px">';
-      html += '<div class="cad-check ' + (idea.delivered ? "done" : "") + '" style="flex-shrink:0;width:24px;height:24px;font-size:14px" onclick="toggleDelivered(' + ci + ',' + ii + ')">' + (idea.delivered ? "✓" : "") + '</div>';
-      html += '<div style="flex:1;' + titleStyle + '">';
-      html += '<div style="font-weight:700;font-size:13px;color:#fff;line-height:1.3">' + idea.title + '</div>';
-      html += '<div style="font-size:10px;color:#94FCB1;margin-top:3px;font-weight:600;letter-spacing:.5px;text-transform:uppercase">' + idea.format + ' · Post ' + idea.day + '</div>';
-      html += '<div style="font-size:12px;color:#b8bcc4;margin-top:5px;line-height:1.4">' + idea.desc + '</div>';
-      if (idea.hook) html += '<div style="font-size:11px;color:#E2FE78;margin-top:5px;font-style:italic">' + idea.hook + '</div>';
-      html += '<div style="margin-top:6px"><button class="btn btn-sm btn-ghost" style="padding:4px 10px;font-size:10px" onclick="swapIdea(' + ci + ',' + ii + ')">↻ Swap</button> <button class="btn btn-sm btn-ghost" style="padding:4px 10px;font-size:10px" onclick="editIdea(' + ci + ',' + ii + ')">✎ Edit</button> <button class="btn btn-sm btn-ghost" style="padding:4px 10px;font-size:10px;border-color:#E286E4;color:#E286E4" onclick="skipIdea(' + ci + ',' + ii + ')">✕ Skip</button></div>';
-      html += '</div></div></div>';
-    });
-    html += '<div style="margin-top:12px;padding-top:12px;border-top:1px solid #353a44"><button class="btn btn-sm btn-ghost" style="font-size:10px;padding:6px 12px" onclick="addExtraIdea(' + ci + ')">+ Add another for ' + c.name + '</button></div>';
-    html += '</div>';
-  });
-  html += '</div></div>';
-
-  document.getElementById("assignments-output").innerHTML = html;
-  document.getElementById("recurring-card").style.display = "block";
-  renderBankStatus();
-}
-
-function toggleDelivered(coachIdx, ideaIdx){
-  const idea = currentAssignments.coaches[coachIdx].ideas[ideaIdx];
-  idea.delivered = !idea.delivered;
-  // If this is from a locked/approved week, also update in approvedWeeks
-  syncToApprovedIfLocked();
-  renderAssignments();
-}
-
-function syncToApprovedIfLocked(){
-  // If currentAssignments matches an approved week, sync the deliveries back
-  if (!currentAssignments || !currentAssignments.weekDates) return;
-  const match = approvedWeeks.find(w => w.weekDates === currentAssignments.weekDates);
-  if (match){
-    match.coaches = currentAssignments.coaches;
-    saveApproved();
-  }
-}
-
-function swapIdea(coachIdx, ideaIdx){
-  const coach = currentAssignments.coaches[coachIdx];
-  const currentIdea = coach.ideas[ideaIdx];
-  const available = getAvailableIdeas(coach.name).filter(i => i.id !== currentIdea.id && !coach.ideas.some(ci => ci.id === i.id));
-  if (available.length === 0){
-    alert("No more ideas in " + coach.name + "'s bank. Add new ones below.");
-    return;
-  }
-  const next = available[0];
-  coach.ideas[ideaIdx] = {
-    id: next.id,
-    title: next.title,
-    format: next.format,
-    day: next.day,
-    desc: next.desc,
-    hook: next.hook,
-    delivered: false,
-    custom: false
-  };
-  syncToApprovedIfLocked();
-  renderAssignments();
-}
-
-function editIdea(coachIdx, ideaIdx){
-  const idea = currentAssignments.coaches[coachIdx].ideas[ideaIdx];
-  const newTitle = prompt("Edit title:", idea.title);
-  if (newTitle === null) return;
-  const newDesc = prompt("Edit description:", idea.desc);
-  if (newDesc === null) return;
-  const newDay = prompt("Post day (Mon/Tue/Wed/Thu/Fri):", idea.day);
-  if (newDay === null) return;
-  const newFormat = prompt("Format (Reel/Carousel/Talking Head):", idea.format);
-  if (newFormat === null) return;
-  idea.title = newTitle;
-  idea.desc = newDesc;
-  idea.day = newDay;
-  idea.format = newFormat;
-  idea.custom = true;
-  syncToApprovedIfLocked();
-  renderAssignments();
-}
-
-function skipIdea(coachIdx, ideaIdx){
-  if (!confirm("Skip this assignment for the week? The idea goes back in the bank for future use.")) return;
-  currentAssignments.coaches[coachIdx].ideas.splice(ideaIdx, 1);
-  syncToApprovedIfLocked();
-  renderAssignments();
-}
-
-function addExtraIdea(coachIdx){
-  const coach = currentAssignments.coaches[coachIdx];
-  const available = getAvailableIdeas(coach.name).filter(i => !coach.ideas.some(ci => ci.id === i.id));
-  if (available.length === 0){
-    const customTitle = prompt("No more ideas in " + coach.name + "'s bank. Add a custom one — title:");
-    if (!customTitle) return;
-    const customDesc = prompt("Description:");
-    coach.ideas.push({
-      id: "custom_" + Date.now(),
-      title: customTitle,
-      format: "Reel",
-      day: "Wed",
-      desc: customDesc || "",
-      hook: "",
-      delivered: false,
-      custom: true
-    });
-  } else {
-    const next = available[0];
-    coach.ideas.push({
-      id: next.id,
-      title: next.title,
-      format: next.format,
-      day: next.day,
-      desc: next.desc,
-      hook: next.hook,
-      delivered: false,
-      custom: false
-    });
-  }
-  syncToApprovedIfLocked();
-  renderAssignments();
-}
-
-// ═══════════════════════════════════════════════════════
-// PRODUCTION LIST (Antonio's non-video weekly work)
-// ═══════════════════════════════════════════════════════
-
-function renderProduction(){
-  if (!currentAssignments || !currentAssignments.production) {
-    document.getElementById("production-output").innerHTML = "";
-    return;
-  }
-  const items = currentAssignments.production;
-  const delivered = items.filter(i => i.delivered).length;
-
-  let html = '<div class="card"><div class="card-top" style="background:#E286E4"></div>';
-  html += '<div class="card-label" style="color:#E286E4">Antonio\'s Production List — Non-Video Content</div>';
-  html += '<div style="font-size:12px;color:#9aa0a6;margin-bottom:14px">Carousels, vibes, facility shots, recap posts, tournament promos. Everything that isn\'t a coach video.</div>';
-  html += '<div style="display:flex;align-items:center;gap:14px;margin-bottom:18px">';
-  html += '<div class="pillar-bar" style="flex:1;height:10px"><div class="pillar-fill" style="background:linear-gradient(90deg,#E286E4,#A9F3F7);width:' + (items.length > 0 ? Math.round(delivered/items.length*100) : 0) + '%"></div></div>';
-  html += '<div class="pillar-pct" style="color:#E286E4">' + delivered + '/' + items.length + ' done</div>';
-  html += '</div>';
-
-  html += '<div class="grid-3">';
-  items.forEach((item, idx) => {
-    const titleStyle = item.delivered ? "text-decoration:line-through;opacity:.6" : "";
-    html += '<div class="coach-card" style="border-left-color:#E286E4">';
-    html += '<div style="display:flex;align-items:flex-start;gap:10px">';
-    html += '<div class="cad-check ' + (item.delivered ? "done" : "") + '" style="flex-shrink:0;width:24px;height:24px;font-size:14px;' + (item.delivered ? "background:#E286E4;border-color:#E286E4" : "") + '" onclick="toggleProductionDelivered(' + idx + ')">' + (item.delivered ? "✓" : "") + '</div>';
-    html += '<div style="flex:1;' + titleStyle + '">';
-    html += '<div style="font-weight:700;font-size:13px;color:#fff;line-height:1.3">' + item.title + '</div>';
-    html += '<div style="font-size:10px;color:#E286E4;margin-top:3px;font-weight:600;letter-spacing:.5px;text-transform:uppercase">' + item.format + ' · ' + item.day + '</div>';
-    html += '<div style="font-size:12px;color:#b8bcc4;margin-top:5px;line-height:1.4">' + item.desc + '</div>';
-    if (item.hook) html += '<div style="font-size:11px;color:#E2FE78;margin-top:5px;font-style:italic">' + item.hook + '</div>';
-    html += '<div style="margin-top:6px"><button class="btn btn-sm btn-ghost" style="padding:4px 10px;font-size:10px" onclick="swapProductionItem(' + idx + ')">↻ Swap</button> <button class="btn btn-sm btn-ghost" style="padding:4px 10px;font-size:10px" onclick="editProductionItem(' + idx + ')">✎ Edit</button> <button class="btn btn-sm btn-ghost" style="padding:4px 10px;font-size:10px;border-color:#E286E4;color:#E286E4" onclick="skipProductionItem(' + idx + ')">✕ Skip</button></div>';
-    html += '</div></div></div>';
-  });
-  html += '</div>';
-  html += '<div style="margin-top:14px"><button class="btn btn-sm btn-ghost" style="font-size:11px" onclick="addExtraProductionItem()">+ Add another production item</button></div>';
-  html += '</div>';
-  document.getElementById("production-output").innerHTML = html;
-}
-
-function toggleProductionDelivered(idx){
-  currentAssignments.production[idx].delivered = !currentAssignments.production[idx].delivered;
-  syncToApprovedIfLocked();
-  renderProduction();
-}
-
-function swapProductionItem(idx){
-  const current = currentAssignments.production[idx];
-  const available = getAvailableProductionIdeas().filter(i => i.id !== current.id && !currentAssignments.production.some(p => p.id === i.id));
-  if (available.length === 0){
-    alert("No more items in the production bank. Add new ones or edit this one manually.");
-    return;
-  }
-  const next = available[0];
-  currentAssignments.production[idx] = {
-    id: next.id,
-    title: next.title,
-    format: next.format,
-    day: next.day,
-    desc: next.desc,
-    hook: next.hook,
-    delivered: false,
-    custom: false
-  };
-  syncToApprovedIfLocked();
-  renderProduction();
-}
-
-function editProductionItem(idx){
-  const item = currentAssignments.production[idx];
-  const newTitle = prompt("Edit title:", item.title);
-  if (newTitle === null) return;
-  const newDesc = prompt("Edit description:", item.desc);
-  if (newDesc === null) return;
-  const newDay = prompt("Day (Mon/Tue/Wed/Thu/Fri/Sat/Sun/Daily):", item.day);
-  if (newDay === null) return;
-  const newFormat = prompt("Format (Carousel/Reel/Story/Static Post):", item.format);
-  if (newFormat === null) return;
-  item.title = newTitle;
-  item.desc = newDesc;
-  item.day = newDay;
-  item.format = newFormat;
-  item.custom = true;
-  syncToApprovedIfLocked();
-  renderProduction();
-}
-
-function skipProductionItem(idx){
-  if (!confirm("Skip this production item for the week? It goes back in the bank.")) return;
-  currentAssignments.production.splice(idx, 1);
-  syncToApprovedIfLocked();
-  renderProduction();
-}
-
-function addExtraProductionItem(){
-  const available = getAvailableProductionIdeas().filter(i => !currentAssignments.production.some(p => p.id === i.id));
-  if (available.length === 0){
-    const customTitle = prompt("Production bank empty. Add custom item — title:");
-    if (!customTitle) return;
-    const customDesc = prompt("Description:");
-    currentAssignments.production.push({
-      id: "custom_prod_" + Date.now(),
-      title: customTitle,
-      format: "Carousel",
-      day: "Wed",
-      desc: customDesc || "",
-      hook: "",
-      delivered: false,
-      custom: true
-    });
-  } else {
-    const next = available[0];
-    currentAssignments.production.push({
-      id: next.id,
-      title: next.title,
-      format: next.format,
-      day: next.day,
-      desc: next.desc,
-      hook: next.hook,
-      delivered: false,
-      custom: false
-    });
-  }
-  syncToApprovedIfLocked();
-  renderProduction();
-}
-
-function approveWeek(){
-  if (!currentAssignments){alert("Generate assignments first."); return;}
-  if (!confirm("Approve and lock this week's assignments? You can still check off deliveries after locking.")) return;
-
-  // Mark all non-custom coach ideas as used so they never repeat
-  currentAssignments.coaches.forEach(c => {
-    c.ideas.forEach(i => {
-      if (!i.custom && !usedIdeaIds.includes(i.id)){
-        usedIdeaIds.push(i.id);
-      }
-    });
-  });
-  saveUsedIds();
-
-  // Mark all non-custom production items as used
-  if (currentAssignments.production){
-    currentAssignments.production.forEach(i => {
-      if (!i.custom && !usedProductionIds.includes(i.id)){
-        usedProductionIds.push(i.id);
-      }
-    });
-    saveUsedProductionIds();
-  }
-
-  approvedWeeks.unshift({
-    id: Date.now(),
-    weekDates: currentAssignments.weekDates,
-    theme: currentAssignments.theme,
-    coaches: currentAssignments.coaches,
-    production: currentAssignments.production || [],
-    approvedAt: new Date().toISOString()
-  });
-  saveApproved();
-  renderApproved();
-  renderBankStatus();
-  const approveBtn = document.getElementById("approve-btn");
-  approveBtn.disabled = true;
-  approveBtn.textContent = "✓ Approved & Locked";
-}
-
-function renderApproved(){
-  if (approvedWeeks.length === 0){
-    document.getElementById("approved-card").style.display = "none";
-    return;
-  }
-  document.getElementById("approved-card").style.display = "block";
-  let html = "";
-  approvedWeeks.forEach((w, idx) => {
-    const d = new Date(w.approvedAt);
-    const totalCoach = w.coaches.reduce((s,c) => s + (c.ideas ? c.ideas.length : 0), 0);
-    const delvCoach = w.coaches.reduce((s,c) => s + (c.ideas ? c.ideas.filter(i => i.delivered).length : 0), 0);
-    const totalProd = (w.production || []).length;
-    const delvProd = (w.production || []).filter(i => i.delivered).length;
-    const totalAll = totalCoach + totalProd;
-    const delvAll = delvCoach + delvProd;
-    html += '<div class="approved-row"><div class="approved-meta"><strong>' + w.weekDates + '</strong>' + (w.theme ? ' · ' + w.theme : '') + '<div class="small">Approved ' + d.toLocaleDateString() + ' · ' + delvAll + '/' + totalAll + ' delivered (' + delvCoach + '/' + totalCoach + ' video · ' + delvProd + '/' + totalProd + ' production)</div></div><div><button class="btn btn-sm btn-ghost" onclick="loadApproved(' + idx + ')">↻ Load</button> <button class="btn btn-sm btn-ghost" onclick="redownloadPDF(' + idx + ')">📄 PDF</button> <button class="btn btn-sm btn-ghost" onclick="deleteApproved(' + idx + ')">×</button></div></div>';
-  });
-  document.getElementById("approved-list").innerHTML = html;
-}
-
-function loadApproved(idx){
-  currentAssignments = JSON.parse(JSON.stringify(approvedWeeks[idx]));
-  if (!currentAssignments.production) currentAssignments.production = [];
-  document.getElementById("week-dates").value = currentAssignments.weekDates;
-  document.getElementById("week-theme").value = currentAssignments.theme || "";
-  renderAssignments();
-  renderProduction();
-  const approveBtn = document.getElementById("approve-btn");
-  approveBtn.disabled = true;
-  approveBtn.textContent = "✓ Already Locked";
-  document.getElementById("assignments-output").scrollIntoView({behavior:"smooth"});
-}
-
-function deleteApproved(idx){
-  if (!confirm("Delete this approved week from history?")) return;
-  // Return the ideas to the bank by removing them from used arrays
-  const w = approvedWeeks[idx];
-  w.coaches.forEach(c => {
-    if (c.ideas){
-      c.ideas.forEach(i => {
-        if (!i.custom){
-          usedIdeaIds = usedIdeaIds.filter(id => id !== i.id);
-        }
-      });
-    }
-  });
-  if (w.production){
-    w.production.forEach(i => {
-      if (!i.custom){
-        usedProductionIds = usedProductionIds.filter(id => id !== i.id);
-      }
-    });
-  }
-  saveUsedIds();
-  saveUsedProductionIds();
-  approvedWeeks.splice(idx, 1);
-  saveApproved();
-  renderApproved();
-  renderBankStatus();
-}
-
-function redownloadPDF(idx){
-  const w = approvedWeeks[idx];
-  generatePDFFromData(w);
-}
-
-// ═══════════════════════════════════════════════════════
-// IDEA BANK STATUS — sidebar widget
-// ═══════════════════════════════════════════════════════
-
-function renderBankStatus(){
-  const el = document.getElementById("bank-status");
-  if (!el) return;
-  let html = '';
-  COACHES.forEach(c => {
-    const avail = getAvailableIdeas(c.name).length;
-    const posted = getAlreadyPostedCount(c.name);
-    const need = COACH_WEEKLY_COUNT[c.name] || 1;
-    let color = "#94FCB1";
-    let label = "OK";
-    if (avail === 0){ color = "#E286E4"; label = "EMPTY"; }
-    else if (avail < need * 2){ color = "#FFC857"; label = "LOW"; }
-    html += '<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #353a44">';
-    html += '<div style="font-size:12px;font-weight:600">' + c.name + '</div>';
-    html += '<div style="display:flex;align-items:center;gap:6px">';
-    html += '<span style="font-size:11px;color:' + color + ';font-weight:700">' + label + '</span>';
-    html += '<span style="background:' + color + ';color:#000;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;min-width:30px;text-align:center" title="Available ideas">' + avail + '</span>';
-    if (posted > 0){
-      html += '<span style="background:#353a44;color:#9aa0a6;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;min-width:30px;text-align:center" title="Already posted (locked)">' + posted + ' ✓</span>';
-    }
-    html += '</div>';
-    html += '</div>';
-  });
-  el.innerHTML = html;
-}
-
-// ═══════════════════════════════════════════════════════
-// AUTO-SYNC FROM INSTAGRAM (Phase 2 — requires Claude in Chrome)
-// ═══════════════════════════════════════════════════════
-
-function autoSyncFromInstagram(){
-  alert("🔄 Auto-Sync from Instagram\n\n" +
-        "This feature requires Claude in Chrome to be connected to your Instagram account.\n\n" +
-        "Once connected, this button will:\n" +
-        "• Pull your last 20 Instagram posts\n" +
-        "• Match each one against the idea bank\n" +
-        "• Auto-mark matches as 'Already Posted' so they never repeat\n" +
-        "• Flag any coach ideas that overlap with carousels you've posted\n\n" +
-        "Setup required:\n" +
-        "1. Install Claude in Chrome extension\n" +
-        "2. Log in to Instagram in Chrome\n" +
-        "3. Come back here and click this button\n\n" +
-        "Status: Waiting for Instagram connection (2FA pending).");
-}
-
-// ═══════════════════════════════════════════════════════
-// ADD CUSTOM IDEA TO BANK
-// ═══════════════════════════════════════════════════════
-
-function addIdeaToBank(){
-  const coach = document.getElementById("new-idea-coach").value;
-  const title = document.getElementById("new-idea-title").value.trim();
-  const format = document.getElementById("new-idea-format").value;
-  const day = document.getElementById("new-idea-day").value;
-  const desc = document.getElementById("new-idea-desc").value.trim();
-  const hook = document.getElementById("new-idea-hook").value.trim();
-  if (!title){alert("Title is required."); return;}
-  if (!ideaBank[coach]) ideaBank[coach] = [];
-  const newId = "u_" + Date.now();
-  ideaBank[coach].push({id:newId, title, format, day, desc, hook});
-  saveIdeaBank();
-  renderBankStatus();
-  // Clear form
-  document.getElementById("new-idea-title").value = "";
-  document.getElementById("new-idea-desc").value = "";
-  document.getElementById("new-idea-hook").value = "";
-  alert("✓ Added to " + coach + "'s idea bank.");
-}
-
-renderApproved();
-renderBankStatus();
-
-// ═══════════════════════════════════════════════════════
-// PDF GENERATOR — landscape A4, ProWorld logo, 3-column
-// ═══════════════════════════════════════════════════════
-
-function downloadPDF(){
-  if (!currentAssignments){alert("Generate assignments first."); return;}
-  generatePDFFromData(currentAssignments);
-}
-
-function generatePDFFromData(data){
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF({orientation:"landscape", unit:"mm", format:"a4"});
-  const pageW = 297;
-  const pageH = 210;
-
-  // BLACK HEADER BAR
-  doc.setFillColor(0,0,0);
-  doc.rect(0, 0, pageW, 28, "F");
-
-  // LIME LOGO BOX
-  doc.setFillColor(226, 254, 120);
-  doc.roundedRect(10, 6, 16, 16, 2, 2, "F");
-  doc.setFontSize(14);
-  doc.setTextColor(0,0,0);
-  doc.setFont("helvetica", "bold");
-  doc.text("PW", 18, 17, {align:"center"});
-
-  // HEADER TEXT
-  doc.setFontSize(18);
-  doc.setTextColor(255,255,255);
-  doc.setFont("helvetica", "bold");
-  doc.text("PROWORLD ACADEMY", 32, 14);
-  doc.setFontSize(10);
-  doc.setTextColor(226, 254, 120);
-  doc.setFont("helvetica", "normal");
-  doc.text("COACH VIDEO BRIEF — ONE VIDEO PER COACH PER WEEK", 32, 20);
-
-  // RIGHT SIDE: week info
-  doc.setFontSize(11);
-  doc.setTextColor(255,255,255);
-  doc.setFont("helvetica", "bold");
-  doc.text("Week of " + data.weekDates, pageW - 10, 14, {align:"right"});
-  if (data.theme){
-    doc.setFontSize(9);
-    doc.setTextColor(226, 254, 120);
-    doc.setFont("helvetica", "italic");
-    doc.text("Theme: " + data.theme, pageW - 10, 20, {align:"right"});
-  }
-
-  // RECURRING POSTS BAR
-  doc.setFillColor(245, 245, 245);
-  doc.rect(0, 30, pageW, 14, "F");
-  doc.setFontSize(8);
-  doc.setTextColor(0,0,0);
-  doc.setFont("helvetica", "bold");
-  doc.text("RECURRING WEEKLY:", 10, 36);
-  doc.setFont("helvetica", "normal");
-  doc.text("Mon · Wed · Fri Tournament Promo   |   Weekly Players in Action Recap   |   Daily Academy Vibes Story (2-3 iPhone clips)", 10, 41);
-
-  // 3-COLUMN COACH GRID — flows across pages, more room per card
-  const colW = (pageW - 30) / 3;
-  const rowH = 52;  // taller cards to fit multiple ideas with durations
-  const startY = 50;
-  const maxRowsPerPage = 3;  // 3 rows × 3 cols = 9 cards per page
-  let col = 0;
-  let row = 0;
-  let pageNum = 1;
-
-  function drawCoachPageHeader(weekDates, theme){
-    doc.setFillColor(0,0,0);
-    doc.rect(0, 0, pageW, 28, "F");
-    doc.setFillColor(226, 254, 120);
-    doc.roundedRect(10, 6, 16, 16, 2, 2, "F");
-    doc.setFontSize(14);
-    doc.setTextColor(0,0,0);
-    doc.setFont("helvetica", "bold");
-    doc.text("PW", 18, 17, {align:"center"});
-    doc.setFontSize(18);
-    doc.setTextColor(255,255,255);
-    doc.text("PROWORLD ACADEMY", 32, 14);
-    doc.setFontSize(10);
-    doc.setTextColor(226, 254, 120);
-    doc.setFont("helvetica", "normal");
-    doc.text("COACH VIDEO BRIEF — ONE VIDEO PER COACH PER WEEK", 32, 20);
-    doc.setFontSize(11);
-    doc.setTextColor(255,255,255);
-    doc.setFont("helvetica", "bold");
-    doc.text("Week of " + weekDates, pageW - 10, 14, {align:"right"});
-    if (theme){
-      doc.setFontSize(9);
-      doc.setTextColor(226, 254, 120);
-      doc.setFont("helvetica", "italic");
-      doc.text("Theme: " + theme, pageW - 10, 20, {align:"right"});
-    }
-  }
-
-  function drawCoachPageFooter(pageLabel){
-    doc.setFillColor(0,0,0);
-    doc.rect(0, pageH - 8, pageW, 8, "F");
-    doc.setFontSize(7);
-    doc.setTextColor(226, 254, 120);
-    doc.setFont("helvetica", "italic");
-    doc.text("PROWORLD ACADEMY · DELRAY BEACH, FLORIDA · COACH VIDEO BRIEF" + (pageLabel ? " · " + pageLabel : ""), pageW / 2, pageH - 3, {align:"center"});
-  }
-
-  // Strip emojis from text for PDF rendering (Helvetica doesn't support them)
-  function stripForPDF(text){
-    if (!text) return "";
-    return text
-      .replace(/⏱/g, "[Time]")
-      .replace(/[\u{1F300}-\u{1F9FF}]/gu, "")  // general emoji range
-      .replace(/[\u{2600}-\u{26FF}]/gu, "")    // misc symbols
-      .replace(/[\u{2700}-\u{27BF}]/gu, "")    // dingbats
-      .replace(/\s+/g, " ")                     // collapse whitespace
-      .trim();
-  }
-
-  data.coaches.forEach((c, idx) => {
-    // Check if we need a new page
-    if (row >= maxRowsPerPage){
-      drawCoachPageFooter("Page " + pageNum);
-      doc.addPage();
-      pageNum++;
-      drawCoachPageHeader(data.weekDates, data.theme);
-      row = 0;
-      col = 0;
-    }
-
-    const x = 10 + col * (colW + 5);
-    const y = startY + row * rowH;
-
-    // Coach card border
-    doc.setDrawColor(226, 254, 120);
-    doc.setLineWidth(0.5);
-    doc.line(x, y, x, y + rowH - 2);
-
-    // Coach name (lime, bold)
-    doc.setFontSize(11);
-    doc.setTextColor(0, 0, 0);
-    doc.setFont("helvetica", "bold");
-    doc.text(stripForPDF(c.name), x + 2, y + 4);
-
-    // Role (gray italic)
-    doc.setFontSize(7);
-    doc.setTextColor(120, 120, 120);
-    doc.setFont("helvetica", "italic");
-    doc.text(stripForPDF(c.role), x + 2, y + 8);
-
-    // Tasks (now: specific ideas with title, format, day, duration, description)
-    let ty = y + 12;
-    (c.ideas || []).forEach((idea, ideaIdx) => {
-      // Add a tiny separator between ideas
-      if (ideaIdx > 0 && ty < y + rowH - 2){
-        ty += 0.5;
-      }
-      // Title in bold
-      doc.setFontSize(8);
-      doc.setTextColor(0, 0, 0);
-      doc.setFont("helvetica", "bold");
-      const cleanTitle = stripForPDF(idea.title);
-      const titleLines = doc.splitTextToSize("• " + cleanTitle, colW - 5);
-      titleLines.forEach(line => {
-        if (ty < y + rowH - 2){
-          doc.text(line, x + 2, ty);
-          ty += 3.2;
-        }
-      });
-      // Format + day in green
-      if (ty < y + rowH - 2){
-        doc.setFontSize(6.5);
-        doc.setTextColor(40, 130, 80);
-        doc.setFont("helvetica", "bold");
-        doc.text("  " + idea.format + " · Post " + idea.day, x + 2, ty);
-        ty += 3;
-      }
-      // Description (with duration prefix)
-      if (idea.desc && ty < y + rowH - 2){
-        doc.setFontSize(6.5);
-        doc.setTextColor(80, 80, 80);
-        doc.setFont("helvetica", "normal");
-        const cleanDesc = stripForPDF(idea.desc);
-        const descLines = doc.splitTextToSize("  " + cleanDesc, colW - 5);
-        descLines.forEach(line => {
-          if (ty < y + rowH - 2){
-            doc.text(line, x + 2, ty);
-            ty += 2.8;
-          }
-        });
-      }
-      ty += 1.5; // spacing between ideas
-    });
-
-    col++;
-    if (col >= 3){col = 0; row++;}
-  });
-
-  // Final coach page footer
-  drawCoachPageFooter("Page " + pageNum);
-
-  // PAGE — PRODUCTION LIST (Antonio's non-video work)
-  if (data.production && data.production.length > 0){
-    doc.addPage();
-
-    // Header
-    doc.setFillColor(0,0,0);
-    doc.rect(0, 0, pageW, 28, "F");
-    doc.setFillColor(226, 254, 120);
-    doc.roundedRect(10, 6, 16, 16, 2, 2, "F");
-    doc.setFontSize(14);
-    doc.setTextColor(0,0,0);
-    doc.setFont("helvetica", "bold");
-    doc.text("PW", 18, 17, {align:"center"});
-    doc.setFontSize(18);
-    doc.setTextColor(255,255,255);
-    doc.text("PROWORLD ACADEMY", 32, 14);
-    doc.setFontSize(10);
-    doc.setTextColor(226, 254, 120);
-    doc.setFont("helvetica", "normal");
-    doc.text("ANTONIO PRODUCTION LIST — NON-VIDEO CONTENT", 32, 20);
-    doc.setFontSize(11);
-    doc.setTextColor(255,255,255);
-    doc.setFont("helvetica", "bold");
-    doc.text("Week of " + data.weekDates, pageW - 10, 14, {align:"right"});
-    if (data.theme){
-      doc.setFontSize(9);
-      doc.setTextColor(226, 254, 120);
-      doc.setFont("helvetica", "italic");
-      doc.text("Theme: " + data.theme, pageW - 10, 20, {align:"right"});
-    }
-
-    // Production list items in 3-column grid
-    const pStartY = 38;
-    const pColW = (pageW - 30) / 3;
-    const pRowH = 42;
-    let pCol = 0;
-    let pRow = 0;
-    data.production.forEach(item => {
-      const x = 10 + pCol * (pColW + 5);
-      const y = pStartY + pRow * pRowH;
-
-      // Pink border
-      doc.setDrawColor(226, 134, 228);
-      doc.setLineWidth(1.5);
-      doc.line(x, y, x, y + pRowH - 2);
-
-      // Title bold
-      doc.setFontSize(9);
-      doc.setTextColor(0, 0, 0);
-      doc.setFont("helvetica", "bold");
-      const titleLines = doc.splitTextToSize("• " + stripForPDF(item.title), pColW - 5);
-      let pty = y + 5;
-      titleLines.forEach(line => {
-        if (pty < y + pRowH - 2){
-          doc.text(line, x + 2, pty);
-          pty += 3.5;
-        }
-      });
-
-      // Format + day in pink
-      if (pty < y + pRowH - 2){
-        doc.setFontSize(7);
-        doc.setTextColor(180, 50, 180);
-        doc.setFont("helvetica", "bold");
-        doc.text("  " + item.format + " · " + item.day, x + 2, pty);
-        pty += 3.5;
-      }
-
-      // Description
-      if (item.desc && pty < y + pRowH - 2){
-        doc.setFontSize(6.5);
-        doc.setTextColor(80, 80, 80);
-        doc.setFont("helvetica", "normal");
-        const descLines = doc.splitTextToSize("  " + stripForPDF(item.desc), pColW - 5);
-        descLines.forEach(line => {
-          if (pty < y + pRowH - 2){
-            doc.text(line, x + 2, pty);
-            pty += 2.8;
-          }
-        });
-      }
-
-      pCol++;
-      if (pCol >= 3){pCol = 0; pRow++;}
-    });
-
-    // FOOTER PAGE 2
-    doc.setFillColor(0,0,0);
-    doc.rect(0, pageH - 8, pageW, 8, "F");
-    doc.setFontSize(7);
-    doc.setTextColor(226, 254, 120);
-    doc.setFont("helvetica", "italic");
-    doc.text("PROWORLD ACADEMY · DELRAY BEACH, FLORIDA · PRODUCTION LIST", pageW / 2, pageH - 3, {align:"center"});
-  }
-
-  // SAVE
-  const safe = data.weekDates.replace(/[^\w]/g, "_");
-  doc.save("ProWorld_WeeklyBrief_" + safe + ".pdf");
-}
-
-// ═══════════════════════════════════════════════════════
-// CONTENT ARCHIVE
-// ═══════════════════════════════════════════════════════
-
-function renderArchive(){
-  const search = (document.getElementById("arch-search")?.value || "").toLowerCase();
-  const filtered = archive.filter(p => {
-    if (!search) return true;
-    return (p.title + " " + p.coach + " " + p.pillar + " " + p.platform + " " + p.desc).toLowerCase().includes(search);
-  });
-  filtered.sort((a, b) => b.date.localeCompare(a.date));
-
-  let html = "";
-  if (filtered.length === 0){
-    html = '<div class="empty">No posts found. Try a different search or add a new post.</div>';
-  } else {
-    filtered.forEach(p => {
-      const d = new Date(p.date);
-      const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-      const dateStr = months[d.getMonth()] + " " + d.getDate();
-      html += '<div class="archive-row"><div><div class="archive-date">' + dateStr + '</div><div class="archive-tags">' + p.platform + '</div></div><div><div class="archive-tags">' + p.pillar + ' · ' + p.coach + ' · ' + p.format + '</div><div class="archive-title">' + p.title + '</div><div class="archive-desc">' + p.desc + '</div></div><div><button class="btn btn-sm btn-ghost" onclick="deletePost(\'' + p.id + '\')">×</button></div></div>';
-    });
-  }
-  document.getElementById("archive-list").innerHTML = html;
-
-  // Update stats
-  document.getElementById("arch-count").textContent = archive.length;
-  const uniqueWeeks = new Set(archive.map(p => {
-    const d = new Date(p.date);
-    const sun = new Date(d);
-    sun.setDate(d.getDate() - d.getDay());
-    return sun.toISOString().slice(0,10);
-  }));
-  document.getElementById("arch-weeks").textContent = uniqueWeeks.size;
-  const uniqueCoaches = new Set(archive.map(p => p.coach));
-  document.getElementById("arch-coaches").textContent = uniqueCoaches.size;
-
-  updateOverview();
-}
-
-function updateOverview(){
-  // IG Posts this week — count posts in archive from current Sun-Sat window
-  const now = new Date();
-  const sun = new Date(now);
-  sun.setDate(now.getDate() - now.getDay());
-  sun.setHours(0,0,0,0);
-  const sat = new Date(sun);
-  sat.setDate(sun.getDate() + 7);
-
-  const thisWeekPosts = archive.filter(p => {
-    const d = new Date(p.date);
-    return d >= sun && d < sat && p.platform === "Instagram" && p.format !== "Story";
-  });
-  const thisWeekStories = archive.filter(p => {
-    const d = new Date(p.date);
-    return d >= sun && d < sat && p.format === "Story";
-  });
-
-  const igEl = document.getElementById("ov-ig-posts");
-  const stEl = document.getElementById("ov-stories");
-  const cdEl = document.getElementById("ov-cadence");
-  if (igEl) igEl.textContent = thisWeekPosts.length;
-  if (stEl) stEl.textContent = thisWeekStories.length;
-
-  // Cadence completion %
-  let total = 0, done = 0;
-  PLATFORMS.forEach(p => {
-    const arr = cadenceState[p.name] || [false,false,false,false,false,false,false];
-    arr.forEach(v => {total++; if (v) done++;});
-  });
-  const pct = total > 0 ? Math.round(done / total * 100) : 0;
-  if (cdEl) cdEl.textContent = pct + "%";
-}
-
-function addPost(){
-  const post = {
-    id: "user_" + Date.now(),
-    date: document.getElementById("new-date").value || new Date().toISOString().slice(0,10),
-    coach: document.getElementById("new-coach").value || "—",
-    platform: document.getElementById("new-platform").value,
-    format: document.getElementById("new-format").value,
-    pillar: document.getElementById("new-pillar").value || "—",
-    title: document.getElementById("new-title").value || "Untitled",
-    desc: document.getElementById("new-desc").value || ""
-  };
-  archive.unshift(post);
-  saveArchive();
-  renderArchive();
-  // Clear inputs
-  ["new-date","new-coach","new-pillar","new-title","new-desc"].forEach(id => document.getElementById(id).value = "");
-}
-
-function deletePost(id){
-  if (!confirm("Delete this post from the archive?")) return;
-  archive = archive.filter(p => p.id !== id);
-  saveArchive();
-  renderArchive();
-}
-
-renderArchive();
-
-// ═══════════════════════════════════════════════════════
-// META ADS
-// ═══════════════════════════════════════════════════════
-
-function connectMeta(){
-  const token = document.getElementById("meta-token").value;
-  if (!token){alert("Paste a Meta Graph API access token first."); return;}
-  document.getElementById("ads-output").innerHTML = '<div class="notice">⏳ Attempting to connect with the provided token.. If this stays blank, your token may not have ads_read permission or your app may be in Development mode. The cleaner workflow right now is to enter weekly numbers directly in the KPI Tracker tab.</div>';
-
-  // Attempt fetch (will silently fail without proper token + permissions)
-  fetch("https://graph.facebook.com/v18.0/act_294537641553384/insights?fields=impressions,reach,clicks,spend,actions&date_preset=last_7d&access_token=" + encodeURIComponent(token))
-    .then(r => r.json())
-    .then(d => {
-      if (d.error){
-        document.getElementById("ads-output").innerHTML = '<div class="notice" style="border-color:#E286E4;color:#E286E4">⚠ Meta error: ' + d.error.message + '</div>';
-        return;
-      }
-      const row = (d.data && d.data[0]) || {};
-      let leads = 0;
-      if (row.actions){
-        row.actions.forEach(a => {if (a.action_type && a.action_type.indexOf("lead") >= 0) leads += parseFloat(a.value);});
-      }
-      const html = '<div class="grid-4">' +
-        '<div class="ad-stat"><div class="ad-stat-label">Reach</div><div class="ad-stat-num">' + (row.reach || "0") + '</div></div>' +
-        '<div class="ad-stat"><div class="ad-stat-label">Impressions</div><div class="ad-stat-num">' + (row.impressions || "0") + '</div></div>' +
-        '<div class="ad-stat"><div class="ad-stat-label">Clicks</div><div class="ad-stat-num">' + (row.clicks || "0") + '</div></div>' +
-        '<div class="ad-stat"><div class="ad-stat-label">Spend</div><div class="ad-stat-num">$' + (parseFloat(row.spend || 0)).toFixed(2) + '</div></div>' +
-      '</div>' +
-      '<div style="margin-top:14px"><div class="ad-stat"><div class="ad-stat-label">Leads (last 7 days)</div><div class="ad-stat-num">' + leads + '</div></div></div>';
-      document.getElementById("ads-output").innerHTML = html;
-    })
-    .catch(e => {
-      document.getElementById("ads-output").innerHTML = '<div class="notice" style="border-color:#E286E4;color:#E286E4">⚠ Connection failed. Use the KPI Tracker tab to enter numbers manually.</div>';
-    });
-}
-
-function loadDemo(){
-  const html = '<div class="grid-4">' +
-    '<div class="ad-stat"><div class="ad-stat-label">Reach (demo)</div><div class="ad-stat-num">3,449</div></div>' +
-    '<div class="ad-stat"><div class="ad-stat-label">Impressions (demo)</div><div class="ad-stat-num">6,419</div></div>' +
-    '<div class="ad-stat"><div class="ad-stat-label">Leads (demo)</div><div class="ad-stat-num">26</div></div>' +
-    '<div class="ad-stat"><div class="ad-stat-label">CPL (demo)</div><div class="ad-stat-num">$4.03</div></div>' +
-  '</div><div class="notice" style="margin-top:14px">Demo data — replace with real numbers from Ads Manager or the live API.</div>';
-  document.getElementById("ads-output").innerHTML = html;
-}
-</script>
-
-</div>
-</body>
-</html>
+</body></html>
