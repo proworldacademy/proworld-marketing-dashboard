@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>PROWORLD Dashboard</title>
+<link rel="icon" href="data:,">
+<style>
+:root{
+  --ink:#000; --panel:#0e0e0e; --panel-2:#161616; --panel-3:#1f1f1f; --line:#272727; --line-2:#333;
+  --text:#fff; --text-2:#c9cbc2; --muted:#8f9288; --faint:#5b5d56;
+  --lime:#E2FE78; --mint:#94FCB1; --orchid:#E286E4; --cyan:#A9F3F7; --warn:#FFC857;
+  --display:"Review Condensed","Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --body:"Aeonik Pro","Helvetica Neue",Arial,sans-serif; color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink)}
+body{font-family:var(--body);background:var(--ink);color:var(--text);min-height:100vh;font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1280px;margin:0 auto;padding-block:0 72px;padding-inline:24px}
+@media(max-width:640px){.wrap{padding-inline:16px}}
+.h{font-family:var(--display);font-style:italic;font-weight:800;text-transform:uppercase;line-height:.95}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+a{color:var(--lime)}
+.hdr{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 0 18px;border-bottom:1px solid var(--line-2);position:relative;flex-wrap:wrap}
+.hdr::after{content:"";position:absolute;left:0;bottom:-1px;width:180px;height:3px;background:var(--lime)}
+.brand{display:flex;align-items:center;gap:16px}
+.wordmark{width:200px;height:24px;background:var(--logo-lime) left center/contain no-repeat;flex-shrink:0}
+.brand-sub{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-2);font-weight:700}
+.viewer{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+.viewer select{background:var(--panel-2);border:1px solid var(--line-2);color:var(--text);padding:8px 10px;border-radius:5px;font-family:var(--body);font-size:13px;min-width:180px}
+.live{display:inline-flex;align-items:center;gap:6px;background:var(--panel-2);color:var(--mint);padding:3px 9px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:1.5px;border:1px solid var(--line-2)}
+.live i{width:6px;height:6px;background:var(--mint);border-radius:50%}
+.live.local{color:var(--warn)}.live.local i{background:var(--warn)}
+.hero{padding:30px 0 10px}
+.hero h1{font-size:52px}
+.hero h1 em{font-style:inherit;color:var(--lime)}
+.hero p{color:var(--muted);margin-top:8px;max-width:62ch}
+@media(max-width:640px){.hero h1{font-size:38px}}
+.sec{margin-top:28px}
+.sec-label{font-family:var(--display);font-style:italic;font-weight:800;text-transform:uppercase;font-size:18px;color:var(--lime);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sec-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.sec-label.orchid{color:var(--orchid)}.sec-label.mint{color:var(--mint)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+.mod{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--lime);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:10px;min-height:170px}
+.mod.mint{border-top-color:var(--mint)}.mod.cyan{border-top-color:var(--cyan)}.mod.orchid{border-top-color:var(--orchid)}.mod.gray{border-top-color:var(--line-2)}
+.mod-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.mod h3{font-family:var(--display);font-style:italic;font-weight:800;text-transform:uppercase;font-size:24px;line-height:1}
+.mod p{color:var(--text-2);font-size:13px;flex:1}
+.badge{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 7px;border-radius:3px;background:var(--panel-3);color:var(--text-2);white-space:nowrap}
+.badge.live{background:var(--mint);color:#000}.badge.proto{background:var(--cyan);color:#000}.badge.plan{background:var(--panel-3);color:var(--text-2)}.badge.here{background:var(--lime);color:#000}
+.mod-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.who{font-size:11px;color:var(--muted)}
+.btn{background:var(--lime);color:#000;border:1px solid var(--lime);padding:9px 16px;font-family:var(--display);font-style:italic;font-weight:800;font-size:14px;letter-spacing:1px;text-transform:uppercase;border-radius:5px;cursor:pointer;text-decoration:none;display:inline-block;line-height:1}
+.btn:hover{background:#eeffa0}
+.btn.ghost{background:transparent;color:var(--lime)}
+.btn.ghost.muted{color:var(--muted);border-color:var(--line-2)}
+.btn.orchid{background:var(--orchid);border-color:var(--orchid)}
+.btn.xs{padding:5px 9px;font-size:11px;letter-spacing:.5px}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.empty{text-align:center;padding:40px;color:var(--muted);background:var(--panel);border:1px dashed var(--line-2);border-radius:6px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:18px}
+.notice{background:#0d1719;border:1px solid var(--cyan);color:var(--cyan);border-radius:5px;padding:10px 14px;font-size:12.5px;margin-bottom:14px;line-height:1.5}
+.notice.warn{background:#1a1408;border-color:var(--warn);color:var(--warn)}
+.tbl-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:760px}
+th{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:left;padding:8px 8px;border-bottom:1px solid var(--line-2);vertical-align:bottom}
+th.pg{text-align:center;max-width:84px}
+th.pg span{display:block;font-size:9px;letter-spacing:1px;line-height:1.2}
+td{padding:8px;border-bottom:1px solid var(--line);vertical-align:middle;font-size:13px}
+td.c{text-align:center}
+tr:hover td{background:var(--panel-2)}
+.uname{font-weight:700}
+.uemail{font-size:11px;color:var(--muted)}
+.role{background:var(--panel-2);border:1px solid var(--line-2);color:var(--text);padding:5px 7px;border-radius:4px;font-family:var(--body);font-size:12px}
+.chk{width:24px;height:24px;border-radius:4px;background:var(--panel-2);border:1px solid var(--line-2);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:transparent;font-weight:900;user-select:none}
+.chk:hover{border-color:var(--lime)}
+.chk.on{background:var(--lime);border-color:var(--lime);color:#000}
+.chk.lock{opacity:.5;cursor:default}
+.form{display:grid;grid-template-columns:1.2fr 1.5fr 1fr auto;gap:10px;align-items:end;margin-top:16px}
+@media(max-width:760px){.form{grid-template-columns:1fr 1fr}}
+.field label{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-weight:700}
+.field input,.field select{width:100%;background:var(--panel-2);border:1px solid var(--line-2);color:var(--text);padding:9px 11px;border-radius:5px;font-family:var(--body);font-size:14px}
+.field input:focus,.field select:focus{outline:none;border-color:var(--lime)}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--lime);color:#000;padding:11px 18px;border-radius:6px;font-weight:700;font-size:13px;opacity:0;pointer-events:none;transition:all .25s;z-index:50;max-width:90vw}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.err{background:var(--orchid)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:11px;color:var(--faint);letter-spacing:1px;text-transform:uppercase}
+.needs{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);padding:2px 6px;border-radius:3px;white-space:nowrap}
+.needs.google{color:var(--mint);border-color:#2a4a36}.needs.claude{color:var(--cyan);border-color:#234a4d}.needs.passcode{color:var(--lime);border-color:#4a5226}
+.badge.page{background:var(--panel-3);color:var(--text-2)}.badge.report{background:var(--panel-3);color:var(--text-2)}.badge.archive{background:var(--panel-3);color:var(--muted)}
+.mod.archive{opacity:.75}
+.outside{display:flex;flex-wrap:wrap;gap:8px}
+.outside a{color:var(--text-2);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.5px;background:var(--panel);border:1px solid var(--line-2);padding:7px 12px;border-radius:999px}
+.outside a:hover{border-color:var(--lime);color:var(--lime)}
+th.grp{text-align:center;color:var(--text-2);border-bottom:1px solid var(--line);font-size:9px;letter-spacing:1.5px;padding:6px 4px}
+.runs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+@media(max-width:900px){.runs{grid-template-columns:1fr}}
+.run{background:var(--panel-2);border:1px solid var(--line);border-radius:5px;padding:12px 14px;font-size:12.5px;color:var(--text-2);line-height:1.5}
+.run b{display:block;color:var(--text);font-size:13px;margin-bottom:4px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head><body>
+<div class="wrap">
+<header class="hdr">
+  <div class="brand"><div class="wordmark" role="img" aria-label="PROWORLD"></div><div class="brand-sub">Dashboard · Motherboard</div></div>
+  <div class="viewer"><span class="live local" id="live"><i></i><span id="live-txt">CONNECTING</span></span><button class="btn ghost xs" id="pw-auth-btn" onclick="PWGit.authDialog()">Sign in to edit</button><label for="me">Viewing as</label><select id="me"></select></div>
+</header>
+
+<section class="hero">
+  <h1 class="h">One link. <em>Every page.</em></h1>
+  <p>Marketing, the Coach Portal and player assessments, try-outs, the Coach Board, the backend prototypes, the playbooks and the reports — every page the team uses, one link each. Each person sees only the pages they've been given; owners control access below. Everything on this site opens with the team passcode.</p>
+</section>
+
+<div id="sections"></div>
+
+<section class="sec">
+  <div class="sec-label mint">Outside tools · their own logins</div>
+  <div class="outside" id="outside"></div>
+</section>
+
+<section class="sec" id="access-sec" hidden>
+  <div class="sec-label orchid">Access control</div>
+  <div class="card">
+    <div class="notice">This controls what each person sees on this dashboard and which page links they get. It is an access model, not a login: the whole site opens with the one team passcode, and saving needs a GitHub sign-in. Real per-person sign-in arrives with the backend build.</div>
+    <div class="tbl-wrap"><table id="acl"></table></div>
+    <div class="form">
+      <div class="field"><label for="nu-name">Name</label><input id="nu-name" placeholder="e.g., Sofia"></div>
+      <div class="field"><label for="nu-email">Email (optional)</label><input id="nu-email" placeholder="name@proworldacademy.com"></div>
+      <div class="field"><label for="nu-role">Role</label><select id="nu-role"></select></div>
+      <div class="field"><label>&nbsp;</label><button class="btn orchid" onclick="addUser()">+ Add person</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="roles-sec" hidden>
+  <div class="sec-label mint">Role defaults</div>
+  <div class="card tbl-wrap"><table id="roles"></table><div class="who" style="margin-top:10px">When you add a person, they start with their role's pages, and a page added to the site later is granted the same way. You can then tick or untick any page for that person above. Owners and admins always see every page.</div></div>
+</section>
+
+<section class="sec" id="site-sec" hidden>
+  <div class="sec-label mint">This site</div>
+  <div class="card">
+    <div class="notice warn" id="site-note"></div>
+    <div class="row">
+      <button class="btn ghost xs" onclick="changePasscode()">Change the team passcode</button>
+      <button class="btn ghost xs muted" onclick="PWGit.lock()">Forget passcode on this device</button>
+      <a class="btn ghost xs muted" id="repo-link" target="_blank" rel="noopener">Open the repository</a>
+    </div>
+    <div class="runs">
+      <div class="run"><b>Sunday engine · 6 PM ET</b>Researches, reads the results, refills the banks, builds the next two weeks and posts its report on the Marketing page. Saves to this site's repository — needs the Claude GitHub App installed on the proworldacademy organization.</div>
+      <div class="run"><b>Monday review · 8:52 AM ET</b>Syncs Instagram, reads the numbers, reviews the watchlist, judges the week against the plan and posts the weekly report. Reads Instagram through Metricool — needs @proworldacademy linked inside Metricool.</div>
+      <div class="run"><b>Coach Board · weekdays 7 AM ET</b>Refreshes the Coach Board from the coach assignment sheet. The board is still a Claude page: a Claude account is needed to open it.</div>
+    </div>
+    <div class="who" style="margin-top:12px">Retired on Oct 14, 2026: the Claude-hosted Dashboard, Marketing Command Center and Coach Portal pages now point here and to the live portal. One address for each thing.</div>
+  </div>
+</section>
+
+<footer><span>PROWORLD Academy · High Performance Academy · Individually built. Fully connected.</span><span>proworldacademy.com</span></footer>
+</div>
+<div class="toast" id="toast"></div>
+<script src="shared/pages.js"></script>
+<script src="shared/menu.js" data-root="./"></script>
+<script src="shared/store.js"></script>
+<script>
+(function(){
+"use strict";
+const $=(id)=>document.getElementById(id);
+const esc=(s)=>String(s==null?"":s).replace(/[&<>"']/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let toastT; function toast(m,err){const t=$("toast");t.textContent=m;t.className="toast show"+(err?" err":"");clearTimeout(toastT);toastT=setTimeout(()=>t.className="toast",2600);} window.toast=toast;
+
+// ── Pages, sections, roles: one list for the whole site — shared/pages.js
+const P=window.PW_PAGES; const PAGES=P.PAGES, ROLES=P.ROLES, SECTIONS=P.SECTIONS;
+const pageById=(id)=>PAGES.find(p=>p.id===id);
+const SEED_USERS=[
+ {id:"antonio",name:"Antonio",email:"operations@proworldacademy.com",role:"owner"},
+ {id:"lorenzo",name:"Lorenzo",email:"",role:"owner"},
+ {id:"gonzalo",name:"Gonzalo",email:"",role:"desk"},
+ {id:"manu",name:"Manu",email:"",role:"marketing"},
+ {id:"khang",name:"Khang Dinh Nhu",email:"",role:"editor"},
+ ...["Tonio","Nico","Eric","Mauri","Flo","Kam","Robby","Coach ET","Quinnton","Tara","Lukas"].map(n=>({id:n.toLowerCase().replace(/\s+/g,"-"),name:n,email:"",role:"coach"}))
+];
+
+// ── State: two encrypted documents in the repository — dash/users and dash/access
+let db=null, readOnly=true; const S={users:null,access:null}; const written={};
+const lsGet=(k)=>{try{const v=localStorage.getItem("pwdash_"+k);return v?JSON.parse(v):undefined}catch(e){return undefined}};
+const lsSet=(k,v)=>{try{localStorage.setItem("pwdash_"+k,JSON.stringify(v))}catch(e){}};
+function defaults(){const access={_known:PAGES.map(p=>p.id)};SEED_USERS.forEach(u=>access[u.id]=ROLES[u.role].pages.slice());return {users:SEED_USERS.map(u=>({...u})),access};}
+const dirty=new Set(); let flushTimer=null, flushing=false;
+function save(k){dirty.add(k);if(readOnly){setLive("readonly");return;}setLive("saving");clearTimeout(flushTimer);flushTimer=setTimeout(flush,600);}
+async function flush(){
+  if(flushing){clearTimeout(flushTimer);flushTimer=setTimeout(flush,600);return;}
+  flushing=true;const keys=Array.from(dirty);dirty.clear();let failed=null;
+  try{for(const k of keys){const j=JSON.stringify(S[k]);if(written[k]===j)continue;try{await db.doc("dash/"+k).set({v:S[k],at:new Date().toISOString()});written[k]=j;}catch(e){failed=(e&&e.code)||"error";dirty.add(k);if(failed==="not_writer"||failed==="not_granted"){readOnly=true;toast("Not saved — sign in with GitHub (header button) to save changes",true);break;}}}}
+  finally{flushing=false;}
+  if(readOnly){setLive("readonly");return;}
+  if(dirty.size){setLive("error");clearTimeout(flushTimer);flushTimer=setTimeout(flush,4000);return;}
+  setLive(failed?"error":"shared");
+}
+function setLive(mode){const p=$("live");p.className="live"+(mode==="shared"?"":" local");$("live-txt").textContent=mode==="shared"?"LIVE · SAVED":mode==="saving"?"SAVING…":mode==="readonly"?"VIEWING":mode==="error"?"NOT SAVED":mode==="local"?"OFFLINE":"CONNECTING";}
+async function init(){
+  const d=defaults();S.users=d.users;S.access=d.access;render();
+  let opened=null;try{opened=await PWGit.open();}catch(e){console.error(e);}
+  if(!opened){setLive("local");return;}
+  db=opened.db;readOnly=!opened.canWrite;
+  try{const snap=await db.collection("dash").get();snap.docs.forEach(x=>{const b=x.data();if(b&&b.v!==undefined&&(x.id==="users"||x.id==="access")){S[x.id]=b.v;written[x.id]=JSON.stringify(b.v);}});}
+  catch(e){console.error(e);toast("Couldn't read the shared memory — "+(e.message||e),true);}
+  if(!written.users&&!readOnly){save("users");save("access");}
+  if(migrate()&&!readOnly)save("access");
+  db.collection("dash").onSnapshot((snap)=>{let ch=false;snap.docChanges().forEach(c=>{if(c.type==="removed")return;const b=c.doc.data();if(!b||b.v===undefined)return;const j=JSON.stringify(b.v);if(written[c.doc.id]===j||dirty.has(c.doc.id))return;S[c.doc.id]=b.v;written[c.doc.id]=j;ch=true;});if(ch)render();});
+  setLive(readOnly?"readonly":"shared");
+  $("site-sec").hidden=!canManage(me());
+  $("site-note").textContent="Everything on this site opens with one team passcode and is encrypted in the repository ("+PWGit.CFG.owner+"/"+PWGit.CFG.repo+"). Changing the passcode re-encrypts every document; tell the team the new one. People who need to save also need a GitHub token (header button).";
+  $("repo-link").href="https://github.com/"+PWGit.CFG.owner+"/"+PWGit.CFG.repo;
+  render();
+}
+window.changePasscode=async function(){
+  if(!PWGit.isSignedIn()){toast("Sign in with GitHub first",true);return;}
+  const np=prompt("New team passcode (at least 10 characters). Everyone will need it the next time they open the site.");if(!np)return;if(np.length<10){toast("Too short — use at least 10 characters",true);return;}
+  if(prompt("Type it again to confirm")!==np){toast("The two entries differ",true);return;}
+  toast("Re-encrypting every document…");
+  try{const n=await PWGit.rekey(np);toast("Passcode changed — "+n+" documents re-encrypted");}catch(e){toast("Couldn't change it: "+(e.message||e),true);}
+};
+
+// ── Viewer (who am I) — remembered per browser; owners can switch to preview any person's view
+function me(){const id=lsGet("me");return S.users.find(u=>u.id===id)||S.users.find(u=>u.role==="owner")||S.users[0];}
+function canManage(u){return u&&(u.role==="owner"||u.role==="admin");}
+function pagesFor(u){if(canManage(u))return PAGES.slice();const ids=S.access[u.id]||ROLES[u.role].pages;return PAGES.filter(p=>ids.includes(p.id));}
+// Pages added to the site after the access lists were saved: grant them by role defaults, once, then remember them as known.
+function migrate(){
+  const known=new Set(Array.isArray(S.access._known)?S.access._known:P.KNOWN_AT_SEED);const fresh=PAGES.map(p=>p.id).filter(id=>!known.has(id));
+  let ch=false;
+  if(fresh.length){S.users.forEach(u=>{if(canManage(u))return;const ids=S.access[u.id]||(S.access[u.id]=ROLES[u.role].pages.slice());fresh.forEach(id=>{if((ROLES[u.role]||{pages:[]}).pages.includes(id)&&!ids.includes(id)){ids.push(id);ch=true;}});});}
+  const allIds=PAGES.map(p=>p.id);if(JSON.stringify(S.access._known||null)!==JSON.stringify(allIds)){S.access._known=allIds;ch=true;}
+  return ch;
+}
+function render(){
+  const u=me();
+  const sel=$("me");sel.innerHTML=S.users.map(x=>'<option value="'+esc(x.id)+'"'+(x.id===u.id?" selected":"")+'>'+esc(x.name)+" · "+esc(ROLES[x.role]?ROLES[x.role].label:x.role)+"</option>").join("");
+  const mine=pagesFor(u);
+  const tile=(p)=>'<div class="mod '+p.color+(p.status==="archive"?" archive":"")+'"><div class="mod-top"><h3>'+esc(p.name)+'</h3><span class="badge '+p.status+'">'+esc(P.STATUS_LABEL[p.status]||p.status)+'</span></div><p>'+esc(p.desc)+'</p><div class="mod-foot"><span class="who">'+esc(p.owner)+(P.NEEDS_LABEL[p.needs]?' &nbsp;<span class="needs '+p.needs+'">'+esc(P.NEEDS_LABEL[p.needs])+'</span>':'')+'</span><a class="btn" href="'+esc(p.url)+'"'+(p.self?"":' target="_blank" rel="noopener"')+'>Open →</a></div></div>';
+  $("sections").innerHTML=mine.length?SECTIONS.map(s=>{const ps=mine.filter(p=>p.section===s.id);return ps.length?'<section class="sec"><div class="sec-label '+s.color+'">'+esc(s.label)+'</div><div class="grid">'+ps.map(tile).join("")+'</div></section>':"";}).join(""):'<section class="sec"><div class="sec-label">Your pages</div><div class="empty">No pages assigned yet. An owner can give you access below.</div></section>';
+  $("outside").innerHTML=P.OUTSIDE.map(o=>'<a href="'+esc(o.url)+'" target="_blank" rel="noopener">'+esc(o.name)+'</a>').join("");
+  const manage=canManage(u);
+  $("access-sec").hidden=!manage;$("roles-sec").hidden=!manage;$("site-sec").hidden=!manage||!db;
+  if(manage){renderAcl();renderRoles();}
+}
+function renderAcl(){
+  let h='<thead><tr><th></th><th></th>'+SECTIONS.map(s=>'<th class="grp" colspan="'+PAGES.filter(p=>p.section===s.id).length+'">'+esc(s.label)+'</th>').join("")+'<th></th></tr><tr><th>Person</th><th>Role</th>'+SECTIONS.map(s=>PAGES.filter(p=>p.section===s.id).map(p=>'<th class="pg"><span>'+esc(p.name)+'</span></th>').join("")).join("")+'<th></th></tr></thead><tbody>';
+  S.users.forEach(u=>{
+    const ids=S.access[u.id]||[];const isOwner=u.role==="owner";
+    h+='<tr><td><div class="uname">'+esc(u.name)+'</div><div class="uemail">'+esc(u.email||"—")+'</div></td>';
+    h+='<td><select class="role" onchange="setRole(\''+esc(u.id)+'\',this.value)">'+Object.keys(ROLES).map(r=>'<option value="'+r+'"'+(r===u.role?" selected":"")+'>'+esc(ROLES[r].label)+'</option>').join("")+'</select></td>';
+    SECTIONS.forEach(s=>PAGES.filter(p=>p.section===s.id).forEach(p=>{const on=canManage(u)||ids.includes(p.id);h+='<td class="c"><div class="chk'+(on?" on":"")+(canManage(u)?" lock":"")+'" role="checkbox" aria-checked="'+on+'" tabindex="0" title="'+esc(p.name)+'" onclick="'+(canManage(u)?"":"toggle('"+esc(u.id)+"','"+p.id+"')")+'">✓</div></td>';}));
+    h+='<td class="c">'+(u.id==="antonio"?"":'<button class="btn ghost muted xs" onclick="removeUser(\''+esc(u.id)+'\')" title="Remove">✕</button>')+'</td></tr>';
+  });
+  $("acl").innerHTML=h+"</tbody>";
+  $("nu-role").innerHTML=Object.keys(ROLES).map(r=>'<option value="'+r+'">'+esc(ROLES[r].label)+'</option>').join("");
+  $("nu-role").value="marketing";
+}
+function renderRoles(){
+  $("roles").innerHTML='<thead><tr><th>Role</th><th>Pages by default</th></tr></thead><tbody>'+Object.keys(ROLES).map(r=>'<tr><td class="uname">'+esc(ROLES[r].label)+'</td><td style="color:var(--text-2)">'+(r==="owner"||r==="admin"?"Every page":ROLES[r].pages.map(id=>esc((pageById(id)||{name:id}).name)).join(" · "))+'</td></tr>').join("")+"</tbody>";
+}
+window.toggle=function(uid,pid){const ids=S.access[uid]||(S.access[uid]=[]);const i=ids.indexOf(pid);if(i>=0)ids.splice(i,1);else ids.push(pid);save("access");render();};
+window.setRole=function(uid,role){const u=S.users.find(x=>x.id===uid);if(!u)return;u.role=role;S.access[uid]=ROLES[role].pages.slice();save("users");save("access");render();toast(u.name+" is now "+ROLES[role].label);};
+window.addUser=function(){
+  const name=$("nu-name").value.trim(),email=$("nu-email").value.trim(),role=$("nu-role").value;
+  if(!name){toast("Enter a name",true);return;}
+  let id=name.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"u";let base=id,n=2;while(S.users.some(u=>u.id===id))id=base+"-"+(n++);
+  S.users.push({id,name,email,role});S.access[id]=ROLES[role].pages.slice();save("users");save("access");
+  $("nu-name").value="";$("nu-email").value="";render();toast(name+" added as "+ROLES[role].label+" — "+S.access[id].length+" pages");
+};
+window.removeUser=function(uid){const u=S.users.find(x=>x.id===uid);if(!u||uid==="antonio")return;S.users=S.users.filter(x=>x.id!==uid);delete S.access[uid];save("users");save("access");render();toast(u.name+" removed");};
+$("me").addEventListener("change",(e)=>{lsSet("me",e.target.value);render();});
+init();
+})();
+</script>
+</body></html>
