@@ -87,6 +87,18 @@ tr:hover td{background:var(--panel-2)}
 .toast.err{background:var(--orchid)}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:11px;color:var(--faint);letter-spacing:1px;text-transform:uppercase}
+.needs{font-size:9px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);padding:2px 6px;border-radius:3px;white-space:nowrap}
+.needs.google{color:var(--mint);border-color:#2a4a36}.needs.claude{color:var(--cyan);border-color:#234a4d}.needs.passcode{color:var(--lime);border-color:#4a5226}
+.badge.page{background:var(--panel-3);color:var(--text-2)}.badge.report{background:var(--panel-3);color:var(--text-2)}.badge.archive{background:var(--panel-3);color:var(--muted)}
+.mod.archive{opacity:.75}
+.outside{display:flex;flex-wrap:wrap;gap:8px}
+.outside a{color:var(--text-2);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.5px;background:var(--panel);border:1px solid var(--line-2);padding:7px 12px;border-radius:999px}
+.outside a:hover{border-color:var(--lime);color:var(--lime)}
+th.grp{text-align:center;color:var(--text-2);border-bottom:1px solid var(--line);font-size:9px;letter-spacing:1.5px;padding:6px 4px}
+.runs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+@media(max-width:900px){.runs{grid-template-columns:1fr}}
+.run{background:var(--panel-2);border:1px solid var(--line);border-radius:5px;padding:12px 14px;font-size:12.5px;color:var(--text-2);line-height:1.5}
+.run b{display:block;color:var(--text);font-size:13px;margin-bottom:4px}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head><body>
@@ -98,12 +110,14 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);display
 
 <section class="hero">
   <h1 class="h">One link. <em>Every page.</em></h1>
-  <p>Marketing, front desk, courts, attendance, billing, coaches and players — each person sees only the pages they've been given. Owners control access below. Everything on this site is protected by the team passcode.</p>
+  <p>Marketing, the Coach Portal and player assessments, try-outs, the Coach Board, the backend prototypes, the playbooks and the reports — every page the team uses, one link each. Each person sees only the pages they've been given; owners control access below. Everything on this site opens with the team passcode.</p>
 </section>
 
+<div id="sections"></div>
+
 <section class="sec">
-  <div class="sec-label">Your pages</div>
-  <div class="grid" id="modules"></div>
+  <div class="sec-label mint">Outside tools · their own logins</div>
+  <div class="outside" id="outside"></div>
 </section>
 
 <section class="sec" id="access-sec" hidden>
@@ -122,7 +136,7 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);display
 
 <section class="sec" id="roles-sec" hidden>
   <div class="sec-label mint">Role defaults</div>
-  <div class="card tbl-wrap"><table id="roles"></table><div class="who" style="margin-top:10px">When you add a person, they start with their role's pages. You can then tick or untick any page for that person above.</div></div>
+  <div class="card tbl-wrap"><table id="roles"></table><div class="who" style="margin-top:10px">When you add a person, they start with their role's pages, and a page added to the site later is granted the same way. You can then tick or untick any page for that person above. Owners and admins always see every page.</div></div>
 </section>
 
 <section class="sec" id="site-sec" hidden>
@@ -134,12 +148,20 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);display
       <button class="btn ghost xs muted" onclick="PWGit.lock()">Forget passcode on this device</button>
       <a class="btn ghost xs muted" id="repo-link" target="_blank" rel="noopener">Open the repository</a>
     </div>
+    <div class="runs">
+      <div class="run"><b>Sunday engine · 6 PM ET</b>Researches, reads the results, refills the banks, builds the next two weeks and posts its report on the Marketing page. Saves to this site's repository — needs the Claude GitHub App installed on the proworldacademy organization.</div>
+      <div class="run"><b>Monday review · 8:52 AM ET</b>Syncs Instagram, reads the numbers, reviews the watchlist, judges the week against the plan and posts the weekly report. Reads Instagram through Metricool — needs @proworldacademy linked inside Metricool.</div>
+      <div class="run"><b>Coach Board · weekdays 7 AM ET</b>Refreshes the Coach Board from the coach assignment sheet. The board is still a Claude page: a Claude account is needed to open it.</div>
+    </div>
+    <div class="who" style="margin-top:12px">Retired on Oct 14, 2026: the Claude-hosted Dashboard, Marketing Command Center and Coach Portal pages now point here and to the live portal. One address for each thing.</div>
   </div>
 </section>
 
-<footer><span>PROWORLD Academy · High Performance Academy</span><span>proworldacademy.com</span></footer>
+<footer><span>PROWORLD Academy · High Performance Academy · Individually built. Fully connected.</span><span>proworldacademy.com</span></footer>
 </div>
 <div class="toast" id="toast"></div>
+<script src="shared/pages.js"></script>
+<script src="shared/menu.js" data-root="./"></script>
 <script src="shared/store.js"></script>
 <script>
 (function(){
@@ -148,29 +170,9 @@ const $=(id)=>document.getElementById(id);
 const esc=(s)=>String(s==null?"":s).replace(/[&<>"']/g,(c)=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 let toastT; function toast(m,err){const t=$("toast");t.textContent=m;t.className="toast show"+(err?" err":"");clearTimeout(toastT);toastT=setTimeout(()=>t.className="toast",2600);} window.toast=toast;
 
-// ── Pages (modules). Status: here = part of this site · live = in daily use · proto = clickable prototype · plan = written spec
-const PAGES=[
- {id:"mkt",name:"Marketing Command Center",color:"",status:"here",desc:"Weekly coach video briefs, production list, content banks, Instagram archive, cadence and KPIs. The shared memory of everything posted — lives on this site.",url:"marketing/",owner:"Marketing",self:true},
- {id:"be-owner",name:"Backend · Owner view",color:"cyan",status:"proto",desc:"The full backend: front desk, enrollment, court control, attendance, players & billing, privates, books with revenue by class.",url:"https://claude.ai/artifact/KqbuRtaSV7tHhjyLkTKjQt#owner",owner:"Operations"},
- {id:"be-desk",name:"Backend · Front desk",color:"cyan",status:"proto",desc:"Today's sessions, walk-ins, enrollment, court bookings, attendance reconciliation and billing exceptions.",url:"https://claude.ai/artifact/KqbuRtaSV7tHhjyLkTKjQt#desk",owner:"Front desk"},
- {id:"be-coach",name:"Backend · Coach view",color:"cyan",status:"proto",desc:"Attendance by court, private lessons that charge the family automatically, and court availability.",url:"https://claude.ai/artifact/KqbuRtaSV7tHhjyLkTKjQt#coach",owner:"Coaches"},
- {id:"be-parent",name:"Player & family portal",color:"mint",status:"proto",desc:"Pick a program and pay online, see enrollment and schedule, book a court. The family side of the backend.",url:"https://claude.ai/artifact/KqbuRtaSV7tHhjyLkTKjQt#parent",owner:"Families"},
- {id:"coach-portal",name:"Coach Portal",color:"mint",status:"proto",desc:"The coach-facing portal: their players, notes and follow-ups.",url:"https://claude.ai/artifact/QquzXydsjaRk9ZpwetjdED",owner:"Coaches"},
- {id:"coach-board",name:"Coach Board",color:"mint",status:"live",desc:"Rosters, unassigned players, cadence standard and quarter commits — the team's shared assignment board.",url:"https://claude.ai/artifact/SDZwaHXrDmDPVvbPqMjK9g",owner:"Operations"},
- {id:"attendance",name:"Daily Attendance Check",color:"cyan",status:"live",desc:"Who was expected vs who came, matched against what was paid — surfaces only the exceptions.",url:"https://claude.ai/artifact/2iYnUgSMLhVjituxaCG7vR",owner:"Front desk"},
- {id:"player-system",name:"Player System (plan)",color:"gray",status:"plan",desc:"How coaches and parents interact with each player's record — the spec the player portal is built from.",url:"https://claude.ai/artifact/1Wtg2PQjJjCEq2dpnN2ELi",owner:"Leadership"},
- {id:"leads",name:"How Leads Reach You",color:"orchid",status:"live",desc:"The lead flow from ads and Instagram through Pipedrive and Monday to enrollment.",url:"https://claude.ai/artifact/7XNXwDw6HN35fveM8wg46U",owner:"Marketing"},
- {id:"ops",name:"Ops Autopilot",color:"orchid",status:"proto",desc:"Automations and check-ins that keep the academy's weekly routines running.",url:"https://claude.ai/artifact/T7CtMUZvapgAEy19PNTmCM",owner:"Operations"}
-];
-const ROLES={
- owner:{label:"Owner",pages:PAGES.map(p=>p.id)},
- admin:{label:"Admin",pages:PAGES.map(p=>p.id)},
- desk:{label:"Front desk",pages:["be-desk","attendance","leads","coach-board"]},
- coach:{label:"Coach",pages:["mkt","be-coach","coach-portal","attendance"]},
- marketing:{label:"Marketing",pages:["mkt","leads"]},
- editor:{label:"Editor",pages:["mkt"]},
- parent:{label:"Family",pages:["be-parent"]}
-};
+// ── Pages, sections, roles: one list for the whole site — shared/pages.js
+const P=window.PW_PAGES; const PAGES=P.PAGES, ROLES=P.ROLES, SECTIONS=P.SECTIONS;
+const pageById=(id)=>PAGES.find(p=>p.id===id);
 const SEED_USERS=[
  {id:"antonio",name:"Antonio",email:"operations@proworldacademy.com",role:"owner"},
  {id:"lorenzo",name:"Lorenzo",email:"",role:"owner"},
@@ -184,7 +186,7 @@ const SEED_USERS=[
 let db=null, readOnly=true; const S={users:null,access:null}; const written={};
 const lsGet=(k)=>{try{const v=localStorage.getItem("pwdash_"+k);return v?JSON.parse(v):undefined}catch(e){return undefined}};
 const lsSet=(k,v)=>{try{localStorage.setItem("pwdash_"+k,JSON.stringify(v))}catch(e){}};
-function defaults(){const access={};SEED_USERS.forEach(u=>access[u.id]=ROLES[u.role].pages.slice());return {users:SEED_USERS.map(u=>({...u})),access};}
+function defaults(){const access={_known:PAGES.map(p=>p.id)};SEED_USERS.forEach(u=>access[u.id]=ROLES[u.role].pages.slice());return {users:SEED_USERS.map(u=>({...u})),access};}
 const dirty=new Set(); let flushTimer=null, flushing=false;
 function save(k){dirty.add(k);if(readOnly){setLive("readonly");return;}setLive("saving");clearTimeout(flushTimer);flushTimer=setTimeout(flush,600);}
 async function flush(){
@@ -205,6 +207,7 @@ async function init(){
   try{const snap=await db.collection("dash").get();snap.docs.forEach(x=>{const b=x.data();if(b&&b.v!==undefined&&(x.id==="users"||x.id==="access")){S[x.id]=b.v;written[x.id]=JSON.stringify(b.v);}});}
   catch(e){console.error(e);toast("Couldn't read the shared memory — "+(e.message||e),true);}
   if(!written.users&&!readOnly){save("users");save("access");}
+  if(migrate()&&!readOnly)save("access");
   db.collection("dash").onSnapshot((snap)=>{let ch=false;snap.docChanges().forEach(c=>{if(c.type==="removed")return;const b=c.doc.data();if(!b||b.v===undefined)return;const j=JSON.stringify(b.v);if(written[c.doc.id]===j||dirty.has(c.doc.id))return;S[c.doc.id]=b.v;written[c.doc.id]=j;ch=true;});if(ch)render();});
   setLive(readOnly?"readonly":"shared");
   $("site-sec").hidden=!canManage(me());
@@ -223,23 +226,33 @@ window.changePasscode=async function(){
 // ── Viewer (who am I) — remembered per browser; owners can switch to preview any person's view
 function me(){const id=lsGet("me");return S.users.find(u=>u.id===id)||S.users.find(u=>u.role==="owner")||S.users[0];}
 function canManage(u){return u&&(u.role==="owner"||u.role==="admin");}
-function pagesFor(u){const ids=S.access[u.id]||ROLES[u.role].pages;return PAGES.filter(p=>ids.includes(p.id));}
+function pagesFor(u){if(canManage(u))return PAGES.slice();const ids=S.access[u.id]||ROLES[u.role].pages;return PAGES.filter(p=>ids.includes(p.id));}
+// Pages added to the site after the access lists were saved: grant them by role defaults, once, then remember them as known.
+function migrate(){
+  const known=new Set(Array.isArray(S.access._known)?S.access._known:P.KNOWN_AT_SEED);const fresh=PAGES.map(p=>p.id).filter(id=>!known.has(id));
+  let ch=false;
+  if(fresh.length){S.users.forEach(u=>{if(canManage(u))return;const ids=S.access[u.id]||(S.access[u.id]=ROLES[u.role].pages.slice());fresh.forEach(id=>{if((ROLES[u.role]||{pages:[]}).pages.includes(id)&&!ids.includes(id)){ids.push(id);ch=true;}});});}
+  const allIds=PAGES.map(p=>p.id);if(JSON.stringify(S.access._known||null)!==JSON.stringify(allIds)){S.access._known=allIds;ch=true;}
+  return ch;
+}
 function render(){
   const u=me();
   const sel=$("me");sel.innerHTML=S.users.map(x=>'<option value="'+esc(x.id)+'"'+(x.id===u.id?" selected":"")+'>'+esc(x.name)+" · "+esc(ROLES[x.role]?ROLES[x.role].label:x.role)+"</option>").join("");
   const mine=pagesFor(u);
-  $("modules").innerHTML=mine.length?mine.map(p=>'<div class="mod '+p.color+'"><div class="mod-top"><h3>'+esc(p.name)+'</h3><span class="badge '+p.status+'">'+(p.status==="here"?"On this site":p.status==="live"?"Live":p.status==="proto"?"Prototype":"Plan")+'</span></div><p>'+esc(p.desc)+'</p><div class="mod-foot"><span class="who">'+esc(p.owner)+'</span><a class="btn" href="'+esc(p.url)+'"'+(p.self?"":' target="_blank" rel="noopener"')+'>Open →</a></div></div>').join(""):'<div class="empty">No pages assigned yet. An owner can give you access below.</div>';
+  const tile=(p)=>'<div class="mod '+p.color+(p.status==="archive"?" archive":"")+'"><div class="mod-top"><h3>'+esc(p.name)+'</h3><span class="badge '+p.status+'">'+esc(P.STATUS_LABEL[p.status]||p.status)+'</span></div><p>'+esc(p.desc)+'</p><div class="mod-foot"><span class="who">'+esc(p.owner)+(P.NEEDS_LABEL[p.needs]?' &nbsp;<span class="needs '+p.needs+'">'+esc(P.NEEDS_LABEL[p.needs])+'</span>':'')+'</span><a class="btn" href="'+esc(p.url)+'"'+(p.self?"":' target="_blank" rel="noopener"')+'>Open →</a></div></div>';
+  $("sections").innerHTML=mine.length?SECTIONS.map(s=>{const ps=mine.filter(p=>p.section===s.id);return ps.length?'<section class="sec"><div class="sec-label '+s.color+'">'+esc(s.label)+'</div><div class="grid">'+ps.map(tile).join("")+'</div></section>':"";}).join(""):'<section class="sec"><div class="sec-label">Your pages</div><div class="empty">No pages assigned yet. An owner can give you access below.</div></section>';
+  $("outside").innerHTML=P.OUTSIDE.map(o=>'<a href="'+esc(o.url)+'" target="_blank" rel="noopener">'+esc(o.name)+'</a>').join("");
   const manage=canManage(u);
   $("access-sec").hidden=!manage;$("roles-sec").hidden=!manage;$("site-sec").hidden=!manage||!db;
   if(manage){renderAcl();renderRoles();}
 }
 function renderAcl(){
-  let h='<thead><tr><th>Person</th><th>Role</th>'+PAGES.map(p=>'<th class="pg"><span>'+esc(p.name)+'</span></th>').join("")+'<th></th></tr></thead><tbody>';
+  let h='<thead><tr><th></th><th></th>'+SECTIONS.map(s=>'<th class="grp" colspan="'+PAGES.filter(p=>p.section===s.id).length+'">'+esc(s.label)+'</th>').join("")+'<th></th></tr><tr><th>Person</th><th>Role</th>'+SECTIONS.map(s=>PAGES.filter(p=>p.section===s.id).map(p=>'<th class="pg"><span>'+esc(p.name)+'</span></th>').join("")).join("")+'<th></th></tr></thead><tbody>';
   S.users.forEach(u=>{
     const ids=S.access[u.id]||[];const isOwner=u.role==="owner";
     h+='<tr><td><div class="uname">'+esc(u.name)+'</div><div class="uemail">'+esc(u.email||"—")+'</div></td>';
     h+='<td><select class="role" onchange="setRole(\''+esc(u.id)+'\',this.value)">'+Object.keys(ROLES).map(r=>'<option value="'+r+'"'+(r===u.role?" selected":"")+'>'+esc(ROLES[r].label)+'</option>').join("")+'</select></td>';
-    PAGES.forEach(p=>{const on=ids.includes(p.id);h+='<td class="c"><div class="chk'+(on?" on":"")+(isOwner?" lock":"")+'" role="checkbox" aria-checked="'+on+'" tabindex="0" title="'+esc(p.name)+'" onclick="'+(isOwner?"":"toggle('"+esc(u.id)+"','"+p.id+"')")+'">✓</div></td>';});
+    SECTIONS.forEach(s=>PAGES.filter(p=>p.section===s.id).forEach(p=>{const on=canManage(u)||ids.includes(p.id);h+='<td class="c"><div class="chk'+(on?" on":"")+(canManage(u)?" lock":"")+'" role="checkbox" aria-checked="'+on+'" tabindex="0" title="'+esc(p.name)+'" onclick="'+(canManage(u)?"":"toggle('"+esc(u.id)+"','"+p.id+"')")+'">✓</div></td>';}));
     h+='<td class="c">'+(u.id==="antonio"?"":'<button class="btn ghost muted xs" onclick="removeUser(\''+esc(u.id)+'\')" title="Remove">✕</button>')+'</td></tr>';
   });
   $("acl").innerHTML=h+"</tbody>";
@@ -247,7 +260,7 @@ function renderAcl(){
   $("nu-role").value="marketing";
 }
 function renderRoles(){
-  $("roles").innerHTML='<thead><tr><th>Role</th><th>Pages by default</th></tr></thead><tbody>'+Object.keys(ROLES).map(r=>'<tr><td class="uname">'+esc(ROLES[r].label)+'</td><td style="color:var(--text-2)">'+ROLES[r].pages.map(id=>esc(PAGES.find(p=>p.id===id).name)).join(" · ")+'</td></tr>').join("")+"</tbody>";
+  $("roles").innerHTML='<thead><tr><th>Role</th><th>Pages by default</th></tr></thead><tbody>'+Object.keys(ROLES).map(r=>'<tr><td class="uname">'+esc(ROLES[r].label)+'</td><td style="color:var(--text-2)">'+(r==="owner"||r==="admin"?"Every page":ROLES[r].pages.map(id=>esc((pageById(id)||{name:id}).name)).join(" · "))+'</td></tr>').join("")+"</tbody>";
 }
 window.toggle=function(uid,pid){const ids=S.access[uid]||(S.access[uid]=[]);const i=ids.indexOf(pid);if(i>=0)ids.splice(i,1);else ids.push(pid);save("access");render();};
 window.setRole=function(uid,role){const u=S.users.find(x=>x.id===uid);if(!u)return;u.role=role;S.access[uid]=ROLES[role].pages.slice();save("users");save("access");render();toast(u.name+" is now "+ROLES[role].label);};

@@ -2,8 +2,9 @@
 
 The team's internal site, served by GitHub Pages from this repository.
 
-- `/` — **PROWORLD Dashboard** (the motherboard): every page the team uses, with per-person access.
-- `/marketing/` — **Marketing Command Center**: weekly coach briefs, production list, content banks, archive, cadence, KPIs, the content engine's memory.
+- `/` — **PROWORLD Dashboard** (the motherboard): every page the team uses — this site, the Coach Portal and player assessments, try-outs, the Coach Board, the backend prototypes, the playbooks and reports — with per-person access.
+- `/marketing/` — **Marketing Command Center**: the two-week plan, coach briefs, production list, content banks, archive, cadence, KPIs, the runs' reports — the content engine's memory.
+- Every page of the site carries the same black page strip at the top (Dashboard · Marketing · Coach Portal · Try-outs · Coach Board), and the Coach Portal links back here from its account menu and its sign-in screen.
 
 ## How it works
 
@@ -18,6 +19,8 @@ Everything on the site opens with **one team passcode**. The site's memory is th
 ```
 index.html              Dashboard
 marketing/index.html    Command Center (+ app.js, engine.js, data.js seeds, pillars.js seeds)
+shared/pages.js         THE list of pages, sections, role defaults and outside tools — add or change a page here
+shared/menu.js          the page strip shown on every page of the site
 shared/store.js         passcode gate, crypto, GitHub read/write, GitHub sign-in
 assets/fonts.css.enc    brand fonts + wordmark, encrypted
 data/index.json         plaintext: kdf parameters, passcode check, list of documents {rev, at}
@@ -26,6 +29,10 @@ tools/pwdata.py         decrypt / encrypt / check / init / rekey from a checkout
 ```
 
 Document bodies are `{v: <value>, at: <ISO time>}` (ideaBank documents also carry `coach`). The shapes are the ones the Command Center page defines: `state/<key>` for every small key (cadence, usedIdeas, usedProd, prodBank, kpi, priorities, ads, pillars, cadencePlan, daily, requests, team, engineLog, watchlist, market, reminders, recipe, strategy), `ideaBank/<coach slug>`, `weeks/<sunday YYYY-MM-DD>`, `archive/<year>`, `reports/<date>_<by>`, `dash/users` and `dash/access`.
+
+### Adding a page
+
+Add one entry to `PAGES` in `shared/pages.js` (id, section, name, status, needs, url, owner, desc; `menu: true` puts it in the strip). The next time the Dashboard loads, everyone whose role includes the new page gets it (the access lists remember which pages they already knew); owners and admins always see every page. Pages hosted on claude.ai are marked "Opens in Claude" — a Claude account is needed to open those; everything that must work for the whole team belongs on this site or on the Coach Portal.
 
 ### Giving someone access
 
@@ -51,4 +58,4 @@ git -C repo add -A data && git -C repo commit -m "engine: …" && git -C repo pu
 
 ### History
 
-Built in April–May 2026 as a browser-only dashboard (localStorage), rebuilt in October 2026 as a Claude artifact with shared storage, and moved back here on October 13, 2026 so that everything lives on one site behind one passcode.
+Built in April–May 2026 as a browser-only dashboard (localStorage), rebuilt in October 2026 as a Claude artifact with shared storage, and moved back here on October 13, 2026 so that everything lives on one site behind one passcode. On October 14, 2026 the Dashboard became the one menu for everything: the live Coach Portal (player assessments, try-outs) replaced the retired Claude-hosted prototype, the pages were grouped (tools · prototypes & plans · playbooks, pages & reports), and the Claude-hosted copies of the Dashboard, the Command Center and the Coach Portal were turned into signposts to the live addresses.
