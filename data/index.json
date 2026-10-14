@@ -9,8 +9,8 @@
  },
  "docs": {
   "archive/2026": {
-   "rev": "2c01604010130b48f0d1984e83504cc876e71ec901e95b64c28b8839d3d062fc",
-   "at": "2026-10-13T14:11:03.610604Z"
+   "rev": "ae88793fe5f70bff529cd72e56483be9de4d28d88fc8ae8c70ace6abf2277a99",
+   "at": "2026-10-14T23:47:40.000Z"
   },
   "dash/access": {
    "rev": "4ad49bf4c2e6ae5a622e7bf00575ea751bbdc1dafd6a98d620c4d1723ded9591",
@@ -93,16 +93,16 @@
    "at": "2026-10-13T14:11:03.610604Z"
   },
   "state/engineLog": {
-   "rev": "b9b958ec6940a2efdf840783f12408eca390228730a7354bab5e8445769d0fed",
-   "at": "2026-10-13T14:48:58.000Z"
+   "rev": "818dc830421a26c3ef0467aa0799254a99f1223e263693a005df264d7c021896",
+   "at": "2026-10-14T23:47:40.000Z"
   },
   "state/kpi": {
-   "rev": "e73d1953adc8c61ceb5efefa52ea27b00b9f8f9e9b23d8c2311ae6105c56331b",
-   "at": "2026-10-13T14:11:03.610604Z"
+   "rev": "71dc09217b434b0cdc0f6a446847033e827edc2bd363f03b9ce5009017ac5a10",
+   "at": "2026-10-14T23:47:40.000Z"
   },
   "state/market": {
-   "rev": "5bf7770f5c9e67829998ace30d80f80bfcdb3e5886eeeb18425070a2ba2f1516",
-   "at": "2026-10-13T14:48:58.000Z"
+   "rev": "962dc0b90a61c99152a803a128d56bbf75c7b170146d773ba1bd10f43c9a882e",
+   "at": "2026-10-14T23:47:40.000Z"
   },
   "state/pillars": {
    "rev": "21dbce3a2b621280c022ccc1b3b51b2b84b4068ec6a76004c5ee74724eeb685b",
@@ -125,8 +125,8 @@
    "at": "2026-10-13T14:11:03.610604Z"
   },
   "state/requests": {
-   "rev": "92fd4c4df88376683bf2ef4e51b34cef209042e38077fe9269bec9d07675482c",
-   "at": "2026-10-13T14:48:58.000Z"
+   "rev": "04f16f941719b617a5b427843612a5228d6f81e7af476d9eb50654553009afbb",
+   "at": "2026-10-14T23:47:40.000Z"
   },
   "state/team": {
    "rev": "97f7d6efb68041beb955bcadc4c03f63664b8822c62f8af6afc3088b62de3fce",
@@ -151,7 +151,11 @@
   "state/strategy": {
    "rev": "5f50b8b3be47ec98c1100caac5ec51aefd3cea199d31f6a1ac39ed7386bbe179",
    "at": "2026-10-14T13:23:54.836Z"
+  },
+  "reports/2026-10-14_instagram-review": {
+   "rev": "3f206ff929c27c7b47cae096ec4a36902a28d934899ffdc97145d6ef7921653f",
+   "at": "2026-10-14T23:47:40.000Z"
   }
  },
- "updatedAt": "2026-10-14T23:39:58.154Z"
+ "updatedAt": "2026-10-14T23:47:41.000Z"
 }
