@@ -29,16 +29,16 @@
    "at": "2026-10-13T14:11:03.610604Z"
   },
   "ideaBank/Eric": {
-   "rev": "c672c2e53350a2d961601b6ab7cabea35c898a2be7b61e504b93eac2977fd541",
-   "at": "2026-10-13T14:11:03.610604Z"
+   "rev": "116171d70cde020f8aed09fe8b52208d8698df37798fb2ee7330704c7fe7f25f",
+   "at": "2026-10-15T00:47:08.000Z"
   },
   "ideaBank/Flo": {
    "rev": "9aa6849b7b30e7c510ea4cd281c2f2125040fb679e99f181fc765defb311ee27",
    "at": "2026-10-13T14:11:03.610604Z"
   },
   "ideaBank/Kam": {
-   "rev": "0b627a2f11d967ace2046fa323af23dd6e1b16b4844d238c2b76aa62c551847f",
-   "at": "2026-10-13T14:48:58.000Z"
+   "rev": "d4235d2a126c8f0f29a18af0ffc31c7d0da717b02aa9955a965d7b5bd305bd96",
+   "at": "2026-10-15T00:47:08.000Z"
   },
   "ideaBank/Lorenzo": {
    "rev": "2091b5698c74ea32f071ecb5a10eff1adfa59edbe0ac14a5fb9f4dc5bd194e75",
@@ -49,12 +49,12 @@
    "at": "2026-10-13T14:48:58.000Z"
   },
   "ideaBank/Mauri": {
-   "rev": "75e6daecd32e210fb0c247d0d4c76a7e179d01c5ea27e36652b75edb180212d5",
-   "at": "2026-10-13T14:11:03.610604Z"
+   "rev": "03e9221105942a0b4a118f47113f3c05e9281d8266df2b8e007a61d996dddb35",
+   "at": "2026-10-15T00:47:08.000Z"
   },
   "ideaBank/Nico": {
-   "rev": "7977f35898dd37eae894f737b9ab206a03fc3b64cefa2eadb896bb6a4a75cd9c",
-   "at": "2026-10-13T14:11:03.610604Z"
+   "rev": "002158f4be623721bce7bb20bd1e594030a50a1ffbbe9bb836ee353ade3dc4ab",
+   "at": "2026-10-15T00:47:08.000Z"
   },
   "ideaBank/Quinnton": {
    "rev": "93e22ba39a282a8a1da0bb463975fc92573d5809a6a72e86157a58f2767a1f83",
@@ -69,8 +69,8 @@
    "at": "2026-10-13T14:11:03.610604Z"
   },
   "ideaBank/Tonio": {
-   "rev": "35501d739174cd36394fbd6373d7ac098f81052769071e89953d6d702015add8",
-   "at": "2026-10-13T14:48:58.000Z"
+   "rev": "9bab023eaa48f6f170891da76d676d70565f098b71aa616d24463c8872858613",
+   "at": "2026-10-15T00:47:08.000Z"
   },
   "reports/2026-10-13_system": {
    "rev": "6e435842ce68cc6adb3568ad100889701be64a26f49435c70bf3a5f07570ecaa",
@@ -93,16 +93,16 @@
    "at": "2026-10-13T14:11:03.610604Z"
   },
   "state/engineLog": {
-   "rev": "818dc830421a26c3ef0467aa0799254a99f1223e263693a005df264d7c021896",
-   "at": "2026-10-14T23:47:40.000Z"
+   "rev": "5e972ea460e12f43b6505b672b9804872e5603db5f177e5287c6b0177a08a106",
+   "at": "2026-10-15T00:47:33.000Z"
   },
   "state/kpi": {
    "rev": "71dc09217b434b0cdc0f6a446847033e827edc2bd363f03b9ce5009017ac5a10",
    "at": "2026-10-14T23:47:40.000Z"
   },
   "state/market": {
-   "rev": "962dc0b90a61c99152a803a128d56bbf75c7b170146d773ba1bd10f43c9a882e",
-   "at": "2026-10-14T23:47:40.000Z"
+   "rev": "4e8f06174a06caa72836b6d97bfc1bbd9af1d7f3b60d21829e640ec6b52d60de",
+   "at": "2026-10-15T00:47:33.000Z"
   },
   "state/pillars": {
    "rev": "21dbce3a2b621280c022ccc1b3b51b2b84b4068ec6a76004c5ee74724eeb685b",
@@ -113,32 +113,32 @@
    "at": "2026-10-13T14:11:03.610604Z"
   },
   "state/prodBank": {
-   "rev": "53a86f1feeb371a218256a22049ad1a70f965a69e80eab0b7dad81926f3c08e8",
-   "at": "2026-10-13T14:48:58.000Z"
+   "rev": "7910567eb4dc4636d3b104d8206b63a4484efdb6ea4ad88bc09be59ee4d43f50",
+   "at": "2026-10-15T00:47:08.000Z"
   },
   "state/recipe": {
-   "rev": "4527adf47e0d87b745c5b2a64160e59d5c64abf145132a4303442b354f856c3d",
-   "at": "2026-10-13T14:11:03.610604Z"
+   "rev": "2e6f431485b432f9d05b4fdb326b3a27fa210772a5ab8309ea1b67e9bb2846ec",
+   "at": "2026-10-15T00:47:08.000Z"
   },
   "state/reminders": {
    "rev": "18bfdeace3e33dff413c5c2faf35b52a6f68e294fea14c8e9db428e446c892ff",
    "at": "2026-10-13T14:11:03.610604Z"
   },
   "state/requests": {
-   "rev": "04f16f941719b617a5b427843612a5228d6f81e7af476d9eb50654553009afbb",
-   "at": "2026-10-14T23:47:40.000Z"
+   "rev": "6d24d8072c9978cd747bcb29891ee75966c5293106444ff96be5191825a9b407",
+   "at": "2026-10-15T00:47:08.000Z"
   },
   "state/team": {
    "rev": "97f7d6efb68041beb955bcadc4c03f63664b8822c62f8af6afc3088b62de3fce",
    "at": "2026-10-13T14:11:03.610604Z"
   },
   "state/usedIdeas": {
-   "rev": "47cd41ed7fc317c4ef8505cbea9411a1bb1fdc4de9c0f5155b863f12f93dfaa7",
-   "at": "2026-10-13T14:11:03.610604Z"
+   "rev": "d4a0fbeefd33cb4dd01d9ffefac6c364f4ddb5b8b74197a8ba7d9d5ac100b54c",
+   "at": "2026-10-15T00:47:08.000Z"
   },
   "state/usedProd": {
-   "rev": "f4e2de2f7fd26b817c163099e7657c1aa5c2e542d550d8efba66d015da7c4359",
-   "at": "2026-10-13T14:11:03.610604Z"
+   "rev": "c0921a559e6d27ca2209ad936505133c32ce08dd0803572febee883d30646b5e",
+   "at": "2026-10-15T00:47:08.000Z"
   },
   "state/watchlist": {
    "rev": "86dad9b2d9fd1161892cb741f9979901085d74b326985739f069584a24ba4c7a",
@@ -155,7 +155,19 @@
   "reports/2026-10-14_instagram-review": {
    "rev": "3f206ff929c27c7b47cae096ec4a36902a28d934899ffdc97145d6ef7921653f",
    "at": "2026-10-14T23:47:40.000Z"
+  },
+  "reports/2026-10-15_engine": {
+   "rev": "f5049ab65aee5ffec966641ceeda99dd8e41969ca65ac002e05bfd793a5a8269",
+   "at": "2026-10-15T00:47:33.000Z"
+  },
+  "weeks/2026-10-11": {
+   "rev": "7a20bf116ff95b2f3d8f85bfa15916b90d3cc26dac9341ba77d1c908869758c5",
+   "at": "2026-10-15T00:47:08.000Z"
+  },
+  "weeks/2026-10-18": {
+   "rev": "384c46e1631cd1e67354f081271b4a5b34a2656b544ee00657a5a65eedb01b18",
+   "at": "2026-10-15T00:47:08.000Z"
   }
  },
- "updatedAt": "2026-10-14T23:47:41.000Z"
+ "updatedAt": "2026-10-15T00:47:33.000Z"
 }
