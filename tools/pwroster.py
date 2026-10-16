@@ -154,7 +154,7 @@ def fold(s):
 
 
 def toks(s):
-    return fold(s).split()
+    return fold(re.sub(r"\([^)]*\)|\[[^\]]*\]", " ", str(s or ""))).split()   # "(4PM)", "(Tryout)": notes, never part of a name
 
 
 def titled(s):
@@ -475,8 +475,8 @@ def build_plan(state, exp, now_ms=None):
             say("notPlaced", f"Added from Monday, not placed: {doc['name']} — no program on Monday ({r['age'] or 'no age group'}, "
                              f"{r['sch'] or 'no schedule'}). Pick a group in the portal.", pid)
     max_new = int(cfg.get("maxNew") or MAX_NEW)
-    first_live = mode == "live" and prev_board.get("mode") != "live"     # the first live run follows a reviewed preview: no limit
-    if len(adds) > max_new and not first_live:
+    unlimited = prev_board.get("mode") != "live"   # a preview writes nothing, and the first live run follows a reviewed preview: no limit
+    if len(adds) > max_new and not unlimited:
         errors.append(f"{len(adds)} new players at once (the limit is {max_new}) — none added; check Monday. An owner can raise the limit.")
         gone = {a["pid"] for a in adds}
         log[:] = [e for e in log if e["k"] not in ("added", "notPlaced")]
