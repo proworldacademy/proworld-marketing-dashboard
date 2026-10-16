@@ -687,7 +687,8 @@ def cmd_apply(a):
     counts = dict(plan["counts"])
     if skipped:
         counts["skippedWrite"] = len(skipped)
-    entry = {"at": plan["now"], "mode": plan["mode"], "ok": not errors, "counts": counts, "entries": log[:400], "more": max(0, len(log) - 400),
+    # the run finished; "errors" are warnings to check (a run that stopped is written by `note`, with ok False)
+    entry = {"at": plan["now"], "mode": plan["mode"], "ok": True, "counts": counts, "entries": log[:400], "more": max(0, len(log) - 400),
              "errors": errors, "by": "Monday sync", "board": len(plan["board"]["items"])}
     fs_commit(token, [{"path": "board/current", "data": plan["board"]}, {"path": f"syncLog/{run_id}", "data": entry}])
     print(f"{plan['mode']}: wrote {done} roster record(s), the Coach Board and the change log syncLog/{run_id}"
